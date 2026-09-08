@@ -1,7 +1,7 @@
 window.TIKTOK_AD_LINKS = [
-  "https://vt.tiktok.com/ZS9Bx4RQG7sTR-1teGe/",
+  "https://s.shopee.vn/2BEiuZneaP",
   "https://vt.tiktok.com/ZS9BxXw9wUR7C-QZnPz/",
-  "https://vt.tiktok.com/ZS9BfYXq4SUVb-HB6li/",
+  "https://s.shopee.vn/5q81HguNNj",
   "https://vt.tiktok.com/ZS9Bsh29NRboX-rzCEr/",
-  "https://vt.tiktok.com/ZS9Bsh8v7htQC-0dVzk/"
+  "https://s.shopee.vn/qjLKWvD5e"
 ];
