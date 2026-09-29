@@ -1,7 +1,7 @@
 [
   {
     "name": "Map Sáng AOV IOS",
-    "version": "Cập Nhật 20/9",
+    "version": "Cập Nhật 29/9",
     "icon": "assets/icons/app.png",
     "link": "https://nghialqtv.github.io/SubUnlock/?id=hackmenuios",
     "platform": "ios",
@@ -34,7 +34,7 @@
   },
   {
     "name": "IPA NO KEY",
-    "version": "Cập Nhật 20/9",
+    "version": " Chưa Cập Nhật",
     "icon": "assets/icons/appipa.png",
     "link": "https://nghialqtv.github.io/mod/ipa.html",
     "platform": "ios",
@@ -44,25 +44,10 @@
     "noteType": "info"
   },
   {
-    "name": "Unlock Skin IOS Lite",
-    "version": "Cập Nhật 20/9",
+    "name": "Menu Mod Skin IOS",
+    "version": "Cập Nhật 29/9",
     "icon": "assets/icons/app.png",
     "link": "https://nghialqtv.github.io/SubUnlock/?id=modmenuios",
-    "platform": "ios",
-    "preview": [
-      "assets/previews/menu-list.jpg",
-      "assets/previews/unlock-note.jpg"
-    ],
-    "note": "📔 Danh sách skin lỗi mạng khi Unlock",
-    "previewTitle": "Preview",
-    "noteType": "link",
-    "noteLink": "https://unlock.tumadam.com/note-list-skin.html"
-  },
-  {
-    "name": "Unlock Skin IOS V2",
-    "version": "Cập Nhật 20/9",
-    "icon": "assets/icons/app.png",
-    "link": "https://nghialqtv.github.io/SubUnlock/?id=modmenuiosv2",
     "platform": "ios",
     "preview": [
       "assets/previews/menu-list.jpg",
