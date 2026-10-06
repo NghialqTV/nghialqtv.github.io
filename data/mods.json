@@ -1,22 +1,7 @@
 [
-  {
-    "name": "Nhóm Tele",
-    "icon": "assets/icons/mod.png",
-    "link": "https://t.me/+gI22PHmUi5xhMDA9"
-  },
-  {
-    "name": "Tài Nguyên",
-    "icon": "assets/icons/mod.png",
-    "link": "resources.html"
-  },
-  {
-    "name": "File Lẻ",
-    "icon": "assets/icons/mod.png",
-    "link": "file-le.html"
-  },
-  {
-    "name": "Mua Key",
-    "icon": "assets/icons/mod.png",
-    "link": "https://t.me/nghialqTV"
-  }
+  {"name":"Bot Tele","icon":"assets/icons/telegram.png","link":"https://t.me/ModSkinNghiaTVBot"},
+  {"name":"Tài Nguyên","icon":"assets/icons/folder.png","link":"#"},
+  {"name":"File Lẻ","icon":"assets/icons/file.png","link":"#"},
+  {"name":"Mua Key","icon":"assets/icons/key.png","link":"#"},
+  {"name":"Mod Pack","icon":"assets/icons/modpack.png","link":"modpacks.html"}
 ]
