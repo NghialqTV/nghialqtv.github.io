@@ -52,7 +52,7 @@ function noteRow(item){
        </span>`;
 
   if(item.noteLink){
-    return `<a class="${cls} notice-link" data-tiktok-gate href="${escapeHtml(item.noteLink)}" target="_blank" rel="noopener">
+    return `<a class="${cls} notice-link" href="${escapeHtml(item.noteLink)}" target="_blank" rel="noopener">
       ${icon}<span class="notice-text">${text}</span><span class="notice-arrow" aria-hidden="true">↗</span>
     </a>`;
   }
@@ -96,7 +96,7 @@ function render(url, boxId){
               data-app-index="${index}" aria-label="Chọn phiên bản Android V2">
               <span class="download-icon" aria-hidden="true">⇩</span>
             </button>` : `
-            <a class="download-btn" data-tiktok-gate href="${escapeHtml(i.link || "#")}" target="_blank" rel="noopener" aria-label="Tải xuống">
+            <a class="download-btn" href="${escapeHtml(i.link || "#")}" target="_blank" rel="noopener" aria-label="Tải xuống">
               <span class="download-icon" aria-hidden="true">⇩</span>
             </a>`}
           </div>
@@ -108,33 +108,6 @@ function render(url, boxId){
     .catch(err => {
       document.getElementById(boxId).innerHTML =
         `<div class="load-error">Không thể tải dữ liệu.</div>`;
-      console.error(err);
-    });
-}
-
-
-function renderModPacks(){
-  const box=document.getElementById("modpacks-home");
-  if(!box) return;
-  fetch("data/modpacks.json?v="+Date.now(),{cache:"no-store"})
-    .then(res=>{ if(!res.ok) throw new Error("Fetch lỗi data/modpacks.json"); return res.json(); })
-    .then(items=>{
-      box.innerHTML=items.map(item=>`
-        <article class="modpack-home-card">
-          <img class="modpack-home-img" src="${escapeHtml(item.image || "assets/icons/mod.png")}" alt="${escapeHtml(item.name || "Mod Pack")}" loading="lazy">
-          <div class="modpack-home-body">
-            <h3 class="modpack-home-title">${escapeHtml(item.name || "")}</h3>
-            <div class="modpack-home-desc">${escapeHtml(item.desc || "")}</div>
-            <div class="modpack-home-actions">
-              <a class="modpack-preview-link" href="mod-pack.html">Preview</a>
-              <a class="modpack-page-link" href="mod-pack.html">Xem Mod Pack</a>
-            </div>
-          </div>
-        </article>
-      `).join("");
-    })
-    .catch(err=>{
-      box.innerHTML='<div class="load-error" style="grid-column:1/-1">Không thể tải danh sách Mod Pack.</div>';
       console.error(err);
     });
 }
@@ -151,7 +124,7 @@ function renderFiles(){
               <b class="app-name">${escapeHtml(f.name)}</b>
               <div class="update-line">• ${escapeHtml(f.version || "")}</div>
             </div>
-            <a class="download-btn" data-tiktok-gate href="${escapeHtml(f.link || "#")}" target="_blank" rel="noopener" aria-label="Tải xuống">
+            <a class="download-btn" href="${escapeHtml(f.link || "#")}" target="_blank" rel="noopener" aria-label="Tải xuống">
               <span class="download-icon" aria-hidden="true">⇩</span>
             </a>
           </div>
@@ -213,7 +186,10 @@ function closeLightbox(){
 
 /* ===== ANDROID DOWNLOAD CHOICE + PASTE LINK ===== */
 
-
+/* ===== MONETAG =====
+   Monetag được nạp trực tiếp trong index.html.
+   Không còn sử dụng quảng cáo TikTok.
+*/
 
 const ANDROID_V2_LINKS = {
   getKeyLink: "https://nghialqtv.github.io/SubUnlock/?id=keyandroidv2",
@@ -256,7 +232,7 @@ function openAndroidUrl(url){
   try {
     const parsed = new URL(url, window.location.href);
     if(!/^https?:$/i.test(parsed.protocol)) return;
-    tiktokAdGate(parsed.href);
+    setTimeout(() => { window.location.href = parsed.href; }, 300);
   } catch(e) {
     console.error("Link không hợp lệ:", e);
   }
@@ -267,7 +243,7 @@ function openKeyWithAd(url){
   try {
     const parsed = new URL(url, window.location.href);
     if(!/^https?:$/i.test(parsed.protocol)) return;
-    tiktokAdGate(parsed.href);
+    window.location.href = parsed.href;
   } catch(e) {
     console.error("Link key không hợp lệ:", e);
   }
@@ -339,7 +315,6 @@ document.addEventListener("keydown", e => {
 render("data/apps.json", "apps");
 render("data/keys.json", "keys");
 renderFiles();
-renderModPacks();
 initSiteVisitStats();
 
 
@@ -376,25 +351,13 @@ fetch("data/mods.json?v="+Date.now())
   .then(mods=>{
     const box=document.getElementById("mods");
     if(!box) return;
-    // Luôn bảo đảm Mod Pack xuất hiện trong mục MOD SKIN,
-    // kể cả khi data/mods.json trên GitHub đang là bản cũ.
-    const hasModPack = mods.some(m => String(m.name || "").trim().toLowerCase() === "mod pack");
-    if(!hasModPack){
-      mods.push({name:"Mod Pack", icon:"assets/icons/mod-pack.png", link:"mod-pack.html"});
-    }
     box.innerHTML=mods.map(m=>`
-      <a data-tiktok-gate href="${escapeHtml(m.link || "#")}" class="mod-item${m.name === "Mod Pack" ? " mod-pack-item" : ""}">
-        ${m.image ? `<img class="mod-item-image" src="${escapeHtml(m.image)}" alt="">` : (m.icon ? `<img src="${escapeHtml(m.icon)}" alt="">` : "")}
+      <a href="${escapeHtml(m.link || "#")}" class="mod-item">
+        ${m.icon ? `<img src="${escapeHtml(m.icon)}" alt="">` : ""}
         <span>${escapeHtml(m.name)}</span>
       </a>
     `).join("");
-  }).catch(err=>{
-    console.error(err);
-    const box=document.getElementById("mods");
-    if(box){
-      box.insertAdjacentHTML("beforeend", `<a data-tiktok-gate href="mod-pack.html" class="mod-item mod-pack-item"><img src="assets/icons/mod-pack.png" alt=""><span>Mod Pack</span></a>`);
-    }
-  });
+  }).catch(console.error);
 
 /* ===== TOGGLE DARK MODE ===== */
 const toggle=document.getElementById("darkToggle");
