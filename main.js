@@ -376,13 +376,25 @@ fetch("data/mods.json?v="+Date.now())
   .then(mods=>{
     const box=document.getElementById("mods");
     if(!box) return;
+    // Luôn bảo đảm Mod Pack xuất hiện trong mục MOD SKIN,
+    // kể cả khi data/mods.json trên GitHub đang là bản cũ.
+    const hasModPack = mods.some(m => String(m.name || "").trim().toLowerCase() === "mod pack");
+    if(!hasModPack){
+      mods.push({name:"Mod Pack", icon:"assets/icons/mod-pack.png", link:"mod-pack.html"});
+    }
     box.innerHTML=mods.map(m=>`
       <a data-tiktok-gate href="${escapeHtml(m.link || "#")}" class="mod-item${m.name === "Mod Pack" ? " mod-pack-item" : ""}">
         ${m.image ? `<img class="mod-item-image" src="${escapeHtml(m.image)}" alt="">` : (m.icon ? `<img src="${escapeHtml(m.icon)}" alt="">` : "")}
         <span>${escapeHtml(m.name)}</span>
       </a>
     `).join("");
-  }).catch(console.error);
+  }).catch(err=>{
+    console.error(err);
+    const box=document.getElementById("mods");
+    if(box){
+      box.insertAdjacentHTML("beforeend", `<a data-tiktok-gate href="mod-pack.html" class="mod-item mod-pack-item"><img src="assets/icons/mod-pack.png" alt=""><span>Mod Pack</span></a>`);
+    }
+  });
 
 /* ===== TOGGLE DARK MODE ===== */
 const toggle=document.getElementById("darkToggle");
