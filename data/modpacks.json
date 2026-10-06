@@ -1,7 +1,37 @@
 [
-  {"name":"Mod Pack 123 Skin","version":"Ver 1","skins":"123 Skin","features":"Full Nút Bấm • Không Trùng","update":"S4 - 2026","android":"https://example.com/android-123-ver1","ios":"https://example.com/ios-123-ver1","image":"assets/banners/modpack-123.png"},
-  {"name":"Mod Pack 80 Skin","version":"Ver 2","skins":"80 Skin","features":"Full Nút Bấm • Không Trùng","update":"S4 - 2026","android":"https://example.com/android-80-ver2","ios":"https://example.com/ios-80-ver2","image":"assets/banners/modpack-80.png"},
-  {"name":"Mod Pack 55 Skin","version":"Ver 3","skins":"55 Skin","features":"Full Nút Bấm • Không Trùng","update":"S4 - 2026","android":"https://example.com/android-55-ver3","ios":"https://example.com/ios-55-ver3","image":"assets/banners/modpack-55.png"},
-  {"name":"Mod Pack 35 Skin","version":"Ver 4","skins":"35 Skin","features":"Full Nút Bấm • Không Trùng","update":"S4 - 2026","android":"https://example.com/android-35-ver4","ios":"https://example.com/ios-35-ver4","image":"assets/banners/modpack-35.png"},
-  {"name":"Mod Pack 3 Skin Hot Pick","version":"Hot Pick","skins":"3 Skin","features":"Có Nút Bấm • Không Trùng","update":"S4 - 2026","android":"https://example.com/android-hotpick","ios":"https://example.com/ios-hotpick","image":"assets/banners/modpack-3-hot.png"}
+  {
+    "name": "Mod Pack 80 Skin Ver 1",
+    "desc": "Sáng đêm • Tích hợp Camera Xa • Android - IOS • S4 - 2026",
+    "image": "assets/modpacks/pack-ver-1.png",
+    "link": "https://linkx.me/JXlp",
+    "tag": "ANDROID • IOS"
+  },
+  {
+    "name": "Mod Pack 123 Skin Ver 2",
+    "desc": "Sáng đêm • Tích hợp Camera Xa • Android - IOS • S4 - 2026",
+    "image": "assets/modpacks/pack-ver-2.png",
+    "link": "https://linkx.me/LoQnChC",
+    "tag": "ANDROID • IOS"
+  },
+  {
+    "name": "Mod Pack 35 Skin Ver 3",
+    "desc": "Full Nút Bấm • Không Trùng • Android • S4 - 2026",
+    "image": "assets/modpacks/pack-ver-3.png",
+    "link": "https://linkx.me/TSiFl",
+    "tag": "ANDROID"
+  },
+  {
+    "name": "Mod Pack 55 Skin Ver 4",
+    "desc": "Full Nút Bấm • Không Trùng • Android - IOS • S4 - 2026",
+    "image": "assets/modpacks/pack-ver-4.png",
+    "link": "https://linkx.me/NZX7",
+    "tag": "ANDROID • IOS"
+  },
+  {
+    "name": "Mod Pack 3 Skin Hot Pick",
+    "desc": "Full Effects • Sound • BG • FX • Icon • Có Nút Bấm",
+    "image": "assets/modpacks/pack-3-skin.png",
+    "link": "https://linkx.me/1tqzIAIl",
+    "tag": "ANDROID • IOS"
+  }
 ]
