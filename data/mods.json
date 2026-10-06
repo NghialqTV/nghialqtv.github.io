@@ -3,5 +3,5 @@
   {"name":"Tài Nguyên","icon":"assets/icons/folder.png","link":"#"},
   {"name":"File Lẻ","icon":"assets/icons/file.png","link":"#"},
   {"name":"Mua Key","icon":"assets/icons/key.png","link":"#"},
-  {"name":"Mod Pack","icon":"assets/icons/modpack.png","link":"modpacks.html"}
+  {"name":"Mod Pack","icon":"assets/icons/mod.png","link":"modpacks.html"}
 ]
