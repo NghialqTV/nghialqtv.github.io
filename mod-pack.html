@@ -16,18 +16,121 @@
 @media(max-width:760px){.layout{grid-template-columns:1fr}.detail{position:relative;top:0}.card{grid-template-columns:135px 1fr}.thumb{height:88px}.hero h1{font-size:25px}}
 @media(max-width:470px){.card{grid-template-columns:115px 1fr}.thumb{height:78px}.ct h2{font-size:15px}.download{padding:7px 10px}.detail h2{font-size:20px}}
 </style></head><body>
-<div class="top"><a class="back" href="index.html">‹</a><div class="brand">▰ Mod Pack<small>Tổng hợp các pack mod skin chất lượng cao</small></div></div>
+<div class="top"><a class="back" href="index.html" aria-label="Quay lại">‹</a><div class="brand"><span style="color:#ff2d86">▰</span> Mod Pack<small>Tổng hợp các pack mod skin chất lượng cao</small></div></div>
 <main class="wrap"><section class="hero"><h1><span>▰</span> Mod Pack</h1><p>Android - IOS • Full nút bấm • Không trùng • S4 - 2026</p></section>
 <div class="filters"><button class="filter active" data-filter="all">Tất Cả</button><button class="filter" data-filter="android">Android</button><button class="filter" data-filter="ios">IOS</button></div>
 <div class="layout"><section class="list" id="list"></section><aside class="detail" id="detail"></aside></div></main>
 <div class="ad-modal" id="adModal"><div class="ad-box"><div style="font-size:28px">📢</div><h3>Đang mở quảng cáo</h3><p>Vui lòng chờ một chút trước khi tải Mod Pack.</p><div class="bar"><i id="progress"></i></div><div id="count" style="font-size:12px;color:#ff79b5">Đang chuẩn bị…</div><button class="continue" id="continue">Tiếp tục tải</button></div></div>
 <script>
-let packs=[],selected=0,filter='all';
+let packs=[], selected=0, filter='all';
+
 const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-function supports(p,f){if(f==='all')return true;return String(p.tag||'').toLowerCase().includes(f)}
-async function init(){const r=await fetch('data/modpacks.json?v='+Date.now(),{cache:'no-store'});packs=await r.json();renderList();renderDetail()}
-function renderList(){const visible=packs.filter(p=>supports(p,filter));document.getElementById('list').innerHTML=visible.map((p)=>{const i=packs.indexOf(p);return `<article class="card ${i===selected?'active':''}" data-i="${i}"><img class="thumb" src="${esc(p.image)}"><div class="ct"><h2>${esc(p.name)} ${i===0?'🔥':''}</h2><div class="desc">${esc(p.desc||'')}</div><div class="badges"><span class="badge">🤖 Android</span><span class="badge"> IOS</span></div><a class="download modpack-download" data-link="${esc(p.link)}" href="${esc(p.link)}">⇩ Tải Ngay</a></div></article>`}).join('');document.querySelectorAll('.card').forEach(c=>c.onclick=e=>{if(e.target.closest('.download'))return;selected=+c.dataset.i;renderList();renderDetail()});bindAds()}
-function renderDetail(){const p=packs[selected]||packs[0];if(!p)return;const gallery=packs.map(x=>x.image).slice(0,4);document.getElementById('detail').innerHTML=`<div class="detail-head"><span>▰</span> Chi Tiết Mod Pack</div><img class="detail-img" src="${esc(p.image)}"><h2>${esc(p.name)} ${selected===0?'🔥':''}</h2><div class="detail-sub">${esc(p.desc||'')}</div><div class="specs"><div class="spec"><b>▱ Số Skin</b><strong>${esc((p.name.match(/\d+/)||['—'])[0])} Skin</strong></div><div class="spec"><b>🎮 Tính Năng</b><span>${esc(p.tag==='ANDROID'?'Full Nút Bấm • Không Trùng':'Android - IOS • Full Nút Bấm')}</span></div><div class="spec"><b>▦ Cập Nhật</b><strong>S4 - 2026</strong></div><div class="spec"><b>▰ Dung Lượng</b><span>Tuỳ theo pack</span></div></div><a class="detail-download modpack-download" data-link="${esc(p.link)}" href="${esc(p.link)}">⇩ Tải Ngay ↗</a><div class="gallery-title">⊞ Hình Ảnh Pack</div><div class="gallery">${gallery.map(x=>`<img src="${esc(x)}">`).join('')}</div>`;bindAds()}
-function bindAds(){document.querySelectorAll('.modpack-download').forEach(a=>a.onclick=e=>{e.preventDefault();const dest=a.dataset.link;if(!dest)return;const m=document.getElementById('adModal'),pr=document.getElementById('progress'),ct=document.getElementById('count'),go=document.getElementById('continue');m.classList.add('show');go.classList.remove('show');pr.style.width='0%';let start=Date.now(),timer=setInterval(()=>{let pct=Math.min(100,(Date.now()-start)/1800*100);pr.style.width=pct+'%';ct.textContent=pct<100?'Vui lòng chờ '+Math.ceil((1800-(Date.now()-start))/1000)+' giây…':'Bạn có thể tiếp tục tải.';if(pct>=100){clearInterval(timer);go.classList.add('show')}},100);go.onclick=()=>location.href=dest})}
-document.querySelectorAll('.filter').forEach(b=>b.onclick=()=>{document.querySelectorAll('.filter').forEach(x=>x.classList.remove('active'));b.classList.add('active');filter=b.dataset.filter;renderList()});init().catch(()=>document.getElementById('list').innerHTML='<p>Không tải được Mod Pack.</p>');
-</script></body></html>
+const platformSet=p=>String(p.tag||'').toLowerCase();
+function supports(p,f){
+  if(f==='all') return true;
+  return platformSet(p,f);
+}
+function skinCount(name){
+  const m=String(name||'').match(/\d+/);
+  return m ? m[0] : '—';
+}
+function featureText(p){
+  const t=String(p.tag||'').toUpperCase();
+  return t==='ANDROID' ? 'Full Nút Bấm • Không Trùng' : 'Android - IOS • Full Nút Bấm';
+}
+function bindDownloadButtons(){
+  document.querySelectorAll('.modpack-download').forEach(a=>{
+    a.onclick=e=>{
+      e.preventDefault();
+      const dest=a.dataset.link;
+      if(!dest) return;
+      const modal=document.getElementById('adModal');
+      const progress=document.getElementById('progress');
+      const count=document.getElementById('count');
+      const go=document.getElementById('continue');
+      modal.classList.add('show');
+      go.classList.remove('show');
+      progress.style.width='0%';
+      let elapsed=0;
+      const total=2500;
+      const timer=setInterval(()=>{
+        elapsed+=100;
+        const pct=Math.min(100,elapsed/total*100);
+        progress.style.width=pct+'%';
+        const left=Math.max(0,Math.ceil((total-elapsed)/1000));
+        count.textContent=pct<100 ? `Vui lòng chờ ${left} giây…` : 'Bạn có thể tiếp tục tải.';
+        if(pct>=100){
+          clearInterval(timer);
+          go.classList.add('show');
+        }
+      },100);
+      go.onclick=()=>{ modal.classList.remove('show'); window.location.href=dest; };
+    };
+  });
+}
+function renderList(){
+  const visible=packs.filter(p=>supports(p,filter));
+  const box=document.getElementById('list');
+  box.innerHTML=visible.length ? visible.map(p=>{
+    const i=packs.indexOf(p);
+    const platforms=platformSet(p).includes('android') && platformSet(p).includes('ios')
+      ? '<span class="badge">🤖 Android</span><span class="badge"> IOS</span>'
+      : platformSet(p).includes('android') ? '<span class="badge">🤖 Android</span>' : '<span class="badge"> IOS</span>';
+    return `<article class="card ${i===selected?'active':''}" data-i="${i}">
+      <img class="thumb" src="${esc(p.image)}" alt="${esc(p.name)}" loading="lazy">
+      <div class="ct">
+        <h2>${esc(p.name)} ${i===0?'🔥':''}</h2>
+        <div class="desc">${esc(featureText(p))}<br>S4 - 2026</div>
+        <div class="badges">${platforms}</div>
+        <a class="download modpack-download" data-link="${esc(p.link)}" href="${esc(p.link)}">⇩ Tải Ngay</a>
+      </div>
+    </article>`;
+  }).join('') : '<div class="desc">Không có pack cho nền tảng này.</div>';
+
+  document.querySelectorAll('.card').forEach(c=>c.addEventListener('click',e=>{
+    if(e.target.closest('.download')) return;
+    selected=Number(c.dataset.i);
+    renderList();
+    renderDetail();
+  }));
+  bindDownloadButtons();
+}
+function renderDetail(){
+  const p=packs[selected]||packs[0];
+  if(!p) return;
+  const gallery=packs.slice(0,4).map(x=>x.image);
+  document.getElementById('detail').innerHTML=`
+    <div class="detail-head"><span>▰</span> Chi Tiết Mod Pack</div>
+    <img class="detail-img" src="${esc(p.image)}" alt="${esc(p.name)}">
+    <h2>${esc(p.name)} ${selected===0?'🔥':''}</h2>
+    <div class="detail-sub">${esc(featureText(p))} • S4 - 2026</div>
+    <div class="specs">
+      <div class="spec"><b>▱ Số Skin</b><strong>${esc(skinCount(p.name))} Skin</strong></div>
+      <div class="spec"><b>🎮 Tính Năng</b><span>${esc(featureText(p))}</span></div>
+      <div class="spec"><b>▦ Cập Nhật</b><strong>S4 - 2026</strong></div>
+      <div class="spec"><b>▰ Dung Lượng</b><span>Tuỳ theo pack</span></div>
+    </div>
+    <a class="detail-download modpack-download" data-link="${esc(p.link)}" href="${esc(p.link)}">⇩ Tải Ngay ↗</a>
+    <div class="gallery-title">⊞ Hình Ảnh Pack</div>
+    <div class="gallery">${gallery.map(x=>`<img src="${esc(x)}" alt="Hình ảnh pack" loading="lazy">`).join('')}</div>`;
+  bindDownloadButtons();
+}
+async function init(){
+  const r=await fetch('data/modpacks.json?v='+Date.now(),{cache:'no-store'});
+  if(!r.ok) throw new Error('Không tải được data/modpacks.json');
+  packs=await r.json();
+  if(!Array.isArray(packs)||!packs.length) throw new Error('Danh sách Mod Pack trống');
+  renderList();
+  renderDetail();
+}
+document.querySelectorAll('.filter').forEach(b=>b.addEventListener('click',()=>{
+  document.querySelectorAll('.filter').forEach(x=>x.classList.remove('active'));
+  b.classList.add('active');
+  filter=b.dataset.filter;
+  renderList();
+}));
+init().catch(err=>{
+  console.error(err);
+  document.getElementById('list').innerHTML='<div class="desc">Không tải được Mod Pack. Hãy kiểm tra data/modpacks.json.</div>';
+});
+</script></body>

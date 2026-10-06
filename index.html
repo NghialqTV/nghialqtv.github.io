@@ -53,6 +53,29 @@
 .modpack-preview-link{color:#7dd3fc;border:1px solid rgba(56,189,248,.25);background:rgba(56,189,248,.08)}
 .modpack-page-link{color:#fff;background:linear-gradient(145deg,#38bdf8,#1677e8)}
 @media(max-width:620px){.modpack-home-list{grid-template-columns:1fr}.modpack-home-head{align-items:flex-end}}
+
+
+/* MOD PACK shortcut — matches the compact button in the reference UI */
+.modpack-home-button{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  width:100%;
+  margin-top:12px;
+  padding:14px 16px;
+  border-radius:16px;
+  text-decoration:none;
+  color:#fff;
+  background:linear-gradient(135deg,#18263f,#101a2c);
+  border:1px solid rgba(255,45,134,.72);
+  box-shadow:0 0 18px rgba(255,45,134,.28), inset 0 0 18px rgba(255,45,134,.06);
+  font-weight:850;
+  font-size:16px;
+  transition:transform .18s ease, box-shadow .18s ease;
+}
+.modpack-home-button:hover{transform:translateY(-2px);box-shadow:0 0 25px rgba(255,45,134,.42)}
+.modpack-home-button-icon{width:32px;height:32px;border-radius:9px;display:grid;place-items:center;background:linear-gradient(135deg,#ff2d86,#8b32ff);font-size:17px}
+.modpack-home-button-arrow{margin-left:auto;font-size:30px;line-height:1;color:#ff4e9d}
 </style>
 </head>
 <body>
@@ -104,6 +127,11 @@
 <div class="mod-box">
   <h3 class="mod-skin-title"><span>MOD SKIN</span></h3>
   <div class="mod-options" id="mods"></div>
+  <a class="modpack-home-button" href="mod-pack.html" aria-label="Mở Mod Pack">
+    <span class="modpack-home-button-icon">▰</span>
+    <span>Mod Pack</span>
+    <span class="modpack-home-button-arrow">›</span>
+  </a>
 </div>
 </header>
 <button id="darkToggle" class="dark-toggle">🌙</button>
@@ -111,15 +139,6 @@
 <h2 class="section-title"><span>GAME MOD</span></h2>
 <div id="apps"></div>
   
-
-<!-- ===== MOD PACK ===== -->
-<section class="modpack-home-section" aria-label="Mod Pack">
-  <div class="modpack-home-head">
-    <h2 class="section-title"><span>MOD PACK</span></h2>
-    <a class="modpack-view-all" href="mod-pack.html">Xem tất cả ›</a>
-  </div>
-  <div id="modpacks-home" class="modpack-home-list"></div>
-</section>
 
 <!--  GET KEY -->
 <div class="getkey-heading">
