@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Mod Pack - Nghĩalq TV</title>
+<link rel="stylesheet" href="style.css">
+<script src="tiktok_ads/config.js"></script>
+<script src="tiktok_ads/tiktok-gate.js"></script>
+</head>
+<body class="modpack-page">
+<header class="modpack-header">
+  <h1 class="modpack-title">
+    <img src="assets/icons/modpack-icon.png" alt="">
+    <span>Mod Pack</span>
+  </h1>
+  <p class="modpack-subtitle">
+    Tổng hợp các pack mod skin chất lượng cao<br>
+    Full nút bấm • Không trùng • S4 - 2026
+  </p>
+</header>
+
+<main id="modpack-list" class="modpack-list"></main>
+<a class="modpack-back" href="index.html">‹ Quay lại Mod Skin</a>
+
+<script>
+fetch("data/modpacks.json?v="+Date.now())
+  .then(r => r.json())
+  .then(items => {
+    const list = document.getElementById("modpack-list");
+    list.innerHTML = items.map(item => `
+      <article class="modpack-card">
+        <img class="modpack-thumb" src="${item.image}" alt="">
+        <div class="modpack-info">
+          <h2 class="modpack-name">${item.name} 🔥</h2>
+          <p class="modpack-desc">${item.description}</p>
+          <p class="modpack-version">${item.version}</p>
+          <div class="modpack-actions">
+            <a class="modpack-btn android" data-tiktok-gate href="${item.android}" target="_blank" rel="noopener">🤖 Android</a>
+            <a class="modpack-btn ios" data-tiktok-gate href="${item.ios}" target="_blank" rel="noopener"> iOS</a>
+            <a class="modpack-btn download" data-tiktok-gate href="${item.android}" target="_blank" rel="noopener">↓ Tải Ngay</a>
+          </div>
+        </div>
+      </article>
+    `).join("");
+  })
+  .catch(() => {
+    document.getElementById("modpack-list").innerHTML =
+      '<div style="padding:20px;text-align:center">Không tải được dữ liệu Mod Pack.</div>';
+  });
+</script>
+</body>
+</html>
