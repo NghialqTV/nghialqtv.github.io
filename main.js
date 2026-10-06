@@ -349,8 +349,8 @@ fetch("data/mods.json?v="+Date.now())
     const box=document.getElementById("mods");
     if(!box) return;
     box.innerHTML=mods.map(m=>`
-      <a data-tiktok-gate href="${escapeHtml(m.link || "#")}" class="mod-item">
-        ${m.icon ? `<img src="${escapeHtml(m.icon)}" alt="">` : ""}
+      <a data-tiktok-gate href="${escapeHtml(m.link || "#")}" class="mod-item${m.name === "Mod Pack" ? " mod-pack-item" : ""}">
+        ${m.image ? `<img class="mod-item-image" src="${escapeHtml(m.image)}" alt="">` : (m.icon ? `<img src="${escapeHtml(m.icon)}" alt="">` : "")}
         <span>${escapeHtml(m.name)}</span>
       </a>
     `).join("");
