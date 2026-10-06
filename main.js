@@ -112,6 +112,33 @@ function render(url, boxId){
     });
 }
 
+
+function renderModPacks(){
+  const box=document.getElementById("modpacks-home");
+  if(!box) return;
+  fetch("data/modpacks.json?v="+Date.now(),{cache:"no-store"})
+    .then(res=>{ if(!res.ok) throw new Error("Fetch lỗi data/modpacks.json"); return res.json(); })
+    .then(items=>{
+      box.innerHTML=items.map(item=>`
+        <article class="modpack-home-card">
+          <img class="modpack-home-img" src="${escapeHtml(item.image || "assets/icons/mod.png")}" alt="${escapeHtml(item.name || "Mod Pack")}" loading="lazy">
+          <div class="modpack-home-body">
+            <h3 class="modpack-home-title">${escapeHtml(item.name || "")}</h3>
+            <div class="modpack-home-desc">${escapeHtml(item.desc || "")}</div>
+            <div class="modpack-home-actions">
+              <a class="modpack-preview-link" href="mod-pack.html">Preview</a>
+              <a class="modpack-page-link" href="mod-pack.html">Xem Mod Pack</a>
+            </div>
+          </div>
+        </article>
+      `).join("");
+    })
+    .catch(err=>{
+      box.innerHTML='<div class="load-error" style="grid-column:1/-1">Không thể tải danh sách Mod Pack.</div>';
+      console.error(err);
+    });
+}
+
 function renderFiles(){
   fetch("data/files.json?v=" + Date.now(), {cache:"no-store"})
     .then(res => res.json())
@@ -312,6 +339,7 @@ document.addEventListener("keydown", e => {
 render("data/apps.json", "apps");
 render("data/keys.json", "keys");
 renderFiles();
+renderModPacks();
 initSiteVisitStats();
 
 

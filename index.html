@@ -36,6 +36,24 @@
   }
 })();
 </script>
+
+<style id="modpack-home-style">
+.modpack-home-section{max-width:900px;margin:28px auto 8px;padding:0 16px}
+.modpack-home-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px}
+.modpack-home-head .section-title{margin:0;flex:1}
+.modpack-view-all{display:inline-flex;align-items:center;gap:6px;padding:9px 13px;border-radius:12px;text-decoration:none;color:#fff;background:linear-gradient(145deg,#38bdf8,#1677e8);font-size:12px;font-weight:800;box-shadow:0 8px 18px rgba(37,99,235,.22)}
+.modpack-home-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.modpack-home-card{overflow:hidden;border:1px solid rgba(56,189,248,.16);border-radius:18px;background:linear-gradient(145deg,#111c30,#0b1322);box-shadow:0 10px 25px rgba(0,0,0,.18)}
+.modpack-home-img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block}
+.modpack-home-body{padding:13px}
+.modpack-home-title{margin:0 0 5px;font-size:15px;font-weight:850;color:#f1f5f9}
+.modpack-home-desc{font-size:12px;line-height:1.45;color:#98a6ba;min-height:34px}
+.modpack-home-actions{display:flex;gap:8px;margin-top:11px}
+.modpack-home-actions a{flex:1;text-align:center;text-decoration:none;padding:10px 8px;border-radius:11px;font-size:12px;font-weight:800}
+.modpack-preview-link{color:#7dd3fc;border:1px solid rgba(56,189,248,.25);background:rgba(56,189,248,.08)}
+.modpack-page-link{color:#fff;background:linear-gradient(145deg,#38bdf8,#1677e8)}
+@media(max-width:620px){.modpack-home-list{grid-template-columns:1fr}.modpack-home-head{align-items:flex-end}}
+</style>
 </head>
 <body>
 
@@ -93,6 +111,16 @@
 <h2 class="section-title"><span>GAME MOD</span></h2>
 <div id="apps"></div>
   
+
+<!-- ===== MOD PACK ===== -->
+<section class="modpack-home-section" aria-label="Mod Pack">
+  <div class="modpack-home-head">
+    <h2 class="section-title"><span>MOD PACK</span></h2>
+    <a class="modpack-view-all" href="mod-pack.html">Xem tất cả ›</a>
+  </div>
+  <div id="modpacks-home" class="modpack-home-list"></div>
+</section>
+
 <!--  GET KEY -->
 <div class="getkey-heading">
   <a class="getkey-kicker" href="#keys" aria-label="Xem danh sách Get Key">

@@ -1,146 +1,33 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mod Pack | NghĩaLQ TV</title>
-  <script src="tiktok_ads/config.js"></script>
-  <script src="tiktok_ads/tiktok-gate.js"></script>
-  <style>
-    .ad-notice{max-width:900px;margin:14px auto 0;padding:0 16px}
-    .ad-notice-inner{display:flex;align-items:center;gap:12px;padding:12px 14px;border:1px solid rgba(56,189,248,.18);border-radius:15px;background:linear-gradient(145deg,rgba(15,23,42,.92),rgba(10,20,38,.9));color:#cbd5e1;font-size:12px}
-    .ad-dot{width:9px;height:9px;border-radius:50%;background:#38bdf8;box-shadow:0 0 12px rgba(56,189,248,.7);flex:0 0 auto}
-    .ad-label{font-weight:800;color:#7dd3fc;margin-right:4px}
-    .ad-modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;padding:20px;background:rgba(0,0,0,.68);backdrop-filter:blur(8px);z-index:9999}
-    .ad-modal.show{display:flex}
-    .ad-box{width:min(390px,100%);padding:24px 20px;border:1px solid rgba(56,189,248,.28);border-radius:22px;background:linear-gradient(145deg,#111c30,#07101f);box-shadow:0 25px 70px rgba(0,0,0,.55),0 0 30px rgba(56,189,248,.08);text-align:center}
-    .ad-icon{width:58px;height:58px;margin:0 auto 12px;border-radius:17px;display:grid;place-items:center;background:rgba(56,189,248,.12);border:1px solid rgba(56,189,248,.25);font-size:27px}
-    .ad-box h2{margin:0 0 7px;font-size:20px}
-    .ad-box p{margin:0;color:var(--sub);font-size:13px;line-height:1.5}
-    .ad-progress{height:6px;margin:18px 0 12px;border-radius:99px;overflow:hidden;background:#18243a}
-    .ad-progress span{display:block;height:100%;width:0;background:linear-gradient(90deg,#38bdf8,#8b5cf6);transition:width .1s linear}
-    .ad-count{font-size:12px;color:#7dd3fc;font-weight:750}
-    .ad-continue{display:none;margin-top:15px;width:100%;padding:12px;border:0;border-radius:13px;background:linear-gradient(145deg,#38bdf8,#1677e8);color:#fff;font-weight:850;font-size:14px}
-    .ad-continue.show{display:block}
-    :root{--bg:#020617;--card:#0f172a;--card2:#111c30;--border:#24324a;--primary:#38bdf8;--text:#e8eef8;--sub:#98a6ba}
-    *{box-sizing:border-box}
-    body{margin:0;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:linear-gradient(180deg,#020617,#0b1220);color:var(--text);min-height:100vh}
-    header{padding:24px 16px 20px;text-align:center;border-bottom:1px solid rgba(148,163,184,.12);background:rgba(2,6,23,.88);backdrop-filter:blur(8px)}
-    header h1{margin:0;font-size:25px;font-weight:850;letter-spacing:.3px}
-    header p{margin:7px 0 0;font-size:13px;color:var(--sub)}
-    .container{max-width:900px;margin:0 auto;padding:18px 16px 32px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
-    .pack-card{position:relative;overflow:hidden;border:1px solid var(--border);border-radius:20px;background:linear-gradient(145deg,var(--card2),var(--card));box-shadow:0 12px 28px rgba(0,0,0,.22);transition:.2s ease}
-    .pack-card:hover{transform:translateY(-3px);border-color:rgba(56,189,248,.55);box-shadow:0 16px 32px rgba(0,0,0,.28),0 0 20px rgba(56,189,248,.08)}
-    .pack-image{width:100%;height:145px;object-fit:cover;display:block;background:#020617}
-    .pack-body{padding:15px}
-    .pack-title{font-size:17px;font-weight:800;margin:0 0 6px}
-    .pack-desc{font-size:13px;color:var(--sub);line-height:1.45;min-height:38px}
-    .pack-tag{display:inline-block;margin-top:10px;padding:5px 9px;border-radius:999px;background:rgba(56,189,248,.1);border:1px solid rgba(56,189,248,.2);color:#7dd3fc;font-size:11px;font-weight:750}
-    .pack-link{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:13px;padding:11px 13px;border-radius:13px;background:linear-gradient(145deg,#38bdf8,#1677e8);color:white;text-decoration:none;font-weight:800;box-shadow:0 8px 18px rgba(37,99,235,.24)}
-    .back{display:block;width:max-content;margin:0 auto 26px;padding:10px 16px;border:1px solid var(--border);border-radius:12px;color:#7dd3fc;text-decoration:none}
-    @media(max-width:620px){.container{grid-template-columns:1fr;gap:13px}.pack-image{height:155px}}
-  </style>
-</head>
-<body>
-<header>
-  <h1>📦 Mod Pack</h1>
-  <p>Các gói Mod Skin • Android - IOS • Chọn gói để tải</p>
-</header>
-<div class="ad-notice"><div class="ad-notice-inner"><span class="ad-dot"></span><div><span class="ad-label">QUẢNG CÁO</span> Một quảng cáo ngắn sẽ được mở trước khi tải Mod Pack.</div></div></div>
-<div class="container" id="list"></div>
-<div class="ad-modal" id="adModal" aria-hidden="true">
-  <div class="ad-box">
-    <div class="ad-icon">📢</div>
-    <h2>Đang mở quảng cáo</h2>
-    <p>Quảng cáo giúp duy trì website. Vui lòng chờ một chút, sau đó file Mod Pack sẽ được mở.</p>
-    <div class="ad-progress"><span id="adProgress"></span></div>
-    <div class="ad-count" id="adCount">Đang chuẩn bị…</div>
-    <button class="ad-continue" id="adContinue" type="button">Tiếp tục tải Mod Pack</button>
-  </div>
-</div>
-<a class="back" href="index.html">← Quay lại trang chủ</a>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Mod Pack | NghĩaLQ TV</title>
+<script src="tiktok_ads/config.js"></script><script src="tiktok_ads/tiktok-gate.js"></script>
+<style>
+:root{--bg:#050b18;--panel:#0b1427;--panel2:#101c32;--line:#223452;--text:#f4f7ff;--sub:#91a0ba;--pink:#ff2d86;--cyan:#22c7ff;--purple:#9b5cff}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 50% -10%,#16284b 0,#050b18 48%,#030711 100%);color:var(--text);font-family:system-ui,-apple-system,"Segoe UI",sans-serif;min-height:100vh}
+.top{max-width:1120px;margin:auto;padding:18px 16px 8px;display:flex;align-items:center;gap:14px}.back{width:42px;height:42px;border-radius:13px;border:1px solid var(--line);background:#0d192d;color:#fff;text-decoration:none;display:grid;place-items:center;font-size:25px}.brand{font-size:22px;font-weight:850}.brand small{display:block;color:var(--sub);font-size:12px;font-weight:500;margin-top:2px}
+.wrap{max-width:1120px;margin:auto;padding:8px 16px 36px}.hero{text-align:center;padding:14px 0 20px}.hero h1{margin:0;font-size:28px}.hero h1 span{color:var(--pink)}.hero p{margin:7px 0 0;color:var(--sub);font-size:13px}
+.filters{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:0 0 18px}.filter{border:1px solid var(--line);background:#0c172b;color:#aebbd0;padding:12px;border-radius:13px;text-align:center;font-weight:750;cursor:pointer}.filter.active{background:linear-gradient(135deg,#ff2d86,#8b32ff);color:#fff;border-color:#ff54a0;box-shadow:0 0 20px #ff2d8638}
+.layout{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(320px,.92fr);gap:16px}.list{display:flex;flex-direction:column;gap:12px}.card{display:grid;grid-template-columns:180px 1fr;gap:14px;padding:10px;border:1px solid var(--line);border-radius:18px;background:linear-gradient(145deg,#0e1a2e,#081121);box-shadow:0 12px 28px #0004;cursor:pointer;transition:.2s}.card:hover,.card.active{border-color:#ff3d92;box-shadow:0 0 24px #ff2d8620}.thumb{width:100%;height:105px;object-fit:cover;border-radius:12px;border:1px solid #30415f}.ct{min-width:0;padding:3px 3px}.ct h2{font-size:17px;margin:0 0 7px}.desc{color:var(--sub);font-size:12px;line-height:1.45}.badges{display:flex;gap:7px;flex-wrap:wrap;margin-top:9px}.badge{font-size:10px;padding:5px 8px;border-radius:999px;background:#13233d;color:#b9c8de;border:1px solid #263a5b}.download{display:inline-flex;margin-top:10px;padding:8px 13px;border-radius:10px;background:linear-gradient(135deg,#ff267f,#ff4d5e);color:#fff;text-decoration:none;font-size:12px;font-weight:850}
+.detail{position:sticky;top:12px;align-self:start;border:1px solid #263858;border-radius:20px;background:linear-gradient(145deg,#0d172a,#07101f);padding:12px;box-shadow:0 18px 45px #0006}.detail-head{display:flex;align-items:center;gap:9px;padding:5px 4px 12px;border-bottom:1px solid #1d2c46;font-weight:850}.detail-head span{color:var(--pink)}.detail-img{width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:14px;margin-top:12px;border:1px solid #334766}.detail h2{font-size:22px;margin:13px 2px 5px}.detail-sub{color:var(--sub);font-size:13px}.specs{margin-top:14px;border:1px solid #1c2b45;border-radius:14px;overflow:hidden}.spec{display:flex;justify-content:space-between;gap:12px;padding:12px;border-bottom:1px solid #1c2b45;font-size:12px}.spec:last-child{border-bottom:0}.spec b{color:#aebbd0}.spec strong{color:#ff64ad}.detail-download{display:block;text-align:center;margin-top:14px;padding:13px;border-radius:12px;background:linear-gradient(135deg,#ff2d86,#ff405e);color:#fff;text-decoration:none;font-weight:850}.gallery-title{margin:18px 2px 9px;font-size:13px;font-weight:800}.gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:7px}.gallery img{width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:9px;border:1px solid #283b5d}
+.ad-modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;padding:20px;background:#000b;backdrop-filter:blur(8px);z-index:999}.ad-modal.show{display:flex}.ad-box{width:min(390px,100%);padding:23px;border-radius:20px;background:#0b1427;border:1px solid #ff2d8660;text-align:center}.ad-box h3{margin:0 0 7px}.ad-box p{color:var(--sub);font-size:13px}.bar{height:6px;background:#18243a;border-radius:9px;overflow:hidden;margin:17px 0}.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,#ff2d86,#8b5cff)}.continue{display:none;width:100%;padding:12px;border:0;border-radius:11px;background:#ff2d86;color:#fff;font-weight:850}.continue.show{display:block}
+@media(max-width:760px){.layout{grid-template-columns:1fr}.detail{position:relative;top:0}.card{grid-template-columns:135px 1fr}.thumb{height:88px}.hero h1{font-size:25px}}
+@media(max-width:470px){.card{grid-template-columns:115px 1fr}.thumb{height:78px}.ct h2{font-size:15px}.download{padding:7px 10px}.detail h2{font-size:20px}}
+</style></head><body>
+<div class="top"><a class="back" href="index.html">‹</a><div class="brand">▰ Mod Pack<small>Tổng hợp các pack mod skin chất lượng cao</small></div></div>
+<main class="wrap"><section class="hero"><h1><span>▰</span> Mod Pack</h1><p>Android - IOS • Full nút bấm • Không trùng • S4 - 2026</p></section>
+<div class="filters"><button class="filter active" data-filter="all">Tất Cả</button><button class="filter" data-filter="android">Android</button><button class="filter" data-filter="ios">IOS</button></div>
+<div class="layout"><section class="list" id="list"></section><aside class="detail" id="detail"></aside></div></main>
+<div class="ad-modal" id="adModal"><div class="ad-box"><div style="font-size:28px">📢</div><h3>Đang mở quảng cáo</h3><p>Vui lòng chờ một chút trước khi tải Mod Pack.</p><div class="bar"><i id="progress"></i></div><div id="count" style="font-size:12px;color:#ff79b5">Đang chuẩn bị…</div><button class="continue" id="continue">Tiếp tục tải</button></div></div>
 <script>
-async function loadPacks(){
-  const list=document.getElementById('list');
-  try{
-    const res=await fetch('data/modpacks.json?v='+Date.now(),{cache:'no-store'});
-    const data=await res.json();
-    list.innerHTML=data.map(item=>`
-      <article class="pack-card">
-        <img class="pack-image" src="${escapeHtml(item.image || 'assets/icons/mod.png')}" alt="${escapeHtml(item.name || 'Mod Pack')}">
-        <div class="pack-body">
-          <h2 class="pack-title">${escapeHtml(item.name || '')}</h2>
-          <div class="pack-desc">${escapeHtml(item.desc || '')}</div>
-          ${item.tag ? `<span class="pack-tag">${escapeHtml(item.tag)}</span>` : ''}
-          <a class="pack-link modpack-download" href="${escapeHtml(item.link || '#')}">⬇ TẢI MOD PACK</a>
-        </div>
-      </article>
-    `).join('');
-  }catch(err){
-    list.innerHTML='<p style="grid-column:1/-1;text-align:center;color:#98a6ba">Không tải được danh sách Mod Pack.</p>';
-    console.error(err);
-  }
-}
-function escapeHtml(value){
-  return String(value).replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));
-}
-function setupAdGate(){
-  const modal=document.getElementById('adModal');
-  const progress=document.getElementById('adProgress');
-  const count=document.getElementById('adCount');
-  const cont=document.getElementById('adContinue');
-  let pending='';
-  let timer=null;
-  let popup=null;
-
-  document.addEventListener('click',function(e){
-    const link=e.target.closest('.modpack-download');
-    if(!link) return;
-    const dest=link.getAttribute('href');
-    if(!dest || dest==='#') return;
-    e.preventDefault();
-    pending=dest;
-    modal.classList.add('show');
-    modal.setAttribute('aria-hidden','false');
-    cont.classList.remove('show');
-    progress.style.width='0%';
-    count.textContent='Đang mở quảng cáo…';
-
-    // Open one configured ad directly from the user click when possible.
-    const ads=Array.isArray(window.TIKTOK_AD_LINKS)?window.TIKTOK_AD_LINKS.filter(u=>/^https?:\/\//i.test(String(u))):[];
-    if(ads.length){
-      const ad=ads[Math.floor(Math.random()*ads.length)];
-      try{ popup=window.open(ad,'_blank','noopener,noreferrer'); }catch(err){ popup=null; }
-    }
-
-    const total=1800;
-    const started=Date.now();
-    clearInterval(timer);
-    timer=setInterval(()=>{
-      const elapsed=Date.now()-started;
-      const pct=Math.min(100,Math.round(elapsed/total*100));
-      progress.style.width=pct+'%';
-      const left=Math.max(0,Math.ceil((total-elapsed)/1000));
-      count.textContent=left>0 ? 'Vui lòng chờ '+left+' giây…' : 'Bạn có thể tiếp tục tải.';
-      if(pct>=100){
-        clearInterval(timer);
-        cont.classList.add('show');
-      }
-    },100);
-  },true);
-
-  cont.addEventListener('click',()=>{
-    if(!pending) return;
-    const dest=pending;
-    pending='';
-    modal.classList.remove('show');
-    modal.setAttribute('aria-hidden','true');
-    window.location.assign(dest);
-  });
-}
-
-setupAdGate();
-loadPacks();
-</script>
-</body>
-</html>
+let packs=[],selected=0,filter='all';
+const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function supports(p,f){if(f==='all')return true;return String(p.tag||'').toLowerCase().includes(f)}
+async function init(){const r=await fetch('data/modpacks.json?v='+Date.now(),{cache:'no-store'});packs=await r.json();renderList();renderDetail()}
+function renderList(){const visible=packs.filter(p=>supports(p,filter));document.getElementById('list').innerHTML=visible.map((p)=>{const i=packs.indexOf(p);return `<article class="card ${i===selected?'active':''}" data-i="${i}"><img class="thumb" src="${esc(p.image)}"><div class="ct"><h2>${esc(p.name)} ${i===0?'🔥':''}</h2><div class="desc">${esc(p.desc||'')}</div><div class="badges"><span class="badge">🤖 Android</span><span class="badge"> IOS</span></div><a class="download modpack-download" data-link="${esc(p.link)}" href="${esc(p.link)}">⇩ Tải Ngay</a></div></article>`}).join('');document.querySelectorAll('.card').forEach(c=>c.onclick=e=>{if(e.target.closest('.download'))return;selected=+c.dataset.i;renderList();renderDetail()});bindAds()}
+function renderDetail(){const p=packs[selected]||packs[0];if(!p)return;const gallery=packs.map(x=>x.image).slice(0,4);document.getElementById('detail').innerHTML=`<div class="detail-head"><span>▰</span> Chi Tiết Mod Pack</div><img class="detail-img" src="${esc(p.image)}"><h2>${esc(p.name)} ${selected===0?'🔥':''}</h2><div class="detail-sub">${esc(p.desc||'')}</div><div class="specs"><div class="spec"><b>▱ Số Skin</b><strong>${esc((p.name.match(/\d+/)||['—'])[0])} Skin</strong></div><div class="spec"><b>🎮 Tính Năng</b><span>${esc(p.tag==='ANDROID'?'Full Nút Bấm • Không Trùng':'Android - IOS • Full Nút Bấm')}</span></div><div class="spec"><b>▦ Cập Nhật</b><strong>S4 - 2026</strong></div><div class="spec"><b>▰ Dung Lượng</b><span>Tuỳ theo pack</span></div></div><a class="detail-download modpack-download" data-link="${esc(p.link)}" href="${esc(p.link)}">⇩ Tải Ngay ↗</a><div class="gallery-title">⊞ Hình Ảnh Pack</div><div class="gallery">${gallery.map(x=>`<img src="${esc(x)}">`).join('')}</div>`;bindAds()}
+function bindAds(){document.querySelectorAll('.modpack-download').forEach(a=>a.onclick=e=>{e.preventDefault();const dest=a.dataset.link;if(!dest)return;const m=document.getElementById('adModal'),pr=document.getElementById('progress'),ct=document.getElementById('count'),go=document.getElementById('continue');m.classList.add('show');go.classList.remove('show');pr.style.width='0%';let start=Date.now(),timer=setInterval(()=>{let pct=Math.min(100,(Date.now()-start)/1800*100);pr.style.width=pct+'%';ct.textContent=pct<100?'Vui lòng chờ '+Math.ceil((1800-(Date.now()-start))/1000)+' giây…':'Bạn có thể tiếp tục tải.';if(pct>=100){clearInterval(timer);go.classList.add('show')}},100);go.onclick=()=>location.href=dest})}
+document.querySelectorAll('.filter').forEach(b=>b.onclick=()=>{document.querySelectorAll('.filter').forEach(x=>x.classList.remove('active'));b.classList.add('active');filter=b.dataset.filter;renderList()});init().catch(()=>document.getElementById('list').innerHTML='<p>Không tải được Mod Pack.</p>');
+</script></body></html>
