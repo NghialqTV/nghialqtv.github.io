@@ -1,1 +1,43 @@
-*{box-sizing:border-box}body{margin:0;background:#07101f;color:#eef4ff;font-family:Arial,sans-serif}.page{max-width:900px;margin:auto;padding:22px}.back{display:inline-flex;width:52px;height:52px;border:1px solid #29436a;border-radius:16px;align-items:center;justify-content:center;color:#fff;text-decoration:none;font-size:36px}.hero{text-align:center;padding:8px 0 24px}.hero-title{display:flex;justify-content:center;align-items:center;gap:12px}.hero h1{font-size:34px;margin:0}.layers{color:#ff2d91;font-size:34px}.hero p{margin:8px 0;color:#9caeca}.packs{display:grid;gap:16px}.pack-card{display:flex;gap:18px;padding:14px;border:1px solid #263d60;border-radius:22px;background:linear-gradient(135deg,#0c172b,#0a1324);box-shadow:0 10px 30px rgba(0,0,0,.25)}.thumb{width:290px;min-width:290px;height:150px;border-radius:16px;overflow:hidden;border:1px solid #2f5687;background:#0a1528;position:relative}.thumb img{width:100%;height:100%;object-fit:cover}.thumb-fallback{position:absolute;inset:0;display:grid;place-content:center;text-align:center;color:#ffb400;font-size:22px;font-weight:800}.thumb-fallback b{font-size:36px}.pack-info{flex:1}.pack-info h2{margin:4px 0 10px;font-size:23px}.pack-info p{margin:6px 0;color:#aab8ce}.actions{display:flex;align-items:center;gap:8px;margin-top:18px;flex-wrap:wrap}.platform,.download{border:1px solid #294363;border-radius:999px;padding:10px 13px;text-decoration:none;color:#dce8f9;background:#10213b;font-size:14px}.android{color:#62ef8d}.download{border:0;background:linear-gradient(135deg,#ff197c,#ff3e91);color:#fff;font-weight:800;cursor:pointer}@media(max-width:650px){.pack-card{align-items:stretch}.thumb{width:180px;min-width:180px;height:118px}.pack-info h2{font-size:18px}.pack-info p{font-size:14px}.actions{margin-top:12px}.platform,.download{padding:8px 10px;font-size:13px}}@media(max-width:480px){.page{padding:14px}.pack-card{display:grid;grid-template-columns:1fr}.thumb{width:100%;min-width:0;height:165px}.actions{gap:6px}}
+*{box-sizing:border-box}
+html{background:#050b18}
+body{margin:0;background:#050b18;color:#f5f7ff;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif}
+.modpack-page{min-height:100vh;background:
+  radial-gradient(circle at 50% -12%,rgba(127,45,255,.22),transparent 34%),
+  radial-gradient(circle at 100% 30%,rgba(0,122,255,.08),transparent 32%),
+  #050b18;padding:10px 0 30px}
+.modpack-shell{width:min(900px,100%);margin:0 auto;padding:0 16px 30px}
+.modpack-back{display:flex;align-items:center;justify-content:center;width:50px;height:50px;margin:0 0 2px 0;color:#fff;text-decoration:none;font-size:46px;font-weight:200;line-height:1;border-radius:14px;transition:.2s}
+.modpack-back:hover{background:rgba(255,255,255,.06);transform:translateX(-2px)}
+.modpack-header{text-align:center;padding:0 8px 20px}
+.modpack-title-row{display:flex;align-items:center;justify-content:center;gap:11px}
+.modpack-logo{width:39px;height:39px;object-fit:contain;filter:drop-shadow(0 0 8px rgba(255,37,132,.28))}
+.modpack-title{margin:0;font-size:34px;line-height:1.05;font-weight:900;letter-spacing:-.5px;background:linear-gradient(90deg,#ff3b91,#f8a9dc);-webkit-background-clip:text;background-clip:text;color:transparent}
+.modpack-subtitle{margin:15px auto 4px;color:#aebbd3;font-size:15px;line-height:1.45}
+.modpack-meta{margin:0;color:#aebbd3;font-size:15px;line-height:1.45}
+.modpack-list{display:flex;flex-direction:column;gap:12px}
+.modpack-card{position:relative;display:flex;align-items:center;gap:14px;padding:10px;border:1px solid rgba(65,95,145,.42);border-radius:20px;background:linear-gradient(145deg,#0d1a30,#091322);box-shadow:0 12px 28px rgba(0,0,0,.26);overflow:hidden;transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease}
+.modpack-card:hover{transform:translateY(-2px);border-color:rgba(102,140,205,.55);box-shadow:0 15px 34px rgba(0,0,0,.32)}
+.modpack-thumb-wrap{position:relative;flex:0 0 270px;width:270px;height:180px;border-radius:17px;overflow:hidden;background:#091322;border:1px solid rgba(255,255,255,.08)}
+.modpack-thumb{display:block;width:100%;height:100%;object-fit:cover}
+.thumb-fallback{display:none;position:absolute;inset:0;place-items:center;text-align:center;color:#fff;font-weight:900;font-size:22px;background:linear-gradient(135deg,#5d16aa,#171d46)}
+.thumb-fallback b{font-size:36px;color:#ffd43b}
+.image-error .modpack-thumb{display:none}.image-error .thumb-fallback{display:grid}
+.modpack-info{min-width:0;flex:1;padding:2px 4px 2px 0}
+.modpack-name{margin:0 0 9px;font-size:21px;line-height:1.2;font-weight:850;color:#f7f9ff}
+.hot-fire{display:inline-block;margin-left:3px;filter:drop-shadow(0 0 5px rgba(255,125,0,.35))}
+.modpack-desc,.modpack-version{margin:4px 0;color:#aebbd2;font-size:15px;line-height:1.35}
+.modpack-actions{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:13px}
+.modpack-btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;min-width:78px;height:36px;padding:0 13px;border-radius:11px;text-decoration:none;font-size:13px;font-weight:850;white-space:nowrap;transition:transform .16s ease,filter .16s ease}
+.modpack-btn:hover{transform:translateY(-1px);filter:brightness(1.08)}
+.modpack-btn.android{background:rgba(16,194,92,.13);color:#31e879;border:1px solid rgba(16,194,92,.45)}
+.modpack-btn.ios{background:rgba(61,88,124,.34);color:#e0e8f5;border:1px solid rgba(125,153,191,.27)}
+.modpack-btn.download{min-width:112px;background:linear-gradient(135deg,#ff176f,#ff2d91);color:#fff;border:0;box-shadow:0 7px 18px rgba(255,23,111,.24)}
+.platform-icon{font-size:15px;line-height:1}.download-icon{font-size:23px;line-height:1;margin-right:1px}
+.pack-error{text-align:center;color:#9eacc3;padding:28px 10px}
+@media(max-width:650px){
+  .modpack-shell{padding:0 10px 24px}.modpack-header{padding-bottom:16px}.modpack-title{font-size:30px}.modpack-subtitle,.modpack-meta{font-size:14px}
+  .modpack-card{gap:10px;align-items:stretch;padding:9px}.modpack-thumb-wrap{width:42%;flex-basis:42%;height:auto;min-height:122px}.modpack-name{font-size:17px}.modpack-desc,.modpack-version{font-size:12px}.modpack-actions{gap:6px;margin-top:10px}.modpack-btn{height:32px;min-width:62px;padding:0 9px;font-size:11px}.modpack-btn.download{min-width:88px}
+}
+@media(max-width:470px){
+  .modpack-card{display:grid;grid-template-columns:1fr;gap:10px}.modpack-thumb-wrap{width:100%;height:auto;aspect-ratio:16/9;min-height:0}.modpack-info{padding:0 3px 3px}.modpack-name{font-size:18px}.modpack-actions{flex-wrap:nowrap}.modpack-btn{flex:1;min-width:0;padding:0 7px}.modpack-btn.download{flex:1.25}
+}
