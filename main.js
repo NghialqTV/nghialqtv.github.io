@@ -349,9 +349,7 @@ fetch("data/mods.json?v="+Date.now())
     const box=document.getElementById("mods");
     if(!box) return;
     box.innerHTML=mods.map(m=>`
-      <a ${m.name === "Mod Pack" ? "" : "data-tiktok-gate"} href="${escapeHtml(m.link || "#")}" class="mod-item ${m.name === "Mod Pack" ? "mod-pack-item" : ""}">
-        <span class="mod-item-icon">${m.icon ? `<img src="${escapeHtml(m.icon)}" alt="">` : ""}</span>
-        <span class="mod-item-text">
+      <a data-tiktok-gate href="${escapeHtml(m.link || "#")}" class="mod-item ${m.name === "Mod Pack" ? "mod-pack-item" : ""}">
           <strong>${escapeHtml(m.name)}</strong>
           ${m.description ? `<small>${escapeHtml(m.description)}</small>` : ""}
         </span>
