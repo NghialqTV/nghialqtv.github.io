@@ -1,11 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
-  <defs>
-    <linearGradient id="g" x1="8" y1="8" x2="56" y2="58" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#ff2b78"/>
-      <stop offset="1" stop-color="#ff0f68"/>
-    </linearGradient>
-  </defs>
-  <path d="M32 7 55 19 32 31 9 19 32 7Z" fill="url(#g)"/>
-  <path d="M9 27 32 39 55 27v9L32 48 9 36v-9Z" fill="url(#g)"/>
-  <path d="M9 41 32 53 55 41v9L32 62 9 50v-9Z" fill="url(#g)"/>
+  <rect x="3" y="3" width="58" height="58" rx="15" fill="#ff176f"/>
+  <rect x="3.5" y="3.5" width="57" height="57" rx="14.5" stroke="rgba(255,255,255,.18)"/>
+  <g fill="#fff">
+    <path d="M32 14 49 23 32 32 15 23l17-9Z"/>
+    <path d="m15 28 17 9 17-9v6l-17 9-17-9v-6Z"/>
+    <path d="m15 39 17 9 17-9v6l-17 9-17-9v-6Z"/>
+  </g>
 </svg>
