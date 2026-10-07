@@ -87,3 +87,77 @@ body{margin:0;background:#07101f;color:#eef4ff;font-family:Arial,sans-serif}
   font-size: 14px;
   font-weight: 700;
 }
+
+
+/* MOD PACK PRO ENHANCEMENTS */
+
+.modpack-card{
+  position:relative;
+  transition:transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+}
+
+.modpack-card::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  border-radius:22px;
+  background:linear-gradient(120deg,rgba(255,25,124,.08),transparent 35%,rgba(80,150,255,.06));
+}
+
+.modpack-card:hover{
+  transform:translateY(-3px);
+  border-color:#3b6594;
+  box-shadow:0 16px 38px rgba(0,0,0,.34);
+}
+
+.modpack-name{
+  letter-spacing:-.2px;
+}
+
+.modpack-desc{
+  line-height:1.55;
+}
+
+.modpack-download-count{
+  display:inline-flex;
+  align-items:center;
+  gap:5px;
+  margin-top:2px;
+  color:#91a6c5;
+  font-size:14px;
+  font-weight:800;
+}
+
+.modpack-download{
+  position:relative;
+  overflow:hidden;
+  border:1px solid rgba(255,255,255,.14);
+  transition:transform .2s ease, box-shadow .2s ease, filter .2s ease;
+}
+
+.modpack-download::after{
+  content:"";
+  position:absolute;
+  top:0;
+  left:-80%;
+  width:45%;
+  height:100%;
+  transform:skewX(-20deg);
+  background:rgba(255,255,255,.18);
+  transition:left .55s ease;
+}
+
+.modpack-download:hover{
+  transform:translateY(-2px);
+  filter:saturate(1.08);
+  box-shadow:0 12px 28px rgba(255,25,124,.30);
+}
+
+.modpack-download:hover::after{
+  left:135%;
+}
+
+.modpack-download-icon{
+  filter:drop-shadow(0 1px 2px rgba(0,0,0,.3));
+}
