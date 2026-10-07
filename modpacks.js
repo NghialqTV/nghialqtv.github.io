@@ -13,77 +13,26 @@ function formatDownloads(n){
   return Number(n || 0).toLocaleString('vi-VN');
 }
 
-/* Stable key: reordering Mod Packs will not reset their local click count. */
-function modpackStorageKey(pack){
-  const raw = String(pack?.link || pack?.name || "");
-  let hash = 0;
-  for(let i = 0; i < raw.length; i++){
-    hash = ((hash << 5) - hash) + raw.charCodeAt(i);
-    hash |= 0;
-  }
-  return `modpack_clicks_${Math.abs(hash)}`;
-}
-
-function getLocalClicks(pack, index){
+function getLocalClicks(index){
   try {
-    const stableKey = modpackStorageKey(pack);
-    const stable = Number(localStorage.getItem(stableKey) || 0);
-    if(Number.isFinite(stable) && stable > 0) return stable;
-
-    /* Keep old counts from the previous version when possible. */
-    const legacy = Number(localStorage.getItem(`modpack_clicks_${index}`) || 0);
-    return Number.isFinite(legacy) ? legacy : 0;
+    const n = Number(localStorage.getItem(`modpack_clicks_${index}`) || 0);
+    return Number.isFinite(n) ? n : 0;
   } catch (_) {
     return 0;
   }
 }
 
-function addLocalClick(pack, index){
-  const current = getLocalClicks(pack, index);
-  const next = current + 1;
-
+function addLocalClick(index){
+  const next = getLocalClicks(index) + 1;
   try {
-    localStorage.setItem(modpackStorageKey(pack), String(next));
-    /* Also keep the legacy key in sync for compatibility. */
     localStorage.setItem(`modpack_clicks_${index}`, String(next));
   } catch (_) {}
 
   const el = document.querySelector(`[data-download-count="${index}"]`);
-  if(el){
+  if (el) {
     const base = Number(el.dataset.baseCount || 0);
     el.textContent = `↓ ${formatDownloads(base + next)} lượt tải`;
-    el.classList.remove('count-bump');
-    void el.offsetWidth;
-    el.classList.add('count-bump');
   }
-}
-
-/*
- * The TikTok gate catches the CLICK event in the capture phase and stops it.
- * Therefore a normal click handler on the button would never run.
- * Count the user action on pointerdown / keyboard BEFORE the gate's click handler.
- */
-function bindDownloadCounters(packs){
-  document.querySelectorAll('.modpack-download').forEach(button => {
-    const index = Number(button.dataset.packIndex);
-    const pack = packs[index];
-    let counted = false;
-
-    const countOnce = () => {
-      if(counted) return;
-      counted = true;
-      addLocalClick(pack, index);
-      setTimeout(() => { counted = false; }, 700);
-    };
-
-    button.addEventListener('pointerdown', countOnce, {passive:true});
-
-    button.addEventListener('keydown', e => {
-      if(e.key === 'Enter' || e.key === ' '){
-        countOnce();
-      }
-    });
-  });
 }
 
 function renderPacks(packs){
@@ -154,7 +103,11 @@ function renderPacks(packs){
     `;
   }).join('');
 
-  bindDownloadCounters(packs);
+  box.querySelectorAll('.modpack-download').forEach(button => {
+    button.addEventListener('click', () => {
+      addLocalClick(Number(button.dataset.packIndex));
+    });
+  });
 }
 
 fetch('data/modpacks.json?v=' + Date.now(), {cache:'no-store'})
