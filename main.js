@@ -52,7 +52,7 @@ function noteRow(item){
        </span>`;
 
   if(item.noteLink){
-    return `<a class="${cls} notice-link" data-tiktok-gate href="${escapeHtml(item.noteLink)}" target="_blank" rel="noopener">
+    return `<a class="${cls} notice-link" href="${escapeHtml(item.noteLink)}" target="_blank" rel="noopener">
       ${icon}<span class="notice-text">${text}</span><span class="notice-arrow" aria-hidden="true">↗</span>
     </a>`;
   }
@@ -96,7 +96,7 @@ function render(url, boxId){
               data-app-index="${index}" aria-label="Chọn phiên bản Android V2">
               <span class="download-icon" aria-hidden="true">⇩</span>
             </button>` : `
-            <a class="download-btn" data-tiktok-gate href="${escapeHtml(i.link || "#")}" target="_blank" rel="noopener" aria-label="Tải xuống">
+            <a class="download-btn" href="${escapeHtml(i.link || "#")}" target="_blank" rel="noopener" aria-label="Tải xuống">
               <span class="download-icon" aria-hidden="true">⇩</span>
             </a>`}
           </div>
@@ -124,7 +124,7 @@ function renderFiles(){
               <b class="app-name">${escapeHtml(f.name)}</b>
               <div class="update-line">• ${escapeHtml(f.version || "")}</div>
             </div>
-            <a class="download-btn" data-tiktok-gate href="${escapeHtml(f.link || "#")}" target="_blank" rel="noopener" aria-label="Tải xuống">
+            <a class="download-btn" href="${escapeHtml(f.link || "#")}" target="_blank" rel="noopener" aria-label="Tải xuống">
               <span class="download-icon" aria-hidden="true">⇩</span>
             </a>
           </div>
@@ -186,7 +186,10 @@ function closeLightbox(){
 
 /* ===== ANDROID DOWNLOAD CHOICE + PASTE LINK ===== */
 
-
+/* ===== MONETAG =====
+   Monetag được nạp trực tiếp trong index.html.
+   Không còn sử dụng quảng cáo TikTok.
+*/
 
 const ANDROID_V2_LINKS = {
   getKeyLink: "https://nghialqtv.github.io/SubUnlock/?id=keyandroidv2",
@@ -229,7 +232,7 @@ function openAndroidUrl(url){
   try {
     const parsed = new URL(url, window.location.href);
     if(!/^https?:$/i.test(parsed.protocol)) return;
-    tiktokAdGate(parsed.href);
+    setTimeout(() => { window.location.href = parsed.href; }, 300);
   } catch(e) {
     console.error("Link không hợp lệ:", e);
   }
@@ -240,7 +243,7 @@ function openKeyWithAd(url){
   try {
     const parsed = new URL(url, window.location.href);
     if(!/^https?:$/i.test(parsed.protocol)) return;
-    tiktokAdGate(parsed.href);
+    window.location.href = parsed.href;
   } catch(e) {
     console.error("Link key không hợp lệ:", e);
   }
@@ -348,11 +351,21 @@ fetch("data/mods.json?v="+Date.now())
   .then(mods=>{
     const box=document.getElementById("mods");
     if(!box) return;
-    box.innerHTML=mods.map(m=>`
-      <a data-tiktok-gate href="${escapeHtml(m.link || "#")}" class="mod-item ${m.name === "Mod Pack" ? "mod-pack-item" : ""}">
+    box.innerHTML = mods.map(m => `
+      <a data-tiktok-gate
+         href="${escapeHtml(m.link || "#")}"
+         class="mod-item ${m.name === "Mod Pack" ? "mod-pack-item" : ""}">
+
+        <span class="mod-item-icon">
+          <img src="${escapeHtml(m.icon || "assets/icons/mod.png")}"
+               alt="${escapeHtml(m.name)}">
+        </span>
+
+        <span class="mod-item-text">
           <strong>${escapeHtml(m.name)}</strong>
           ${m.description ? `<small>${escapeHtml(m.description)}</small>` : ""}
         </span>
+
         ${m.badge ? `<span class="mod-item-badge">${escapeHtml(m.badge)}</span>` : ""}
         ${m.name === "Mod Pack" ? `<span class="mod-item-arrow">›</span>` : ""}
       </a>
