@@ -161,3 +161,52 @@ body{margin:0;background:#07101f;color:#eef4ff;font-family:Arial,sans-serif}
 .modpack-download-icon{
   filter:drop-shadow(0 1px 2px rgba(0,0,0,.3));
 }
+
+
+/* DOWNLOAD COUNTER PRO */
+.modpack-meta{
+  margin-top:8px;
+}
+.modpack-download-count{
+  display:inline-flex;
+  align-items:center;
+  padding:6px 10px;
+  border-radius:999px;
+  background:rgba(18,37,64,.72);
+  border:1px solid rgba(72,106,150,.38);
+  color:#9fb2cf;
+  font-size:13px;
+  font-weight:800;
+}
+.modpack-download{
+  position:relative;
+  overflow:hidden;
+  transition:transform .2s ease, box-shadow .2s ease, filter .2s ease;
+}
+.modpack-download::after{
+  content:"";
+  position:absolute;
+  top:0;
+  left:-80%;
+  width:42%;
+  height:100%;
+  transform:skewX(-22deg);
+  background:rgba(255,255,255,.18);
+  transition:left .55s ease;
+  pointer-events:none;
+}
+.modpack-download:hover{
+  transform:translateY(-2px);
+  filter:saturate(1.08);
+  box-shadow:0 12px 28px rgba(255,25,124,.28);
+}
+.modpack-download:hover::after{
+  left:135%;
+}
+.modpack-card{
+  transition:transform .22s ease, box-shadow .22s ease, border-color .22s ease;
+}
+.modpack-card:hover{
+  transform:translateY(-2px);
+  box-shadow:0 16px 36px rgba(0,0,0,.28);
+}
