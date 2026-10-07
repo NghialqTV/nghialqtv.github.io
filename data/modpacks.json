@@ -1,43 +1,37 @@
 [
   {
-    "name": "Mod Pack 123 Skin",
-    "skins": "123 SKIN",
-    "features": "Full Nút Bấm • Không Trùng",
-    "update": "S4 - 2026",
-    "image": "assets/modpacks/pack-ver-2.png",
-    "link": "https://linkx.me/LoQnChC",
-    "hot": true
+    "name": "Mod Pack 80 Skin Ver 1",
+    "desc": "Sáng đêm • Tích hợp Camera Xa • Android - IOS • S4 - 2026",
+    "image": "assets/modpacks/pack-ver-1.png",
+    "link": "https://linkx.me/JXlp",
+    "tag": "ANDROID • IOS"
   },
   {
-    "name": "Mod Pack 80 Skin",
-    "skins": "80 SKIN",
-    "features": "Full Nút Bấm • Không Trùng",
-    "update": "S4 - 2026",
-    "image": "assets/modpacks/pack-ver-1.png",
-    "link": "https://linkx.me/JXlp"
+    "name": "Mod Pack 123 Skin Ver 2",
+    "desc": "Sáng đêm • Tích hợp Camera Xa • Android - IOS • S4 - 2026",
+    "image": "assets/modpacks/pack-ver-2.png",
+    "link": "https://linkx.me/LoQnChC",
+    "tag": "ANDROID • IOS"
+  },
+  {
+    "name": "Mod Pack 35 Skin Ver 3",
+    "desc": "Full Nút Bấm • Không Trùng • Android • S4 - 2026",
+    "image": "assets/modpacks/pack-ver-3.png",
+    "link": "https://linkx.me/TSiFl",
+    "tag": "ANDROID"
   },
   {
     "name": "Mod Pack 55 Skin Ver 4",
-    "skins": "55 SKIN",
-    "features": "Full Nút Bấm • Không Trùng",
-    "update": "S4 - 2026",
+    "desc": "Full Nút Bấm • Không Trùng • Android - IOS • S4 - 2026",
     "image": "assets/modpacks/pack-ver-4.png",
-    "link": "https://linkx.me/NZX7"
-  },
-  {
-    "name": "Mod Pack 35 Skin",
-    "skins": "35 SKIN",
-    "features": "Full Nút Bấm • Không Trùng",
-    "update": "S4 - 2026",
-    "image": "assets/modpacks/pack-ver-3.png",
-    "link": "https://linkx.me/TSiFl"
+    "link": "https://linkx.me/NZX7",
+    "tag": "ANDROID • IOS"
   },
   {
     "name": "Mod Pack 3 Skin Hot Pick",
-    "skins": "3 SKIN HOT",
-    "features": "Có Nút Bấm • Không Trùng",
-    "update": "S4 - 2026",
+    "desc": "Full Effects • Sound • BG • FX • Icon • Có Nút Bấm",
     "image": "assets/modpacks/pack-3-skin.png",
-    "link": "https://linkx.me/1tqzIAIl"
+    "link": "https://linkx.me/1tqzIAIl",
+    "tag": "ANDROID • IOS"
   }
 ]

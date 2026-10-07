@@ -21,7 +21,8 @@
   },
   {
     "name": "Mod Pack",
-    "icon": "assets/icons/mod-pack.png",
-    "link": "mod-pack.html"
+    "icon": "assets/icons/modpack-icon.svg",
+    "link": "modpacks.html",
+    "badge": "HOT"
   }
 ]
