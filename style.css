@@ -3367,3 +3367,63 @@ body.dark .mod-item{
   .mod-item.mod-pack-item .mod-item-icon img{width:32px !important;height:32px !important;}
   .mod-item.mod-pack-item .mod-item-badge{font-size:10px;padding:5px 8px;min-height:27px;}
 }
+
+/* FIX MOD PACK ICON - match reference */
+.mod-item.mod-pack-item .mod-item-icon{
+  background:linear-gradient(145deg,#ff176f,#ff2b8d) !important;
+  border:1px solid rgba(255,255,255,.20) !important;
+  box-shadow:0 0 18px rgba(255,23,111,.30),inset 0 1px 0 rgba(255,255,255,.20) !important;
+  overflow:hidden !important;
+}
+.mod-item.mod-pack-item .mod-item-icon img{
+  width:38px !important;
+  height:38px !important;
+  display:block !important;
+  object-fit:contain !important;
+  filter:none !important;
+}
+/* HOT badge like the reference */
+.mod-item.mod-pack-item .mod-item-badge{
+  display:inline-flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  gap:4px !important;
+  min-height:32px !important;
+  padding:5px 13px !important;
+  border-radius:999px !important;
+  background:linear-gradient(135deg,#4a1028,#250c20) !important;
+  border:1px solid rgba(255,91,166,.70) !important;
+  color:#ffe66d !important;
+  box-shadow:0 0 12px rgba(255,45,145,.18),inset 0 1px 0 rgba(255,255,255,.10) !important;
+  font-size:13px !important;
+  font-weight:950 !important;
+  white-space:nowrap !important;
+}
+.mod-item.mod-pack-item .mod-item-arrow{
+  color:#ff45bc !important;
+  font-size:38px !important;
+  line-height:1 !important;
+  font-weight:300 !important;
+  text-shadow:0 0 12px rgba(255,92,190,.55) !important;
+}
+@media(max-width:520px){
+  .mod-item.mod-pack-item .mod-item-icon{
+    width:58px !important;
+    height:58px !important;
+    min-width:58px !important;
+    border-radius:17px !important;
+  }
+  .mod-item.mod-pack-item .mod-item-icon img{
+    width:38px !important;
+    height:38px !important;
+  }
+  .mod-item.mod-pack-item .mod-item-badge{
+    min-height:30px !important;
+    padding:5px 10px !important;
+    font-size:11px !important;
+  }
+  .mod-item.mod-pack-item .mod-item-arrow{
+    font-size:34px !important;
+  }
+}
+
