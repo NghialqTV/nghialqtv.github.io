@@ -74,3 +74,16 @@ body{margin:0;background:#07101f;color:#eef4ff;font-family:Arial,sans-serif}
   .pack-platform{padding:6px 9px;font-size:12px}
   .pack-platform img{width:15px;height:15px}
 }
+
+
+/* Virtual public download counter */
+.modpack-meta{
+  margin-top: 8px;
+}
+.modpack-download-count{
+  display: inline-flex;
+  align-items: center;
+  color: #8fa4c4;
+  font-size: 14px;
+  font-weight: 700;
+}
