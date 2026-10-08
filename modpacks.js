@@ -23,7 +23,7 @@ function getLocalClicks(index){
 }
 
 function addLocalClick(index){
-  const next = getLocalClicks(index) + 12;
+  const next = getLocalClicks(index) + 10;
   try {
     localStorage.setItem(`modpack_clicks_${index}`, String(next));
   } catch (_) {}
@@ -46,35 +46,21 @@ function renderPacks(packs){
 
     return `
       <article class="modpack-card">
-
         <div class="modpack-thumb-wrap">
-          <img
-            class="modpack-thumb"
-            src="${esc(p.image)}"
-            alt="${esc(p.name)}"
-            loading="lazy"
-            onerror="this.closest('.modpack-thumb-wrap').classList.add('image-error')"
-          >
-          <div class="thumb-fallback">
-            MOD PACK<br><b>${esc(p.skins || '')}</b>
-          </div>
+          <img class="modpack-thumb" src="${esc(p.image)}" alt="${esc(p.name)}" loading="lazy"
+            onerror="this.closest('.modpack-thumb-wrap').classList.add('image-error')">
+          <div class="thumb-fallback">MOD PACK<br><b>${esc(p.skins || '')}</b></div>
         </div>
 
         <div class="modpack-info">
-
           <div class="modpack-content">
             <h2 class="modpack-name">${esc(p.name)}</h2>
-
-            <p class="modpack-desc">
-              ${esc(p.desc || '')}
-            </p>
+            <p class="modpack-desc">${esc(p.desc || '')}</p>
 
             <div class="modpack-meta">
-              <span
-                class="modpack-download-count"
+              <span class="modpack-download-count"
                 data-download-count="${i}"
-                data-base-count="${baseCount}"
-              >
+                data-base-count="${baseCount}">
                 ↓ ${formatDownloads(baseCount + localClicks)} lượt tải
               </span>
             </div>
@@ -85,23 +71,24 @@ function renderPacks(packs){
             </div>
           </div>
 
-          <a
-            class="modpack-download"
+          <a class="modpack-download"
             href="${esc(download)}"
             target="_blank"
             rel="noopener"
             data-tiktok-gate
             data-pack-index="${i}"
-            aria-label="Tải ${esc(p.name)}"
-          >
+            aria-label="Tải ${esc(p.name)}">
             <span>Tải Ngay</span>
           </a>
-
         </div>
       </article>
     `;
   }).join('');
 
+  /*
+   * Dùng capture=false để TikTok gate xử lý trước mà
+   * không chặn listener cộng lượt tải.
+   */
   box.querySelectorAll('.modpack-download').forEach(button => {
     button.addEventListener('click', () => {
       addLocalClick(Number(button.dataset.packIndex));
