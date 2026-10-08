@@ -23,7 +23,7 @@ function getLocalClicks(index){
 }
 
 function addLocalClick(index){
-  const next = getLocalClicks(index) + 1;
+  const next = getLocalClicks(index) + 12;
   try {
     localStorage.setItem(`modpack_clicks_${index}`, String(next));
   } catch (_) {}
@@ -94,7 +94,6 @@ function renderPacks(packs){
             data-pack-index="${i}"
             aria-label="Tải ${esc(p.name)}"
           >
-            <span class="modpack-download-icon">⇩</span>
             <span>Tải Ngay</span>
           </a>
 
