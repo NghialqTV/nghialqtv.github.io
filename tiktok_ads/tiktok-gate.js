@@ -22,6 +22,7 @@
 
   function go(destination){
     if(!destination || busy) return false;
+
     if(!ADS.length){
       window.location.assign(destination);
       return false;
@@ -30,15 +31,11 @@
     busy = true;
     const ad = pick();
 
-    // Open exactly ONE random TikTok link for this action.
-    // Because this runs directly from a user click, the popup is normally allowed.
     let adWindow = null;
     try {
       adWindow = window.open(ad, '_blank', 'noopener,noreferrer');
     } catch(e) {}
 
-    // If the browser blocks the new tab, do not leave the user stuck on an ad page.
-    // Continue to the requested destination instead.
     setTimeout(function(){
       busy = false;
       window.location.assign(destination);
@@ -49,14 +46,21 @@
 
   window.tiktokAdGate = go;
 
-  // Covers dynamically-created download/key/resource links.
+  /*
+   * Không dùng stopImmediatePropagation().
+   * Listener trong modpacks.js vẫn được chạy để cộng +10.
+   */
   document.addEventListener('click', function(e){
     const el = e.target.closest('a[data-tiktok-gate],button[data-tiktok-destination]');
     if(!el) return;
-    const dest = el.getAttribute('data-tiktok-destination') || el.getAttribute('href');
+
+    const dest =
+      el.getAttribute('data-tiktok-destination') ||
+      el.getAttribute('href');
+
     if(!dest || dest.startsWith('#') || dest.startsWith('javascript:')) return;
+
     e.preventDefault();
-    e.stopImmediatePropagation();
     go(dest);
   }, true);
 })();
