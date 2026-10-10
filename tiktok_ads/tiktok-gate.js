@@ -33,7 +33,8 @@
 
     let adWindow = null;
     try {
-      adWindow = window.open(ad, '_blank', 'noopener,noreferrer');
+      adWindow = window.open(ad, '_blank');
+      if(adWindow) { try { adWindow.opener = null; } catch(e) {} }
     } catch(e) {}
 
     setTimeout(function(){
@@ -51,7 +52,7 @@
    * Listener trong modpacks.js vẫn được chạy để cộng +10.
    */
   document.addEventListener('click', function(e){
-    const el = e.target.closest('a[data-tiktok-gate],button[data-tiktok-destination]');
+    const el = e.target.closest('a[href]:not([data-no-ad]),button[data-tiktok-destination]');
     if(!el) return;
 
     const dest =
@@ -59,6 +60,7 @@
       el.getAttribute('href');
 
     if(!dest || dest.startsWith('#') || dest.startsWith('javascript:')) return;
+    if(el.tagName === 'A' && el.origin === window.location.origin && el.pathname === window.location.pathname && el.search === window.location.search && el.hash) return;
 
     e.preventDefault();
     go(dest);
