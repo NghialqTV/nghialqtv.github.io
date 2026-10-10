@@ -79,6 +79,40 @@ function render(url, boxId){
         const platform = String(i.platform || "").toLowerCase();
         const isAndroidApp = boxId === "apps" && platform === "android";
 
+        if (boxId === "apps") {
+          const bannerImages = Array.isArray(i.preview) ? i.preview.filter(Boolean) : [];
+          const banner = i.banner || bannerImages[0] || "";
+          const downloadControl = (isAndroidApp && i.name === "Map Sáng AOV Android V2")
+            ? `<button class="app-action app-action-download android-choice-btn" type="button" data-app-index="${index}">
+                 <span>Tải Xuống</span><span class="app-action-download-icon" aria-hidden="true">⇩</span>
+               </button>`
+            : `<a class="app-action app-action-download" href="${escapeHtml(i.link || "#")}" target="_blank" rel="noopener">
+                 <span>Tải Xuống</span><span class="app-action-download-icon" aria-hidden="true">⇩</span>
+               </a>`;
+          return `
+          <article class="card app-card app-card-redesigned" style="--card-index:${index}">
+            ${banner ? `<button class="app-banner" type="button" data-preview="${encodeURIComponent(JSON.stringify(bannerImages))}" data-title="${encodeURIComponent(i.name || "Preview")}" aria-label="Xem ảnh ${escapeHtml(i.name)}">
+              <img src="${escapeHtml(banner)}" alt="${escapeHtml(i.name)}" loading="lazy">
+              <span class="app-platform-ribbon">${platformBadge(i.platform)}</span>
+            </button>` : ""}
+            <div class="app-card-body">
+              <div class="card-main">
+                <img class="icon" src="${escapeHtml(i.icon || "assets/icons/app.png")}" alt="">
+                <div class="info">
+                  <b class="app-name">${escapeHtml(i.name)}</b>
+                  <div class="update-line">${escapeHtml(i.version || "Cập nhật hôm nay")}</div>
+                </div>
+              </div>
+              <div class="app-actions">
+                ${downloadControl}
+                <a class="app-action app-action-key" href="${escapeHtml(i.getKeyLink || i.link || "#")}" target="_blank" rel="noopener">
+                  <span class="app-key-icon" aria-hidden="true">◆</span><span>Get Key</span>
+                </a>
+              </div>
+              ${noteRow(i)}
+            </div>
+          </article>`;
+        }
         return `
         <article class="card app-card ${boxId === "keys" ? `key-card key-card-${escapeHtml(String(i.platform || "ios").toLowerCase())}` : ""}" data-key-link="${boxId === "keys" ? escapeHtml(i.link || "") : ""}" style="--card-index:${index}">
           <div class="card-main">
@@ -91,14 +125,9 @@ function render(url, boxId){
                 ${previewButton(i)}
               </div>
             </div>
-            ${boxId === "keys" ? "" : (isAndroidApp && i.name === "Map Sáng AOV Android V2") ? `
-            <button class="download-btn android-choice-btn" type="button"
-              data-app-index="${index}" aria-label="Chọn phiên bản Android V2">
-              <span class="download-icon" aria-hidden="true">⇩</span>
-            </button>` : `
             <a class="download-btn" href="${escapeHtml(i.link || "#")}" target="_blank" rel="noopener" aria-label="Tải xuống">
               <span class="download-icon" aria-hidden="true">⇩</span>
-            </a>`}
+            </a>
           </div>
           ${noteRow(i)}
         </article>`;
@@ -136,7 +165,7 @@ function renderFiles(){
 }
 
 function bindPreviewButtons(){
-  document.querySelectorAll(".preview-btn").forEach(btn => {
+  document.querySelectorAll(".preview-btn, .app-banner").forEach(btn => {
     btn.onclick = () => {
       try {
         const images = JSON.parse(decodeURIComponent(btn.dataset.preview));
