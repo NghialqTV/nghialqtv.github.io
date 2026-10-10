@@ -84,17 +84,17 @@ function render(url, boxId){
           const banner = i.banner || bannerImages[0] || "";
           const downloadControl = (isAndroidApp && i.name === "Map Sáng AOV Android V2")
             ? `<button class="app-action app-action-download android-choice-btn" type="button" data-app-index="${index}">
-                 <span>Tải Xuống</span><span class="app-action-download-icon" aria-hidden="true">⇩</span>
+                 <span>Tải Xuống</span><span class="app-action-download-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3v11m0 0 4-4m-4 4-4-4M5 17v3h14v-3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
                </button>`
-            : `<a class="app-action app-action-download" href="${escapeHtml(i.link || "#")}" target="_blank" rel="noopener">
-                 <span>Tải Xuống</span><span class="app-action-download-icon" aria-hidden="true">⇩</span>
+            : `<a class="app-action app-action-download" data-tiktok-gate href="${escapeHtml(i.link || "#")}" target="_blank" rel="noopener">
+                 <span>Tải Xuống</span><span class="app-action-download-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3v11m0 0 4-4m-4 4-4-4M5 17v3h14v-3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
                </a>`;
           return `
           <article class="card app-card app-card-redesigned" style="--card-index:${index}">
-            ${banner ? `<button class="app-banner" type="button" data-preview="${encodeURIComponent(JSON.stringify(bannerImages))}" data-title="${encodeURIComponent(i.name || "Preview")}" aria-label="Xem ảnh ${escapeHtml(i.name)}">
+            ${banner ? `<div class="app-banner" aria-label="${escapeHtml(i.name)}">
               <img src="${escapeHtml(banner)}" alt="${escapeHtml(i.name)}" loading="lazy">
               <span class="app-platform-ribbon">${platformBadge(i.platform)}</span>
-            </button>` : ""}
+            </div>` : ""}
             <div class="app-card-body">
               <div class="card-main">
                 <img class="icon" src="${escapeHtml(i.icon || "assets/icons/app.png")}" alt="">
@@ -105,8 +105,8 @@ function render(url, boxId){
               </div>
               <div class="app-actions">
                 ${downloadControl}
-                <a class="app-action app-action-key" href="${escapeHtml(i.getKeyLink || (platform === "android" ? "https://nghialqtv.github.io/SubUnlock/?id=keyandroidv2" : "https://nghialqtv.github.io/SubUnlock/?id=keymenuios"))}" rel="noopener">
-                  <span class="app-key-icon" aria-hidden="true">◆</span><span>Get Key</span>
+                <a class="app-action app-action-key" data-tiktok-gate href="${escapeHtml(i.getKeyLink || (platform === "android" ? "https://nghialqtv.github.io/SubUnlock/?id=keyandroidv2" : "https://nghialqtv.github.io/SubUnlock/?id=keymenuios"))}" rel="noopener">
+                  <span class="app-key-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7.5 14a5.5 5.5 0 1 1 4.92-3.04L22 10.96v4h-3v3h-3v3h-4.17l-1.5-1.5A5.48 5.48 0 0 1 7.5 14Zm0-3a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z"/></svg></span><span>Get Key</span>
                 </a>
               </div>
             </div>
@@ -164,7 +164,7 @@ function renderFiles(){
 }
 
 function bindPreviewButtons(){
-  document.querySelectorAll(".preview-btn, .app-banner").forEach(btn => {
+  document.querySelectorAll(".preview-btn").forEach(btn => {
     btn.onclick = () => {
       try {
         const images = JSON.parse(decodeURIComponent(btn.dataset.preview));
@@ -260,7 +260,8 @@ function openAndroidUrl(url){
   try {
     const parsed = new URL(url, window.location.href);
     if(!/^https?:$/i.test(parsed.protocol)) return;
-    setTimeout(() => { window.location.href = parsed.href; }, 300);
+    if (typeof window.tiktokAdGate === "function") window.tiktokAdGate(parsed.href);
+    else window.location.href = parsed.href;
   } catch(e) {
     console.error("Link không hợp lệ:", e);
   }
@@ -271,7 +272,8 @@ function openKeyWithAd(url){
   try {
     const parsed = new URL(url, window.location.href);
     if(!/^https?:$/i.test(parsed.protocol)) return;
-    window.location.href = parsed.href;
+    if (typeof window.tiktokAdGate === "function") window.tiktokAdGate(parsed.href);
+    else window.location.href = parsed.href;
   } catch(e) {
     console.error("Link key không hợp lệ:", e);
   }
@@ -296,7 +298,7 @@ function handleAndroidAction(action){
   openAndroidUrl(url);
 }
 
-/* ===== QUẢNG CÁO CLICK TIKTOK ĐÃ ĐƯỢC GỠ ===== */
+/* ===== APP ACTIONS + AD GATE ===== */
 
 document.addEventListener("click", e => {
   const androidBtn = e.target.closest(".android-choice-btn");
@@ -341,7 +343,6 @@ document.addEventListener("keydown", e => {
 });
 
 render("data/apps.json", "apps");
-render("data/keys.json", "keys");
 renderFiles();
 initSiteVisitStats();
 

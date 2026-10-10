@@ -3621,3 +3621,12 @@ body.dark #apps .app-card-redesigned{background:#030c18;border-color:#1d2a3d}
   #apps .app-actions{grid-template-columns:minmax(0,1fr) minmax(0,.52fr) !important;gap:8px !important;}
   #apps .app-actions .app-action{font-size:12px !important;padding:8px 5px !important;}
 }
+
+
+/* ===== APP BUTTON ICONS: download + key ===== */
+#apps .app-action-download-icon{display:inline-flex;align-items:center;justify-content:center;flex:0 0 25px;width:25px;height:25px}
+#apps .app-action-download-icon svg{display:block;width:25px;height:25px}
+#apps .app-key-icon{display:inline-flex;align-items:center;justify-content:center;flex:0 0 22px;width:22px;height:22px}
+#apps .app-key-icon svg{display:block;width:22px;height:22px}
+#apps .app-actions .app-action{gap:9px!important;white-space:nowrap!important;}
+#apps .app-actions .app-action span{flex-shrink:0;}
