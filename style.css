@@ -3630,3 +3630,75 @@ body.dark #apps .app-card-redesigned{background:#030c18;border-color:#1d2a3d}
 #apps .app-key-icon svg{display:block;width:22px;height:22px}
 #apps .app-actions .app-action{gap:9px!important;white-space:nowrap!important;}
 #apps .app-actions .app-action span{flex-shrink:0;}
+
+
+/* ===== POLISH: APP BUTTONS + APP/STATISTICS SEPARATOR ===== */
+/* Remove inherited shine/overlay effects that can cover the download label. */
+#apps .app-actions .app-action::before,
+#apps .app-actions .app-action::after{
+  content:none !important;
+  display:none !important;
+  animation:none !important;
+  opacity:0 !important;
+}
+#apps .app-actions .app-action{
+  isolation:isolate !important;
+  overflow:hidden !important;
+  white-space:nowrap !important;
+  text-overflow:clip !important;
+  text-shadow:none !important;
+  transform:none;
+}
+#apps .app-actions .app-action-download{
+  background:linear-gradient(110deg,#5968f7 0%,#8060f6 55%,#a76af4 100%) !important;
+  box-shadow:0 7px 18px rgba(102,91,246,.20) !important;
+}
+#apps .app-actions .app-action-download span,
+#apps .app-actions .app-action-key span{
+  position:relative !important;
+  z-index:1 !important;
+  opacity:1 !important;
+  visibility:visible !important;
+  mix-blend-mode:normal !important;
+}
+#apps .app-actions .app-action-download-icon,
+#apps .app-actions .app-key-icon{
+  flex:0 0 auto !important;
+  opacity:1 !important;
+  visibility:visible !important;
+}
+.app-stats-separator{
+  width:min(92%,680px);
+  margin:30px auto 24px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:14px;
+  box-sizing:border-box;
+  padding:0 10px;
+}
+.app-stats-separator-line{
+  display:block;
+  flex:1 1 auto;
+  height:1px;
+  background:linear-gradient(90deg,transparent,rgba(92,155,255,.72),rgba(164,108,255,.5),transparent);
+}
+.app-stats-separator-mark{
+  width:34px;
+  height:34px;
+  flex:0 0 34px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border:1px solid rgba(105,153,255,.36);
+  border-radius:50%;
+  color:#80baff;
+  background:linear-gradient(145deg,rgba(28,49,83,.92),rgba(20,19,48,.95));
+  box-shadow:0 0 18px rgba(63,123,255,.14),inset 0 1px 0 rgba(255,255,255,.08);
+}
+.app-stats-separator-mark svg{width:17px;height:17px;display:block;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.stats-section-title{margin-top:0 !important}
+@media(max-width:520px){
+  .app-stats-separator{margin:24px auto 20px;gap:10px}
+  .app-stats-separator-mark{width:30px;height:30px;flex-basis:30px}
+}
