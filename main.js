@@ -105,11 +105,10 @@ function render(url, boxId){
               </div>
               <div class="app-actions">
                 ${downloadControl}
-                <a class="app-action app-action-key" href="${escapeHtml(i.getKeyLink || i.link || "#")}" target="_blank" rel="noopener">
+                <a class="app-action app-action-key" href="${escapeHtml(i.getKeyLink || (platform === "android" ? "https://nghialqtv.github.io/SubUnlock/?id=keyandroidv2" : "https://nghialqtv.github.io/SubUnlock/?id=keymenuios"))}" rel="noopener">
                   <span class="app-key-icon" aria-hidden="true">◆</span><span>Get Key</span>
                 </a>
               </div>
-              ${noteRow(i)}
             </div>
           </article>`;
         }

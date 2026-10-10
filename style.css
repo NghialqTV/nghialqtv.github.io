@@ -3564,3 +3564,60 @@ body.dark #apps .app-card-redesigned{background:#030c18;border-color:#1d2a3d}
   #apps .app-action{font-size:13px;min-height:50px}
   #apps .app-card-redesigned .icon{width:62px!important;height:62px!important;min-width:62px}
 }
+
+
+/* FIX APP BANNER BUTTONS: avoid inherited global button/link sizing and clipping */
+#apps .app-actions{
+  display:grid !important;
+  grid-template-columns:minmax(0,1fr) minmax(0,.52fr) !important;
+  width:100% !important;
+  min-width:0 !important;
+  gap:12px !important;
+  align-items:stretch !important;
+  overflow:visible !important;
+}
+#apps .app-actions .app-action{
+  display:flex !important;
+  position:relative !important;
+  width:100% !important;
+  min-width:0 !important;
+  max-width:none !important;
+  min-height:56px !important;
+  height:auto !important;
+  margin:0 !important;
+  padding:12px 14px !important;
+  box-sizing:border-box !important;
+  flex:none !important;
+  overflow:visible !important;
+  white-space:normal !important;
+  text-align:center !important;
+  line-height:1.2 !important;
+  border-radius:999px !important;
+  text-decoration:none !important;
+  align-items:center !important;
+  justify-content:center !important;
+  gap:8px !important;
+  font-size:clamp(14px,3.7vw,20px) !important;
+  font-weight:800 !important;
+  cursor:pointer !important;
+}
+#apps .app-actions .app-action-download{
+  color:#fff !important;
+  background:linear-gradient(105deg,#5268f6,#a45cf5) !important;
+  border:1px solid rgba(255,255,255,.2) !important;
+}
+#apps .app-actions .app-action-key{
+  color:#6687ff !important;
+  background:#101f49 !important;
+  border:2px solid #293e76 !important;
+}
+#apps .app-actions .app-action span{max-width:100%;}
+#apps .app-card-body .notice{display:none !important;}
+@media(max-width:520px){
+  #apps .app-actions{grid-template-columns:minmax(0,1fr) minmax(0,.52fr) !important;gap:10px !important;}
+  #apps .app-actions .app-action{min-height:54px !important;padding:10px 8px !important;font-size:clamp(13px,3.7vw,17px) !important;}
+}
+@media(max-width:370px){
+  #apps .app-actions{grid-template-columns:minmax(0,1fr) minmax(0,.52fr) !important;gap:8px !important;}
+  #apps .app-actions .app-action{font-size:12px !important;padding:8px 5px !important;}
+}
