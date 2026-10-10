@@ -5,15 +5,8 @@
     "icon": "assets/icons/app.png",
     "link": "https://nghialqtv.github.io/SubUnlock/?id=hackmenuios",
     "platform": "ios",
-    "preview": [
-      "assets/previews/map-hack-ios-preview.png",
-      "assets/previews/map-warning.jpg"
-    ],
-    "note": "⚠️ Lưu ý khi dùng Map",
-    "previewTitle": "Preview",
-    "noteType": "warning",
-    "noteAction": "map-warning",
-    "banner": "assets/banners/hack-map-ios.png"
+    "banner": "assets/banners/hack-map-ios.png",
+    "getKeyLink": "https://nghialqtv.github.io/SubUnlock/?id=keymenuios"
   },
   {
     "name": "Map Sáng AOV Android V2",
@@ -21,14 +14,6 @@
     "icon": "assets/icons/android-v2.png",
     "link": "https://nghialqtv.github.io/SubUnlock/?id=hackv2tachgoc",
     "platform": "android",
-    "preview": [
-      "assets/previews/android-v2-preview-1.png",
-      "assets/previews/android-v2-preview-2.jpg"
-    ],
-    "note": "⚠️ Lưu ý khi dùng Map",
-    "previewTitle": "Preview",
-    "noteType": "warning",
-    "noteAction": "map-warning",
     "linkTachGoc": "https://nghialqtv.github.io/SubUnlock/?id=hackv2tachgoc",
     "linkGopGoc": "https://nghialqtv.github.io/SubUnlock/?id=hackv2goc",
     "getKeyLink": "https://nghialqtv.github.io/SubUnlock/?id=keyandroidv2",
@@ -40,11 +25,8 @@
     "icon": "assets/icons/appipa.png",
     "link": "https://nghialqtv.github.io/mod/ipa.html",
     "platform": "ios",
-    "preview": [],
-    "note": "",
-    "previewTitle": "Preview",
-    "noteType": "info",
-    "banner": "assets/banners/ipa-mod-skin.png"
+    "banner": "assets/banners/ipa-mod-skin.png",
+    "getKeyLink": "https://nghialqtv.github.io/SubUnlock/?id=keymenuios"
   },
   {
     "name": "Menu Mod Skin IOS",
@@ -52,14 +34,7 @@
     "icon": "assets/icons/app.png",
     "link": "https://nghialqtv.github.io/SubUnlock/?id=modmenuios",
     "platform": "ios",
-    "preview": [
-      "assets/previews/mod-skin-ios-preview.png",
-      "assets/previews/unlock-note.jpg"
-    ],
-    "note": "📔 Danh sách skin lỗi mạng khi Unlock",
-    "previewTitle": "Preview",
-    "noteType": "link",
-    "noteLink": "https://unlock.tumadam.com/note-list-skin.html",
-    "banner": "assets/banners/mod-skin-ios.png"
+    "banner": "assets/banners/mod-skin-ios.png",
+    "getKeyLink": "https://nghialqtv.github.io/SubUnlock/?id=keymenuios"
   }
 ]
