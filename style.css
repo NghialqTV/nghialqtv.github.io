@@ -3702,3 +3702,28 @@ body.dark #apps .app-card-redesigned{background:#030c18;border-color:#1d2a3d}
   .app-stats-separator{margin:24px auto 20px;gap:10px}
   .app-stats-separator-mark{width:30px;height:30px;flex-basis:30px}
 }
+
+/* ===== NGHIALQ TV · PREMIUM VIP PRO 2026 ===== */
+:root{--vip-blue:#59bfff;--vip-violet:#9a7aff;--vip-border:rgba(115,157,255,.25)}
+html{scroll-behavior:smooth}
+body.dark{background:radial-gradient(ellipse at 15% 3%,rgba(48,103,232,.17),transparent 36%),radial-gradient(ellipse at 90% 36%,rgba(143,74,229,.12),transparent 35%),linear-gradient(180deg,#090f1d,#0b0e19 60%,#080c15) !important;background-attachment:fixed !important;color:#eef4ff}
+body.dark .app-card,body.dark .mod-box,body.dark .stats-card,body.dark .youtube-follow-card{background:linear-gradient(145deg,#1b2942,#111b2e 60%,#17172c) !important;border:1px solid var(--vip-border) !important;box-shadow:0 15px 38px rgba(0,0,0,.32),inset 0 1px 0 rgba(255,255,255,.055) !important}
+body.dark .app-card,body.dark .youtube-follow-card{border-radius:26px !important;overflow:hidden}
+body.dark .mod-box,body.dark .stats-card{border-radius:28px !important}
+.section-title span,body.dark .section-title span,.username.brand-title .brand-text{background:linear-gradient(110deg,#f6f9ff 4%,#64cfff 42%,#9283ff 74%,#e2a5ff) !important;-webkit-background-clip:text !important;background-clip:text !important;color:transparent !important;text-shadow:none !important;filter:drop-shadow(0 4px 13px rgba(70,120,255,.17))}
+.section-title::before,.section-title::after{background:linear-gradient(90deg,transparent,#49aaff,#a97dff) !important;box-shadow:0 0 12px rgba(79,145,255,.34) !important}
+body.dark .mod-item{background:linear-gradient(135deg,#203552,#17253e) !important;color:#f4f7ff !important;border:1px solid rgba(116,165,255,.22) !important;box-shadow:0 8px 20px rgba(0,0,0,.2) !important}
+body.dark .stat-number{background:linear-gradient(110deg,#58c6ff,#6c85ff,#b38aff) !important;-webkit-background-clip:text !important;background-clip:text !important;color:transparent !important;text-shadow:none !important}
+body.dark .stat-chart{color:#7799ff;filter:drop-shadow(0 0 8px rgba(92,134,255,.25))}
+body.dark .stats-plus{color:#a98bff;text-shadow:0 0 15px rgba(156,107,255,.3)}
+body.dark .youtube-follow-info strong{color:#f5f8ff !important;text-shadow:none !important}
+body.dark .youtube-follow-info span{color:#b4c2d7 !important}
+.youtube-subscribe{background:linear-gradient(105deg,#4277f8,#785cf0 60%,#ad65e8) !important;box-shadow:0 8px 24px rgba(91,100,245,.27),inset 0 1px 0 rgba(255,255,255,.2) !important;transition:transform .25s ease,box-shadow .25s ease !important}
+.youtube-follow-card:hover .youtube-subscribe{transform:translateY(-2px);box-shadow:0 12px 29px rgba(110,95,255,.34) !important}
+body.dark .app-card:hover,body.dark .mod-item:hover,body.dark .youtube-follow-card:hover{border-color:rgba(116,204,255,.48) !important;box-shadow:0 15px 36px rgba(49,104,223,.16) !important}
+body.dark .footer{background:rgba(8,12,22,.65) !important;color:#a6b3c8 !important;border-top:1px solid rgba(130,166,240,.15) !important}
+body.dark .dark-toggle{box-shadow:0 8px 24px rgba(64,126,255,.22),0 0 0 1px rgba(150,181,255,.13) !important}
+@keyframes vipPulse{0%,100%{filter:brightness(1)}50%{filter:brightness(1.08)}}
+body.dark .stats-live .live-dot{animation:vipPulse 2.8s ease-in-out infinite}
+@media(max-width:520px){.section-title{font-size:clamp(21px,6vw,28px) !important;gap:9px !important}.section-title::before,.section-title::after{width:24px !important}.youtube-follow-info strong{overflow-wrap:anywhere}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none !important;transition:none !important;scroll-behavior:auto !important}}
