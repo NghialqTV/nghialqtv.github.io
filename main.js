@@ -484,24 +484,41 @@ function initSiteVisitStats(){
 }
 
 
-/* ===== VIP PRO WELCOME TYPEWRITER: TYPE OUT + RETRACT ===== */
+/* ===== WELCOME ROTATOR: type out, retract, then switch phrase ===== */
 (function(){
   const el = document.getElementById("welcome-typing");
   if (!el) return;
-  const phrase = "Welcome To My Website!";
-  let index = 1;
+  const phrases = ["Welcome To My Website!", "Mod Game By Nghĩalq TV"];
+  let phraseIndex = 0;
+  let index = 0;
   let deleting = false;
-  el.textContent = phrase.slice(0, index);
+
   function tick(){
+    const phrase = phrases[phraseIndex];
     if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      el.textContent = phrase; return;
+      el.textContent = phrases[phraseIndex];
+      window.setTimeout(function(){
+        phraseIndex = (phraseIndex + 1) % phrases.length;
+        tick();
+      }, 2200);
+      return;
     }
+
     el.textContent = phrase.slice(0, index);
-    let delay = deleting ? 48 : 92;
-    if (!deleting && index < phrase.length) index++;
-    else if (!deleting) { deleting = true; delay = 1450; }
-    else if (index > 0) index--;
-    else { deleting = false; delay = 450; }
+    let delay = deleting ? 42 : 82;
+
+    if (!deleting && index < phrase.length) {
+      index++;
+    } else if (!deleting) {
+      deleting = true;
+      delay = 1500;
+    } else if (index > 0) {
+      index--;
+    } else {
+      deleting = false;
+      phraseIndex = (phraseIndex + 1) % phrases.length;
+      delay = 380;
+    }
     window.setTimeout(tick, delay);
   }
   tick();

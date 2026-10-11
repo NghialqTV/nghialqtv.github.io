@@ -3775,3 +3775,117 @@ body:not(.dark) .welcome-typing{color:#213b66!important;text-shadow:none}
 body:not(.dark) .dark-toggle{color:#ffd166!important;border-color:rgba(255,209,102,.38)!important}
 @media(max-width:520px){.site-clock{left:10px;top:max(10px,env(safe-area-inset-top));min-height:39px;padding:0 10px;gap:7px;font-size:11px}.dark-toggle{right:10px!important;top:max(8px,env(safe-area-inset-top))!important;width:47px!important;height:47px!important;border-radius:16px!important}.theme-icon{width:22px;height:22px}.welcome-marquee{width:min(76vw,340px)!important;min-width:min(76vw,250px);min-height:48px;margin-top:12px!important}.welcome-typing{font-size:12px;letter-spacing:.015em}}
 @media(prefers-reduced-motion:reduce){body::before,.clock-dot,.welcome-typing::after{animation:none!important}}
+
+
+/* ===== VIP PRO V3: real light/dark app cards + unframed rotating welcome ===== */
+.welcome-line{
+  display:flex!important;
+  align-items:center;
+  justify-content:center;
+  width:100%;
+  max-width:94vw;
+  min-height:32px;
+  margin:14px auto 18px!important;
+  padding:0!important;
+  overflow:visible!important;
+  border:0!important;
+  border-radius:0!important;
+  background:transparent!important;
+  box-shadow:none!important;
+}
+.welcome-line .welcome-typing{
+  display:inline-block;
+  min-height:1.35em;
+  white-space:nowrap;
+  overflow:visible!important;
+  max-width:100%;
+  font-size:clamp(15px,4.1vw,20px)!important;
+  font-weight:800!important;
+  letter-spacing:.015em!important;
+  line-height:1.35;
+  color:#24416d!important;
+  text-shadow:none!important;
+}
+body.dark .welcome-line .welcome-typing{
+  color:#eaf5ff!important;
+  text-shadow:0 0 16px rgba(91,183,255,.22)!important;
+}
+.welcome-line .welcome-typing::after{
+  content:"";
+  display:inline-block;
+  width:2px;
+  height:1em;
+  margin-left:3px;
+  vertical-align:-.12em;
+  background:#399be8;
+  animation:vipCaret .8s steps(1,end) infinite;
+}
+body.dark .welcome-line .welcome-typing::after{background:#60caff}
+
+/* Light theme: remove dark backgrounds left by legacy app-card rules. */
+body:not(.dark) #apps .app-card-redesigned,
+body:not(.dark) #apps .app-card,
+body:not(.dark) #apps .app-card-body,
+body:not(.dark) #apps .app-card-redesigned .app-card-body{
+  background:linear-gradient(145deg,#ffffff 0%,#f5f8ff 100%)!important;
+  color:#17243a!important;
+  border-color:rgba(59,91,145,.2)!important;
+  box-shadow:0 12px 32px rgba(42,66,111,.12),inset 0 1px 0 rgba(255,255,255,.9)!important;
+}
+body:not(.dark) #apps .app-card-redesigned .app-name,
+body:not(.dark) #apps .app-card-redesigned h3,
+body:not(.dark) #apps .app-card-redesigned strong,
+body:not(.dark) #apps .app-card-redesigned .card-main,
+body:not(.dark) #apps .app-card-redesigned .app-description{
+  color:#17243a!important;
+}
+body:not(.dark) #apps .app-card-redesigned .update-line{
+  color:#68768c!important;
+}
+body:not(.dark) #apps .app-card-redesigned .notice{
+  color:#334155!important;
+  background:#eef4ff!important;
+  border-color:#d7e3f7!important;
+}
+body:not(.dark) #apps .app-card-redesigned .app-action-key{
+  color:#365fe0!important;
+  background:linear-gradient(135deg,#edf2ff,#e5ebff)!important;
+  border-color:#c9d6ff!important;
+}
+body:not(.dark) #apps .app-card-redesigned .app-action-download{
+  color:#fff!important;
+  background:linear-gradient(105deg,#5268f6 0%,#8b55ef 100%)!important;
+  border-color:transparent!important;
+}
+body:not(.dark) #apps .app-card-redesigned .platform-badge,
+body:not(.dark) #apps .app-card-redesigned .preview-btn{
+  color:#2765b5!important;
+  background:#eaf4ff!important;
+  border-color:#c9e0ff!important;
+}
+
+/* Dark theme: apply dark colors consistently to every app card sub-layer. */
+body.dark #apps .app-card-redesigned,
+body.dark #apps .app-card-redesigned .app-card-body{
+  background:linear-gradient(145deg,#101b2d 0%,#07101e 100%)!important;
+  color:#edf5ff!important;
+  border-color:rgba(127,174,255,.2)!important;
+  box-shadow:0 14px 36px rgba(0,0,0,.28),inset 0 1px 0 rgba(255,255,255,.035)!important;
+}
+body.dark #apps .app-card-redesigned .app-name,
+body.dark #apps .app-card-redesigned h3,
+body.dark #apps .app-card-redesigned strong,
+body.dark #apps .app-card-redesigned .card-main,
+body.dark #apps .app-card-redesigned .app-description{
+  color:#edf5ff!important;
+}
+body.dark #apps .app-card-redesigned .update-line{color:#aab8ce!important}
+body.dark #apps .app-card-redesigned .notice{
+  color:#dbe8ff!important;
+  background:#14233a!important;
+  border-color:#263c5e!important;
+}
+@media(max-width:520px){
+  .welcome-line{margin:12px auto 16px!important;min-height:30px}
+  .welcome-line .welcome-typing{font-size:clamp(13px,3.8vw,17px)!important}
+}
