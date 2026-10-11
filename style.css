@@ -3727,3 +3727,25 @@ body.dark .dark-toggle{box-shadow:0 8px 24px rgba(64,126,255,.22),0 0 0 1px rgba
 body.dark .stats-live .live-dot{animation:vipPulse 2.8s ease-in-out infinite}
 @media(max-width:520px){.section-title{font-size:clamp(21px,6vw,28px) !important;gap:9px !important}.section-title::before,.section-title::after{width:24px !important}.youtube-follow-info strong{overflow-wrap:anywhere}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none !important;transition:none !important;scroll-behavior:auto !important}}
+
+
+/* ===== Nghĩalq TV · VIP PRO polish (mobile-first) ===== */
+:root{color-scheme:dark;--vip-cyan:#60caff;--vip-purple:#9b83ff}
+body{background-color:#090d16;background-image:radial-gradient(ellipse at 12% 8%,rgba(48,113,232,.15),transparent 34%),radial-gradient(ellipse at 88% 32%,rgba(132,70,224,.12),transparent 33%),linear-gradient(180deg,#0a0d14,#10131d 55%,#090c13);background-attachment:fixed}
+body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(circle at 20% 35%,rgba(70,157,255,.065),transparent 24%),radial-gradient(circle at 80% 72%,rgba(159,95,255,.06),transparent 26%);animation:vipAmbient 13s ease-in-out infinite alternate}
+@keyframes vipAmbient{from{opacity:.55;transform:scale(1)}to{opacity:1;transform:scale(1.035)}}
+.welcome-marquee{display:flex;justify-content:center;align-items:center;min-height:38px;margin:12px auto 18px;padding:9px 14px;width:fit-content;max-width:92%;overflow:hidden;border:1px solid rgba(102,177,255,.25);border-radius:999px;background:linear-gradient(110deg,rgba(34,67,110,.3),rgba(76,49,127,.25));box-shadow:0 7px 24px rgba(0,0,0,.2),inset 0 1px rgba(255,255,255,.05)}
+.welcome-typing{display:inline-block;max-width:100%;white-space:nowrap;overflow:hidden;color:#eaf5ff;font-weight:800;letter-spacing:.055em;text-align:center;text-shadow:0 0 16px rgba(91,183,255,.25)}
+.welcome-typing::after{content:"";display:inline-block;width:2px;height:1em;margin-left:4px;vertical-align:-.13em;background:var(--vip-cyan);box-shadow:0 0 10px rgba(96,202,255,.8);animation:vipCaret .8s steps(1,end) infinite}
+@keyframes vipCaret{50%{opacity:0}}
+.youtube-follow-card{transition:transform .25s ease,border-color .25s ease,box-shadow .25s ease}
+.youtube-follow-card:active{transform:scale(.985)}
+#page-loader{background:radial-gradient(ellipse at 50% 38%,rgba(47,89,166,.2),transparent 36%),#080b12;backdrop-filter:blur(14px)}
+.loader-card{border:1px solid rgba(110,170,255,.2)!important;border-radius:26px!important;background:linear-gradient(145deg,rgba(24,35,57,.96),rgba(12,17,29,.98))!important;box-shadow:0 25px 80px rgba(0,0,0,.45),0 0 34px rgba(65,123,255,.1)!important}
+.loader-brand{letter-spacing:.06em;text-shadow:0 0 22px rgba(95,169,255,.22)}
+.loader-progress{overflow:hidden;border-radius:999px}
+.loader-progress span{background:linear-gradient(90deg,#4b8dff,#6bd6ff,#a58aff)!important;box-shadow:0 0 14px rgba(83,160,255,.45)}
+body.dark .youtube-follow-card{animation:vipCardIn .65s ease both}
+@keyframes vipCardIn{from{opacity:.7;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:520px){.welcome-marquee{max-width:94%;padding:8px 12px;font-size:13px;letter-spacing:.02em}.welcome-typing{letter-spacing:.025em}.loader-card{max-width:calc(100vw - 36px)}}
+@media(prefers-reduced-motion:reduce){body::before,.welcome-typing::after,body.dark .youtube-follow-card{animation:none!important}}

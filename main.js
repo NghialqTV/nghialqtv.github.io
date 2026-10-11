@@ -461,3 +461,26 @@ function initSiteVisitStats(){
   totalEl.textContent = formatNumber(BASE_TOTAL + sessionAdd);
   todayEl.textContent = `+${formatNumber(BASE_TODAY + sessionAdd)}`;
 }
+
+
+/* ===== VIP PRO WELCOME TYPEWRITER: TYPE OUT + RETRACT ===== */
+(function(){
+  const el = document.getElementById("welcome-typing");
+  if (!el) return;
+  const phrase = "Welcome To My Website!";
+  let index = 0;
+  let deleting = false;
+  function tick(){
+    if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      el.textContent = phrase; return;
+    }
+    el.textContent = phrase.slice(0, index);
+    let delay = deleting ? 48 : 92;
+    if (!deleting && index < phrase.length) index++;
+    else if (!deleting) { deleting = true; delay = 1450; }
+    else if (index > 0) index--;
+    else { deleting = false; delay = 450; }
+    window.setTimeout(tick, delay);
+  }
+  tick();
+})();
