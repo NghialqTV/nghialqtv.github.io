@@ -369,10 +369,13 @@ document.addEventListener("keydown", e => {
   if(e.key === "Escape") closeMapWarning();
 });
 
-/* ===== DARK MODE ===== */
-if(localStorage.getItem("dark") === "true"){
-  document.body.classList.add("dark");
-}
+/* ===== DARK MODE: restore saved preference safely ===== */
+(function(){
+  let saved = null;
+  try { saved = localStorage.getItem("dark"); } catch (_) {}
+  if (saved === "true") document.body.classList.add("dark");
+  else if (saved === "false") document.body.classList.remove("dark");
+})();
 
 /* ===== MOD SKIN DATA ===== */
 fetch("data/mods.json?v="+Date.now())
@@ -401,14 +404,32 @@ fetch("data/mods.json?v="+Date.now())
     `).join("");
   }).catch(console.error);
 
-/* ===== TOGGLE DARK MODE ===== */
-const toggle=document.getElementById("darkToggle");
-if(toggle){
-  toggle.onclick=()=>{
-    document.body.classList.toggle("dark");
-    localStorage.setItem("dark",document.body.classList.contains("dark"));
-  };
-}
+/* ===== THEME SWITCH + CLOCK ===== */
+(function(){
+  const toggle = document.getElementById("darkToggle");
+  function syncThemeButton(){
+    if(!toggle) return;
+    const dark = document.body.classList.contains("dark");
+    toggle.setAttribute("aria-pressed", String(dark));
+    toggle.setAttribute("aria-label", dark ? "Bật chế độ sáng" : "Bật chế độ tối");
+    toggle.title = dark ? "Chuyển sang chế độ sáng" : "Chuyển sang chế độ tối";
+  }
+  syncThemeButton();
+  if(toggle) toggle.addEventListener("click", function(){
+    const dark = document.body.classList.toggle("dark");
+    try { localStorage.setItem("dark", String(dark)); } catch (_) {}
+    syncThemeButton();
+  });
+  const timeEl = document.getElementById("siteClockTime");
+  function updateClock(){
+    if(!timeEl) return;
+    const now = new Date();
+    timeEl.textContent = [now.getHours(),now.getMinutes(),now.getSeconds()].map(n=>String(n).padStart(2,"0")).join(":");
+    timeEl.dateTime = now.toISOString();
+  }
+  updateClock();
+  window.setInterval(updateClock, 1000);
+})();
 
 /* ===== PROFESSIONAL PAGE LOADER ===== */
 (function(){
@@ -468,8 +489,9 @@ function initSiteVisitStats(){
   const el = document.getElementById("welcome-typing");
   if (!el) return;
   const phrase = "Welcome To My Website!";
-  let index = 0;
+  let index = 1;
   let deleting = false;
+  el.textContent = phrase.slice(0, index);
   function tick(){
     if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
       el.textContent = phrase; return;
