@@ -369,13 +369,10 @@ document.addEventListener("keydown", e => {
   if(e.key === "Escape") closeMapWarning();
 });
 
-/* ===== DARK MODE: restore saved preference safely ===== */
-(function(){
-  let saved = null;
-  try { saved = localStorage.getItem("dark"); } catch (_) {}
-  if (saved === "true") document.body.classList.add("dark");
-  else if (saved === "false") document.body.classList.remove("dark");
-})();
+/* ===== DARK MODE ===== */
+if(localStorage.getItem("dark") === "true"){
+  document.body.classList.add("dark");
+}
 
 /* ===== MOD SKIN DATA ===== */
 fetch("data/mods.json?v="+Date.now())
@@ -404,32 +401,14 @@ fetch("data/mods.json?v="+Date.now())
     `).join("");
   }).catch(console.error);
 
-/* ===== THEME SWITCH + CLOCK ===== */
-(function(){
-  const toggle = document.getElementById("darkToggle");
-  function syncThemeButton(){
-    if(!toggle) return;
-    const dark = document.body.classList.contains("dark");
-    toggle.setAttribute("aria-pressed", String(dark));
-    toggle.setAttribute("aria-label", dark ? "Bật chế độ sáng" : "Bật chế độ tối");
-    toggle.title = dark ? "Chuyển sang chế độ sáng" : "Chuyển sang chế độ tối";
-  }
-  syncThemeButton();
-  if(toggle) toggle.addEventListener("click", function(){
-    const dark = document.body.classList.toggle("dark");
-    try { localStorage.setItem("dark", String(dark)); } catch (_) {}
-    syncThemeButton();
-  });
-  const timeEl = document.getElementById("siteClockTime");
-  function updateClock(){
-    if(!timeEl) return;
-    const now = new Date();
-    timeEl.textContent = [now.getHours(),now.getMinutes(),now.getSeconds()].map(n=>String(n).padStart(2,"0")).join(":");
-    timeEl.dateTime = now.toISOString();
-  }
-  updateClock();
-  window.setInterval(updateClock, 1000);
-})();
+/* ===== TOGGLE DARK MODE ===== */
+const toggle=document.getElementById("darkToggle");
+if(toggle){
+  toggle.onclick=()=>{
+    document.body.classList.toggle("dark");
+    localStorage.setItem("dark",document.body.classList.contains("dark"));
+  };
+}
 
 /* ===== PROFESSIONAL PAGE LOADER ===== */
 (function(){
@@ -482,44 +461,3 @@ function initSiteVisitStats(){
   totalEl.textContent = formatNumber(BASE_TOTAL + sessionAdd);
   todayEl.textContent = `+${formatNumber(BASE_TODAY + sessionAdd)}`;
 }
-
-
-/* ===== WELCOME ROTATOR: type out, retract, then switch phrase ===== */
-(function(){
-  const el = document.getElementById("welcome-typing");
-  if (!el) return;
-  const phrases = ["Welcome To My Website!", "Mod Game By Nghĩalq TV"];
-  let phraseIndex = 0;
-  let index = 0;
-  let deleting = false;
-
-  function tick(){
-    const phrase = phrases[phraseIndex];
-    if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      el.textContent = phrases[phraseIndex];
-      window.setTimeout(function(){
-        phraseIndex = (phraseIndex + 1) % phrases.length;
-        tick();
-      }, 2200);
-      return;
-    }
-
-    el.textContent = phrase.slice(0, index);
-    let delay = deleting ? 42 : 82;
-
-    if (!deleting && index < phrase.length) {
-      index++;
-    } else if (!deleting) {
-      deleting = true;
-      delay = 1500;
-    } else if (index > 0) {
-      index--;
-    } else {
-      deleting = false;
-      phraseIndex = (phraseIndex + 1) % phrases.length;
-      delay = 380;
-    }
-    window.setTimeout(tick, delay);
-  }
-  tick();
-})();
