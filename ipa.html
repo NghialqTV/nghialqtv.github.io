@@ -9,7 +9,7 @@
 :root{--bg:#0b1220;--card:#121e31;--line:#26364e;--text:#f3f7ff;--muted:#a8b6cb;--blue:#4da3ff;--gold:#f2c66d}
 *{box-sizing:border-box}body{margin:0;min-height:100vh;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;background:radial-gradient(ellipse at top,#1c3150 0,#0b1220 58%);color:var(--text)}
 .header{padding:25px 18px 17px;display:flex;align-items:center;gap:12px;font-size:22px;font-weight:750;letter-spacing:.2px;max-width:680px;margin:auto}.brand-mark{width:44px;height:44px;border-radius:14px;background:linear-gradient(145deg,#203e64,#101a2b);border:1px solid #45668e;display:grid;place-items:center;box-shadow:0 5px 18px #0004}.brand-mark svg{width:29px;height:29px}.subtitle{max-width:680px;margin:-8px auto 8px;padding:0 20px 12px;color:var(--muted);font-size:13px}
-.container{max-width:680px;margin:auto;padding:10px 16px 32px}.card{display:flex;align-items:center;gap:13px;background:linear-gradient(135deg,#17263c,#111b2c);border:1px solid var(--line);border-radius:18px;padding:14px;margin-bottom:13px;box-shadow:0 9px 24px #0002}.icon{width:54px;height:54px;flex:0 0 54px;border-radius:15px;display:grid;place-items:center;overflow:hidden;background:#203a5b;border:1px solid #3c5878}.icon svg{width:36px;height:36px}.icon.ipa{background:#eaf2ff}.icon.key{background:#342b18;border-color:#766039}.info{min-width:0;flex:1}.info h3{margin:0;font-size:16px;font-weight:700}.info p{margin:5px 0 0;font-size:12px;color:var(--muted);line-height:1.4}.actions{display:flex;flex-direction:column;gap:7px;min-width:94px}.action{border:0;border-radius:10px;padding:9px 10px;font-weight:700;font-size:12px;text-align:center;text-decoration:none;cursor:pointer;white-space:nowrap}.open{background:var(--blue);color:#061629}.getkey{background:#f2c66d;color:#30220a}.action:active{transform:scale(.97)}.footer{max-width:680px;padding:0 20px 28px;margin:auto;text-align:center;color:#8091aa;font-size:11px}.note{display:none;margin:0 0 14px;padding:12px;border-radius:12px;background:#352719;border:1px solid #795b2d;color:#ffe0a0;font-size:13px;line-height:1.5}
+.container{max-width:680px;margin:auto;padding:10px 16px 32px}.card{display:flex;align-items:center;gap:13px;background:linear-gradient(135deg,#17263c,#111b2c);border:1px solid var(--line);border-radius:18px;padding:14px;margin-bottom:13px;box-shadow:0 9px 24px #0002}.icon{width:54px;height:54px;flex:0 0 54px;border-radius:15px;display:grid;place-items:center;overflow:hidden;background:#203a5b;border:1px solid #3c5878}.icon svg{width:36px;height:36px}.icon img{width:100%;height:100%;object-fit:cover;display:block;border-radius:inherit}.icon.ipa{background:#eaf2ff}.icon.key{background:#342b18;border-color:#766039}.info{min-width:0;flex:1}.info h3{margin:0;font-size:16px;font-weight:700}.info p{margin:5px 0 0;font-size:12px;color:var(--muted);line-height:1.4}.actions{display:flex;flex-direction:column;gap:7px;min-width:94px}.action{border:0;border-radius:10px;padding:9px 10px;font-weight:700;font-size:12px;text-align:center;text-decoration:none;cursor:pointer;white-space:nowrap}.open{background:var(--blue);color:#061629}.getkey{background:#f2c66d;color:#30220a}.action:active{transform:scale(.97)}.footer{max-width:680px;padding:0 20px 28px;margin:auto;text-align:center;color:#8091aa;font-size:11px}.note{display:none;margin:0 0 14px;padding:12px;border-radius:12px;background:#352719;border:1px solid #795b2d;color:#ffe0a0;font-size:13px;line-height:1.5}
 @media(max-width:390px){.card{gap:10px;padding:11px}.icon{width:47px;height:47px;flex-basis:47px}.info h3{font-size:14px}.actions{min-width:82px}.action{font-size:11px;padding:9px 7px}}
 </style>
 <script src="tiktok_ads/config.js"></script>
@@ -23,21 +23,21 @@
 
 <!-- IPA Mod Skin: giữ nguyên link hiện tại -->
 <section class="card">
-  <div class="icon ipa" aria-hidden="true"><svg viewBox="0 0 64 64"><path d="M15 7h23l12 12v38H15z" fill="#fff" stroke="#416b9f" stroke-width="3"/><path d="M38 7v13h12" fill="#d6e8ff" stroke="#416b9f" stroke-width="3"/><path d="M23 32h19M23 40h19M23 48h13" stroke="#4d8ed1" stroke-width="3" stroke-linecap="round"/></svg></div>
+  <div class="icon ipa" aria-label="Logo Liên Quân"><img src="assets/icons/ipalq.png" alt="Logo Liên Quân"></div>
   <div class="info"><h3>IPA Mod Skin</h3><p>Cập nhật 03/10 · iOS</p></div>
   <div class="actions"><button class="action open" onclick="openPage('https://nghialqtv.github.io/SubUnlock/?id=ipaios')">Mở mục ↗</button></div>
 </section>
 
 <!-- AoV Map -->
 <section class="card">
-  <div class="icon ipa" aria-label="Logo IPA Mod Skin"><svg viewBox="0 0 64 64"><path d="M15 7h23l12 12v38H15z" fill="#fff" stroke="#416b9f" stroke-width="3"/><path d="M38 7v13h12" fill="#d6e8ff" stroke="#416b9f" stroke-width="3"/><path d="M23 32h19M23 40h19M23 48h13" stroke="#4d8ed1" stroke-width="3" stroke-linecap="round"/></svg></div>
+  <div class="icon ipa" aria-label="Logo Liên Quân"><img src="assets/icons/ipalq.png" alt="Logo Liên Quân"></div>
   <div class="info"><h3>AoV Map</h3><p>Bản đồ · GetKey riêng</p></div>
   <div class="actions"><button class="action open" onclick="openConfigured('map')">Mở AoV Map ↗</button><button class="action getkey" onclick="openConfigured('mapKey')">🔑 GetKey</button></div>
 </section>
 
 <!-- AoV ESP -->
 <section class="card">
-  <div class="icon ipa" aria-label="Logo IPA Mod Skin"><svg viewBox="0 0 64 64"><path d="M15 7h23l12 12v38H15z" fill="#fff" stroke="#416b9f" stroke-width="3"/><path d="M38 7v13h12" fill="#d6e8ff" stroke="#416b9f" stroke-width="3"/><path d="M23 32h19M23 40h19M23 48h13" stroke="#4d8ed1" stroke-width="3" stroke-linecap="round"/></svg></div>
+  <div class="icon ipa" aria-label="Logo Liên Quân"><img src="assets/icons/ipalq.png" alt="Logo Liên Quân"></div>
   <div class="info"><h3>AoV ESP</h3><p>ESP · GetKey riêng</p></div>
   <div class="actions"><button class="action open" onclick="openConfigured('esp')">Mở AoV ESP ↗</button><button class="action getkey" onclick="openConfigured('espKey')">🔑 GetKey</button></div>
 </section>
