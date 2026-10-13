@@ -3,152 +3,162 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#080b16">
-  <title>File Lẻ | NghĩaLQ TV</title>
+  <meta name="theme-color" content="#080b12">
+  <title>File Mod Mới Nhất | NghĩaLQ TV</title>
+
   <style>
     :root {
-      --bg: #080b16;
-      --panel: #111625;
-      --panel2: #151b2b;
-      --border: #293145;
-      --primary: #ff4fa3;
-      --primary2: #ff82bd;
-      --text: #f5f6fb;
-      --sub: #9aa3b8;
+      --bg: #080b12;
+      --panel: #111725;
+      --panel2: #171e2d;
+      --border: #252e40;
+      --lime: #baff24;
+      --lime-dark: #182507;
+      --text: #f4f6fb;
+      --muted: #98a2b7;
     }
 
     * { box-sizing: border-box; }
+
+    html { color-scheme: dark; }
 
     body {
       margin: 0;
       min-height: 100vh;
       color: var(--text);
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       background:
-        radial-gradient(ellipse at top, #211328 0%, #090c17 48%, #070914 100%);
+        radial-gradient(ellipse at 50% 0%, #161326 0%, #090c15 48%, #070910 100%);
+      font-family: Inter, "Arial", "Helvetica Neue", sans-serif;
     }
 
-    header {
-      padding: 28px 18px 24px;
-      border-bottom: 1px solid #24283a;
-      background: rgba(7, 9, 20, .92);
+    .page-header {
+      padding: 25px 18px 20px;
+      border-bottom: 1px solid #202638;
+      background: rgba(7, 9, 16, .92);
     }
 
-    .head-inner {
-      max-width: 1050px;
-      margin: 0 auto;
+    .header-inner,
+    .toolbar,
+    .file-grid {
+      width: min(100%, 1050px);
+      margin-inline: auto;
     }
 
     .eyebrow {
       display: flex;
       align-items: center;
       gap: 10px;
-      margin-bottom: 12px;
-      color: var(--primary2);
+      margin-bottom: 25px;
+      color: var(--muted);
       font-size: 12px;
-      font-weight: 800;
-      letter-spacing: 2px;
+      font-weight: 900;
+      letter-spacing: 2.5px;
       text-transform: uppercase;
     }
 
     .eyebrow::before {
       content: "";
+      display: block;
       width: 34px;
       height: 4px;
-      border-radius: 8px;
-      background: var(--primary);
+      flex: 0 0 34px;
+      background: var(--lime);
     }
 
-    header h1 {
+    h1 {
       margin: 0;
-      font-size: clamp(28px, 5vw, 46px);
-      line-height: 1.05;
-      font-weight: 900;
-      letter-spacing: -1.5px;
+      max-width: 850px;
+      color: #f5f6fb;
+      font-family: Impact, "Arial Black", "Helvetica Neue", sans-serif;
+      font-size: clamp(32px, 7vw, 56px);
+      font-weight: 1000;
+      letter-spacing: -1.7px;
+      line-height: .98;
+      text-transform: uppercase;
     }
 
-    header p {
-      margin: 12px 0 0;
-      color: var(--sub);
-      font-size: 14px;
+    .subtitle {
+      margin: 13px 0 0;
+      color: #929caf;
+      font-size: 13px;
+      font-weight: 600;
     }
 
     .toolbar {
-      max-width: 1050px;
-      margin: 22px auto 0;
       padding: 0 18px;
+      margin-top: 24px;
     }
 
     .search-wrap {
       display: flex;
       align-items: center;
-      gap: 12px;
-      min-height: 62px;
-      padding: 0 17px;
-      border: 1px solid #30374b;
-      border-radius: 18px;
-      background: #121727;
-      box-shadow: 0 8px 24px #0002;
+      gap: 13px;
+      min-height: 64px;
+      padding: 0 18px;
+      border: 1px solid #2a3347;
+      border-radius: 22px;
+      background: #111725;
+      box-shadow: 0 8px 22px #0002;
     }
 
     .search-icon {
-      color: var(--sub);
-      font-size: 23px;
+      color: #8994aa;
+      font-size: 25px;
       line-height: 1;
     }
 
     #search {
       width: 100%;
       min-width: 0;
+      padding: 0;
       border: 0;
-      outline: 0;
+      outline: none;
       color: var(--text);
       background: transparent;
       font: inherit;
       font-size: 15px;
     }
 
-    #search::placeholder { color: #7f879b; }
+    #search::placeholder { color: #747f95; }
 
     #count {
-      color: var(--primary2);
-      font-size: 13px;
-      font-weight: 800;
+      color: var(--lime);
+      font-size: 14px;
+      font-weight: 1000;
       white-space: nowrap;
     }
 
-    .container {
+    .file-grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 16px;
-      max-width: 1050px;
-      margin: 0 auto;
-      padding: 24px 18px 30px;
+      padding: 0 18px 30px;
+      margin-top: 24px;
     }
 
-    .card {
-      position: relative;
+    .file-card {
       min-width: 0;
       overflow: hidden;
-      border: 1px solid #30374b;
-      border-radius: 23px;
-      background: linear-gradient(180deg, #151a2a, #101523 70%);
-      box-shadow: 0 10px 26px #0002;
-      transition: transform .2s ease, border-color .2s ease;
+      border: 1px solid #293247;
+      border-radius: 24px;
+      background: linear-gradient(180deg, #141b29 0%, #101624 100%);
+      box-shadow: 0 9px 24px #0002;
+      transition: border-color .18s ease, transform .18s ease;
     }
 
-    .card:hover {
-      transform: translateY(-3px);
-      border-color: #ff4fa38a;
+    .file-card:hover {
+      transform: translateY(-2px);
+      border-color: #baff2480;
     }
 
-    /* Ảnh bìa tỷ lệ 2:1 giống mẫu bạn gửi */
+    /* Tỷ lệ bìa 2:1 theo ảnh mẫu */
     .cover {
       position: relative;
       width: 100%;
       aspect-ratio: 2 / 1;
       overflow: hidden;
-      background: linear-gradient(135deg, #482043, #17213d 55%, #24132d);
+      background: #171c2b;
+      isolation: isolate;
     }
 
     .cover-image {
@@ -162,176 +172,216 @@
     }
 
     .cover::after {
-      content: "";
       position: absolute;
-      inset: 45% 0 0;
       z-index: 1;
+      inset: 50% 0 0;
+      content: "";
       pointer-events: none;
-      background: linear-gradient(180deg, transparent, rgba(8, 11, 22, .48));
+      background: linear-gradient(180deg, transparent, rgba(7, 10, 17, .48));
     }
 
-    .free {
+    .item-number {
+      position: absolute;
+      z-index: 2;
+      top: 12px;
+      left: 12px;
+      display: grid;
+      min-width: 54px;
+      height: 48px;
+      padding: 0 8px;
+      place-items: center;
+      border: 1px solid #ffffff20;
+      border-radius: 13px;
+      color: #fff;
+      background: rgba(14, 19, 31, .84);
+      box-shadow: 0 5px 14px #0003;
+      font-size: 15px;
+      font-weight: 1000;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .free-badge {
       position: absolute;
       z-index: 3;
       top: 12px;
       right: 12px;
-      padding: 8px 11px;
-      border: 1px solid #ffffff20;
-      border-radius: 10px;
-      color: #250a19;
-      background: var(--primary);
-      font-size: 10px;
-      font-weight: 900;
-      box-shadow: 0 5px 18px #ff4fa326;
+      padding: 12px 13px;
+      border-radius: 11px;
+      color: #172006;
+      background: var(--lime);
+      box-shadow: 0 6px 18px #baff2420;
+      font-size: 11px;
+      font-weight: 1000;
+      white-space: nowrap;
     }
 
-    .card-body { padding: 15px 16px 17px; }
+    .card-body { padding: 18px 19px 20px; }
 
-    .title {
-      margin-bottom: 13px;
+    .item-label {
+      margin-bottom: 9px;
+      color: var(--lime);
+      font-size: 11px;
+      font-weight: 1000;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+
+    .file-title {
+      min-height: 2.6em;
+      margin: 0 0 16px;
+      color: #f4f6fb;
+      font-size: clamp(17px, 2.4vw, 22px);
+      font-weight: 850;
+      line-height: 1.28;
+      text-transform: uppercase;
       overflow-wrap: anywhere;
-      color: var(--text);
-      font-size: 17px;
-      font-weight: 800;
-      line-height: 1.35;
     }
 
-    .bottom {
+    .card-footer {
       display: flex;
-      align-items: center;
+      align-items: flex-end;
       justify-content: space-between;
       gap: 10px;
     }
 
-    .desc {
-      min-width: 0;
+    .file-desc {
       max-width: 62%;
-      padding: 7px 9px;
-      border: 1px solid #74405d;
-      border-radius: 10px;
-      color: #ffd2e7;
+      min-width: 0;
+      padding: 9px 10px;
+      border: 1px solid #30394d;
+      border-radius: 13px;
+      color: #d7deeb;
+      background: #0e1420;
       font-size: 10px;
-      font-weight: 800;
+      font-weight: 900;
       line-height: 1.35;
       overflow-wrap: anywhere;
       text-transform: uppercase;
     }
 
-    .download {
+    .download-btn {
       display: inline-flex;
       flex: 0 0 auto;
       align-items: center;
       justify-content: center;
       gap: 9px;
-      min-height: 48px;
+      min-width: 112px;
+      min-height: 64px;
       padding: 0 17px;
       border: 0;
-      border-radius: 13px;
-      color: #210b19;
-      background: var(--primary);
-      box-shadow: 0 5px 18px #ff4fa326;
+      border-radius: 16px;
+      color: #152004;
+      background: var(--lime);
+      box-shadow: 0 7px 22px #baff241c;
       font-size: 12px;
-      font-weight: 900;
+      font-weight: 1000;
+      letter-spacing: .3px;
       text-decoration: none;
-      white-space: nowrap;
       cursor: pointer;
+      white-space: nowrap;
+      transition: filter .15s ease, transform .15s ease;
     }
 
-    .download:hover { background: #ff83bd; }
+    .download-btn:hover {
+      filter: brightness(1.08);
+      transform: translateY(-1px);
+    }
 
-    .download[aria-disabled="true"] {
-      opacity: .55;
+    .download-btn[aria-disabled="true"] {
+      opacity: .6;
       cursor: not-allowed;
+    }
+
+    .download-arrow {
+      font-size: 22px;
+      line-height: .8;
     }
 
     .empty {
       grid-column: 1 / -1;
-      padding: 42px 12px;
-      border: 1px dashed #343b4e;
+      padding: 38px 15px;
+      border: 1px dashed #30394d;
       border-radius: 18px;
-      color: var(--sub);
+      color: var(--muted);
       text-align: center;
     }
 
-    .back {
+    .back-link {
       display: block;
       width: fit-content;
       margin: 0 auto 28px;
-      padding: 11px 17px;
-      border: 1px solid #343b4e;
+      padding: 12px 17px;
+      border: 1px solid #30394d;
       border-radius: 12px;
-      color: var(--primary2);
+      color: var(--lime);
       text-decoration: none;
+      font-size: 13px;
+      font-weight: 800;
     }
 
-    .back:hover { background: #ff4fa314; }
+    .back-link:hover { background: #baff2410; }
 
     @media (min-width: 760px) {
-      .container { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .file-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .page-header { padding-top: 32px; }
     }
 
-    @media (max-width: 380px) {
-      .container {
-        gap: 10px;
-        padding-right: 10px;
-        padding-left: 10px;
-      }
-
-      .card { border-radius: 18px; }
-      .card-body { padding: 12px; }
-      .title { font-size: 15px; }
-      .free { top: 8px; right: 8px; padding: 7px 8px; }
-      .desc { padding: 6px 7px; font-size: 9px; }
-      .download { min-height: 44px; padding: 0 11px; }
+    @media (max-width: 390px) {
+      .page-header { padding: 22px 15px 18px; }
+      .toolbar { padding-inline: 14px; margin-top: 20px; }
+      .file-grid { gap: 11px; padding-inline: 12px; margin-top: 20px; }
+      .file-card { border-radius: 20px; }
+      .card-body { padding: 13px 12px 14px; }
+      .file-title { font-size: 16px; margin-bottom: 13px; }
+      .item-label { font-size: 10px; }
+      .item-number { top: 8px; left: 8px; min-width: 46px; height: 42px; font-size: 13px; }
+      .free-badge { top: 8px; right: 8px; padding: 9px 9px; font-size: 9px; }
+      .file-desc { max-width: 56%; padding: 8px; font-size: 9px; }
+      .download-btn { min-width: 0; min-height: 52px; padding-inline: 11px; gap: 6px; font-size: 11px; border-radius: 13px; }
+      .download-arrow { font-size: 19px; }
     }
 
     @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
-        transition-duration: .01ms !important;
-        scroll-behavior: auto !important;
-      }
+      *, *::before, *::after { transition: none !important; }
     }
   </style>
 
-  <!-- Giữ cổng quảng cáo tải xuống hiện tại -->
+  <!-- Giữ nguyên cổng quảng cáo tải xuống hiện tại -->
   <script src="tiktok_ads/config.js"></script>
   <script src="tiktok_ads/tiktok-gate.js"></script>
 </head>
 
 <body>
-  <header>
-    <div class="head-inner">
+  <header class="page-header">
+    <div class="header-inner">
       <div class="eyebrow">Bộ sưu tập</div>
-      <h1>FILE MOD MỚI NHẤT</h1>
-      <p>File Mod Skin Lẻ · Bot Auto Mod Skin · Cập nhật mới</p>
+      <h1>File Mod Mới Nhất</h1>
+      <p class="subtitle">File Mod Skin Lẻ · Bot Auto Mod Skin · Cập nhật mới</p>
     </div>
   </header>
 
   <section class="toolbar">
     <label class="search-wrap">
       <span class="search-icon" aria-hidden="true">⌕</span>
-      <input
-        id="search"
-        type="search"
-        placeholder="Tìm tên MOD, mã hoặc thể loại..."
-        autocomplete="off"
-        aria-label="Tìm file mod"
-      >
+      <input id="search" type="search"
+             placeholder="Tìm tên MOD, mã hoặc thể loại..."
+             autocomplete="off" aria-label="Tìm file mod">
       <span id="count">0/0</span>
     </label>
   </section>
 
-  <main class="container" id="list" aria-live="polite"></main>
+  <main class="file-grid" id="list" aria-live="polite"></main>
 
-  <a class="back" href="resources.html">← Quay lại Tài Nguyên</a>
+  <a class="back-link" href="resources.html">← Quay lại Tài Nguyên</a>
 
   <script>
     /*
-      Dữ liệu vẫn lấy từ data/file-le.json.
-      Không cần sửa JSON và không thay đổi link tải hiện có.
-      Ảnh bìa SVG được tạo tự động theo tên từng mục.
+      Dữ liệu vẫn đọc từ data/file-le.json.
+      Không dùng category/tab phân loại.
+      Ảnh bìa thật: đặt file trong assets/covers/ và điền đường dẫn
+      vào trường "image" của mục tương ứng trong file JSON.
+      Nếu chưa có ảnh thật, dùng ảnh SVG dự phòng được tạo tự động.
     */
-
     let data = [];
 
     const list = document.getElementById("list");
@@ -347,18 +397,16 @@
         .replace(/'/g, "&apos;");
     }
 
-    function wrapTitle(name, maxChars = 23, maxLines = 3) {
+    function wrapTitle(name, maxChars = 22, maxLines = 3) {
       const words = String(name || "MOD SKIN")
         .toLocaleUpperCase("vi")
         .trim()
         .split(/\s+/);
-
       const lines = [];
       let line = "";
 
       for (const word of words) {
         const candidate = line ? line + " " + word : word;
-
         if (candidate.length > maxChars && line) {
           lines.push(line);
           line = word;
@@ -368,23 +416,16 @@
       }
 
       if (line) lines.push(line);
-
       if (lines.length > maxLines) {
         lines.length = maxLines;
-        const last = lines[maxLines - 1];
-        lines[maxLines - 1] =
-          last.length > maxChars - 3
-            ? last.slice(0, maxChars - 3) + "..."
-            : last + "...";
+        lines[maxLines - 1] = lines[maxLines - 1].slice(0, maxChars - 3) + "...";
       }
-
       return lines;
     }
 
-    function makeCover(item) {
+    function makeCover(item, index) {
       const name = String(item.name || "MOD SKIN");
       let hash = 0;
-
       for (let i = 0; i < name.length; i++) {
         hash = (hash * 31 + name.charCodeAt(i)) >>> 0;
       }
@@ -392,20 +433,14 @@
       const hue = hash % 360;
       const hue2 = (hue + 65 + (hash % 70)) % 360;
       const lines = wrapTitle(name);
-
-      const titleSvg = lines.map((line, index) => {
-        return `<text
-          x="34"
-          y="${145 + index * 39}"
-          font-family="Arial, sans-serif"
-          font-size="31"
-          font-weight="900"
-          fill="#ffffff">${escapeSvg(line)}</text>`;
-      }).join("");
+      const titleSvg = lines.map((line, lineIndex) =>
+        `<text x="38" y="${145 + lineIndex * 39}"
+          font-family="Arial, sans-serif" font-size="30"
+          font-weight="900" fill="#fff">${escapeSvg(line)}</text>`
+      ).join("");
 
       const svg = `
-        <svg xmlns="http://www.w3.org/2000/svg"
-             width="720" height="360" viewBox="0 0 720 360">
+        <svg xmlns="http://www.w3.org/2000/svg" width="720" height="360" viewBox="0 0 720 360">
           <defs>
             <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
               <stop offset="0" stop-color="#080b16"/>
@@ -417,59 +452,45 @@
               <stop offset="1" stop-color="hsl(${hue2} 100% 68%)" stop-opacity="0"/>
             </radialGradient>
             <pattern id="grid" width="28" height="28" patternUnits="userSpaceOnUse">
-              <path d="M28 0H0V28" fill="none" stroke="#ffffff" stroke-opacity=".08"/>
+              <path d="M28 0H0V28" fill="none" stroke="#fff" stroke-opacity=".08"/>
             </pattern>
           </defs>
-
           <rect width="720" height="360" fill="url(#bg)"/>
           <rect width="720" height="360" fill="url(#grid)"/>
-          <circle cx="575" cy="125" r="190" fill="url(#glow)" opacity=".72"/>
-
-          <path d="M430 360 720 70V360Z"
-                fill="hsl(${hue2} 95% 60%)" opacity=".15"/>
-          <path d="M0 290 290 0H385L95 360H0Z"
-                fill="#ffffff" opacity=".035"/>
-
-          <rect x="22" y="22" width="676" height="316" rx="20"
-                fill="none" stroke="#ffffff" stroke-opacity=".28" stroke-width="2"/>
-
-          <rect x="34" y="34" width="142" height="30" rx="8" fill="#ff4fa3"/>
-          <text x="105" y="54" text-anchor="middle"
-                font-family="Arial, sans-serif" font-size="13"
-                font-weight="900" fill="#230b19">NGHĨALQ TV</text>
-
-          <text x="680" y="55" text-anchor="end"
-                font-family="Arial, sans-serif" font-size="16"
-                font-weight="800" fill="#ffffff">S4 • 2026</text>
-
+          <circle cx="570" cy="125" r="190" fill="url(#glow)" opacity=".72"/>
+          <path d="M430 360 720 70V360Z" fill="hsl(${hue2} 95% 60%)" opacity=".15"/>
+          <path d="M0 290 290 0H385L95 360H0Z" fill="#fff" opacity=".035"/>
+          <rect x="22" y="22" width="676" height="316" rx="20" fill="none" stroke="#fff" stroke-opacity=".28" stroke-width="2"/>
+          <rect x="34" y="34" width="142" height="30" rx="8" fill="#baff24"/>
+          <text x="105" y="54" text-anchor="middle" font-family="Arial,sans-serif" font-size="13" font-weight="900" fill="#172006">NGHĨALQ TV</text>
+          <text x="680" y="55" text-anchor="end" font-family="Arial,sans-serif" font-size="16" font-weight="800" fill="#fff">S4 • 2026</text>
           <g transform="translate(525 102)" opacity=".85">
-            <circle cx="68" cy="68" r="66" fill="none"
-                    stroke="#ffffff" stroke-opacity=".34" stroke-width="2"/>
-            <circle cx="68" cy="68" r="47" fill="none"
-                    stroke="#ff82bd" stroke-width="3"/>
-            <path d="M68 15 80 56 121 68 80 80 68 121 56 80 15 68 56 56Z"
-                  fill="#ffffff" opacity=".88"/>
+            <circle cx="68" cy="68" r="66" fill="none" stroke="#fff" stroke-opacity=".34" stroke-width="2"/>
+            <circle cx="68" cy="68" r="47" fill="none" stroke="#baff24" stroke-width="3"/>
+            <path d="M68 15 80 56 121 68 80 80 68 121 56 80 15 68 56 56Z" fill="#fff" opacity=".88"/>
           </g>
-
           ${titleSvg}
-
-          <rect x="34" y="273" width="180" height="5" rx="2.5" fill="#ff4fa3"/>
-          <text x="34" y="307" font-family="Arial, sans-serif"
-                font-size="16" font-weight="700" fill="#ffd5e8"
-                letter-spacing="3">MOD RESOURCE • FREE</text>
+          <rect x="38" y="273" width="180" height="5" rx="2.5" fill="#baff24"/>
+          <text x="38" y="307" font-family="Arial,sans-serif" font-size="16" font-weight="700" fill="#e7ffb8" letter-spacing="3">MOD RESOURCE • FREE</text>
         </svg>`;
-
       return "data:image/svg+xml;charset=UTF-8," + encodeURIComponent(svg);
+    }
+
+    function isCustomCover(path) {
+      return typeof path === "string" &&
+        path.trim() !== "" &&
+        path.startsWith("assets/covers/");
     }
 
     function renderList() {
       const query = searchInput.value.trim().toLocaleLowerCase("vi");
-
-      const filtered = data.filter((item, index) => {
-        const text = `${item.name || ""} ${item.desc || ""} ${item.link || ""} ${index + 1}`
-          .toLocaleLowerCase("vi");
-        return text.includes(query);
-      });
+      const filtered = data
+        .map((item, originalIndex) => ({ item, originalIndex }))
+        .filter(({ item, originalIndex }) => {
+          const searchable = `${item.name || ""} ${item.desc || ""} ${item.link || ""} ${originalIndex + 1}`
+            .toLocaleLowerCase("vi");
+          return searchable.includes(query);
+        });
 
       list.replaceChildren();
       count.textContent = `${filtered.length}/${data.length}`;
@@ -482,45 +503,58 @@
         return;
       }
 
-      filtered.forEach((item) => {
+      filtered.forEach(({ item, originalIndex }) => {
         const card = document.createElement("article");
-        card.className = "card";
-
+        card.className = "file-card";
         const unavailable = !item.link || item.link === "#";
+        const number = String(originalIndex + 1).padStart(3, "0");
 
         card.innerHTML = `
           <div class="cover">
             <img class="cover-image" alt="" loading="lazy">
-            <span class="free">MIỄN PHÍ</span>
+            <span class="item-number">${number}</span>
+            <span class="free-badge">MIỄN PHÍ</span>
           </div>
           <div class="card-body">
-            <div class="title"></div>
-            <div class="bottom">
-              <span class="desc"></span>
-              <a class="download" href="${unavailable ? "#" : item.link}"
-                 ${unavailable ? 'aria-disabled="true"' : 'target="_blank" rel="noopener noreferrer"'}>
-                TẢI <span aria-hidden="true">↓</span>
+            <div class="item-label">MOD #${number}</div>
+            <h2 class="file-title"></h2>
+            <div class="card-footer">
+              <span class="file-desc"></span>
+              <a class="download-btn" href="#">
+                TẢI <span class="download-arrow" aria-hidden="true">↓</span>
               </a>
             </div>
           </div>
         `;
 
         const coverImage = card.querySelector(".cover-image");
-        coverImage.src = makeCover(item);
+        const fallbackCover = makeCover(item, originalIndex);
+
+        if (isCustomCover(item.image)) {
+          coverImage.src = item.image;
+          coverImage.onerror = () => {
+            coverImage.onerror = null;
+            coverImage.src = fallbackCover;
+          };
+        } else {
+          coverImage.src = fallbackCover;
+        }
+
         coverImage.alt = `Ảnh bìa ${item.name || "mod skin"}`;
+        card.querySelector(".file-title").textContent = item.name || "File Mod";
+        card.querySelector(".file-desc").textContent = item.desc || "File mod skin";
 
-        card.querySelector(".title").textContent = item.name || "File Mod";
-        card.querySelector(".desc").textContent = item.desc || "File mod skin";
+        const button = card.querySelector(".download-btn");
+        if (unavailable) {
+          button.setAttribute("aria-disabled", "true");
+        }
 
-        const button = card.querySelector(".download");
         button.addEventListener("click", (event) => {
+          event.preventDefault();
           if (unavailable) {
-            event.preventDefault();
             alert("File này chưa có link tải!");
             return;
           }
-
-          event.preventDefault();
 
           if (typeof tiktokAdGate === "function") {
             tiktokAdGate(item.link);
@@ -541,17 +575,13 @@
         return response.json();
       })
       .then((items) => {
-        if (!Array.isArray(items)) {
-          throw new Error("Dữ liệu JSON không hợp lệ");
-        }
-
+        if (!Array.isArray(items)) throw new Error("Dữ liệu JSON không hợp lệ");
         data = items;
         renderList();
       })
       .catch((error) => {
         console.error("Không tải được data/file-le.json:", error);
-        list.innerHTML =
-          '<div class="empty">Không tải được dữ liệu file. Hãy kiểm tra data/file-le.json.</div>';
+        list.innerHTML = '<div class="empty">Không tải được dữ liệu file. Hãy kiểm tra data/file-le.json.</div>';
         count.textContent = "0/0";
       });
   </script>
