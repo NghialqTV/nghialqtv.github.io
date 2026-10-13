@@ -2,9 +2,9 @@
 <html lang="vi">
 <head>
   <meta charset="UTF-8">
-  <title>File Lẻ | NghĩaLQ TV</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+  <meta name="theme-color" content="#080b16">
+  <title>File Lẻ | NghĩaLQ TV</title>
   <style>
     :root {
       --bg: #080b16;
@@ -16,165 +16,544 @@
       --text: #f5f6fb;
       --sub: #9aa3b8;
     }
+
     * { box-sizing: border-box; }
+
     body {
       margin: 0;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      color: var(--text);
-      background: radial-gradient(ellipse at top, #171125 0%, #090c17 48%, #070914 100%);
       min-height: 100vh;
+      color: var(--text);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(ellipse at top, #211328 0%, #090c17 48%, #070914 100%);
     }
+
     header {
       padding: 28px 18px 24px;
       border-bottom: 1px solid #24283a;
       background: rgba(7, 9, 20, .92);
-      text-align: left;
     }
-    .head-inner { max-width: 1050px; margin: auto; }
+
+    .head-inner {
+      max-width: 1050px;
+      margin: 0 auto;
+    }
+
     .eyebrow {
-      display: flex; align-items: center; gap: 10px;
-      color: var(--primary2); font-size: 12px; font-weight: 800;
-      letter-spacing: 2px; text-transform: uppercase; margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+      color: var(--primary2);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
     }
-    .eyebrow::before { content: ""; width: 34px; height: 4px; background: var(--primary); border-radius: 8px; }
-    header h1 { margin: 0; font-size: clamp(28px, 5vw, 46px); line-height: 1.05; font-weight: 900; letter-spacing: -1.5px; }
-    header p { margin: 12px 0 0; color: var(--sub); font-size: 14px; }
-    .toolbar { max-width: 1050px; margin: 22px auto 0; padding: 0 18px; }
+
+    .eyebrow::before {
+      content: "";
+      width: 34px;
+      height: 4px;
+      border-radius: 8px;
+      background: var(--primary);
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: clamp(28px, 5vw, 46px);
+      line-height: 1.05;
+      font-weight: 900;
+      letter-spacing: -1.5px;
+    }
+
+    header p {
+      margin: 12px 0 0;
+      color: var(--sub);
+      font-size: 14px;
+    }
+
+    .toolbar {
+      max-width: 1050px;
+      margin: 22px auto 0;
+      padding: 0 18px;
+    }
+
     .search-wrap {
-      display: flex; align-items: center; gap: 12px;
-      background: #121727; border: 1px solid #30374b; border-radius: 18px;
-      padding: 0 17px; min-height: 62px; box-shadow: 0 8px 24px #0002;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-height: 62px;
+      padding: 0 17px;
+      border: 1px solid #30374b;
+      border-radius: 18px;
+      background: #121727;
+      box-shadow: 0 8px 24px #0002;
     }
-    .search-icon { color: var(--sub); font-size: 23px; }
-    #search { width: 100%; min-width: 0; background: transparent; border: 0; outline: 0; color: var(--text); font: inherit; font-size: 15px; }
+
+    .search-icon {
+      color: var(--sub);
+      font-size: 23px;
+      line-height: 1;
+    }
+
+    #search {
+      width: 100%;
+      min-width: 0;
+      border: 0;
+      outline: 0;
+      color: var(--text);
+      background: transparent;
+      font: inherit;
+      font-size: 15px;
+    }
+
     #search::placeholder { color: #7f879b; }
-    #count { color: var(--primary2); font-weight: 800; font-size: 13px; white-space: nowrap; }
+
+    #count {
+      color: var(--primary2);
+      font-size: 13px;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
     .container {
-      max-width: 1050px; margin: 0 auto; padding: 24px 18px 30px;
-      display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+      max-width: 1050px;
+      margin: 0 auto;
+      padding: 24px 18px 30px;
     }
+
     .card {
-      min-width: 0; position: relative; overflow: hidden; border-radius: 23px;
-      border: 1px solid #30374b; background: linear-gradient(180deg, #151a2a, #101523 70%);
-      box-shadow: 0 10px 26px #0002; transition: transform .2s, border-color .2s;
+      position: relative;
+      min-width: 0;
+      overflow: hidden;
+      border: 1px solid #30374b;
+      border-radius: 23px;
+      background: linear-gradient(180deg, #151a2a, #101523 70%);
+      box-shadow: 0 10px 26px #0002;
+      transition: transform .2s ease, border-color .2s ease;
     }
-    .card:hover { transform: translateY(-3px); border-color: #ff4fa38a; }
+
+    .card:hover {
+      transform: translateY(-3px);
+      border-color: #ff4fa38a;
+    }
+
+    /* Ảnh bìa tỷ lệ 2:1 giống mẫu bạn gửi */
     .cover {
-      height: 165px; position: relative; overflow: hidden; display: flex;
-      align-items: center; justify-content: center;
+      position: relative;
+      width: 100%;
+      aspect-ratio: 2 / 1;
+      overflow: hidden;
       background: linear-gradient(135deg, #482043, #17213d 55%, #24132d);
     }
-    .cover::before, .cover::after { display:none; }
-    .cover::before { width: 220px; height: 220px; right: -35px; top: -105px; background: radial-gradient(circle, #ff82bd80, transparent 68%); }
-    .cover::after { width: 180px; height: 180px; left: -65px; bottom: -115px; background: radial-gradient(circle, #a855f780, transparent 70%); }
-    .cover-image { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:1; }
-    .free { position:absolute; z-index:3; top:12px; right:12px; padding:8px 11px; border-radius:10px; color:#250a19; background:var(--primary); font-size:10px; font-weight:900; }
+
+    .cover-image {
+      position: absolute;
+      inset: 0;
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    .cover::after {
+      content: "";
+      position: absolute;
+      inset: 45% 0 0;
+      z-index: 1;
+      pointer-events: none;
+      background: linear-gradient(180deg, transparent, rgba(8, 11, 22, .48));
+    }
+
+    .free {
+      position: absolute;
+      z-index: 3;
+      top: 12px;
+      right: 12px;
+      padding: 8px 11px;
+      border: 1px solid #ffffff20;
+      border-radius: 10px;
+      color: #250a19;
+      background: var(--primary);
+      font-size: 10px;
+      font-weight: 900;
+      box-shadow: 0 5px 18px #ff4fa326;
+    }
+
     .card-body { padding: 15px 16px 17px; }
-    .title { font-size: 17px; line-height: 1.3; font-weight: 800; margin-bottom: 13px; overflow-wrap: anywhere; }
-    .bottom { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
-    .desc { color:#ffd2e7; border:1px solid #74405d; border-radius:10px; padding:7px 9px; font-size:10px; font-weight:800; text-transform:uppercase; }
-    .download { display: inline-flex; align-items: center; justify-content: center; gap: 9px; min-height: 48px; padding: 0 17px; border-radius: 13px; background: var(--primary); color: #210b19; font-weight: 900; font-size: 12px; text-decoration: none; border: 0; cursor: pointer; box-shadow: 0 5px 18px #ff4fa326; white-space: nowrap; }
+
+    .title {
+      margin-bottom: 13px;
+      overflow-wrap: anywhere;
+      color: var(--text);
+      font-size: 17px;
+      font-weight: 800;
+      line-height: 1.35;
+    }
+
+    .bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .desc {
+      min-width: 0;
+      max-width: 62%;
+      padding: 7px 9px;
+      border: 1px solid #74405d;
+      border-radius: 10px;
+      color: #ffd2e7;
+      font-size: 10px;
+      font-weight: 800;
+      line-height: 1.35;
+      overflow-wrap: anywhere;
+      text-transform: uppercase;
+    }
+
+    .download {
+      display: inline-flex;
+      flex: 0 0 auto;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      min-height: 48px;
+      padding: 0 17px;
+      border: 0;
+      border-radius: 13px;
+      color: #210b19;
+      background: var(--primary);
+      box-shadow: 0 5px 18px #ff4fa326;
+      font-size: 12px;
+      font-weight: 900;
+      text-decoration: none;
+      white-space: nowrap;
+      cursor: pointer;
+    }
+
     .download:hover { background: #ff83bd; }
-    .empty { grid-column: 1 / -1; text-align: center; padding: 42px 12px; color: var(--sub); border: 1px dashed #343b4e; border-radius: 18px; }
-    .back { display: block; text-align: center; margin: 0 auto 28px; width: fit-content; padding: 11px 17px; border-radius: 12px; border: 1px solid #343b4e; color: var(--primary2); text-decoration: none; }
+
+    .download[aria-disabled="true"] {
+      opacity: .55;
+      cursor: not-allowed;
+    }
+
+    .empty {
+      grid-column: 1 / -1;
+      padding: 42px 12px;
+      border: 1px dashed #343b4e;
+      border-radius: 18px;
+      color: var(--sub);
+      text-align: center;
+    }
+
+    .back {
+      display: block;
+      width: fit-content;
+      margin: 0 auto 28px;
+      padding: 11px 17px;
+      border: 1px solid #343b4e;
+      border-radius: 12px;
+      color: var(--primary2);
+      text-decoration: none;
+    }
+
     .back:hover { background: #ff4fa314; }
-    @media (min-width: 760px) { .container { grid-template-columns: repeat(3, minmax(0, 1fr)); } .cover { height: 185px; } }
-    @media (max-width: 380px) { .container { gap: 10px; padding-left: 10px; padding-right: 10px; } .card-body { padding: 12px; } .title { font-size: 15px; } .cover { height: 130px; } .download { padding: 0 11px; } }
+
+    @media (min-width: 760px) {
+      .container { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    }
+
+    @media (max-width: 380px) {
+      .container {
+        gap: 10px;
+        padding-right: 10px;
+        padding-left: 10px;
+      }
+
+      .card { border-radius: 18px; }
+      .card-body { padding: 12px; }
+      .title { font-size: 15px; }
+      .free { top: 8px; right: 8px; padding: 7px 8px; }
+      .desc { padding: 6px 7px; font-size: 9px; }
+      .download { min-height: 44px; padding: 0 11px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        transition-duration: .01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
   </style>
-<script src="tiktok_ads/config.js"></script>
-<script src="tiktok_ads/tiktok-gate.js"></script>
+
+  <!-- Giữ cổng quảng cáo tải xuống hiện tại -->
+  <script src="tiktok_ads/config.js"></script>
+  <script src="tiktok_ads/tiktok-gate.js"></script>
 </head>
 
 <body>
+  <header>
+    <div class="head-inner">
+      <div class="eyebrow">Bộ sưu tập</div>
+      <h1>FILE MOD MỚI NHẤT</h1>
+      <p>File Mod Skin Lẻ · Bot Auto Mod Skin · Cập nhật mới</p>
+    </div>
+  </header>
 
-<header>
-  <div class="head-inner">
-    <div class="eyebrow">Bộ sưu tập</div>
-    <h1>FILE MOD MỚI NHẤT</h1>
-    <p>File Mod Skin Lẻ · Bot Auto Mod Skin · Cập nhật mới</p>
-  </div>
-</header>
-
-<section class="toolbar">
-  <label class="search-wrap">
-    <span class="search-icon">⌕</span>
-    <input id="search" type="search" placeholder="Tìm tên MOD, mã hoặc thể loại..." autocomplete="off">
-    <span id="count">0/0</span>
-  </label>
+  <section class="toolbar">
+    <label class="search-wrap">
+      <span class="search-icon" aria-hidden="true">⌕</span>
+      <input
+        id="search"
+        type="search"
+        placeholder="Tìm tên MOD, mã hoặc thể loại..."
+        autocomplete="off"
+        aria-label="Tìm file mod"
+      >
+      <span id="count">0/0</span>
+    </label>
   </section>
-<div class="container" id="list"></div>
 
-<a class="back" href="resources.html">⬅ Quay lại Tài Nguyên</a>
+  <main class="container" id="list" aria-live="polite"></main>
 
-<script>
-/* ========= DATA FILE LẺ: đọc từ data/file-le.json ========= */
-let data = [];
+  <a class="back" href="resources.html">← Quay lại Tài Nguyên</a>
 
-/* ========= RENDER + SEARCH ========= */
-const list = document.getElementById("list");
-const searchInput = document.getElementById("search");
-const count = document.getElementById("count");
-let activeFilter = "all";
+  <script>
+    /*
+      Dữ liệu vẫn lấy từ data/file-le.json.
+      Không cần sửa JSON và không thay đổi link tải hiện có.
+      Ảnh bìa SVG được tạo tự động theo tên từng mục.
+    */
 
-function renderList() {
-  const query = searchInput.value.trim().toLocaleLowerCase("vi");
-  const filtered = data.filter((item, index) => {
-    const text = `${item.name} ${item.desc} ${item.link} ${index + 1}`.toLocaleLowerCase("vi");
-    return text.includes(query);
-  });
-  list.innerHTML = "";
-  count.textContent = `${filtered.length}/${data.length}`;
-  if (!filtered.length) {
-    list.innerHTML = '<div class="empty">Không tìm thấy file phù hợp. Hãy thử từ khóa khác nhé.</div>';
-    return;
-  }
-  filtered.forEach((item, index) => {
-    const div = document.createElement("article");
-    div.className = "card";
-    const icon = item.icon || "🎮";
-    const unavailable = !item.link || item.link === "#";
-    div.innerHTML = `
-      <div class="cover">
-        <span class="free">MIỄN PHÍ</span>
-        <img class="cover-image" src="${item.image || ""}" alt="" loading="lazy" onerror="this.style.display='none'">
-      </div>
-      <div class="card-body">
-        <div class="title"></div>
-        <div class="bottom">
-          <span class="desc"></span>
-          <a class="download" href="${unavailable ? "#" : item.link}" ${unavailable ? 'aria-disabled="true"' : 'target="_blank" rel="noopener noreferrer"'}>TẢI <span aria-hidden="true">↓</span></a>
-        </div>
-      </div>`;
-    div.querySelector(".title").textContent = item.name.trim();
-    div.querySelector(".desc").textContent = item.desc || "File mod skin";
-    const button = div.querySelector(".download");
-    button.addEventListener("click", event => {
-      if (unavailable) {
-        event.preventDefault();
-        alert("File này chưa có link tải!");
-      } else {
-        event.preventDefault();
-        if (typeof tiktokAdGate === "function") tiktokAdGate(item.link);
-        else window.open(item.link, "_blank", "noopener");
+    let data = [];
+
+    const list = document.getElementById("list");
+    const searchInput = document.getElementById("search");
+    const count = document.getElementById("count");
+
+    function escapeSvg(value) {
+      return String(value || "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&apos;");
+    }
+
+    function wrapTitle(name, maxChars = 23, maxLines = 3) {
+      const words = String(name || "MOD SKIN")
+        .toLocaleUpperCase("vi")
+        .trim()
+        .split(/\s+/);
+
+      const lines = [];
+      let line = "";
+
+      for (const word of words) {
+        const candidate = line ? line + " " + word : word;
+
+        if (candidate.length > maxChars && line) {
+          lines.push(line);
+          line = word;
+        } else {
+          line = candidate;
+        }
       }
-    });
-    list.appendChild(div);
-  });
-}
-searchInput.addEventListener("input", renderList);
-document.querySelectorAll(".tab").forEach(tab => {
-  tab.addEventListener("click", () => {
-    document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
-    tab.classList.add("active");
-    activeFilter = tab.dataset.filter;
-    renderList();
-  });
-});
-fetch('data/file-le.json', { cache: 'no-cache' })
-  .then(response => { if (!response.ok) throw new Error('HTTP ' + response.status); return response.json(); })
-  .then(items => { if (!Array.isArray(items)) throw new Error('Dữ liệu JSON không hợp lệ'); data = items; renderList(); })
-  .catch(error => { console.error(error); list.innerHTML = '<div class="empty">Không tải được dữ liệu file. Hãy kiểm tra data/file-le.json.</div>'; count.textContent = '0/0'; });
-</script>
 
+      if (line) lines.push(line);
+
+      if (lines.length > maxLines) {
+        lines.length = maxLines;
+        const last = lines[maxLines - 1];
+        lines[maxLines - 1] =
+          last.length > maxChars - 3
+            ? last.slice(0, maxChars - 3) + "..."
+            : last + "...";
+      }
+
+      return lines;
+    }
+
+    function makeCover(item) {
+      const name = String(item.name || "MOD SKIN");
+      let hash = 0;
+
+      for (let i = 0; i < name.length; i++) {
+        hash = (hash * 31 + name.charCodeAt(i)) >>> 0;
+      }
+
+      const hue = hash % 360;
+      const hue2 = (hue + 65 + (hash % 70)) % 360;
+      const lines = wrapTitle(name);
+
+      const titleSvg = lines.map((line, index) => {
+        return `<text
+          x="34"
+          y="${145 + index * 39}"
+          font-family="Arial, sans-serif"
+          font-size="31"
+          font-weight="900"
+          fill="#ffffff">${escapeSvg(line)}</text>`;
+      }).join("");
+
+      const svg = `
+        <svg xmlns="http://www.w3.org/2000/svg"
+             width="720" height="360" viewBox="0 0 720 360">
+          <defs>
+            <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#080b16"/>
+              <stop offset=".52" stop-color="hsl(${hue} 65% 25%)"/>
+              <stop offset="1" stop-color="hsl(${hue2} 70% 12%)"/>
+            </linearGradient>
+            <radialGradient id="glow">
+              <stop offset="0" stop-color="hsl(${hue2} 100% 68%)" stop-opacity=".8"/>
+              <stop offset="1" stop-color="hsl(${hue2} 100% 68%)" stop-opacity="0"/>
+            </radialGradient>
+            <pattern id="grid" width="28" height="28" patternUnits="userSpaceOnUse">
+              <path d="M28 0H0V28" fill="none" stroke="#ffffff" stroke-opacity=".08"/>
+            </pattern>
+          </defs>
+
+          <rect width="720" height="360" fill="url(#bg)"/>
+          <rect width="720" height="360" fill="url(#grid)"/>
+          <circle cx="575" cy="125" r="190" fill="url(#glow)" opacity=".72"/>
+
+          <path d="M430 360 720 70V360Z"
+                fill="hsl(${hue2} 95% 60%)" opacity=".15"/>
+          <path d="M0 290 290 0H385L95 360H0Z"
+                fill="#ffffff" opacity=".035"/>
+
+          <rect x="22" y="22" width="676" height="316" rx="20"
+                fill="none" stroke="#ffffff" stroke-opacity=".28" stroke-width="2"/>
+
+          <rect x="34" y="34" width="142" height="30" rx="8" fill="#ff4fa3"/>
+          <text x="105" y="54" text-anchor="middle"
+                font-family="Arial, sans-serif" font-size="13"
+                font-weight="900" fill="#230b19">NGHĨALQ TV</text>
+
+          <text x="680" y="55" text-anchor="end"
+                font-family="Arial, sans-serif" font-size="16"
+                font-weight="800" fill="#ffffff">S4 • 2026</text>
+
+          <g transform="translate(525 102)" opacity=".85">
+            <circle cx="68" cy="68" r="66" fill="none"
+                    stroke="#ffffff" stroke-opacity=".34" stroke-width="2"/>
+            <circle cx="68" cy="68" r="47" fill="none"
+                    stroke="#ff82bd" stroke-width="3"/>
+            <path d="M68 15 80 56 121 68 80 80 68 121 56 80 15 68 56 56Z"
+                  fill="#ffffff" opacity=".88"/>
+          </g>
+
+          ${titleSvg}
+
+          <rect x="34" y="273" width="180" height="5" rx="2.5" fill="#ff4fa3"/>
+          <text x="34" y="307" font-family="Arial, sans-serif"
+                font-size="16" font-weight="700" fill="#ffd5e8"
+                letter-spacing="3">MOD RESOURCE • FREE</text>
+        </svg>`;
+
+      return "data:image/svg+xml;charset=UTF-8," + encodeURIComponent(svg);
+    }
+
+    function renderList() {
+      const query = searchInput.value.trim().toLocaleLowerCase("vi");
+
+      const filtered = data.filter((item, index) => {
+        const text = `${item.name || ""} ${item.desc || ""} ${item.link || ""} ${index + 1}`
+          .toLocaleLowerCase("vi");
+        return text.includes(query);
+      });
+
+      list.replaceChildren();
+      count.textContent = `${filtered.length}/${data.length}`;
+
+      if (!filtered.length) {
+        const empty = document.createElement("div");
+        empty.className = "empty";
+        empty.textContent = "Không tìm thấy file phù hợp. Hãy thử từ khóa khác nhé.";
+        list.appendChild(empty);
+        return;
+      }
+
+      filtered.forEach((item) => {
+        const card = document.createElement("article");
+        card.className = "card";
+
+        const unavailable = !item.link || item.link === "#";
+
+        card.innerHTML = `
+          <div class="cover">
+            <img class="cover-image" alt="" loading="lazy">
+            <span class="free">MIỄN PHÍ</span>
+          </div>
+          <div class="card-body">
+            <div class="title"></div>
+            <div class="bottom">
+              <span class="desc"></span>
+              <a class="download" href="${unavailable ? "#" : item.link}"
+                 ${unavailable ? 'aria-disabled="true"' : 'target="_blank" rel="noopener noreferrer"'}>
+                TẢI <span aria-hidden="true">↓</span>
+              </a>
+            </div>
+          </div>
+        `;
+
+        const coverImage = card.querySelector(".cover-image");
+        coverImage.src = makeCover(item);
+        coverImage.alt = `Ảnh bìa ${item.name || "mod skin"}`;
+
+        card.querySelector(".title").textContent = item.name || "File Mod";
+        card.querySelector(".desc").textContent = item.desc || "File mod skin";
+
+        const button = card.querySelector(".download");
+        button.addEventListener("click", (event) => {
+          if (unavailable) {
+            event.preventDefault();
+            alert("File này chưa có link tải!");
+            return;
+          }
+
+          event.preventDefault();
+
+          if (typeof tiktokAdGate === "function") {
+            tiktokAdGate(item.link);
+          } else {
+            window.open(item.link, "_blank", "noopener");
+          }
+        });
+
+        list.appendChild(card);
+      });
+    }
+
+    searchInput.addEventListener("input", renderList);
+
+    fetch("data/file-le.json", { cache: "no-cache" })
+      .then((response) => {
+        if (!response.ok) throw new Error("HTTP " + response.status);
+        return response.json();
+      })
+      .then((items) => {
+        if (!Array.isArray(items)) {
+          throw new Error("Dữ liệu JSON không hợp lệ");
+        }
+
+        data = items;
+        renderList();
+      })
+      .catch((error) => {
+        console.error("Không tải được data/file-le.json:", error);
+        list.innerHTML =
+          '<div class="empty">Không tải được dữ liệu file. Hãy kiểm tra data/file-le.json.</div>';
+        count.textContent = "0/0";
+      });
+  </script>
 </body>
 </html>
