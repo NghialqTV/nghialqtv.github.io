@@ -12,10 +12,10 @@
     "name": "Map Sáng AOV IOS V2",
     "version": "Cài Testflight - Chơi Hết Mùa",
     "icon": "assets/icons/app.png",
-    "link": "https://nghialqtv.github.io/SubUnlock/?id=hackmenuios",
+    "link": "https://nghialqtv.github.io/SubUnlock/?id=mapiosv2",
     "platform": "ios",
-    "banner": "assets/banners/hack-map-ios.png",
-    "getKeyLink": "https://nghialqtv.github.io/SubUnlock/?id=keymenuios"
+    "banner": "assets/banners/hack-map-iosv2.png",
+    "getKeyLink": "https://nghialqtv.github.io/SubUnlock/?id=keymapiosv2"
   },
   {
     "name": "Map Sáng AOV Android V2",
