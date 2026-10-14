@@ -4777,3 +4777,106 @@ body:not(.dark) .app-card-redesigned .card-main .info .update-line{
   opacity:1 !important;
   visibility:visible !important;
 }
+
+
+
+/* ===== DOWNLOAD + GET KEY: EQUAL HEIGHT, BALANCED WIDTH ===== */
+.app-card-redesigned .app-actions{
+  display:grid !important;
+  grid-template-columns:minmax(0,1fr) minmax(0,1fr) !important;
+  align-items:stretch !important;
+  gap:12px !important;
+  width:100% !important;
+}
+.app-card-redesigned .app-actions .app-action-download,
+.app-card-redesigned .app-actions .app-action-key{
+  box-sizing:border-box !important;
+  width:100% !important;
+  min-width:0 !important;
+  max-width:none !important;
+  flex:none !important;
+  height:56px !important;
+  min-height:56px !important;
+  max-height:56px !important;
+  padding:0 12px !important;
+  margin:0 !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  gap:9px !important;
+  border-radius:999px !important;
+  white-space:nowrap !important;
+  overflow:hidden !important;
+}
+.app-card-redesigned .app-actions .app-action-download{
+  font-size:clamp(14px,3.7vw,20px) !important;
+}
+.app-card-redesigned .app-actions .app-action-key{
+  font-size:clamp(14px,3.7vw,20px) !important;
+}
+.app-card-redesigned .app-actions .app-action-download > span,
+.app-card-redesigned .app-actions .app-action-key > span:last-child{
+  min-width:0 !important;
+  flex:0 1 auto !important;
+  white-space:nowrap !important;
+}
+.app-card-redesigned .app-actions .app-action-download svg,
+.app-card-redesigned .app-actions .app-action-key svg{
+  flex:0 0 21px !important;
+  width:21px !important;
+  height:21px !important;
+}
+@media(max-width:520px){
+  .app-card-redesigned .app-actions{
+    grid-template-columns:minmax(0,1fr) minmax(0,1fr) !important;
+    gap:10px !important;
+  }
+  .app-card-redesigned .app-actions .app-action-download,
+  .app-card-redesigned .app-actions .app-action-key{
+    height:52px !important;
+    min-height:52px !important;
+    max-height:52px !important;
+    padding:0 8px !important;
+    gap:6px !important;
+  }
+  .app-card-redesigned .app-actions .app-action-download,
+  .app-card-redesigned .app-actions .app-action-key{
+    font-size:clamp(12px,3.5vw,16px) !important;
+  }
+  .app-card-redesigned .app-actions .app-action-download svg,
+  .app-card-redesigned .app-actions .app-action-key svg{
+    flex-basis:18px !important;
+    width:18px !important;
+    height:18px !important;
+  }
+}
+
+
+
+/* ===== APP LOGOS: POSITION CLOSE TO OUTER EDGE LIKE REFERENCE ===== */
+.app-card-redesigned{
+  position:relative !important;
+  overflow:visible !important;
+}
+.app-card-redesigned .app-icon,
+.app-card-redesigned .app-logo,
+.app-card-redesigned .icon{
+  position:absolute !important;
+  left:clamp(12px, 4.5vw, 28px) !important;
+  z-index:5 !important;
+  margin-left:0 !important;
+  transform:translateY(-50%) !important;
+}
+/* Keep logo overlapping the cover/body seam, with consistent spacing from the card edge. */
+.app-card-redesigned .app-icon,
+.app-card-redesigned .app-logo,
+.app-card-redesigned .icon{
+  top:var(--app-logo-edge-top, 0) !important;
+}
+@media(max-width:520px){
+  .app-card-redesigned .app-icon,
+  .app-card-redesigned .app-logo,
+  .app-card-redesigned .icon{
+    left:16px !important;
+  }
+}
