@@ -4146,3 +4146,323 @@ body.dark .app-card-redesigned .app-key-icon{color:#83a0ff !important}
   .app-card-redesigned .app-actions .app-action-key{min-height:54px !important}
   .app-card-redesigned .app-actions .app-action-key{min-width:110px !important;flex-basis:34% !important}
 }
+
+
+
+/* ===== PROFESSIONAL MOBILE LAYOUT REFINEMENT ===== */
+/* Floating controls stay in the top corner, not over section headings/cards. */
+.site-clock{
+  position:fixed !important;
+  top:12px !important;
+  left:12px !important;
+  right:auto !important;
+  z-index:99990 !important;
+  min-height:46px !important;
+  padding:0 13px !important;
+  gap:8px !important;
+  border-radius:999px !important;
+  background:rgba(20,29,46,.94) !important;
+  box-shadow:0 7px 22px rgba(0,0,0,.22),inset 0 0 0 1px rgba(255,255,255,.045) !important;
+}
+.site-clock #live-clock{
+  font-size:14px !important;
+  letter-spacing:1px !important;
+}
+.site-clock::before{width:8px;height:8px;flex-basis:8px}
+.site-clock::after{font-size:13px}
+.dark-toggle{
+  position:fixed !important;
+  top:12px !important;
+  right:12px !important;
+  z-index:99991 !important;
+  width:48px !important;
+  height:48px !important;
+  border-radius:16px !important;
+  font-size:23px !important;
+  box-shadow:0 7px 20px rgba(68,95,230,.28),inset 0 1px 0 rgba(255,255,255,.25) !important;
+}
+/* Cards: one clear frame, banner first, icon intentionally overlaps the banner edge. */
+#apps{gap:22px !important;padding-left:14px !important;padding-right:14px !important}
+.app-card-redesigned{
+  position:relative !important;
+  display:flex !important;
+  flex-direction:column !important;
+  gap:0 !important;
+  margin:0 !important;
+  padding:0 !important;
+  border-radius:25px !important;
+  overflow:visible !important;
+  background:linear-gradient(180deg,#f8faff,#edf2ff) !important;
+  border:1px solid rgba(122,150,210,.24) !important;
+  box-shadow:0 12px 30px rgba(20,36,75,.12) !important;
+}
+.app-card-redesigned .app-banner{
+  position:relative !important;
+  width:100% !important;
+  aspect-ratio:1.72 / 1 !important;
+  flex:none !important;
+  margin:0 !important;
+  overflow:hidden !important;
+  border-radius:24px 24px 0 0 !important;
+  background:#111827 !important;
+}
+.app-card-redesigned .app-banner>img{
+  display:block !important;
+  width:100% !important;
+  height:100% !important;
+  object-fit:cover !important;
+}
+.app-card-redesigned .app-card-body{
+  position:relative !important;
+  display:flex !important;
+  flex-direction:column !important;
+  gap:0 !important;
+  margin:0 !important;
+  padding:0 16px 16px !important;
+  border-radius:0 0 24px 24px !important;
+  background:transparent !important;
+}
+.app-card-redesigned .app-card-body .card-main{
+  position:relative !important;
+  display:block !important;
+  min-height:0 !important;
+  margin:0 !important;
+  padding:0 !important;
+}
+.app-card-redesigned .app-card-body .card-main>img.icon{
+  position:absolute !important;
+  left:4px !important;
+  top:-48px !important;
+  z-index:5 !important;
+  width:76px !important;
+  height:76px !important;
+  box-sizing:border-box !important;
+  border:4px solid #f6f8ff !important;
+  border-radius:20px !important;
+  object-fit:cover !important;
+  box-shadow:0 8px 20px rgba(0,0,0,.24) !important;
+}
+.app-card-redesigned .app-card-body .card-main .info{
+  width:100% !important;
+  min-width:0 !important;
+  box-sizing:border-box !important;
+  padding:13px 0 12px 92px !important;
+}
+.app-card-redesigned .app-name{
+  display:block !important;
+  margin:0 !important;
+  font-size:clamp(18px,4.4vw,24px) !important;
+  line-height:1.25 !important;
+  font-weight:800 !important;
+  letter-spacing:-.2px !important;
+  overflow-wrap:anywhere !important;
+}
+.app-card-redesigned .update-line{
+  margin-top:5px !important;
+  font-size:14px !important;
+  line-height:1.35 !important;
+  color:#8c96aa !important;
+}
+.app-card-redesigned .app-actions{
+  display:flex !important;
+  flex-direction:row !important;
+  align-items:stretch !important;
+  gap:10px !important;
+  width:100% !important;
+  margin:8px 0 0 !important;
+}
+.app-card-redesigned .app-actions .app-action{
+  min-height:54px !important;
+  box-sizing:border-box !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  gap:8px !important;
+  border-radius:999px !important;
+  line-height:1.1 !important;
+  font-weight:800 !important;
+  text-decoration:none !important;
+  white-space:nowrap !important;
+}
+.app-card-redesigned .app-actions .app-action-download{
+  flex:1 1 0 !important;
+  min-width:0 !important;
+  padding:0 14px !important;
+  background:linear-gradient(110deg,#5868ff,#9c5df0) !important;
+  color:#fff !important;
+  border:0 !important;
+  box-shadow:0 7px 18px rgba(100,90,235,.2) !important;
+  font-size:clamp(14px,3.7vw,20px) !important;
+}
+.app-card-redesigned .app-actions .app-action-download-icon svg{
+  width:24px !important;height:24px !important;
+}
+.app-card-redesigned .app-actions .app-action-key{
+  flex:0 0 34% !important;
+  min-width:0 !important;
+  padding:0 10px !important;
+  background:#e9edff !important;
+  color:#5577ed !important;
+  border:1px solid #d7dfff !important;
+  box-shadow:0 5px 14px rgba(58,86,160,.10) !important;
+  font-size:clamp(13px,3.5vw,18px) !important;
+}
+.app-card-redesigned .app-key-icon{
+  display:inline-flex !important;
+  width:20px !important;height:20px !important;flex:0 0 20px !important;
+  color:#5577ed !important;
+}
+.app-card-redesigned .app-key-icon svg{width:20px !important;height:20px !important}
+body.dark .app-card-redesigned{
+  background:linear-gradient(180deg,#121c30,#111426) !important;
+  border-color:rgba(112,151,226,.35) !important;
+  box-shadow:0 12px 30px rgba(0,0,0,.25) !important;
+}
+body.dark .app-card-redesigned .app-card-body{background:transparent !important}
+body.dark .app-card-redesigned .app-card-body .card-main>img.icon{border-color:#17233a !important}
+body.dark .app-card-redesigned .app-actions .app-action-key{
+  background:#17264d !important;color:#88a1ff !important;border-color:#2d417c !important;
+}
+body.dark .app-card-redesigned .app-key-icon{color:#88a1ff !important}
+@media(max-width:520px){
+  .site-clock{top:10px !important;left:10px !important;min-height:44px !important;padding:0 11px !important}
+  .site-clock #live-clock{font-size:13px !important;letter-spacing:.8px !important}
+  .site-clock::after{font-size:12px}
+  .dark-toggle{top:10px !important;right:10px !important;width:46px !important;height:46px !important;border-radius:15px !important}
+  #apps{gap:18px !important;padding-left:11px !important;padding-right:11px !important}
+  .app-card-redesigned .app-card-body{padding:0 12px 13px !important}
+  .app-card-redesigned .app-card-body .card-main>img.icon{left:3px !important;top:-42px !important;width:68px !important;height:68px !important;border-radius:18px !important}
+  .app-card-redesigned .app-card-body .card-main .info{padding:10px 0 10px 81px !important}
+  .app-card-redesigned .app-name{font-size:18px !important}
+  .app-card-redesigned .update-line{font-size:13px !important}
+  .app-card-redesigned .app-actions{gap:8px !important;margin-top:7px !important}
+  .app-card-redesigned .app-actions .app-action{min-height:49px !important}
+  .app-card-redesigned .app-actions .app-action-key{flex-basis:35% !important}
+}
+
+
+
+/* ===== GET KEY BUTTON POLISH ===== */
+.app-card-redesigned .app-actions .app-action-key{
+  flex:0 0 34% !important;
+  min-width:118px !important;
+  min-height:54px !important;
+  padding:0 14px !important;
+  display:inline-flex !important;
+  flex-direction:row !important;
+  flex-wrap:nowrap !important;
+  align-items:center !important;
+  justify-content:center !important;
+  gap:9px !important;
+  overflow:hidden !important;
+  border:1px solid #d3dcff !important;
+  border-radius:999px !important;
+  background:linear-gradient(180deg,#f5f7ff 0%,#e5eaff 100%) !important;
+  color:#4d6fe5 !important;
+  box-shadow:0 5px 13px rgba(65,91,170,.12),inset 0 1px 0 rgba(255,255,255,.95) !important;
+  font-family:inherit !important;
+  font-size:clamp(14px,3.6vw,18px) !important;
+  font-weight:800 !important;
+  letter-spacing:0 !important;
+  text-align:center !important;
+  white-space:nowrap !important;
+  text-decoration:none !important;
+  transition:transform .18s ease,box-shadow .18s ease,background .18s ease !important;
+}
+.app-card-redesigned .app-actions .app-action-key:hover{
+  transform:translateY(-1px) !important;
+  box-shadow:0 8px 18px rgba(65,91,170,.18),inset 0 1px 0 rgba(255,255,255,.95) !important;
+}
+.app-card-redesigned .app-actions .app-action-key:active{transform:scale(.98) !important}
+.app-card-redesigned .app-key-icon{
+  display:inline-flex !important;
+  flex:0 0 20px !important;
+  width:20px !important;
+  height:20px !important;
+  align-items:center !important;
+  justify-content:center !important;
+  margin:0 !important;
+  color:#5275eb !important;
+}
+.app-card-redesigned .app-key-icon svg{
+  display:block !important;
+  width:20px !important;
+  height:20px !important;
+}
+.app-card-redesigned .app-action-key > span:last-child{
+  display:inline-block !important;
+  min-width:0 !important;
+  overflow:visible !important;
+  text-overflow:clip !important;
+  line-height:1 !important;
+}
+body.dark .app-card-redesigned .app-actions .app-action-key{
+  background:linear-gradient(180deg,#1b2b55 0%,#142246 100%) !important;
+  color:#8ca5ff !important;
+  border-color:#304780 !important;
+  box-shadow:0 5px 14px rgba(0,0,0,.18),inset 0 1px 0 rgba(255,255,255,.05) !important;
+}
+body.dark .app-card-redesigned .app-actions .app-action-key:hover{
+  box-shadow:0 8px 18px rgba(0,0,0,.24),inset 0 1px 0 rgba(255,255,255,.07) !important;
+}
+body.dark .app-card-redesigned .app-key-icon{color:#8ca5ff !important}
+@media(max-width:520px){
+  .app-card-redesigned .app-actions .app-action-key{
+    flex:0 0 35% !important;
+    min-width:0 !important;
+    min-height:49px !important;
+    gap:6px !important;
+    padding:0 9px !important;
+    font-size:clamp(12px,3.45vw,15px) !important;
+  }
+  .app-card-redesigned .app-card-body .app-key-icon,
+  .app-card-redesigned .app-card-body .app-key-icon svg{
+    width:18px !important;height:18px !important;flex-basis:18px !important;
+  }
+}
+
+
+
+/* ===== GET KEY BUTTON: MATCH REFERENCE LOGO ===== */
+/* Use a clean key silhouette, centered beside the label like the reference. */
+.app-card-redesigned .app-actions .app-action-key{
+  display:inline-flex !important;
+  flex-direction:row !important;
+  align-items:center !important;
+  justify-content:center !important;
+  gap:9px !important;
+  padding:0 16px !important;
+  border-radius:999px !important;
+}
+.app-card-redesigned .app-key-icon{
+  display:inline-flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  width:22px !important;
+  height:22px !important;
+  flex:0 0 22px !important;
+  color:#5577ed !important;
+}
+.app-card-redesigned .app-key-icon svg{
+  width:22px !important;
+  height:22px !important;
+  display:block !important;
+  fill:currentColor !important;
+}
+/* Reference-style key glyph with a round head and short teeth. */
+.app-card-redesigned .app-key-icon svg path{
+  d:path("M7.5 14a5.5 5.5 0 1 1 4.92-3.04L22 10.96v4h-3v3h-3v3h-4.17l-1.5-1.5A5.48 5.48 0 0 1 7.5 14Zm0-3a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z") !important;
+}
+body.dark .app-card-redesigned .app-key-icon{color:#8ca5ff !important}
+@media(max-width:520px){
+  .app-card-redesigned .app-actions .app-action-key{
+    gap:7px !important;
+    padding:0 11px !important;
+  }
+  .app-card-redesigned .app-key-icon,
+  .app-card-redesigned .app-key-icon svg{
+    width:20px !important;
+    height:20px !important;
+    flex-basis:20px !important;
+  }
+}
