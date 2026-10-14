@@ -5240,3 +5240,108 @@ body.dark #apps .app-card-redesigned .card-main > img.icon{
     height:18px !important;
   }
 }
+
+/* ===== FINAL OVERRIDE: CONSISTENT DOWNLOAD / GET KEY BUTTONS ===== */
+#apps .app-card-redesigned .app-actions{
+  display:grid !important;
+  grid-template-columns:minmax(0,1.5fr) minmax(120px,1.1fr) !important;
+  gap:10px !important;
+  width:100% !important;
+  align-items:stretch !important;
+  justify-items:stretch !important;
+  box-sizing:border-box !important;
+}
+#apps .app-card-redesigned .app-actions > .app-action,
+#apps .app-card-redesigned .app-actions > .app-action-download,
+#apps .app-card-redesigned .app-actions > .app-action-key{
+  box-sizing:border-box !important;
+  display:flex !important;
+  width:100% !important;
+  min-width:0 !important;
+  max-width:none !important;
+  height:52px !important;
+  min-height:52px !important;
+  max-height:52px !important;
+  margin:0 !important;
+  padding:0 10px !important;
+  flex:none !important;
+  align-self:stretch !important;
+  justify-self:stretch !important;
+  align-items:center !important;
+  justify-content:center !important;
+  gap:7px !important;
+  white-space:nowrap !important;
+  overflow:hidden !important;
+  text-overflow:clip !important;
+  transform:none !important;
+  rotate:0deg !important;
+  border-radius:999px !important;
+}
+#apps .app-card-redesigned .app-actions .app-action-download{grid-column:1 !important;}
+#apps .app-card-redesigned .app-actions .app-action-key{grid-column:2 !important;}
+#apps .app-card-redesigned .app-actions .app-action-download > span:first-child,
+#apps .app-card-redesigned .app-actions .app-action-key > span:last-child{
+  display:inline-block !important;
+  flex:0 1 auto !important;
+  min-width:0 !important;
+  max-width:100% !important;
+  white-space:nowrap !important;
+  overflow:visible !important;
+  text-overflow:clip !important;
+  font-size:14px !important;
+  line-height:1 !important;
+}
+#apps .app-card-redesigned .app-actions .app-action-key > span:last-child{
+  flex-shrink:0 !important;
+  font-size:13px !important;
+  letter-spacing:0 !important;
+}
+#apps .app-card-redesigned .app-actions .app-action-download-icon,
+#apps .app-card-redesigned .app-actions .app-key-icon{
+  display:inline-flex !important;
+  flex:0 0 18px !important;
+  width:18px !important;
+  min-width:18px !important;
+  height:18px !important;
+  align-items:center !important;
+  justify-content:center !important;
+}
+#apps .app-card-redesigned .app-actions .app-action-download-icon svg,
+#apps .app-card-redesigned .app-actions .app-key-icon svg{
+  display:block !important;
+  flex:0 0 18px !important;
+  width:18px !important;
+  height:18px !important;
+}
+.dark-toggle{
+  transform:none !important;
+  rotate:0deg !important;
+  skew:0deg !important;
+}
+.dark-toggle:hover{transform:translateY(-1px) !important;rotate:0deg !important;}
+@media(max-width:520px){
+  #apps .app-card-redesigned .app-actions{
+    grid-template-columns:minmax(0,1.5fr) minmax(120px,1.1fr) !important;
+    gap:8px !important;
+  }
+  #apps .app-card-redesigned .app-actions > .app-action,
+  #apps .app-card-redesigned .app-actions > .app-action-download,
+  #apps .app-card-redesigned .app-actions > .app-action-key{
+    height:50px !important;
+    min-height:50px !important;
+    max-height:50px !important;
+    padding:0 7px !important;
+    gap:5px !important;
+  }
+  #apps .app-card-redesigned .app-actions .app-action-download > span:first-child{font-size:13px !important;}
+  #apps .app-card-redesigned .app-actions .app-action-key > span:last-child{font-size:12px !important;}
+  #apps .app-card-redesigned .app-actions .app-action-download-icon,
+  #apps .app-card-redesigned .app-actions .app-key-icon,
+  #apps .app-card-redesigned .app-actions .app-action-download-icon svg,
+  #apps .app-card-redesigned .app-actions .app-key-icon svg{
+    flex-basis:17px !important;
+    width:17px !important;
+    min-width:17px !important;
+    height:17px !important;
+  }
+}
