@@ -492,24 +492,55 @@ function initSiteVisitStats(){
 
 
 
-/* ===== INTRO TEXT ANIMATION: WELCOME <-> BRAND MESSAGE ===== */
-(function initIntroMessage(){
+/* ===== INTRO TYPEWRITER: LETTER BY LETTER ===== */
+(function initIntroTypewriter(){
   const el = document.getElementById("intro-animated");
   if (!el) return;
+
   const messages = [
     "Welcome To My Website!",
     "Nghĩalq TV Đồng Hành Cùng Bạn !!"
   ];
-  let current = 0;
-  el.textContent = messages[current];
+  let messageIndex = 0;
+  let charIndex = 0;
+  let deleting = false;
+  let timerId = null;
 
-  function rotateMessage(){
+  function tick(){
+    const message = messages[messageIndex];
+
+    if (!deleting) {
+      charIndex = Math.min(charIndex + 1, message.length);
+      el.textContent = message.slice(0, charIndex);
+
+      if (charIndex >= message.length) {
+        deleting = true;
+        timerId = window.setTimeout(tick, 1500);
+      } else {
+        timerId = window.setTimeout(tick, 85);
+      }
+      return;
+    }
+
+    if (charIndex > 0) {
+      charIndex--;
+      el.textContent = message.slice(0, charIndex);
+      timerId = window.setTimeout(tick, 34);
+      return;
+    }
+
     el.classList.add("is-leaving");
-    window.setTimeout(() => {
-      current = (current + 1) % messages.length;
-      el.textContent = messages[current];
+    timerId = window.setTimeout(() => {
+      messageIndex = (messageIndex + 1) % messages.length;
+      deleting = false;
+      charIndex = 0;
+      el.textContent = "";
       el.classList.remove("is-leaving");
-    }, 430);
+      timerId = window.setTimeout(tick, 240);
+    }, 380);
   }
-  window.setInterval(rotateMessage, 3200);
+
+  el.textContent = "";
+  if (timerId !== null) window.clearTimeout(timerId);
+  tick();
 })();
