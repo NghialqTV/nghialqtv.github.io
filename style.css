@@ -5137,3 +5137,106 @@ body.dark #apps .app-card-redesigned .card-main > img.icon{
     padding-right:9px !important;
   }
 }
+
+
+
+/* ===== FIXED BUTTON SIZES ACROSS EVERY APP CARD =====
+   Button width is controlled by the grid, never by the text length. */
+#apps .app-card-redesigned .app-actions{
+  display:grid !important;
+  grid-template-columns:minmax(0, 1.6fr) minmax(0, 1fr) !important;
+  grid-auto-flow:row !important;
+  align-items:stretch !important;
+  justify-items:stretch !important;
+  gap:12px !important;
+  width:100% !important;
+  box-sizing:border-box !important;
+}
+#apps .app-card-redesigned .app-actions > .app-action,
+#apps .app-card-redesigned .app-actions > .app-action-download,
+#apps .app-card-redesigned .app-actions > .app-action-key{
+  box-sizing:border-box !important;
+  display:flex !important;
+  width:100% !important;
+  min-width:0 !important;
+  max-width:none !important;
+  height:54px !important;
+  min-height:54px !important;
+  max-height:54px !important;
+  margin:0 !important;
+  align-self:stretch !important;
+  justify-self:stretch !important;
+  flex:none !important;
+  transform:none !important;
+  rotate:0deg !important;
+  align-items:center !important;
+  justify-content:center !important;
+  white-space:nowrap !important;
+  overflow:hidden !important;
+  padding:0 12px !important;
+  gap:8px !important;
+  border-radius:999px !important;
+}
+#apps .app-card-redesigned .app-actions .app-action-download{
+  grid-column:1 !important;
+}
+#apps .app-card-redesigned .app-actions .app-action-key{
+  grid-column:2 !important;
+}
+#apps .app-card-redesigned .app-actions .app-action-download > span:first-child,
+#apps .app-card-redesigned .app-actions .app-action-key > span:last-child{
+  display:inline-block !important;
+  flex:0 1 auto !important;
+  min-width:0 !important;
+  max-width:100% !important;
+  white-space:nowrap !important;
+  overflow:visible !important;
+  text-overflow:clip !important;
+  font-size:clamp(13px, 3.7vw, 18px) !important;
+  line-height:1 !important;
+}
+#apps .app-card-redesigned .app-actions .app-action-download-icon,
+#apps .app-card-redesigned .app-actions .app-key-icon{
+  display:inline-flex !important;
+  flex:0 0 20px !important;
+  width:20px !important;
+  min-width:20px !important;
+  height:20px !important;
+  align-items:center !important;
+  justify-content:center !important;
+}
+#apps .app-card-redesigned .app-actions .app-action-download-icon svg,
+#apps .app-card-redesigned .app-actions .app-key-icon svg{
+  display:block !important;
+  flex:0 0 20px !important;
+  width:20px !important;
+  height:20px !important;
+}
+@media(max-width:520px){
+  #apps .app-card-redesigned .app-actions{
+    grid-template-columns:minmax(0, 1.6fr) minmax(0, 1fr) !important;
+    gap:10px !important;
+  }
+  #apps .app-card-redesigned .app-actions > .app-action,
+  #apps .app-card-redesigned .app-actions > .app-action-download,
+  #apps .app-card-redesigned .app-actions > .app-action-key{
+    height:52px !important;
+    min-height:52px !important;
+    max-height:52px !important;
+    padding:0 8px !important;
+    gap:6px !important;
+  }
+  #apps .app-card-redesigned .app-actions .app-action-download > span:first-child,
+  #apps .app-card-redesigned .app-actions .app-action-key > span:last-child{
+    font-size:clamp(12px, 3.5vw, 15px) !important;
+  }
+  #apps .app-card-redesigned .app-actions .app-action-download-icon,
+  #apps .app-card-redesigned .app-actions .app-key-icon,
+  #apps .app-card-redesigned .app-actions .app-action-download-icon svg,
+  #apps .app-card-redesigned .app-actions .app-key-icon svg{
+    flex-basis:18px !important;
+    width:18px !important;
+    min-width:18px !important;
+    height:18px !important;
+  }
+}
