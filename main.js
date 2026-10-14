@@ -489,3 +489,27 @@ function initSiteVisitStats(){
   totalEl.textContent = formatNumber(BASE_TOTAL + sessionAdd);
   todayEl.textContent = `+${formatNumber(BASE_TODAY + sessionAdd)}`;
 }
+
+
+
+/* ===== INTRO TEXT ANIMATION: WELCOME <-> BRAND MESSAGE ===== */
+(function initIntroMessage(){
+  const el = document.getElementById("intro-animated");
+  if (!el) return;
+  const messages = [
+    "Welcome To My Website!",
+    "Nghĩalq TV Đồng Hành Cùng Bạn !!"
+  ];
+  let current = 0;
+  el.textContent = messages[current];
+
+  function rotateMessage(){
+    el.classList.add("is-leaving");
+    window.setTimeout(() => {
+      current = (current + 1) % messages.length;
+      el.textContent = messages[current];
+      el.classList.remove("is-leaving");
+    }, 430);
+  }
+  window.setInterval(rotateMessage, 3200);
+})();
