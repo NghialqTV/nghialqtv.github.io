@@ -369,9 +369,13 @@ document.addEventListener("keydown", e => {
   if(e.key === "Escape") closeMapWarning();
 });
 
-/* ===== DARK MODE ===== */
-if(localStorage.getItem("dark") === "true"){
-  document.body.classList.add("dark");
+/* ===== DARK MODE: RESTORE SAVED PREFERENCE ===== */
+try {
+  if(localStorage.getItem("dark") === "true"){
+    document.body.classList.add("dark");
+  }
+} catch(e) {
+  console.warn("Không thể đọc tùy chọn giao diện:", e);
 }
 
 /* ===== MOD SKIN DATA ===== */
@@ -401,14 +405,38 @@ fetch("data/mods.json?v="+Date.now())
     `).join("");
   }).catch(console.error);
 
-/* ===== TOGGLE DARK MODE ===== */
+/* ===== TOGGLE DARK MODE: SAVE PREFERENCE ===== */
 const toggle=document.getElementById("darkToggle");
 if(toggle){
+  toggle.setAttribute("aria-label","Chuyển đổi giao diện sáng/tối");
   toggle.onclick=()=>{
-    document.body.classList.toggle("dark");
-    localStorage.setItem("dark",document.body.classList.contains("dark"));
+    const isDark=document.body.classList.toggle("dark");
+    try { localStorage.setItem("dark",String(isDark)); } catch(e) {}
+    toggle.textContent=isDark ? "☀️" : "🌙";
   };
+  toggle.textContent=document.body.classList.contains("dark") ? "☀️" : "🌙";
 }
+
+/* ===== LIVE CLOCK · VIETNAM TIME ===== */
+(function initLiveClock(){
+  const timeEl=document.getElementById("live-clock");
+  const dateEl=document.getElementById("live-date");
+  if(!timeEl || !dateEl) return;
+  const timeFormat=new Intl.DateTimeFormat("vi-VN",{
+    timeZone:"Asia/Ho_Chi_Minh",hour:"2-digit",minute:"2-digit",second:"2-digit",hour12:false
+  });
+  const dateFormat=new Intl.DateTimeFormat("vi-VN",{
+    timeZone:"Asia/Ho_Chi_Minh",weekday:"short",day:"2-digit",month:"2-digit",year:"numeric"
+  });
+  function updateClock(){
+    const now=new Date();
+    timeEl.textContent=timeFormat.format(now);
+    timeEl.dateTime=now.toISOString();
+    dateEl.textContent=dateFormat.format(now);
+  }
+  updateClock();
+  window.setInterval(updateClock,1000);
+})();
 
 /* ===== PROFESSIONAL PAGE LOADER ===== */
 (function(){
