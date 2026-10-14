@@ -4880,3 +4880,173 @@ body:not(.dark) .app-card-redesigned .card-main .info .update-line{
     left:16px !important;
   }
 }
+
+
+
+/* ===== REFERENCE LAYOUT FIX: LOGO + DOWNLOAD / GET KEY ===== */
+#apps .app-card-redesigned{
+  position:relative !important;
+  overflow:visible !important;
+  border-radius:24px !important;
+}
+#apps .app-card-redesigned .app-banner{
+  position:relative !important;
+  overflow:hidden !important;
+  border-radius:24px 24px 0 0 !important;
+}
+#apps .app-card-redesigned .app-card-body{
+  position:relative !important;
+  overflow:visible !important;
+  padding-top:16px !important;
+}
+#apps .app-card-redesigned .card-main{
+  position:relative !important;
+  display:flex !important;
+  align-items:flex-start !important;
+  min-height:58px !important;
+  overflow:visible !important;
+  padding:0 14px 0 0 !important;
+}
+#apps .app-card-redesigned .card-main > img.icon{
+  position:absolute !important;
+  left:2px !important;
+  top:-54px !important;
+  transform:none !important;
+  z-index:15 !important;
+  display:block !important;
+  width:68px !important;
+  height:68px !important;
+  min-width:68px !important;
+  max-width:68px !important;
+  object-fit:cover !important;
+  border:4px solid #f7f9ff !important;
+  border-radius:19px !important;
+  background:#f7f9ff !important;
+  box-shadow:0 7px 18px rgba(12,22,48,.2) !important;
+}
+#apps .app-card-redesigned .card-main .info{
+  display:flex !important;
+  flex:1 1 auto !important;
+  flex-direction:column !important;
+  justify-content:center !important;
+  min-width:0 !important;
+  margin:0 !important;
+  padding:0 0 0 76px !important;
+  text-align:left !important;
+}
+#apps .app-card-redesigned .card-main .app-name{
+  display:block !important;
+  width:100% !important;
+  margin:0 !important;
+  line-height:1.25 !important;
+  overflow-wrap:anywhere !important;
+}
+#apps .app-card-redesigned .card-main .update-line{
+  display:block !important;
+  margin-top:5px !important;
+  line-height:1.25 !important;
+}
+body.dark #apps .app-card-redesigned .card-main > img.icon{
+  border-color:#f7f9ff !important;
+}
+#apps .app-card-redesigned .app-actions{
+  display:grid !important;
+  grid-template-columns:minmax(0,1.7fr) minmax(0,1fr) !important;
+  align-items:stretch !important;
+  gap:10px !important;
+  width:100% !important;
+  margin-top:12px !important;
+}
+#apps .app-card-redesigned .app-actions > .app-action{
+  box-sizing:border-box !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  gap:8px !important;
+  width:100% !important;
+  min-width:0 !important;
+  max-width:none !important;
+  height:44px !important;
+  min-height:44px !important;
+  max-height:44px !important;
+  margin:0 !important;
+  padding:0 9px !important;
+  border-radius:999px !important;
+  white-space:nowrap !important;
+  overflow:hidden !important;
+  line-height:1 !important;
+  font-size:15px !important;
+  font-weight:700 !important;
+}
+#apps .app-card-redesigned .app-actions .app-action-download{
+  grid-column:1 !important;
+}
+#apps .app-card-redesigned .app-actions .app-action-key{
+  grid-column:2 !important;
+  flex-direction:row !important;
+}
+#apps .app-card-redesigned .app-actions .app-action-download > span:first-child,
+#apps .app-card-redesigned .app-actions .app-action-key > span:last-child{
+  display:inline-block !important;
+  flex:0 1 auto !important;
+  min-width:0 !important;
+  white-space:nowrap !important;
+  overflow:visible !important;
+  font-size:inherit !important;
+}
+#apps .app-card-redesigned .app-actions .app-action-download-icon,
+#apps .app-card-redesigned .app-actions .app-key-icon{
+  display:inline-flex !important;
+  flex:0 0 19px !important;
+  align-items:center !important;
+  justify-content:center !important;
+  width:19px !important;
+  height:19px !important;
+}
+#apps .app-card-redesigned .app-actions .app-action-download-icon svg,
+#apps .app-card-redesigned .app-actions .app-key-icon svg{
+  display:block !important;
+  width:19px !important;
+  height:19px !important;
+  flex:0 0 19px !important;
+}
+@media(max-width:520px){
+  #apps .app-card-redesigned .app-card-body{
+    padding:14px 12px 16px !important;
+  }
+  #apps .app-card-redesigned .card-main{
+    min-height:58px !important;
+  }
+  #apps .app-card-redesigned .card-main > img.icon{
+    left:0 !important;
+    top:-53px !important;
+    width:68px !important;
+    height:68px !important;
+    min-width:68px !important;
+    max-width:68px !important;
+  }
+  #apps .app-card-redesigned .card-main .info{
+    padding-left:76px !important;
+  }
+  #apps .app-card-redesigned .app-actions{
+    grid-template-columns:minmax(0,1.65fr) minmax(0,1fr) !important;
+    gap:9px !important;
+    margin-top:11px !important;
+  }
+  #apps .app-card-redesigned .app-actions > .app-action{
+    height:44px !important;
+    min-height:44px !important;
+    max-height:44px !important;
+    padding:0 7px !important;
+    gap:6px !important;
+    font-size:14px !important;
+  }
+  #apps .app-card-redesigned .app-actions .app-action-download-icon,
+  #apps .app-card-redesigned .app-actions .app-key-icon,
+  #apps .app-card-redesigned .app-actions .app-action-download-icon svg,
+  #apps .app-card-redesigned .app-actions .app-key-icon svg{
+    width:17px !important;
+    height:17px !important;
+    flex-basis:17px !important;
+  }
+}
