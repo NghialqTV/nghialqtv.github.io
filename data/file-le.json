@@ -1,7 +1,7 @@
 [
   {
     "name": "Bot Auto Mod Skin",
-    "desc": "Bot hỗ trợ tự tạo file mod skin",
+    "desc": "Mod Pack - Mod Lẻ Free",
     "link": "https://t.me/ModSkinNghiaTVBot",
     "icon": "🤖",
     "image": "assets/icons/bot-tele.png",
@@ -9,7 +9,7 @@
   },
   {
     "name": "Edras Vân Tâm Kiếm",
-    "desc": "Android-IOS",
+    "desc": "Android|IOS",
     "link": "https://linkx.me/2feEi5",
     "icon": "✅",
     "image": "assets/covers/edras vân tâm kiếm.png",
@@ -17,7 +17,7 @@
   },
   {
     "name": "Wukong Vô Tướng",
-    "desc": "Android-IOS",
+    "desc": "Android|IOS",
     "link": "https://linkx.me/2feEi5",
     "icon": "✅",
     "image": "assets/covers/wukong vô tướng.png",
@@ -25,7 +25,7 @@
   },
   {
     "name": "Tamyn Thần Ký",
-    "desc": "Android-IOS",
+    "desc": "Android|IOS",
     "link": "https://linkx.me/2feEi5",
     "icon": "✅",
     "image": "assets/covers/tamyn thần ký.png",
@@ -33,10 +33,10 @@
   },
   {
     "name": "Tamyn Ngũ Hổ Tướng",
-    "desc": "Android-IOS",
+    "desc": "Android|IOS",
     "link": "https://linkx.me/2feEi5",
     "icon": "✅",
-    "image": "assets/covers/tamyn ngũ hổ tướng.png",
+    "image": "assets/covers/tamyn ngủ hổ tướng.png",
     "category": "skin"
   }
 ]
