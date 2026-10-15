@@ -352,8 +352,8 @@
     /*
       Dữ liệu vẫn đọc từ data/file-le.json.
       Không dùng category/tab phân loại.
-      Ảnh bìa thật: đặt file trong assets/covers/ và điền đường dẫn
-      vào trường "image" của mục tương ứng trong file JSON.
+      Ảnh bìa thật: có thể đặt trong assets/covers/, assets/banners/
+      hoặc assets/icons/ và điền đường dẫn vào trường "image" trong JSON.
       Nếu chưa có ảnh thật, dùng ảnh SVG dự phòng được tạo tự động.
     */
     let data = [];
@@ -450,10 +450,21 @@
       return "data:image/svg+xml;charset=UTF-8," + encodeURIComponent(svg);
     }
 
+    // Chấp nhận ảnh bìa từ các thư mục ảnh hiện có.
+    // Đường dẫn trong data/file-le.json phải khớp chính xác với tên file trên GitHub.
     function isCustomCover(path) {
-      return typeof path === "string" &&
-        path.trim() !== "" &&
-        path.startsWith("assets/covers/");
+      if (typeof path !== "string" || path.trim() === "") {
+        return false;
+      }
+
+      const normalizedPath = path.trim().replace(/^\.\//, "");
+      const allowedFolders = [
+        "assets/covers/",
+        "assets/banners/",
+        "assets/icons/"
+      ];
+
+      return allowedFolders.some((folder) => normalizedPath.startsWith(folder));
     }
 
     function renderList() {
