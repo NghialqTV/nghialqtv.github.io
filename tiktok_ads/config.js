@@ -1,7 +1,22 @@
 window.TIKTOK_AD_LINKS = [
-  "https://s.shopee.vn/9peXXrm2Cf",
-  "https://shop.tiktok.com/vn/pdp/1737477562930988479?_t=ZS-99yXZB8JS7h",
-  "https://s.shopee.vn/60Royl6uzW",
-  "https://shop.tiktok.com/vn/pdp/1732225484739545714?_t=ZS-99yXXzSHDQz",
-  "https://s.shopee.vn/2qUnCnismW"
+  "https://s.shopee.vn/9pfBCB0P91",
+  "https://shop.tiktok.com/vn/pdp/1736126356035962011?_t=ZS-9AZg2xCIKhB",
+  "https://s.shopee.vn/AUurzOJmui",
+  "https://shop.tiktok.com/vn/pdp/1736078943635146456?_t=ZS-9AZfzqNMkkv",
+  "https://s.shopee.vn/5fpcETZHet",
+  "https://shop.tiktok.com/vn/pdp/1732470180455482934?_t=ZS-9AZfsqw4TVU",
+  "https://s.shopee.vn/7pu6oRZYFq",
+  "https://shop.tiktok.com/vn/pdp/1729432977245309663?_t=ZS-9AZfqubZFXZ",
+  "https://s.shopee.vn/70Kzou4Lop",
+  "https://shop.tiktok.com/vn/pdp/1731624222207871328?_t=ZS-9AZfqB5ly4r",
+  "https://s.shopee.vn/2LZAGJHhyj",
+  "https://shop.tiktok.com/vn/pdp/1733476341175977209?_t=ZS-9AZflnfbVw4",
+  "https://s.shopee.vn/9APUOoKoBK",
+  "https://shop.tiktok.com/vn/pdp/1734808883806242382?_t=ZS-9AZflSBT75w",
+  "https://s.shopee.vn/AKbRmvkSbx",
+  "https://shop.tiktok.com/vn/pdp/1734581980318369470?_t=ZS-9AZfjvnrfcq",
+  "https://s.shopee.vn/5fpcEIdeta",
+  "https://shop.tiktok.com/vn/pdp/1736291789786613203?_t=ZS-9APkIH1VRwb",
+  "https://s.shopee.vn/3qNy2tUoEa",
+  "https://shop.tiktok.com/vn/pdp/1732160037739071214?_t=ZS-9APkGu7SVGe"
 ];
