@@ -230,5 +230,75 @@
 </footer>
 
 
+
+<!-- ===== ADMIN EVENT PROMO POPUP ===== -->
+<style id="admin-promo-styles">
+#admin-promo-overlay{position:fixed;inset:0;z-index:99999;display:flex;align-items:center;justify-content:center;padding:18px;background:rgba(3,7,20,.86);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);animation:promoFadeIn .35s ease both}
+#admin-promo-overlay[hidden]{display:none}
+.admin-promo-card{position:relative;width:min(560px,100%);overflow:hidden;border:1px solid rgba(255,190,68,.8);border-radius:26px;padding:28px 22px 22px;text-align:center;color:#fff;background:radial-gradient(ellipse at 50% 0%,#5d1730 0%,#161c3a 48%,#090f20 100%);box-shadow:0 0 24px #ff4b3544,0 0 70px #f20d4640,inset 0 0 30px #ff9e2414;animation:promoPop .5s cubic-bezier(.2,.8,.2,1) both}
+.admin-promo-card:before{content:"";position:absolute;inset:8px;border:1px solid #ffb84c70;border-radius:19px;pointer-events:none}
+.admin-promo-card:after{content:"";position:absolute;left:-30%;top:0;width:45%;height:100%;background:linear-gradient(100deg,transparent,#ffffff12,transparent);transform:skewX(-18deg);animation:promoShine 4s ease-in-out infinite;pointer-events:none}
+.admin-promo-close{position:absolute;z-index:2;right:15px;top:14px;width:40px;height:40px;border:1px solid #ffffff60;border-radius:50%;background:#ffffff18;color:white;font-size:29px;line-height:1;cursor:pointer;box-shadow:0 0 14px #fff2}
+.admin-promo-tag{display:inline-flex;align-items:center;gap:8px;padding:7px 13px;border:1px solid #ffb94b88;border-radius:99px;background:#ff8b1c1c;color:#ffd36c;font-size:12px;font-weight:900;letter-spacing:2px}
+.admin-promo-mega{font-size:48px;line-height:1.25;margin:17px 0 8px;filter:drop-shadow(0 0 14px #ff5c28aa);animation:promoPulse 2s ease-in-out infinite}
+.admin-promo-title{position:relative;margin:0 auto 12px;max-width:440px;font-size:clamp(25px,6vw,38px);line-height:1.14;font-weight:1000;letter-spacing:.3px;text-transform:uppercase;background:linear-gradient(#fff7bd 5%,#ffc23e 48%,#ff6b21 80%);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-stroke:1px #6b170c;filter:drop-shadow(0 3px 0 #50100d) drop-shadow(0 0 12px #ff642a99)}
+.admin-promo-copy{max-width:420px;margin:0 auto 19px;color:#e6eaf7;font-size:15px;line-height:1.65}
+.admin-promo-copy strong{color:#fff2a6}
+.admin-promo-actions{display:grid;grid-template-columns:1fr 1fr;gap:11px;margin:0 auto 15px;max-width:430px}
+.admin-promo-btn{display:flex;align-items:center;justify-content:center;gap:8px;min-height:52px;padding:12px 10px;border-radius:15px;color:#fff;text-decoration:none;font-weight:850;font-size:15px;box-shadow:0 7px 22px #0004;transition:transform .2s,filter .2s;position:relative;z-index:1}
+.admin-promo-btn:hover{transform:translateY(-2px);filter:brightness(1.12)}.admin-promo-zalo{background:linear-gradient(135deg,#1688ff,#0755c9);border:1px solid #78c3ff}.admin-promo-tele{background:linear-gradient(135deg,#20b9e8,#0878b8);border:1px solid #8be6ff}
+.admin-promo-hint{margin:12px 0 0;color:#aeb9d7;font-size:12px}.admin-promo-hint span{color:#ffcf68}
+.admin-promo-sound{position:relative;z-index:1;margin-top:12px;border:1px solid #ffffff30;border-radius:99px;padding:8px 13px;color:#dfe7ff;background:#ffffff0d;font-size:12px;cursor:pointer}
+@keyframes promoFadeIn{from{opacity:0}to{opacity:1}}@keyframes promoPop{from{opacity:0;transform:translateY(18px) scale(.96)}to{opacity:1;transform:none}}@keyframes promoShine{0%,55%{left:-50%}85%,100%{left:130%}}@keyframes promoPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.08)}}
+@media(max-width:420px){#admin-promo-overlay{padding:12px}.admin-promo-card{padding:25px 15px 18px;border-radius:21px}.admin-promo-mega{font-size:39px}.admin-promo-copy{font-size:14px}.admin-promo-actions{grid-template-columns:1fr}.admin-promo-btn{min-height:46px}}
+@media(prefers-reduced-motion:reduce){#admin-promo-overlay,.admin-promo-card,.admin-promo-mega,.admin-promo-card:after{animation:none!important;transition:none!important}}
+</style>
+<div id="admin-promo-overlay" role="dialog" aria-modal="true" aria-labelledby="admin-promo-title">
+  <section class="admin-promo-card">
+    <button class="admin-promo-close" type="button" id="admin-promo-close" aria-label="Đóng quảng cáo">×</button>
+    <div class="admin-promo-tag">⚡ THÔNG BÁO TỪ ADMIN ⚡</div>
+    <div class="admin-promo-mega" aria-hidden="true">📣</div>
+    <h2 class="admin-promo-title" id="admin-promo-title">Nhận làm sự kiện chung sức</h2>
+    <p class="admin-promo-copy"><strong>AE nào cần làm sự kiện Chung Sức</strong><br>Vui lòng liên hệ Admin qua Zalo hoặc Telegram để được hỗ trợ nhanh nhé!</p>
+    <div class="admin-promo-actions">
+      <a class="admin-promo-btn admin-promo-zalo" href="https://zalo.me/0368411967" target="_blank" rel="noopener noreferrer">💬 Liên hệ Zalo</a>
+      <a class="admin-promo-btn admin-promo-tele" href="https://t.me/+gI22PHmUi5xhMDA9" target="_blank" rel="noopener noreferrer">➤ Liên hệ Telegram</a>
+    </div>
+    <p class="admin-promo-hint">Nhấn dấu <span>×</span> ở góc trên để bỏ qua và tiếp tục vào website.</p>
+    <button class="admin-promo-sound" type="button" id="admin-promo-sound">🔊 Bật âm thanh quảng cáo</button>
+  </section>
+</div>
+<script>
+(function(){
+  const overlay=document.getElementById('admin-promo-overlay');
+  const close=document.getElementById('admin-promo-close');
+  const sound=document.getElementById('admin-promo-sound');
+  if(!overlay||!close)return;
+  function closePromo(){overlay.hidden=true;document.body.style.overflow='';}
+  close.addEventListener('click',closePromo);
+  overlay.addEventListener('click',function(e){if(e.target===overlay)closePromo();});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!overlay.hidden)closePromo();});
+  document.body.style.overflow='hidden';
+  // Browsers block sound autoplay until a user gesture. Play a short, generated jingle only after tapping the sound button.
+  sound.addEventListener('click',function(){
+    try{
+      const Ctx=window.AudioContext||window.webkitAudioContext;
+      if(!Ctx){sound.textContent='Âm thanh không được hỗ trợ trên trình duyệt này';return;}
+      const ctx=new Ctx();
+      const notes=[659.25,783.99,987.77,1318.51];
+      notes.forEach(function(freq,i){
+        const osc=ctx.createOscillator(),gain=ctx.createGain();
+        osc.type='sine';osc.frequency.value=freq;gain.gain.setValueAtTime(.0001,ctx.currentTime+i*.16);
+        gain.gain.exponentialRampToValueAtTime(.12,ctx.currentTime+i*.16+.025);
+        gain.gain.exponentialRampToValueAtTime(.0001,ctx.currentTime+i*.16+.22);
+        osc.connect(gain);gain.connect(ctx.destination);osc.start(ctx.currentTime+i*.16);osc.stop(ctx.currentTime+i*.16+.24);
+      });
+      sound.textContent='✓ Đã phát âm thanh quảng cáo';
+      setTimeout(function(){ctx.close().catch(function(){});},1200);
+    }catch(e){sound.textContent='Không thể phát âm thanh trên thiết bị này';}
+  });
+})();
+</script>
+
 </body>
 </html>
