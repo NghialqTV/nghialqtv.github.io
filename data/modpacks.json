@@ -1,11 +1,19 @@
 [
   {
+    "name": "Mod Pack 3 Skin",
+    "desc": "Hayate • Billow • Nakroth",
+    "image": "assets/modpacks/.png",
+    "link": "https://linkx.me/PhwUpin",
+    "tag": "ANDROID • IOS",
+    "downloads": 245
+  },
+  {
     "name": "Mod Pack 8 Skin HOK",
     "desc": "Edras•Billow•Wk•Elandoor•Nak•Airi•Tamyn•Amily",
     "image": "assets/modpacks/8skinhok.png",
     "link": "https://linkx.me/xXXCib",
     "tag": "ANDROID • IOS",
-    "downloads": 405
+    "downloads": 4051
   },
   {
     "name": "Mod Pack 48 Skin Ver1",
@@ -13,7 +21,7 @@
     "image": "assets/modpacks/pack48skinv1.png",
     "link": "https://linkx.me/ZvrNqT",
     "tag": "ANDROID • IOS",
-    "downloads": 1556
+    "downloads": 2993
   },
   {
     "name": "Mod Pack 100 Skin Ver 2",
@@ -21,7 +29,7 @@
     "image": "assets/modpacks/pack100skinv2.png",
     "link": "https://linkx.me/MYe0h",
     "tag": "ANDROID • IOS",
-    "downloads": 1084
+    "downloads": 3839
   },
   {
     "name": "Mod Pack 80 Skin Ver 3",
