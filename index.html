@@ -1,10 +1,8 @@
 
-<!-- =====================================
-     NGHĨALQ TV - WEBSITE DIRECTORY PANEL
-     RESPONSIVE MOBILE + DESKTOP
-===================================== -->
-
-<style id="website-directory-styles">
+<style>
+/* =================================
+   NGHIALQ TV - PANEL V3
+================================= */
 
 #website-directory-overlay,
 #website-directory-overlay * {
@@ -21,17 +19,17 @@
     justify-content: center;
 
     width: 100%;
-    min-height: 100vh;
-    min-height: 100dvh;
+    height: 100%;
+    height: 100dvh;
 
     padding: 12px;
 
-    background: rgba(3, 7, 20, .91);
+    background: rgba(3, 7, 20, .92);
 
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
 
-    animation: directoryFade .45s ease;
+    animation: panelFade .4s ease;
 }
 
 #website-directory-overlay[hidden] {
@@ -52,19 +50,16 @@
     overflow-y: auto;
     overscroll-behavior: contain;
 
-    margin: auto;
-    padding: 28px 23px 22px;
+    padding: 28px 22px 22px;
 
-    border: 1px solid rgba(105, 190, 255, .75);
-    border-radius: 24px;
-
-    color: #ffffff;
+    border: 1px solid #65baffaa;
+    border-radius: 23px;
 
     background:
         radial-gradient(
-            ellipse at 50% 0%,
-            #294b78 0%,
-            transparent 55%
+            ellipse at top,
+            #294c7b,
+            transparent 65%
         ),
         linear-gradient(
             145deg,
@@ -73,13 +68,14 @@
             #080d1e
         );
 
-    box-shadow:
-        0 0 18px #269dff55,
-        0 0 55px #176bff30,
-        0 20px 75px #000b,
-        inset 0 0 30px #66baff0c;
+    color: white;
 
-    animation: directoryEnter .55s ease;
+    box-shadow:
+        0 0 20px #269dff66,
+        0 0 55px #176bff35,
+        0 20px 70px #000b;
+
+    animation: panelEnter .5s ease;
 }
 
 .directory-panel::before {
@@ -94,20 +90,19 @@
     pointer-events: none;
 }
 
-/* CLOSE BUTTON */
+/* CLOSE */
 
 .directory-close {
     position: absolute;
+    top: 13px;
+    right: 13px;
     z-index: 10;
 
-    top: 14px;
-    right: 14px;
+    width: 40px;
+    height: 40px;
 
     display: grid;
     place-items: center;
-
-    width: 39px;
-    height: 39px;
 
     border: 1px solid #ffffff70;
     border-radius: 50%;
@@ -115,28 +110,24 @@
     background: #ffffff12;
     color: white;
 
-    font-size: 26px;
+    font-size: 27px;
     cursor: pointer;
 
-    transition: .3s ease;
+    transition: .3s;
 }
 
 .directory-close:hover {
     transform: rotate(90deg);
-
     background: #e33b4d;
-
-    box-shadow: 0 0 18px #ff465d99;
+    box-shadow: 0 0 18px #ff465d;
 }
 
 /* HEADER */
 
 .directory-heading {
     position: relative;
-
     text-align: center;
-
-    padding: 8px 38px 23px;
+    padding: 8px 38px 22px;
 }
 
 .directory-eyebrow {
@@ -148,28 +139,21 @@
     border-radius: 30px;
 
     background: #168bff1c;
-
     color: #b4e3ff;
 
     font-size: 11px;
     font-weight: 900;
     letter-spacing: 2px;
-
-    box-shadow: 0 0 15px #219aff25;
 }
 
-/* NGHIALQ TV TITLE */
+/* TITLE */
 
 .brand-title {
-    position: relative;
-
     margin: 18px 0 10px;
 
     font-size: clamp(32px, 7vw, 49px);
     font-weight: 1000;
-
     letter-spacing: 2px;
-    line-height: 1.2;
 
     background: linear-gradient(
         110deg,
@@ -184,37 +168,32 @@
     background-size: 250% auto;
 
     color: transparent;
-
     -webkit-background-clip: text;
     background-clip: text;
 
-    filter: drop-shadow(0 0 9px #299dff88);
+    filter: drop-shadow(0 0 10px #299dff99);
 
     animation:
-        brandShine 5s linear infinite,
-        brandGlow 2.5s ease-in-out infinite alternate;
+        titleShine 5s linear infinite,
+        titleGlow 2.5s ease-in-out infinite alternate;
 }
 
 .brand-subtitle {
     margin: 0;
-
     color: #c2d3eb;
-
-    font-size: 14px;
-    line-height: 1.6;
+    font-size: 13px;
 }
 
-@keyframes brandShine {
+@keyframes titleShine {
     to {
         background-position: 250% center;
     }
 }
 
-@keyframes brandGlow {
+@keyframes titleGlow {
     from {
         filter: drop-shadow(0 0 5px #299dff66);
     }
-
     to {
         filter: drop-shadow(0 0 18px #45baffcc);
     }
@@ -226,36 +205,30 @@
     position: relative;
 
     display: grid;
-
     grid-template-columns: repeat(2, minmax(0, 1fr));
 
-    gap: 12px;
+    gap: 11px;
 }
 
 /* CARD */
 
 .directory-card {
     display: block;
-
     min-width: 0;
 
-    padding: 16px 15px;
+    padding: 15px 13px;
 
     border: 1px solid #8abfff48;
-    border-radius: 17px;
+    border-radius: 16px;
 
-    background:
-        linear-gradient(
-            145deg,
-            #ffffff12,
-            #ffffff05
-        );
+    background: linear-gradient(
+        145deg,
+        #ffffff12,
+        #ffffff05
+    );
 
     color: white;
-
     text-decoration: none;
-
-    box-shadow: inset 0 1px #ffffff0b;
 
     transition: .3s ease;
 }
@@ -265,21 +238,15 @@
 
     border-color: #75caff;
 
-    background:
-        linear-gradient(
-            145deg,
-            #2379b944,
-            #ffffff0a
-        );
+    background: #2379b933;
 
-    box-shadow: 0 0 22px #258eff30;
+    box-shadow: 0 0 20px #258eff35;
 }
 
 .directory-card-head {
     display: flex;
     align-items: center;
-
-    gap: 11px;
+    gap: 10px;
 
     margin-bottom: 10px;
 }
@@ -288,29 +255,23 @@
     display: grid;
     place-items: center;
 
-    flex: 0 0 42px;
+    flex: 0 0 40px;
 
-    width: 42px;
-    height: 42px;
+    width: 40px;
+    height: 40px;
 
     border-radius: 12px;
 
+    border: 1px solid #7ac5ff66;
     background: #258eff25;
 
-    border: 1px solid #7ac5ff66;
-
-    font-size: 22px;
-
-    box-shadow: 0 0 12px #258eff22;
+    font-size: 21px;
 }
 
 .directory-card h3 {
     margin: 0;
-
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 900;
-
-    letter-spacing: .4px;
 }
 
 .directory-card p {
@@ -318,7 +279,7 @@
 
     color: #c7d2e8;
 
-    font-size: 12.5px;
+    font-size: 12px;
     line-height: 1.65;
 }
 
@@ -327,14 +288,13 @@
 .directory-tags {
     display: flex;
     flex-wrap: wrap;
+    gap: 5px;
 
-    gap: 6px;
-
-    margin-top: 12px;
+    margin-top: 11px;
 }
 
 .directory-tags span {
-    padding: 5px 8px;
+    padding: 5px 7px;
 
     border: 1px solid #8abfff40;
     border-radius: 7px;
@@ -343,7 +303,7 @@
 
     color: #d8eaff;
 
-    font-size: 10px;
+    font-size: 9px;
     font-weight: 800;
 }
 
@@ -352,20 +312,54 @@
 .directory-card-main {
     grid-column: 1 / -1;
 
-    border-color: #e4bd6d80;
+    border-color: #e4bd6d88;
 
-    background:
-        linear-gradient(
-            120deg,
-            #d99a2b20,
-            #ffffff08
-        );
+    background: linear-gradient(
+        120deg,
+        #d99a2b25,
+        #ffffff08
+    );
 }
 
 .directory-card-main .directory-icon {
-    background: #d89c2b22;
-
     border-color: #ffcf7770;
+    background: #d89c2b22;
+}
+
+/* MAIN BUTTON */
+
+.directory-home-button {
+    width: 100%;
+
+    margin-top: 13px;
+    padding: 12px;
+
+    border: 1px solid #e9c879;
+    border-radius: 11px;
+
+    background: linear-gradient(
+        110deg,
+        #d99a2b,
+        #ffe4a1,
+        #b97a20
+    );
+
+    color: #18243b;
+
+    font-size: 14px;
+    font-weight: 900;
+    letter-spacing: .7px;
+
+    cursor: pointer;
+
+    box-shadow: 0 0 15px #e7b74c35;
+
+    transition: .25s;
+}
+
+.directory-home-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 23px #e7b74c80;
 }
 
 /* FOOTER */
@@ -379,7 +373,7 @@
 
     color: #9eacc8;
 
-    font-size: 12px;
+    font-size: 11px;
     line-height: 1.7;
 }
 
@@ -390,40 +384,25 @@
 
 /* ANIMATIONS */
 
-@keyframes directoryFade {
-    from {
-        opacity: 0;
-    }
-
-    to {
-        opacity: 1;
-    }
+@keyframes panelFade {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
 
-@keyframes directoryEnter {
+@keyframes panelEnter {
     from {
         opacity: 0;
-        transform: translateY(22px) scale(.97);
+        transform: translateY(20px) scale(.97);
     }
-
     to {
         opacity: 1;
         transform: translateY(0) scale(1);
     }
 }
 
-/* TABLET */
-
-@media (min-width: 601px) {
-    .directory-panel {
-        width: min(680px, 95%);
-    }
-}
-
 /* MOBILE */
 
 @media (max-width: 600px) {
-
     #website-directory-overlay {
         padding: 9px;
     }
@@ -435,17 +414,16 @@
         max-height: 94vh;
         max-height: 94dvh;
 
-        padding: 24px 14px 19px;
-
-        border-radius: 20px;
+        padding: 23px 13px 18px;
+        border-radius: 19px;
     }
 
     .directory-heading {
-        padding: 8px 32px 20px;
+        padding: 8px 30px 19px;
     }
 
     .brand-title {
-        font-size: clamp(29px, 8.5vw, 39px);
+        font-size: clamp(30px, 8.5vw, 40px);
         letter-spacing: 1.5px;
     }
 
@@ -459,8 +437,7 @@
     }
 
     .directory-card {
-        padding: 13px 10px;
-        border-radius: 13px;
+        padding: 12px 9px;
     }
 
     .directory-card-head {
@@ -480,30 +457,24 @@
 
     .directory-card p {
         font-size: 11px;
-        line-height: 1.6;
     }
 
     .directory-tags {
         gap: 4px;
-        margin-top: 9px;
     }
 
     .directory-tags span {
-        padding: 4px 5px;
         font-size: 9px;
+        padding: 4px 5px;
     }
 
     .directory-close {
         width: 35px;
         height: 35px;
-        font-size: 23px;
     }
 }
 
-/* SMALL PHONE */
-
-@media (max-width: 360px) {
-
+@media (max-width: 350px) {
     .directory-grid {
         grid-template-columns: 1fr;
     }
@@ -511,16 +482,11 @@
     .directory-card-main {
         grid-column: auto;
     }
-
-    .brand-title {
-        font-size: 29px;
-    }
 }
 
-/* REDUCE MOTION */
+/* ACCESSIBILITY */
 
 @media (prefers-reduced-motion: reduce) {
-
     #website-directory-overlay,
     .directory-panel,
     .directory-card,
@@ -529,11 +495,12 @@
         transition: none !important;
     }
 }
-
 </style>
 
 
-<!-- PANEL HTML -->
+<!-- =================================
+     HTML PANEL
+================================= -->
 
 <div id="website-directory-overlay"
      role="dialog"
@@ -542,13 +509,17 @@
 
     <section class="directory-panel">
 
+        <!-- NÚT X -->
+
         <button
             class="directory-close"
-            type="button"
             id="directory-close"
+            type="button"
             aria-label="Đóng panel">
             ×
         </button>
+
+        <!-- HEADER -->
 
         <header class="directory-heading">
 
@@ -556,9 +527,8 @@
                 ⚡ WELCOME TO NGHĨALQ TV ⚡
             </span>
 
-            <h2
-                id="directory-title"
-                class="brand-title">
+            <h2 class="brand-title"
+                id="directory-title">
                 NGHĨALQ TV
             </h2>
 
@@ -573,8 +543,7 @@
 
             <!-- TRANG CHÍNH -->
 
-            <a class="directory-card directory-card-main"
-               href="index.html#apps">
+            <div class="directory-card directory-card-main">
 
                 <div class="directory-card-head">
                     <span class="directory-icon">🏠</span>
@@ -582,9 +551,8 @@
                 </div>
 
                 <p>
-                    Tổng hợp các bản Map và Mod Skin
-                    dành cho Android / iOS, kèm hướng
-                    dẫn và mục lấy Key.
+                    Tổng hợp Map và Mod Skin dành cho
+                    Android / iOS, kèm hướng dẫn và mục lấy Key.
                 </p>
 
                 <div class="directory-tags">
@@ -594,7 +562,14 @@
                     <span>GET KEY</span>
                 </div>
 
-            </a>
+                <button
+                    class="directory-home-button"
+                    id="directory-home"
+                    type="button">
+                    🏠 VÀO TRANG CHÍNH
+                </button>
+
+            </div>
 
 
             <!-- FILE LẺ -->
@@ -610,6 +585,173 @@
                 <p>
                     Các file Mod Skin riêng lẻ,
                     lựa chọn trang phục theo từng vị tướng.
+                </p>
+
+                <div class="directory-tags">
+                    <span>MOD SKIN LẺ</span>
+                    <span>MOD SKIN HOK</span>
+                </div>
+
+            </a>
+
+
+            <!-- TÀI NGUYÊN -->
+
+            <a class="directory-card"
+               href="resources.html">
+
+                <div class="directory-card-head">
+                    <span class="directory-icon">🧰</span>
+                    <h3>TÀI NGUYÊN</h3>
+                </div>
+
+                <p>
+                    Các gói hỗ trợ và tùy chỉnh
+                    tài nguyên trong game.
+                </p>
+
+                <div class="directory-tags">
+                    <span>RESOURCES</span>
+                    <span>CAM XA</span>
+                    <span>EXTRA GAME</span>
+                    <span>MAP VGHD</span>
+                    <span>FPS</span>
+                </div>
+
+            </a>
+
+
+            <!-- MOD PACK -->
+
+            <a class="directory-card"
+               href="modpacks.html">
+
+                <div class="directory-card-head">
+                    <span class="directory-icon">📦</span>
+                    <h3>MOD PACK</h3>
+                </div>
+
+                <p>
+                    Tổng hợp các gói Mod Pack
+                    chứa nhiều Skin trong cùng một bản Pack.
+                </p>
+
+                <div class="directory-tags">
+                    <span>NHIỀU SKIN</span>
+                    <span>ANDROID</span>
+                    <span>IOS</span>
+                </div>
+
+            </a>
+
+        </div>
+
+
+        <p class="directory-footer">
+            Khám phá các danh mục trên website<br>
+            <strong>✦ NGHĨALQ TV ✦</strong>
+        </p>
+
+    </section>
+</div>
+
+
+<!-- =================================
+     JAVASCRIPT - HOME + CLOSE
+================================= -->
+
+<script>
+(function () {
+
+    const overlay = document.getElementById(
+        'website-directory-overlay'
+    );
+
+    const closeButton = document.getElementById(
+        'directory-close'
+    );
+
+    const homeButton = document.getElementById(
+        'directory-home'
+    );
+
+    if (!overlay || !closeButton || !homeButton) {
+        return;
+    }
+
+    let isClosed = false;
+
+    /*
+       ĐỔI SELECTOR NÀY nếu menu trang chủ
+       của bạn đang dùng ID khác.
+    */
+
+    const HOME_TARGET = '#apps';
+
+    function goToHomepage() {
+
+        if (isClosed) return;
+
+        isClosed = true;
+
+        // Đóng panel
+        overlay.hidden = true;
+
+        // Khôi phục website
+        document.body.style.overflow = '';
+        document.documentElement.style.overflow = '';
+
+        document.body.classList.remove('panel-open');
+
+        // Hiển thị menu trang chủ nếu có
+        requestAnimationFrame(function () {
+
+            const target = document.querySelector(HOME_TARGET);
+
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            } else {
+                // Nếu không tìm thấy #apps,
+                // hiển thị trang chủ từ đầu.
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            }
+
+        });
+    }
+
+    // Nút TRANG CHÍNH
+    homeButton.addEventListener('click', function (e) {
+        e.preventDefault();
+        goToHomepage();
+    });
+
+    // Nút X
+    closeButton.addEventListener('click', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        goToHomepage();
+    });
+
+    // Nhấn ESC cũng vào trang chủ
+    document.addEventListener('keydown', function (e) {
+
+        if (
+            e.key === 'Escape' &&
+            !overlay.hidden
+        ) {
+            goToHomepage();
+        }
+
+    });
+
+})();
+</script>
                 </p>
 
                 <div class="directory-tags">
