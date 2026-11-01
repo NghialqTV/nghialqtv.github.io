@@ -495,6 +495,50 @@
         transition: none !important;
     }
 }
+
+/* ===== FIX PANEL SIZE + MOBILE READABILITY ===== */
+#website-directory-overlay {
+  padding: clamp(10px, 2.5vw, 24px);
+}
+.directory-panel {
+  width: min(100%, 760px);
+  max-height: min(94dvh, 900px);
+  padding: clamp(20px, 3.2vw, 34px) clamp(16px, 3vw, 28px) 22px;
+}
+.directory-heading { padding-bottom: clamp(16px, 2.5vw, 24px); }
+.directory-eyebrow { font-size: clamp(10px, 1.7vw, 12px); }
+.brand-title { font-size: clamp(30px, 6vw, 48px); }
+.brand-subtitle { font-size: clamp(12px, 2vw, 14px); }
+.directory-grid { gap: clamp(9px, 1.8vw, 14px); }
+.directory-card { padding: clamp(12px, 2vw, 18px); }
+.directory-card h3 { font-size: clamp(13px, 2vw, 16px); }
+.directory-card p { font-size: clamp(12px, 1.7vw, 14px); line-height: 1.55; }
+.directory-tags span { font-size: clamp(9px, 1.3vw, 11px); }
+.directory-home-button { display: block; min-height: 44px; }
+.directory-close { width: 40px; height: 40px; }
+@media (max-width: 600px) {
+  #website-directory-overlay { padding: 10px; }
+  .directory-panel {
+    width: 100%;
+    max-height: 96dvh;
+    padding: 25px 14px 18px;
+    border-radius: 18px;
+  }
+  .directory-heading { padding: 7px 28px 17px; }
+  .brand-title { font-size: clamp(30px, 8vw, 42px); margin: 13px 0 8px; }
+  .directory-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 9px; }
+  .directory-card { padding: 12px 10px; }
+  .directory-card p { font-size: 12px; }
+  .directory-tags span { font-size: 9px; padding: 4px 6px; }
+  .directory-card-head { gap: 7px; margin-bottom: 8px; }
+  .directory-icon { flex-basis: 34px; width: 34px; height: 34px; font-size: 18px; }
+  .directory-home-button { font-size: 13px; padding: 12px 8px; }
+}
+@media (max-width: 380px) {
+  .directory-grid { grid-template-columns: 1fr; }
+  .directory-card-main { grid-column: auto; }
+}
+
 </style>
 
 
@@ -662,228 +706,33 @@
 
 <script>
 (function () {
+  const overlay = document.getElementById('website-directory-overlay');
+  const closeButton = document.getElementById('directory-close');
+  const homeButton = document.getElementById('directory-home');
+  if (!overlay) return;
 
-    const overlay = document.getElementById(
-        'website-directory-overlay'
-    );
-
-    const closeButton = document.getElementById(
-        'directory-close'
-    );
-
-    const homeButton = document.getElementById(
-        'directory-home'
-    );
-
-    if (!overlay || !closeButton || !homeButton) {
-        return;
+  function enterWebsite(event) {
+    if (event) {
+      event.preventDefault();
+      event.stopPropagation();
     }
-
-    let isClosed = false;
-
-    /*
-       ĐỔI SELECTOR NÀY nếu menu trang chủ
-       của bạn đang dùng ID khác.
-    */
-
-    const HOME_TARGET = '#apps';
-
-    function goToHomepage() {
-
-        if (isClosed) return;
-
-        isClosed = true;
-
-        // Đóng panel
-        overlay.hidden = true;
-
-        // Khôi phục website
-        document.body.style.overflow = '';
-        document.documentElement.style.overflow = '';
-
-        document.body.classList.remove('panel-open');
-
-        // Hiển thị menu trang chủ nếu có
-        requestAnimationFrame(function () {
-
-            const target = document.querySelector(HOME_TARGET);
-
-            if (target) {
-                target.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-            } else {
-                // Nếu không tìm thấy #apps,
-                // hiển thị trang chủ từ đầu.
-                window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth'
-                });
-            }
-
-        });
-    }
-
-    // Nút TRANG CHÍNH
-    homeButton.addEventListener('click', function (e) {
-        e.preventDefault();
-        goToHomepage();
-    });
-
-    // Nút X
-    closeButton.addEventListener('click', function (e) {
-        e.preventDefault();
-        e.stopPropagation();
-        goToHomepage();
-    });
-
-    // Nhấn ESC cũng vào trang chủ
-    document.addEventListener('keydown', function (e) {
-
-        if (
-            e.key === 'Escape' &&
-            !overlay.hidden
-        ) {
-            goToHomepage();
-        }
-
-    });
-
-})();
-</script>
-                </p>
-
-                <div class="directory-tags">
-                    <span>MOD SKIN LẺ</span>
-                    <span>MOD SKIN HOK</span>
-                </div>
-
-            </a>
-
-
-            <!-- TÀI NGUYÊN -->
-
-            <a class="directory-card"
-               href="resources.html">
-
-                <div class="directory-card-head">
-                    <span class="directory-icon">🧰</span>
-                    <h3>TÀI NGUYÊN</h3>
-                </div>
-
-                <p>
-                    Các gói hỗ trợ và tùy chỉnh
-                    tài nguyên trong game.
-                </p>
-
-                <div class="directory-tags">
-                    <span>RESOURCES</span>
-                    <span>CAM XA</span>
-                    <span>EXTRA GAME</span>
-                    <span>MAP VGHD</span>
-                    <span>FPS</span>
-                </div>
-
-            </a>
-
-
-            <!-- MOD PACK -->
-
-            <a class="directory-card"
-               href="modpacks.html">
-
-                <div class="directory-card-head">
-                    <span class="directory-icon">📦</span>
-                    <h3>MOD PACK</h3>
-                </div>
-
-                <p>
-                    Tổng hợp các gói Mod Pack
-                    chứa nhiều Skin trong cùng một bản Pack.
-                </p>
-
-                <div class="directory-tags">
-                    <span>NHIỀU SKIN</span>
-                    <span>ANDROID</span>
-                    <span>IOS</span>
-                </div>
-
-            </a>
-
-        </div>
-
-
-        <p class="directory-footer">
-            Khám phá các danh mục trên website<br>
-            <strong>✦ NGHĨALQ TV ✦</strong>
-        </p>
-
-    </section>
-
-</div>
-
-
-<!-- JAVASCRIPT CLOSE PANEL -->
-
-<script>
-(function () {
-
-    const overlay = document.getElementById(
-        'website-directory-overlay'
-    );
-
-    const close = document.getElementById(
-        'directory-close'
-    );
-
-    if (!overlay || !close) return;
-
-    function closePanel() {
-
-        overlay.hidden = true;
-
-        overlay.style.display = 'none';
-
-        document.body.style.overflow = '';
-
-        document.documentElement.style.overflow = '';
-
-        document.body.classList.remove('panel-open');
-    }
-
-    close.addEventListener('click', function (e) {
-
-        e.preventDefault();
-        e.stopPropagation();
-
-        closePanel();
-
-    });
-
-    overlay.addEventListener('click', function (e) {
-
-        if (e.target === overlay) {
-            closePanel();
-        }
-
-    });
-
-    document.addEventListener('keydown', function (e) {
-
-        if (
-            e.key === 'Escape' &&
-            !overlay.hidden
-        ) {
-            closePanel();
-        }
-
-    });
-
-    // Đảm bảo website không bị khóa cuộn
+    overlay.hidden = true;
+    overlay.style.display = 'none';
     document.body.style.overflow = '';
-
     document.documentElement.style.overflow = '';
+    document.body.classList.remove('panel-open', 'modal-open');
+    window.scrollTo({ top: 0, behavior: 'auto' });
+  }
 
+  if (closeButton) closeButton.addEventListener('click', enterWebsite);
+  if (homeButton) homeButton.addEventListener('click', enterWebsite);
+  overlay.addEventListener('click', function (event) {
+    if (event.target === overlay) enterWebsite(event);
+  });
+  document.addEventListener('keydown', function (event) {
+    if (event.key === 'Escape' && !overlay.hidden) enterWebsite(event);
+  });
+  document.body.style.overflow = '';
+  document.documentElement.style.overflow = '';
 })();
 </script>
