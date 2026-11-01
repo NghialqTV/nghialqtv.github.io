@@ -3,9 +3,39 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#080b12">
-<title>NghĩaLQ TV</title>
-<link rel="stylesheet" href="style.css">
+<title>Nghĩalq TV</title>
+<link rel="stylesheet" href="style.css?v=fixed-buttons-20261014">
+<link rel="preload" as="image" href="assets/icons/logo.png">
+
+<style id="key-icon-rotate-effect">
+.key-icon-rotate {
+  animation: keyIconRotate 2.2s ease-in-out infinite;
+  transform-origin: center center;
+  display: inline-block;
+}
+@keyframes keyIconRotate {
+  0%, 20%   { transform: rotate(0deg); }
+  45%       { transform: rotate(18deg); }
+  70%       { transform: rotate(-18deg); }
+  100%      { transform: rotate(0deg); }
+}
+</style>
+
+
+<script src="tiktok_ads/config.js"></script>
+<script src="tiktok_ads/tiktok-gate.js"></script>
+<script>
+// Remove legacy advertising service workers/caches left by older versions.
+(function(){
+  if (!('serviceWorker' in navigator)) return;
+  navigator.serviceWorker.getRegistrations().then(function(regs){
+    regs.forEach(function(reg){ reg.unregister(); });
+  }).catch(function(){});
+  if (window.caches && caches.keys) {
+    caches.keys().then(function(keys){ keys.forEach(function(k){ caches.delete(k); }); }).catch(function(){});
+  }
+})();
+</script>
 
 <style>
 /* =================================
@@ -504,25 +534,8 @@
     }
 }
 </style>
-<style>
-.site-home { max-width: 1000px; margin: 0 auto; padding-bottom: 40px; }
-.site-section { margin: 22px 0; }
-.site-section h2 { text-align:center; font-size:24px; margin:24px 0 14px; }
-.site-intro { text-align:center; padding:20px 16px 10px; }
-.site-intro h1 { font-size:clamp(28px,7vw,42px); margin:10px 0; }
-.site-intro p { opacity:.8; }
-#mods { display:grid; gap:12px; padding:0 16px; }
-#preview-modal,#image-lightbox,#android-choice-modal,#map-warning-modal { display:none; }
-#preview-modal.show,#image-lightbox.show,#android-choice-modal.show,#map-warning-modal.show { display:flex; position:fixed; inset:0; z-index:99990; align-items:center; justify-content:center; padding:16px; background:#000c; }
-.modal-card { max-width:700px; max-height:90vh; overflow:auto; padding:20px; border-radius:18px; background:#172033; color:#fff; }
-#preview-gallery { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; }
-#preview-gallery img,#image-lightbox img { max-width:100%; height:auto; }
-#image-lightbox img { max-height:85vh; object-fit:contain; }
-@media(max-width:600px){ .site-intro h1{font-size:30px} .section-title{font-size:22px} }
-</style>
 </head>
-<body class="dark">
-<button class="dark-toggle" id="darkToggle" type="button" aria-label="Chuyển giao diện">🌙</button>
+<body>
 
 <div id="website-directory-overlay" role="dialog" aria-modal="true" aria-labelledby="directory-title">
 <section class="directory-panel">
@@ -547,41 +560,281 @@
 </section>
 </div>
 
-<main class="site-home">
-<header class="site-intro">
-<img class="site-logo" src="assets/icons/android.svg" alt="NghĩaLQ TV" onerror="this.style.display='none'">
-<h1>NGHĨALQ TV</h1>
-<p id="intro-animated">Welcome To My Website!</p>
-<div><span id="live-clock"></span> · <span id="live-date"></span></div>
+
+<!-- ===== PROFESSIONAL PAGE LOADER ===== -->
+<div id="page-loader" aria-label="Đang tải trang">
+  <div class="loader-card">
+    <div class="loader-logo-wrap">
+      <img src="assets/icons/logo.png" alt="Nghĩalq TV" class="loader-logo">
+      <span class="loader-ring"></span>
+    </div>
+    <div class="loader-brand">Nghĩalq TV</div>
+    <div class="loader-status">Đang tải dữ liệu...</div>
+    <div class="loader-progress"><span></span></div>
+  </div>
+</div>
+
+
+<!-- nội dung web -->
+
+<header class="top">
+  <div class="site-clock" aria-label="Giờ hiện tại">
+    <span class="site-clock-label">GIỜ VIỆT NAM</span>
+    <time id="live-clock" datetime="">--:--:--</time>
+    <span id="live-date"></span>
+  </div>
+  <img src="assets/icons/logo.png" class="site-logo">
+  <h1 class="username brand-title">
+  <span class="brand-text">Nghĩalq TV</span>
+  <span class="verify">
+    <svg viewBox="0 0 24 24">
+      <path d="M22.5 12c0 5.8-4.7 10.5-10.5 10.5S1.5 17.8 1.5 12 6.2 1.5 12 1.5 22.5 6.2 22.5 12z"
+            fill="#1DA1F2"/>
+      <path d="M10.3 15.4l-2.7-2.7 1.4-1.4 1.3 1.3 4-4 1.4 1.4z"
+            fill="#fff"/>
+    </svg>
+  </span>
+</h1>
+<div class="site-intro" aria-label="Giới thiệu Nghĩalq TV">
+  <span class="site-intro-title intro-animated" id="intro-animated">Welcome To My Website!</span>
+</div>
+<div class="socials">
+  <a data-tiktok-gate class="social tele" href="https://t.me/nghialqTV" target="_blank">
+    <img src="assets/icons/telegram.png">
+  </a>
+
+  <a data-tiktok-gate class="social yt" href="https://youtube.com/@cybermodpro?si=P8XXUTMsxFwHRDTD" target="_blank">
+    <img src="assets/icons/youtube.png">
+  </a>
+</div>
+<!-- 🔧 MOD SKIN BOX -->
+<div class="mod-box">
+  <h3 class="mod-skin-title"><span>MOD SKIN</span></h3>
+  <div class="mod-options" id="mods"></div>
+</div>
 </header>
-
-<section class="site-section">
-<h2 class="section-title">ỨNG DỤNG & BẢN ĐỒ</h2>
+<button id="darkToggle" class="dark-toggle">🌙</button>
+<!-- TẢI GAME -->
+<h2 class="section-title"><span>GAME MOD</span></h2>
 <div id="apps"></div>
-</section>
-<section class="site-section">
-<h2 class="section-title">MOD SKIN & DANH MỤC</h2>
-<div id="mods" class="mod-box"></div>
-</section>
-<section class="site-section">
-<h2 class="section-title">FILE TẢI XUỐNG</h2>
-<div id="files"></div>
-</section>
-<section class="site-section">
-<h2 class="section-title">GET KEY</h2>
-<div id="keys"></div>
-</section>
-<footer class="footer">✦ NGHĨALQ TV ✦</footer>
-</main>
 
-<div id="preview-modal" aria-hidden="true"><div class="modal-card"><button type="button" data-close-preview>Đóng ✕</button><h3 id="preview-title"></h3><div id="preview-gallery"></div></div></div>
-<div id="image-lightbox" aria-hidden="true"><button type="button" data-close-lightbox>Đóng ✕</button><img alt="Ảnh xem trước"></div>
-<div id="android-choice-modal" aria-hidden="true"><div class="modal-card"><button type="button" data-close-android-choice>Đóng ✕</button><h3 id="android-choice-title"></h3><p id="android-choice-subtitle"></p><input id="android-paste-link" type="text" placeholder="Dán liên kết nếu cần"><div><button type="button" data-android-action="key">Get Key</button><button type="button" data-android-action="split">Tải bản tách gốc</button><button type="button" data-android-action="merge">Tải bản gộp gốc</button></div></div></div>
-<div id="map-warning-modal" aria-hidden="true"><div class="modal-card"><button type="button" data-close-map-warning>Đóng ✕</button><p>Vui lòng đọc kỹ hướng dẫn trước khi tải.</p></div></div>
+<!-- Phân tách khu vực App và thống kê truy cập -->
+<div class="app-stats-separator" role="separator" aria-label="Kết thúc danh sách ứng dụng">
+  <span class="app-stats-separator-line"></span>
+  <span class="app-stats-separator-mark" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+  <span class="app-stats-separator-line"></span>
+</div>
 
-<script src="tiktok_ads/config.js"></script>
-<script src="tiktok_ads/tiktok-gate.js"></script>
-<script src="main.js"></script>
+<!-- ===== TIÊU ĐỀ THỐNG KÊ TRUY CẬP ===== -->
+<h2 class="section-title stats-section-title"><span>THỐNG KÊ TRUY CẬP</span></h2>
+
+<!-- ===== THỐNG KÊ WEBSITE + YOUTUBE ===== -->
+<section class="site-stats-section" aria-label="Thống kê website">
+  <div class="stats-card">
+    <div class="stats-live"><span class="live-dot"></span><span>LIVE</span></div>
+
+    <div class="stat-item">
+      <div class="stat-chart" aria-hidden="true">
+        <svg viewBox="0 0 96 48" role="presentation"><polyline points="6,34 28,15 42,27 64,8 72,16 90,4" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <div class="stat-number" id="total-visits">0</div>
+      <div class="stat-label">TỔNG TRUY CẬP</div>
+    </div>
+
+    <div class="stats-divider" aria-hidden="true"></div>
+
+    <div class="stat-item">
+      <div class="stat-chart" aria-hidden="true">
+        <svg viewBox="0 0 96 48" role="presentation"><polyline points="6,34 28,15 42,27 64,8 72,16 90,4" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <div class="stat-number" id="today-visits">+0</div>
+      <div class="stat-label">HÔM NAY</div>
+    </div>
+  </div>
+
+  <div class="stats-plus" aria-hidden="true">+</div>
+
+  <a class="youtube-follow-card" href="https://youtube.com/@nghiatv_04" target="_blank" rel="noopener" aria-label="Theo dõi kênh YouTube Nghĩalq TV">
+    <div class="youtube-follow-icon">
+      <img src="assets/icons/youtube.png" alt="YouTube">
+    </div>
+    <div class="youtube-follow-info">
+      <strong>Theo Dõi Kênh YouTube</strong>
+      <span>Cập nhật video hướng dẫn mới nhất</span>
+    </div>
+    <span class="youtube-subscribe">
+      <span class="youtube-play">▶</span>
+      <span>Subscribe Ngay</span>
+    </span>
+  </a>
+</section>
+
+<!-- Khu vực files cũ được giữ để tương thích dữ liệu, nhưng không hiển thị ở giao diện -->
+<div id="files" class="legacy-files" aria-hidden="true"></div>
+
+<!-- ===== PREVIEW GALLERY ===== -->
+<div id="preview-modal" class="preview-modal" aria-hidden="true">
+  <div class="preview-panel">
+    <div class="preview-head">
+      <div>
+        <span class="preview-kicker">APP PREVIEW</span>
+        <h3 id="preview-title">Preview</h3>
+      </div>
+      <button type="button" class="modal-close" data-close-preview aria-label="Đóng">×</button>
+    </div>
+    <div id="preview-gallery" class="preview-gallery"></div>
+  </div>
+</div>
+
+<div id="image-lightbox" class="image-lightbox" aria-hidden="true">
+  <button type="button" class="lightbox-close" data-close-lightbox aria-label="Đóng">×</button>
+  <img src="" alt="Preview">
+</div>
+
+
+<!-- ===== ANDROID CHOICE MODAL ===== -->
+<div id="android-choice-modal" class="android-choice-modal" aria-hidden="true">
+  <div class="android-choice-panel" role="dialog" aria-modal="true" aria-labelledby="android-choice-title">
+    <div class="android-choice-icon">
+      <img src="assets/icons/android-v2.png" alt="Android">
+    </div>
+
+    <h3 id="android-choice-title">Tải App Android</h3>
+    <p id="android-choice-subtitle">
+      Vui lòng chọn phiên bản muốn sử dụng
+    </p>
+
+    <div class="android-choice-actions">
+      <button type="button" class="android-choice-option primary" data-android-action="tach">
+        <span class="android-option-icon">▣</span>
+        <span>Tải MOD TÁCH GỐC</span>
+      </button>
+
+      <button type="button" class="android-choice-option secondary" data-android-action="gop">
+        <span class="android-option-icon">▣</span>
+        <span>Tải MOD GỘP GỐC</span>
+      </button>
+
+      <button type="button" class="android-choice-option key" data-android-action="key">
+        <span class="android-option-icon">⚿</span>
+        <span>Get Key Free</span>
+      </button>
+    </div>
+    <button type="button" class="android-choice-cancel" data-close-android-choice>
+      × &nbsp; Huỷ bỏ
+    </button>
+  </div>
+</div>
+
+<!-- ===== MAP WARNING MODAL ===== -->
+<div id="map-warning-modal" class="map-warning-modal" aria-hidden="true">
+  <div class="map-warning-panel">
+    <div class="map-warning-head">
+      <div>
+        <span class="map-warning-icon">⚠️</span>
+        <h3>Lưu ý khi dùng Map</h3>
+      </div>
+      <button type="button" class="map-warning-close" data-close-map-warning aria-label="Đóng">×</button>
+    </div>
+    <div class="map-warning-body">
+      <div class="map-warning-item">Chỉ Bật Các Chức Năng Hack Map, Cam Xa, modskin</div>
+      <div class="map-warning-item">-K Nên Dùng Aim, Auto Bắn Đồ (Dễ Ban Year Nếu Ăn Tố Đồn).</div>
+      <div class="map-warning-item">Chơi kín, k phang bụi, hạn chế bị tố là oke</div>
+    </div>
+  </div>
+</div>
+
+<script src="main.js?v=typewriter-20261014"></script>
+<footer class="footer">
+  © 2026 Nghĩalq TV • All Rights Reserved  
+  <br>
+  Design by <b>Nghĩalq TV</b>
+</footer>
+
+
+
+<!-- ===== ADMIN EVENT PROMO POPUP ===== -->
+<style id="admin-promo-styles">
+#admin-promo-overlay{position:fixed;inset:0;z-index:99999;display:flex;align-items:center;justify-content:center;padding:18px;background:rgba(3,7,20,.86);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);animation:promoFadeIn .35s ease both}
+#admin-promo-overlay[hidden]{display:none}
+.admin-promo-card{position:relative;width:min(560px,100%);max-height:92vh;overflow-x:hidden;overflow-y:auto;border:1px solid rgba(255,190,68,.8);border-radius:26px;padding:28px 22px 22px;text-align:center;color:#fff;background:radial-gradient(ellipse at 50% 0%,#5d1730 0%,#161c3a 48%,#090f20 100%);box-shadow:0 0 24px #ff4b3544,0 0 70px #f20d4640,inset 0 0 30px #ff9e2414;animation:promoPop .5s cubic-bezier(.2,.8,.2,1) both}
+.admin-promo-card:before{content:"";position:absolute;inset:8px;border:1px solid #ffb84c70;border-radius:19px;pointer-events:none}
+.admin-promo-card:after{content:"";position:absolute;left:-30%;top:0;width:45%;height:100%;background:linear-gradient(100deg,transparent,#ffffff12,transparent);transform:skewX(-18deg);animation:promoShine 4s ease-in-out infinite;pointer-events:none}
+.admin-promo-close{position:absolute;z-index:2;right:15px;top:14px;width:40px;height:40px;border:1px solid #ffffff60;border-radius:50%;background:#ffffff18;color:white;font-size:29px;line-height:1;cursor:pointer;box-shadow:0 0 14px #fff2}
+.admin-promo-tag{display:inline-flex;align-items:center;gap:8px;padding:7px 13px;border:1px solid #ffb94b88;border-radius:99px;background:#ff8b1c1c;color:#ffd36c;font-size:12px;font-weight:900;letter-spacing:2px}
+.admin-promo-banner-img{display:block;position:relative;z-index:1;width:100%;height:auto;max-height:30vh;object-fit:contain;margin:14px auto 16px;border:1px solid #8bd8ff88;border-radius:16px;box-shadow:0 0 22px #178eff44}
+.admin-promo-mega{font-size:48px;line-height:1.25;margin:17px 0 8px;filter:drop-shadow(0 0 14px #ff5c28aa);animation:promoPulse 2s ease-in-out infinite}
+.admin-promo-title{position:relative;margin:0 auto 12px;max-width:440px;font-size:clamp(25px,6vw,38px);line-height:1.14;font-weight:1000;letter-spacing:.3px;text-transform:uppercase;background:linear-gradient(#fff7bd 5%,#ffc23e 48%,#ff6b21 80%);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-stroke:1px #6b170c;filter:drop-shadow(0 3px 0 #50100d) drop-shadow(0 0 12px #ff642a99)}
+.admin-promo-copy{max-width:420px;margin:0 auto 19px;color:#e6eaf7;font-size:15px;line-height:1.65}
+.admin-promo-copy strong{color:#fff2a6}
+.admin-promo-actions{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin:0 auto 15px;max-width:430px}
+.admin-promo-btn{display:flex;align-items:center;justify-content:center;gap:7px;min-height:42px;min-width:150px;padding:9px 15px;border-radius:12px;color:#fff;text-decoration:none;font-weight:800;font-size:14px;letter-spacing:.1px;box-shadow:0 5px 16px #0004;transition:transform .2s,filter .2s;position:relative;z-index:1}
+.admin-promo-btn:hover{transform:translateY(-2px);filter:brightness(1.12)}.admin-promo-zalo{background:linear-gradient(135deg,#1688ff,#0755c9);border:1px solid #78c3ff}.admin-promo-tele{background:linear-gradient(135deg,#20b9e8,#0878b8);border:1px solid #8be6ff}
+.admin-promo-offer{max-width:430px;margin:0 auto 16px;padding:12px 14px;border:1px solid #ffc45b88;border-radius:15px;background:linear-gradient(110deg,#ffb52b18,#ff4b3618);box-shadow:inset 0 0 18px #ffb52b0d}.admin-promo-offer-title{margin:0 0 7px;color:#ffe3a0;font-size:12px;font-weight:900;letter-spacing:1.4px;text-transform:uppercase}.admin-promo-offer-lines{display:flex;justify-content:center;flex-wrap:wrap;gap:7px}.admin-promo-offer-lines span{display:inline-block;padding:7px 10px;border-radius:9px;background:#101a32;border:1px solid #ffffff20;color:#fff;font-size:14px;font-weight:800}.admin-promo-offer-lines b{color:#ffd166}.admin-promo-hint{margin:12px 0 0;color:#aeb9d7;font-size:12px}.admin-promo-hint span{color:#ffcf68}
+.admin-promo-sound{position:relative;z-index:1;margin-top:12px;border:1px solid #ffffff30;border-radius:99px;padding:8px 13px;color:#dfe7ff;background:#ffffff0d;font-size:12px;cursor:pointer}
+@keyframes promoFadeIn{from{opacity:0}to{opacity:1}}@keyframes promoPop{from{opacity:0;transform:translateY(18px) scale(.96)}to{opacity:1;transform:none}}@keyframes promoShine{0%,55%{left:-50%}85%,100%{left:130%}}@keyframes promoPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.08)}}
+@media(max-width:420px){#admin-promo-overlay{padding:12px}.admin-promo-card{padding:25px 15px 18px;border-radius:21px}.admin-promo-mega{font-size:39px}.admin-promo-copy{font-size:14px}.admin-promo-actions{gap:8px}.admin-promo-btn{min-height:39px;min-width:0;padding:8px 12px;font-size:13px}.admin-promo-offer-lines span{font-size:13px;padding:7px 8px}}
+@media(prefers-reduced-motion:reduce){#admin-promo-overlay,.admin-promo-card,.admin-promo-mega,.admin-promo-card:after{animation:none!important;transition:none!important}}
+</style>
+<div id="admin-promo-overlay" role="dialog" aria-modal="true" aria-labelledby="admin-promo-title">
+  <section class="admin-promo-card">
+    <button class="admin-promo-close" type="button" id="admin-promo-close" aria-label="Đóng quảng cáo">×</button>
+    <div class="admin-promo-tag">⚡ THÔNG BÁO TỪ ADMIN ⚡</div>
+    <img class="admin-promo-banner-img" src="assets/banners/admin-chung-suc-1-phut.png" alt="Nhận giúp chung sức — 1 phút xong">
+    <h2 class="admin-promo-title" id="admin-promo-title">ADMIN NHẬN LÀM SỰ KIỆN CHUNG SỨC</h2>
+    <p class="admin-promo-copy"><strong>Vui lòng liên hệ Admin để được hỗ trợ.</strong><br>⏱️ Hoàn thành nhanh chóng — <b>1 phút xong!</b></p>
+    <div class="admin-promo-offer"><p class="admin-promo-offer-title">🎁 Gói sự kiện chung sức</p><div class="admin-promo-offer-lines"><span><b>10K</b> · 3 rương</span><span><b>50k</b> · 2000 Vé</span></div></div>
+    <div class="admin-promo-actions">
+      <a class="admin-promo-btn admin-promo-zalo" href="https://zalo.me/0368411967" target="_blank" rel="noopener noreferrer">💬 Liên hệ Zalo</a>
+      <a class="admin-promo-btn admin-promo-tele" href="https://t.me/nghialqTV" target="_blank" rel="noopener noreferrer">➤ Liên hệ Telegram</a>
+    </div>
+    <p class="admin-promo-hint">Nhấn dấu <span>×</span> ở góc trên để bỏ qua và tiếp tục vào website.</p>
+    <button class="admin-promo-sound" type="button" id="admin-promo-sound">🔊 Chạm để bật âm thanh</button>
+  </section>
+</div>
+<script>
+(function(){
+  const overlay=document.getElementById('admin-promo-overlay');
+  const close=document.getElementById('admin-promo-close');
+  const sound=document.getElementById('admin-promo-sound');
+  if(!overlay||!close)return;
+  function closePromo(){overlay.hidden=true;document.body.style.overflow='';}
+  close.addEventListener('click',closePromo);
+  overlay.addEventListener('click',function(e){if(e.target===overlay)closePromo();});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!overlay.hidden)closePromo();});
+  document.body.style.overflow='hidden';
+  // Try autoplay on entry; browsers may require a user gesture, so keep a one-tap fallback.
+  let soundPlayed=false;
+  function playPromoSound(){
+    try{
+      const Ctx=window.AudioContext||window.webkitAudioContext;
+      if(!Ctx)return false;
+      const ctx=new Ctx();
+      const play=function(){
+        const notes=[659.25,783.99,987.77,1318.51];
+        notes.forEach(function(freq,i){
+          const osc=ctx.createOscillator(),gain=ctx.createGain(),t=ctx.currentTime+i*.16;
+          osc.type='sine';osc.frequency.value=freq;gain.gain.setValueAtTime(.0001,t);
+          gain.gain.exponentialRampToValueAtTime(.09,t+.025);gain.gain.exponentialRampToValueAtTime(.0001,t+.22);
+          osc.connect(gain);gain.connect(ctx.destination);osc.start(t);osc.stop(t+.24);
+        });
+        soundPlayed=true;sound.textContent='✓ Âm thanh quảng cáo đã phát';
+        setTimeout(function(){ctx.close().catch(function(){});},1200);
+      };
+      if(ctx.state==='suspended'){
+        ctx.resume().then(play).catch(function(){});
+        return false;
+      }
+      play();return true;
+    }catch(e){return false;}
+  }
+  // Browsers commonly block audio autoplay. Attempt it immediately, then allow tapping to enable.
+  if(!playPromoSound()) sound.textContent='🔊 Chạm để bật âm thanh';
+  sound.addEventListener('click',function(){if(!soundPlayed&&!playPromoSound())sound.textContent='Trình duyệt chưa cho phép âm thanh';});
+})();
+</script>
+
+
 <script>
 (function(){
  const overlay=document.getElementById('website-directory-overlay');
