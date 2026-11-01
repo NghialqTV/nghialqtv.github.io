@@ -1,510 +1,747 @@
 
+<!-- =====================================
+     NGHĨALQ TV - WEBSITE DIRECTORY PANEL
+     RESPONSIVE MOBILE + DESKTOP
+===================================== -->
+
 <style id="website-directory-styles">
+
+#website-directory-overlay,
+#website-directory-overlay * {
+    box-sizing: border-box;
+}
+
 #website-directory-overlay {
-  position: fixed;
-  inset: 0;
-  z-index: 99999;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 14px;
-  background: rgba(2, 5, 17, .90);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  animation: panelFade .55s ease both;
+    position: fixed;
+    inset: 0;
+    z-index: 999999;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    min-height: 100vh;
+    min-height: 100dvh;
+
+    padding: 12px;
+
+    background: rgba(3, 7, 20, .91);
+
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    animation: directoryFade .45s ease;
 }
 
 #website-directory-overlay[hidden] {
-  display: none;
+    display: none !important;
 }
+
+/* PANEL */
 
 .directory-panel {
-  position: relative;
-  width: min(720px, 100%);
-  max-height: 94vh;
-  overflow-y: auto;
-  padding: 30px 23px 23px;
-  border: 1px solid rgba(105,190,255,.75);
-  border-radius: 25px;
-  color: #fff;
-  background:
-    radial-gradient(ellipse at 50% 0%, #284c7b 0%, transparent 55%),
-    linear-gradient(145deg,#172846,#0b1329 65%,#080d1e);
-  box-shadow:
-    0 0 18px #269dff44,
-    0 0 55px #176bff30,
-    0 20px 75px #000b,
-    inset 0 0 30px #66baff0c;
-  animation: panelEnter .65s cubic-bezier(.2,.8,.2,1);
+    position: relative;
+
+    width: 100%;
+    max-width: 680px;
+
+    max-height: 94vh;
+    max-height: 94dvh;
+
+    overflow-y: auto;
+    overscroll-behavior: contain;
+
+    margin: auto;
+    padding: 28px 23px 22px;
+
+    border: 1px solid rgba(105, 190, 255, .75);
+    border-radius: 24px;
+
+    color: #ffffff;
+
+    background:
+        radial-gradient(
+            ellipse at 50% 0%,
+            #294b78 0%,
+            transparent 55%
+        ),
+        linear-gradient(
+            145deg,
+            #172846,
+            #0b1329 65%,
+            #080d1e
+        );
+
+    box-shadow:
+        0 0 18px #269dff55,
+        0 0 55px #176bff30,
+        0 20px 75px #000b,
+        inset 0 0 30px #66baff0c;
+
+    animation: directoryEnter .55s ease;
 }
 
-.directory-panel:before {
-  content: "";
-  position: absolute;
-  inset: 8px;
-  border: 1px solid #91cfff45;
-  border-radius: 18px;
-  pointer-events: none;
+.directory-panel::before {
+    content: "";
+
+    position: absolute;
+    inset: 7px;
+
+    border: 1px solid #91cfff40;
+    border-radius: 17px;
+
+    pointer-events: none;
 }
+
+/* CLOSE BUTTON */
 
 .directory-close {
-  position: absolute;
-  z-index: 5;
-  right: 16px;
-  top: 15px;
-  width: 40px;
-  height: 40px;
-  border: 1px solid #ffffff66;
-  border-radius: 50%;
-  background: #ffffff12;
-  color: white;
-  font-size: 27px;
-  cursor: pointer;
-  transition: .3s;
+    position: absolute;
+    z-index: 10;
+
+    top: 14px;
+    right: 14px;
+
+    display: grid;
+    place-items: center;
+
+    width: 39px;
+    height: 39px;
+
+    border: 1px solid #ffffff70;
+    border-radius: 50%;
+
+    background: #ffffff12;
+    color: white;
+
+    font-size: 26px;
+    cursor: pointer;
+
+    transition: .3s ease;
 }
 
 .directory-close:hover {
-  transform: rotate(90deg);
-  background: #e33b4d;
-  box-shadow: 0 0 18px #ff465d99;
+    transform: rotate(90deg);
+
+    background: #e33b4d;
+
+    box-shadow: 0 0 18px #ff465d99;
 }
 
-/* BRAND TITLE */
+/* HEADER */
 
 .directory-heading {
-  position: relative;
-  text-align: center;
-  padding: 8px 38px 24px;
+    position: relative;
+
+    text-align: center;
+
+    padding: 8px 38px 23px;
 }
 
 .directory-eyebrow {
-  display: inline-block;
-  padding: 7px 15px;
-  border: 1px solid #71bfff88;
-  border-radius: 30px;
-  background: #168bff1c;
-  color: #b4e3ff;
-  font-size: 11px;
-  font-weight: 900;
-  letter-spacing: 2px;
-  box-shadow: 0 0 15px #219aff25;
+    display: inline-block;
+
+    padding: 7px 15px;
+
+    border: 1px solid #71bfff88;
+    border-radius: 30px;
+
+    background: #168bff1c;
+
+    color: #b4e3ff;
+
+    font-size: 11px;
+    font-weight: 900;
+    letter-spacing: 2px;
+
+    box-shadow: 0 0 15px #219aff25;
 }
 
+/* NGHIALQ TV TITLE */
+
 .brand-title {
-  position: relative;
-  margin: 18px 0 10px;
-  font-size: clamp(34px, 7vw, 49px);
-  font-weight: 1000;
-  letter-spacing: 3px;
-  line-height: 1.2;
-  background: linear-gradient(
-    110deg,
-    #ffffff 0%,
-    #7ccfff 25%,
-    #fff0b0 48%,
-    #ffffff 65%,
-    #65baff 85%,
-    #ffffff 100%
-  );
-  background-size: 250% auto;
-  color: transparent;
-  -webkit-background-clip: text;
-  background-clip: text;
-  filter: drop-shadow(0 0 9px #299dff88);
-  animation:
-    brandShine 5s linear infinite,
-    brandGlow 2.5s ease-in-out infinite alternate;
+    position: relative;
+
+    margin: 18px 0 10px;
+
+    font-size: clamp(32px, 7vw, 49px);
+    font-weight: 1000;
+
+    letter-spacing: 2px;
+    line-height: 1.2;
+
+    background: linear-gradient(
+        110deg,
+        #ffffff,
+        #7ccfff 25%,
+        #fff0b0 48%,
+        #ffffff 65%,
+        #65baff 85%,
+        #ffffff
+    );
+
+    background-size: 250% auto;
+
+    color: transparent;
+
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    filter: drop-shadow(0 0 9px #299dff88);
+
+    animation:
+        brandShine 5s linear infinite,
+        brandGlow 2.5s ease-in-out infinite alternate;
 }
 
 .brand-subtitle {
-  margin: 0;
-  color: #c2d3eb;
-  font-size: 14px;
-  line-height: 1.6;
+    margin: 0;
+
+    color: #c2d3eb;
+
+    font-size: 14px;
+    line-height: 1.6;
 }
 
 @keyframes brandShine {
-  to { background-position: 250% center; }
+    to {
+        background-position: 250% center;
+    }
 }
 
 @keyframes brandGlow {
-  from {
-    filter: drop-shadow(0 0 5px #299dff66);
-  }
-  to {
-    filter: drop-shadow(0 0 18px #45baffcc);
-  }
+    from {
+        filter: drop-shadow(0 0 5px #299dff66);
+    }
+
+    to {
+        filter: drop-shadow(0 0 18px #45baffcc);
+    }
 }
 
-/* CATEGORY CARDS */
+/* GRID */
 
 .directory-grid {
-  display: grid;
-  grid-template-columns: repeat(2,minmax(0,1fr));
-  gap: 12px;
-  position: relative;
+    position: relative;
+
+    display: grid;
+
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    gap: 12px;
 }
 
+/* CARD */
+
 .directory-card {
-  display: block;
-  min-width: 0;
-  padding: 16px 15px;
-  border: 1px solid #8abfff48;
-  border-radius: 17px;
-  background: linear-gradient(145deg,#ffffff12,#ffffff05);
-  color: white;
-  text-decoration: none;
-  transition: .3s ease;
-  box-shadow: inset 0 1px #ffffff0b;
-  animation: cardEnter .7s ease both;
+    display: block;
+
+    min-width: 0;
+
+    padding: 16px 15px;
+
+    border: 1px solid #8abfff48;
+    border-radius: 17px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #ffffff12,
+            #ffffff05
+        );
+
+    color: white;
+
+    text-decoration: none;
+
+    box-shadow: inset 0 1px #ffffff0b;
+
+    transition: .3s ease;
 }
 
 .directory-card:hover {
-  transform: translateY(-5px);
-  border-color: #75caff;
-  background: linear-gradient(145deg,#2379b944,#ffffff0a);
-  box-shadow: 0 0 22px #258eff30;
+    transform: translateY(-4px);
+
+    border-color: #75caff;
+
+    background:
+        linear-gradient(
+            145deg,
+            #2379b944,
+            #ffffff0a
+        );
+
+    box-shadow: 0 0 22px #258eff30;
 }
 
 .directory-card-head {
-  display: flex;
-  align-items: center;
-  gap: 11px;
-  margin-bottom: 9px;
+    display: flex;
+    align-items: center;
+
+    gap: 11px;
+
+    margin-bottom: 10px;
 }
 
 .directory-icon {
-  display: grid;
-  place-items: center;
-  flex: 0 0 42px;
-  width: 42px;
-  height: 42px;
-  border-radius: 12px;
-  background: #258eff25;
-  border: 1px solid #7ac5ff66;
-  font-size: 22px;
-  box-shadow: 0 0 12px #258eff22;
+    display: grid;
+    place-items: center;
+
+    flex: 0 0 42px;
+
+    width: 42px;
+    height: 42px;
+
+    border-radius: 12px;
+
+    background: #258eff25;
+
+    border: 1px solid #7ac5ff66;
+
+    font-size: 22px;
+
+    box-shadow: 0 0 12px #258eff22;
 }
 
 .directory-card h3 {
-  margin: 0;
-  font-size: 16px;
-  font-weight: 900;
-  letter-spacing: .4px;
+    margin: 0;
+
+    font-size: 16px;
+    font-weight: 900;
+
+    letter-spacing: .4px;
 }
 
 .directory-card p {
-  margin: 0;
-  color: #c7d2e8;
-  font-size: 12.5px;
-  line-height: 1.6;
+    margin: 0;
+
+    color: #c7d2e8;
+
+    font-size: 12.5px;
+    line-height: 1.65;
 }
 
+/* TAGS */
+
 .directory-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  margin-top: 12px;
+    display: flex;
+    flex-wrap: wrap;
+
+    gap: 6px;
+
+    margin-top: 12px;
 }
 
 .directory-tags span {
-  padding: 5px 8px;
-  border: 1px solid #8abfff40;
-  border-radius: 7px;
-  background: #0a1730;
-  color: #d8eaff;
-  font-size: 10px;
-  font-weight: 800;
+    padding: 5px 8px;
+
+    border: 1px solid #8abfff40;
+    border-radius: 7px;
+
+    background: #0a1730;
+
+    color: #d8eaff;
+
+    font-size: 10px;
+    font-weight: 800;
 }
 
+/* MAIN CARD */
+
 .directory-card-main {
-  grid-column: 1/-1;
-  border-color: #e4bd6d80;
-  background: linear-gradient(120deg,#d99a2b20,#ffffff08);
+    grid-column: 1 / -1;
+
+    border-color: #e4bd6d80;
+
+    background:
+        linear-gradient(
+            120deg,
+            #d99a2b20,
+            #ffffff08
+        );
 }
 
 .directory-card-main .directory-icon {
-  background: #d89c2b22;
-  border-color: #ffcf7770;
+    background: #d89c2b22;
+
+    border-color: #ffcf7770;
 }
 
+/* FOOTER */
+
 .directory-footer {
-  position: relative;
-  margin: 19px 0 0;
-  text-align: center;
-  color: #9eacc8;
-  font-size: 11px;
-  line-height: 1.6;
+    position: relative;
+
+    margin: 19px 0 0;
+
+    text-align: center;
+
+    color: #9eacc8;
+
+    font-size: 12px;
+    line-height: 1.7;
 }
 
 .directory-footer strong {
-  color: #e8c77d;
+    color: #e8c77d;
+    letter-spacing: 1px;
 }
 
-@keyframes panelFade {
-  from { opacity: 0; }
-  to { opacity: 1; }
+/* ANIMATIONS */
+
+@keyframes directoryFade {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
 }
 
-@keyframes panelEnter {
-  from {
-    opacity: 0;
-    transform: translateY(25px) scale(.96);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
+@keyframes directoryEnter {
+    from {
+        opacity: 0;
+        transform: translateY(22px) scale(.97);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
 }
 
-@keyframes cardEnter {
-  from {
-    opacity: 0;
-    transform: translateY(15px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+/* TABLET */
+
+@media (min-width: 601px) {
+    .directory-panel {
+        width: min(680px, 95%);
+    }
 }
 
 /* MOBILE */
 
-@media(max-width:520px) {
-  #website-directory-overlay {
-    padding: 9px;
-  }
+@media (max-width: 600px) {
 
-  .directory-panel {
-    padding: 24px 14px 18px;
-    border-radius: 21px;
-    max-height: 95vh;
-  }
+    #website-directory-overlay {
+        padding: 9px;
+    }
 
-  .directory-heading {
-    padding: 7px 30px 19px;
-  }
+    .directory-panel {
+        width: 100%;
+        max-width: none;
 
-  .brand-title {
-    font-size: 33px;
-    letter-spacing: 2px;
-  }
+        max-height: 94vh;
+        max-height: 94dvh;
 
-  .brand-subtitle {
-    font-size: 12px;
-  }
+        padding: 24px 14px 19px;
 
-  .directory-grid {
-    gap: 9px;
-  }
+        border-radius: 20px;
+    }
 
-  .directory-card {
-    padding: 12px 10px;
-    border-radius: 13px;
-  }
+    .directory-heading {
+        padding: 8px 32px 20px;
+    }
 
-  .directory-card-head {
-    gap: 7px;
-  }
+    .brand-title {
+        font-size: clamp(29px, 8.5vw, 39px);
+        letter-spacing: 1.5px;
+    }
 
-  .directory-icon {
-    flex-basis: 33px;
-    width: 33px;
-    height: 33px;
-    font-size: 17px;
-  }
+    .brand-subtitle {
+        font-size: 12px;
+    }
 
-  .directory-card h3 {
-    font-size: 13px;
-  }
+    .directory-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 9px;
+    }
 
-  .directory-card p {
-    font-size: 11px;
-  }
+    .directory-card {
+        padding: 13px 10px;
+        border-radius: 13px;
+    }
 
-  .directory-tags {
-    gap: 4px;
-    margin-top: 8px;
-  }
+    .directory-card-head {
+        gap: 7px;
+    }
 
-  .directory-tags span {
-    font-size: 9px;
-    padding: 4px 5px;
-  }
+    .directory-icon {
+        flex-basis: 34px;
+        width: 34px;
+        height: 34px;
+        font-size: 17px;
+    }
 
-  .directory-close {
-    width: 34px;
-    height: 34px;
-    font-size: 23px;
-  }
+    .directory-card h3 {
+        font-size: 13px;
+    }
+
+    .directory-card p {
+        font-size: 11px;
+        line-height: 1.6;
+    }
+
+    .directory-tags {
+        gap: 4px;
+        margin-top: 9px;
+    }
+
+    .directory-tags span {
+        padding: 4px 5px;
+        font-size: 9px;
+    }
+
+    .directory-close {
+        width: 35px;
+        height: 35px;
+        font-size: 23px;
+    }
 }
 
-@media(prefers-reduced-motion:reduce) {
-  .directory-panel,
-  .directory-card,
-  .brand-title,
-  #website-directory-overlay {
-    animation: none !important;
-    transition: none !important;
-  }
+/* SMALL PHONE */
+
+@media (max-width: 360px) {
+
+    .directory-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .directory-card-main {
+        grid-column: auto;
+    }
+
+    .brand-title {
+        font-size: 29px;
+    }
 }
+
+/* REDUCE MOTION */
+
+@media (prefers-reduced-motion: reduce) {
+
+    #website-directory-overlay,
+    .directory-panel,
+    .directory-card,
+    .brand-title {
+        animation: none !important;
+        transition: none !important;
+    }
+}
+
 </style>
+
+
+<!-- PANEL HTML -->
 
 <div id="website-directory-overlay"
      role="dialog"
      aria-modal="true"
      aria-labelledby="directory-title">
 
-  <section class="directory-panel">
+    <section class="directory-panel">
 
-    <button class="directory-close"
+        <button
+            class="directory-close"
             type="button"
             id="directory-close"
-            aria-label="Đóng panel">×</button>
+            aria-label="Đóng panel">
+            ×
+        </button>
 
-    <header class="directory-heading">
+        <header class="directory-heading">
 
-      <span class="directory-eyebrow">
-        ⚡ WELCOME TO NGHĨALQ TV ⚡
-      </span>
+            <span class="directory-eyebrow">
+                ⚡ WELCOME TO NGHĨALQ TV ⚡
+            </span>
 
-      <h2 id="directory-title" class="brand-title">
-        NGHĨALQ TV
-      </h2>
+            <h2
+                id="directory-title"
+                class="brand-title">
+                NGHĨALQ TV
+            </h2>
 
-      <p class="brand-subtitle">
-        Kho tài nguyên · Mod Skin · Mod Pack
-      </p>
+            <p class="brand-subtitle">
+                Kho tài nguyên · Mod Skin · Mod Pack
+            </p>
 
-    </header>
+        </header>
 
-    <div class="directory-grid">
 
-      <!-- TRANG CHÍNH -->
-      <a class="directory-card directory-card-main"
-         href="index.html#apps">
+        <div class="directory-grid">
 
-        <div class="directory-card-head">
-          <span class="directory-icon">🏠</span>
-          <h3>TRANG CHÍNH</h3>
+            <!-- TRANG CHÍNH -->
+
+            <a class="directory-card directory-card-main"
+               href="index.html#apps">
+
+                <div class="directory-card-head">
+                    <span class="directory-icon">🏠</span>
+                    <h3>TRANG CHÍNH</h3>
+                </div>
+
+                <p>
+                    Tổng hợp các bản Map và Mod Skin
+                    dành cho Android / iOS, kèm hướng
+                    dẫn và mục lấy Key.
+                </p>
+
+                <div class="directory-tags">
+                    <span>MAP ANDROID</span>
+                    <span>MAP IOS</span>
+                    <span>MOD SKIN</span>
+                    <span>GET KEY</span>
+                </div>
+
+            </a>
+
+
+            <!-- FILE LẺ -->
+
+            <a class="directory-card"
+               href="file-le.html">
+
+                <div class="directory-card-head">
+                    <span class="directory-icon">📁</span>
+                    <h3>FILE LẺ</h3>
+                </div>
+
+                <p>
+                    Các file Mod Skin riêng lẻ,
+                    lựa chọn trang phục theo từng vị tướng.
+                </p>
+
+                <div class="directory-tags">
+                    <span>MOD SKIN LẺ</span>
+                    <span>MOD SKIN HOK</span>
+                </div>
+
+            </a>
+
+
+            <!-- TÀI NGUYÊN -->
+
+            <a class="directory-card"
+               href="resources.html">
+
+                <div class="directory-card-head">
+                    <span class="directory-icon">🧰</span>
+                    <h3>TÀI NGUYÊN</h3>
+                </div>
+
+                <p>
+                    Các gói hỗ trợ và tùy chỉnh
+                    tài nguyên trong game.
+                </p>
+
+                <div class="directory-tags">
+                    <span>RESOURCES</span>
+                    <span>CAM XA</span>
+                    <span>EXTRA GAME</span>
+                    <span>MAP VGHD</span>
+                    <span>FPS</span>
+                </div>
+
+            </a>
+
+
+            <!-- MOD PACK -->
+
+            <a class="directory-card"
+               href="modpacks.html">
+
+                <div class="directory-card-head">
+                    <span class="directory-icon">📦</span>
+                    <h3>MOD PACK</h3>
+                </div>
+
+                <p>
+                    Tổng hợp các gói Mod Pack
+                    chứa nhiều Skin trong cùng một bản Pack.
+                </p>
+
+                <div class="directory-tags">
+                    <span>NHIỀU SKIN</span>
+                    <span>ANDROID</span>
+                    <span>IOS</span>
+                </div>
+
+            </a>
+
         </div>
 
-        <p>
-          Tổng hợp các bản Map và Mod Skin dành cho
-          Android / iOS, kèm hướng dẫn và mục lấy Key.
+
+        <p class="directory-footer">
+            Khám phá các danh mục trên website<br>
+            <strong>✦ NGHĨALQ TV ✦</strong>
         </p>
 
-        <div class="directory-tags">
-          <span>MAP ANDROID</span>
-          <span>MAP IOS</span>
-          <span>MOD SKIN</span>
-          <span>GET KEY</span>
-        </div>
-      </a>
+    </section>
 
-      <!-- FILE LẺ -->
-      <a class="directory-card" href="file-le.html">
-
-        <div class="directory-card-head">
-          <span class="directory-icon">📁</span>
-          <h3>FILE LẺ</h3>
-        </div>
-
-        <p>
-          Các file Mod Skin riêng lẻ, lựa chọn
-          trang phục theo từng vị tướng.
-        </p>
-
-        <div class="directory-tags">
-          <span>MOD SKIN LẺ</span>
-          <span>MOD SKIN HOK</span>
-        </div>
-      </a>
-
-      <!-- TÀI NGUYÊN -->
-      <a class="directory-card" href="resources.html">
-
-        <div class="directory-card-head">
-          <span class="directory-icon">🧰</span>
-          <h3>TÀI NGUYÊN</h3>
-        </div>
-
-        <p>
-          Các gói hỗ trợ và tùy chỉnh tài nguyên trong game.
-        </p>
-
-        <div class="directory-tags">
-          <span>RESOURCES</span>
-          <span>CAM XA</span>
-          <span>EXTRA GAME</span>
-          <span>MAP VGHD</span>
-          <span>FPS</span>
-        </div>
-      </a>
-
-      <!-- MOD PACK -->
-      <a class="directory-card" href="modpacks.html">
-
-        <div class="directory-card-head">
-          <span class="directory-icon">📦</span>
-          <h3>MOD PACK</h3>
-        </div>
-
-        <p>
-          Tổng hợp các gói Mod Pack chứa nhiều Skin
-          trong cùng một bản Pack.
-        </p>
-
-        <div class="directory-tags">
-          <span>NHIỀU SKIN</span>
-          <span>ANDROID</span>
-          <span>IOS</span>
-        </div>
-      </a>
-
-    </div>
-
-    <p class="directory-footer">
-      Khám phá các danh mục trên website<br>
-      <strong>✦ NGHĨALQ TV ✦</strong>
-    </p>
-
-  </section>
 </div>
 
+
+<!-- JAVASCRIPT CLOSE PANEL -->
+
 <script>
-(function() {
+(function () {
 
-  const overlay = document.getElementById(
-    'website-directory-overlay'
-  );
+    const overlay = document.getElementById(
+        'website-directory-overlay'
+    );
 
-  const close = document.getElementById(
-    'directory-close'
-  );
+    const close = document.getElementById(
+        'directory-close'
+    );
 
-  if (!overlay || !close) return;
+    if (!overlay || !close) return;
 
-  function closeDirectory() {
-    overlay.hidden = true;
+    function closePanel() {
+
+        overlay.hidden = true;
+
+        overlay.style.display = 'none';
+
+        document.body.style.overflow = '';
+
+        document.documentElement.style.overflow = '';
+
+        document.body.classList.remove('panel-open');
+    }
+
+    close.addEventListener('click', function (e) {
+
+        e.preventDefault();
+        e.stopPropagation();
+
+        closePanel();
+
+    });
+
+    overlay.addEventListener('click', function (e) {
+
+        if (e.target === overlay) {
+            closePanel();
+        }
+
+    });
+
+    document.addEventListener('keydown', function (e) {
+
+        if (
+            e.key === 'Escape' &&
+            !overlay.hidden
+        ) {
+            closePanel();
+        }
+
+    });
+
+    // Đảm bảo website không bị khóa cuộn
     document.body.style.overflow = '';
-  }
 
-  close.addEventListener('click', closeDirectory);
-
-  overlay.addEventListener('click', function(e) {
-    if (e.target === overlay) {
-      closeDirectory();
-    }
-  });
-
-  document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape' && !overlay.hidden) {
-      closeDirectory();
-    }
-  });
-
-  document.body.style.overflow = 'hidden';
+    document.documentElement.style.overflow = '';
 
 })();
 </script>
