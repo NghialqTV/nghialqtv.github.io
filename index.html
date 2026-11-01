@@ -1,3 +1,11 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080b12">
+<title>NghĩaLQ TV</title>
+<link rel="stylesheet" href="style.css">
 
 <style>
 /* =================================
@@ -495,244 +503,101 @@
         transition: none !important;
     }
 }
-
-/* ===== FIX PANEL SIZE + MOBILE READABILITY ===== */
-#website-directory-overlay {
-  padding: clamp(10px, 2.5vw, 24px);
-}
-.directory-panel {
-  width: min(100%, 760px);
-  max-height: min(94dvh, 900px);
-  padding: clamp(20px, 3.2vw, 34px) clamp(16px, 3vw, 28px) 22px;
-}
-.directory-heading { padding-bottom: clamp(16px, 2.5vw, 24px); }
-.directory-eyebrow { font-size: clamp(10px, 1.7vw, 12px); }
-.brand-title { font-size: clamp(30px, 6vw, 48px); }
-.brand-subtitle { font-size: clamp(12px, 2vw, 14px); }
-.directory-grid { gap: clamp(9px, 1.8vw, 14px); }
-.directory-card { padding: clamp(12px, 2vw, 18px); }
-.directory-card h3 { font-size: clamp(13px, 2vw, 16px); }
-.directory-card p { font-size: clamp(12px, 1.7vw, 14px); line-height: 1.55; }
-.directory-tags span { font-size: clamp(9px, 1.3vw, 11px); }
-.directory-home-button { display: block; min-height: 44px; }
-.directory-close { width: 40px; height: 40px; }
-@media (max-width: 600px) {
-  #website-directory-overlay { padding: 10px; }
-  .directory-panel {
-    width: 100%;
-    max-height: 96dvh;
-    padding: 25px 14px 18px;
-    border-radius: 18px;
-  }
-  .directory-heading { padding: 7px 28px 17px; }
-  .brand-title { font-size: clamp(30px, 8vw, 42px); margin: 13px 0 8px; }
-  .directory-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 9px; }
-  .directory-card { padding: 12px 10px; }
-  .directory-card p { font-size: 12px; }
-  .directory-tags span { font-size: 9px; padding: 4px 6px; }
-  .directory-card-head { gap: 7px; margin-bottom: 8px; }
-  .directory-icon { flex-basis: 34px; width: 34px; height: 34px; font-size: 18px; }
-  .directory-home-button { font-size: 13px; padding: 12px 8px; }
-}
-@media (max-width: 380px) {
-  .directory-grid { grid-template-columns: 1fr; }
-  .directory-card-main { grid-column: auto; }
-}
-
 </style>
+<style>
+.site-home { max-width: 1000px; margin: 0 auto; padding-bottom: 40px; }
+.site-section { margin: 22px 0; }
+.site-section h2 { text-align:center; font-size:24px; margin:24px 0 14px; }
+.site-intro { text-align:center; padding:20px 16px 10px; }
+.site-intro h1 { font-size:clamp(28px,7vw,42px); margin:10px 0; }
+.site-intro p { opacity:.8; }
+#mods { display:grid; gap:12px; padding:0 16px; }
+#preview-modal,#image-lightbox,#android-choice-modal,#map-warning-modal { display:none; }
+#preview-modal.show,#image-lightbox.show,#android-choice-modal.show,#map-warning-modal.show { display:flex; position:fixed; inset:0; z-index:99990; align-items:center; justify-content:center; padding:16px; background:#000c; }
+.modal-card { max-width:700px; max-height:90vh; overflow:auto; padding:20px; border-radius:18px; background:#172033; color:#fff; }
+#preview-gallery { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; }
+#preview-gallery img,#image-lightbox img { max-width:100%; height:auto; }
+#image-lightbox img { max-height:85vh; object-fit:contain; }
+@media(max-width:600px){ .site-intro h1{font-size:30px} .section-title{font-size:22px} }
+</style>
+</head>
+<body class="dark">
+<button class="dark-toggle" id="darkToggle" type="button" aria-label="Chuyển giao diện">🌙</button>
 
-
-<!-- =================================
-     HTML PANEL
-================================= -->
-
-<div id="website-directory-overlay"
-     role="dialog"
-     aria-modal="true"
-     aria-labelledby="directory-title">
-
-    <section class="directory-panel">
-
-        <!-- NÚT X -->
-
-        <button
-            class="directory-close"
-            id="directory-close"
-            type="button"
-            aria-label="Đóng panel">
-            ×
-        </button>
-
-        <!-- HEADER -->
-
-        <header class="directory-heading">
-
-            <span class="directory-eyebrow">
-                ⚡ WELCOME TO NGHĨALQ TV ⚡
-            </span>
-
-            <h2 class="brand-title"
-                id="directory-title">
-                NGHĨALQ TV
-            </h2>
-
-            <p class="brand-subtitle">
-                Kho tài nguyên · Mod Skin · Mod Pack
-            </p>
-
-        </header>
-
-
-        <div class="directory-grid">
-
-            <!-- TRANG CHÍNH -->
-
-            <div class="directory-card directory-card-main">
-
-                <div class="directory-card-head">
-                    <span class="directory-icon">🏠</span>
-                    <h3>TRANG CHÍNH</h3>
-                </div>
-
-                <p>
-                    Tổng hợp Map và Mod Skin dành cho
-                    Android / iOS, kèm hướng dẫn và mục lấy Key.
-                </p>
-
-                <div class="directory-tags">
-                    <span>MAP ANDROID</span>
-                    <span>MAP IOS</span>
-                    <span>MOD SKIN</span>
-                    <span>GET KEY</span>
-                </div>
-
-                <button
-                    class="directory-home-button"
-                    id="directory-home"
-                    type="button">
-                    🏠 VÀO TRANG CHÍNH
-                </button>
-
-            </div>
-
-
-            <!-- FILE LẺ -->
-
-            <a class="directory-card"
-               href="file-le.html">
-
-                <div class="directory-card-head">
-                    <span class="directory-icon">📁</span>
-                    <h3>FILE LẺ</h3>
-                </div>
-
-                <p>
-                    Các file Mod Skin riêng lẻ,
-                    lựa chọn trang phục theo từng vị tướng.
-                </p>
-
-                <div class="directory-tags">
-                    <span>MOD SKIN LẺ</span>
-                    <span>MOD SKIN HOK</span>
-                </div>
-
-            </a>
-
-
-            <!-- TÀI NGUYÊN -->
-
-            <a class="directory-card"
-               href="resources.html">
-
-                <div class="directory-card-head">
-                    <span class="directory-icon">🧰</span>
-                    <h3>TÀI NGUYÊN</h3>
-                </div>
-
-                <p>
-                    Các gói hỗ trợ và tùy chỉnh
-                    tài nguyên trong game.
-                </p>
-
-                <div class="directory-tags">
-                    <span>RESOURCES</span>
-                    <span>CAM XA</span>
-                    <span>EXTRA GAME</span>
-                    <span>MAP VGHD</span>
-                    <span>FPS</span>
-                </div>
-
-            </a>
-
-
-            <!-- MOD PACK -->
-
-            <a class="directory-card"
-               href="modpacks.html">
-
-                <div class="directory-card-head">
-                    <span class="directory-icon">📦</span>
-                    <h3>MOD PACK</h3>
-                </div>
-
-                <p>
-                    Tổng hợp các gói Mod Pack
-                    chứa nhiều Skin trong cùng một bản Pack.
-                </p>
-
-                <div class="directory-tags">
-                    <span>NHIỀU SKIN</span>
-                    <span>ANDROID</span>
-                    <span>IOS</span>
-                </div>
-
-            </a>
-
-        </div>
-
-
-        <p class="directory-footer">
-            Khám phá các danh mục trên website<br>
-            <strong>✦ NGHĨALQ TV ✦</strong>
-        </p>
-
-    </section>
+<div id="website-directory-overlay" role="dialog" aria-modal="true" aria-labelledby="directory-title">
+<section class="directory-panel">
+<button class="directory-close" id="directory-close" type="button" aria-label="Đóng panel">×</button>
+<header class="directory-heading">
+<span class="directory-eyebrow">⚡ WELCOME TO NGHĨALQ TV ⚡</span>
+<h2 class="brand-title" id="directory-title">NGHĨALQ TV</h2>
+<p class="brand-subtitle">Kho tài nguyên · Mod Skin · Mod Pack</p>
+</header>
+<div class="directory-grid">
+<div class="directory-card directory-card-main">
+<div class="directory-card-head"><span class="directory-icon">🏠</span><h3>TRANG CHÍNH</h3></div>
+<p>Tổng hợp các bản Map và Mod Skin dành cho Android / iOS, kèm hướng dẫn và mục lấy Key.</p>
+<div class="directory-tags"><span>MAP ANDROID</span><span>MAP IOS</span><span>MOD SKIN</span><span>GET KEY</span></div>
+<button class="directory-home-button" id="directory-home" type="button">VÀO TRANG CHÍNH</button>
+</div>
+<a class="directory-card" href="file-le.html"><div class="directory-card-head"><span class="directory-icon">📁</span><h3>FILE LẺ</h3></div><p>Các file Mod Skin riêng lẻ, lựa chọn trang phục theo từng vị tướng.</p><div class="directory-tags"><span>MOD SKIN LẺ</span><span>MOD SKIN HOK</span></div></a>
+<a class="directory-card" href="resources.html"><div class="directory-card-head"><span class="directory-icon">🧰</span><h3>TÀI NGUYÊN</h3></div><p>Các gói hỗ trợ và tùy chỉnh tài nguyên trong game.</p><div class="directory-tags"><span>RESOURCES</span><span>CAM XA</span><span>EXTRA GAME</span><span>FPS</span></div></a>
+<a class="directory-card" href="modpacks.html"><div class="directory-card-head"><span class="directory-icon">📦</span><h3>MOD PACK</h3></div><p>Tổng hợp các gói Mod Pack chứa nhiều Skin trong cùng một bản Pack.</p><div class="directory-tags"><span>NHIỀU SKIN</span><span>ANDROID</span><span>IOS</span></div></a>
+</div>
+<p class="directory-footer">Khám phá các danh mục trên website<br><strong>✦ NGHĨALQ TV ✦</strong></p>
+</section>
 </div>
 
+<main class="site-home">
+<header class="site-intro">
+<img class="site-logo" src="assets/icons/android.svg" alt="NghĩaLQ TV" onerror="this.style.display='none'">
+<h1>NGHĨALQ TV</h1>
+<p id="intro-animated">Welcome To My Website!</p>
+<div><span id="live-clock"></span> · <span id="live-date"></span></div>
+</header>
 
-<!-- =================================
-     JAVASCRIPT - HOME + CLOSE
-================================= -->
+<section class="site-section">
+<h2 class="section-title">ỨNG DỤNG & BẢN ĐỒ</h2>
+<div id="apps"></div>
+</section>
+<section class="site-section">
+<h2 class="section-title">MOD SKIN & DANH MỤC</h2>
+<div id="mods" class="mod-box"></div>
+</section>
+<section class="site-section">
+<h2 class="section-title">FILE TẢI XUỐNG</h2>
+<div id="files"></div>
+</section>
+<section class="site-section">
+<h2 class="section-title">GET KEY</h2>
+<div id="keys"></div>
+</section>
+<footer class="footer">✦ NGHĨALQ TV ✦</footer>
+</main>
 
+<div id="preview-modal" aria-hidden="true"><div class="modal-card"><button type="button" data-close-preview>Đóng ✕</button><h3 id="preview-title"></h3><div id="preview-gallery"></div></div></div>
+<div id="image-lightbox" aria-hidden="true"><button type="button" data-close-lightbox>Đóng ✕</button><img alt="Ảnh xem trước"></div>
+<div id="android-choice-modal" aria-hidden="true"><div class="modal-card"><button type="button" data-close-android-choice>Đóng ✕</button><h3 id="android-choice-title"></h3><p id="android-choice-subtitle"></p><input id="android-paste-link" type="text" placeholder="Dán liên kết nếu cần"><div><button type="button" data-android-action="key">Get Key</button><button type="button" data-android-action="split">Tải bản tách gốc</button><button type="button" data-android-action="merge">Tải bản gộp gốc</button></div></div></div>
+<div id="map-warning-modal" aria-hidden="true"><div class="modal-card"><button type="button" data-close-map-warning>Đóng ✕</button><p>Vui lòng đọc kỹ hướng dẫn trước khi tải.</p></div></div>
+
+<script src="tiktok_ads/config.js"></script>
+<script src="tiktok_ads/tiktok-gate.js"></script>
+<script src="main.js"></script>
 <script>
-(function () {
-  const overlay = document.getElementById('website-directory-overlay');
-  const closeButton = document.getElementById('directory-close');
-  const homeButton = document.getElementById('directory-home');
-  if (!overlay) return;
-
-  function enterWebsite(event) {
-    if (event) {
-      event.preventDefault();
-      event.stopPropagation();
-    }
-    overlay.hidden = true;
-    overlay.style.display = 'none';
-    document.body.style.overflow = '';
-    document.documentElement.style.overflow = '';
-    document.body.classList.remove('panel-open', 'modal-open');
-    window.scrollTo({ top: 0, behavior: 'auto' });
-  }
-
-  if (closeButton) closeButton.addEventListener('click', enterWebsite);
-  if (homeButton) homeButton.addEventListener('click', enterWebsite);
-  overlay.addEventListener('click', function (event) {
-    if (event.target === overlay) enterWebsite(event);
-  });
-  document.addEventListener('keydown', function (event) {
-    if (event.key === 'Escape' && !overlay.hidden) enterWebsite(event);
-  });
-  document.body.style.overflow = '';
-  document.documentElement.style.overflow = '';
+(function(){
+ const overlay=document.getElementById('website-directory-overlay');
+ function enterHome(){
+   if(!overlay) return;
+   overlay.hidden=true;
+   overlay.style.display='none';
+   document.body.style.overflow='';
+   document.documentElement.style.overflow='';
+   window.scrollTo({top:0,behavior:'smooth'});
+ }
+ document.getElementById('directory-close')?.addEventListener('click',enterHome);
+ document.getElementById('directory-home')?.addEventListener('click',enterHome);
+ overlay?.addEventListener('click',e=>{if(e.target===overlay) enterHome();});
+ document.addEventListener('keydown',e=>{if(e.key==='Escape' && overlay && !overlay.hidden) enterHome();});
 })();
 </script>
+</body>
+</html>
