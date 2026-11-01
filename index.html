@@ -3,39 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nghĩalq TV</title>
-<link rel="stylesheet" href="style.css?v=fixed-buttons-20261014">
-<link rel="preload" as="image" href="assets/icons/logo.png">
-
-<style id="key-icon-rotate-effect">
-.key-icon-rotate {
-  animation: keyIconRotate 2.2s ease-in-out infinite;
-  transform-origin: center center;
-  display: inline-block;
-}
-@keyframes keyIconRotate {
-  0%, 20%   { transform: rotate(0deg); }
-  45%       { transform: rotate(18deg); }
-  70%       { transform: rotate(-18deg); }
-  100%      { transform: rotate(0deg); }
-}
-</style>
-
-
-<script src="tiktok_ads/config.js"></script>
-<script src="tiktok_ads/tiktok-gate.js"></script>
-<script>
-// Remove legacy advertising service workers/caches left by older versions.
-(function(){
-  if (!('serviceWorker' in navigator)) return;
-  navigator.serviceWorker.getRegistrations().then(function(regs){
-    regs.forEach(function(reg){ reg.unregister(); });
-  }).catch(function(){});
-  if (window.caches && caches.keys) {
-    caches.keys().then(function(keys){ keys.forEach(function(k){ caches.delete(k); }); }).catch(function(){});
-  }
-})();
-</script>
+<meta name="theme-color" content="#080b12">
+<title>NghĩaLQ TV</title>
+<link rel="stylesheet" href="style.css">
 
 <style>
 /* =================================
@@ -534,8 +504,25 @@
     }
 }
 </style>
+<style>
+.site-home { max-width: 1000px; margin: 0 auto; padding-bottom: 40px; }
+.site-section { margin: 22px 0; }
+.site-section h2 { text-align:center; font-size:24px; margin:24px 0 14px; }
+.site-intro { text-align:center; padding:20px 16px 10px; }
+.site-intro h1 { font-size:clamp(28px,7vw,42px); margin:10px 0; }
+.site-intro p { opacity:.8; }
+#mods { display:grid; gap:12px; padding:0 16px; }
+#preview-modal,#image-lightbox,#android-choice-modal,#map-warning-modal { display:none; }
+#preview-modal.show,#image-lightbox.show,#android-choice-modal.show,#map-warning-modal.show { display:flex; position:fixed; inset:0; z-index:99990; align-items:center; justify-content:center; padding:16px; background:#000c; }
+.modal-card { max-width:700px; max-height:90vh; overflow:auto; padding:20px; border-radius:18px; background:#172033; color:#fff; }
+#preview-gallery { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; }
+#preview-gallery img,#image-lightbox img { max-width:100%; height:auto; }
+#image-lightbox img { max-height:85vh; object-fit:contain; }
+@media(max-width:600px){ .site-intro h1{font-size:30px} .section-title{font-size:22px} }
+</style>
 </head>
-<body>
+<body class="dark">
+<button class="dark-toggle" id="darkToggle" type="button" aria-label="Chuyển giao diện">🌙</button>
 
 <div id="website-directory-overlay" role="dialog" aria-modal="true" aria-labelledby="directory-title">
 <section class="directory-panel">
@@ -560,198 +547,57 @@
 </section>
 </div>
 
-
-<!-- ===== PROFESSIONAL PAGE LOADER ===== -->
-<div id="page-loader" aria-label="Đang tải trang">
-  <div class="loader-card">
-    <div class="loader-logo-wrap">
-      <img src="assets/icons/logo.png" alt="Nghĩalq TV" class="loader-logo">
-      <span class="loader-ring"></span>
-    </div>
-    <div class="loader-brand">Nghĩalq TV</div>
-    <div class="loader-status">Đang tải dữ liệu...</div>
-    <div class="loader-progress"><span></span></div>
-  </div>
-</div>
-
-
-<!-- nội dung web -->
-
-<header class="top">
-  <div class="site-clock" aria-label="Giờ hiện tại">
-    <span class="site-clock-label">GIỜ VIỆT NAM</span>
-    <time id="live-clock" datetime="">--:--:--</time>
-    <span id="live-date"></span>
-  </div>
-  <img src="assets/icons/logo.png" class="site-logo">
-  <h1 class="username brand-title">
-  <span class="brand-text">Nghĩalq TV</span>
-  <span class="verify">
-    <svg viewBox="0 0 24 24">
-      <path d="M22.5 12c0 5.8-4.7 10.5-10.5 10.5S1.5 17.8 1.5 12 6.2 1.5 12 1.5 22.5 6.2 22.5 12z"
-            fill="#1DA1F2"/>
-      <path d="M10.3 15.4l-2.7-2.7 1.4-1.4 1.3 1.3 4-4 1.4 1.4z"
-            fill="#fff"/>
-    </svg>
-  </span>
-</h1>
-<div class="site-intro" aria-label="Giới thiệu Nghĩalq TV">
-  <span class="site-intro-title intro-animated" id="intro-animated">Welcome To My Website!</span>
-</div>
-<div class="socials">
-  <a data-tiktok-gate class="social tele" href="https://t.me/nghialqTV" target="_blank">
-    <img src="assets/icons/telegram.png">
-  </a>
-
-  <a data-tiktok-gate class="social yt" href="https://youtube.com/@cybermodpro?si=P8XXUTMsxFwHRDTD" target="_blank">
-    <img src="assets/icons/youtube.png">
-  </a>
-</div>
-<!-- 🔧 MOD SKIN BOX -->
-<div class="mod-box">
-  <h3 class="mod-skin-title"><span>MOD SKIN</span></h3>
-  <div class="mod-options" id="mods"></div>
-</div>
+<main class="site-home">
+<header class="site-intro">
+<img class="site-logo" src="assets/icons/android.svg" alt="NghĩaLQ TV" onerror="this.style.display='none'">
+<h1>NGHĨALQ TV</h1>
+<p id="intro-animated">Welcome To My Website!</p>
+<div><span id="live-clock"></span> · <span id="live-date"></span></div>
 </header>
-<button id="darkToggle" class="dark-toggle">🌙</button>
-<!-- TẢI GAME -->
-<h2 class="section-title"><span>GAME MOD</span></h2>
+
+<section class="site-section">
+<h2 class="section-title">ỨNG DỤNG & BẢN ĐỒ</h2>
 <div id="apps"></div>
-
-<!-- Phân tách khu vực App và thống kê truy cập -->
-<div class="app-stats-separator" role="separator" aria-label="Kết thúc danh sách ứng dụng">
-  <span class="app-stats-separator-line"></span>
-  <span class="app-stats-separator-mark" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-  <span class="app-stats-separator-line"></span>
-</div>
-
-<!-- ===== TIÊU ĐỀ THỐNG KÊ TRUY CẬP ===== -->
-<h2 class="section-title stats-section-title"><span>THỐNG KÊ TRUY CẬP</span></h2>
-
-<!-- ===== THỐNG KÊ WEBSITE + YOUTUBE ===== -->
-<section class="site-stats-section" aria-label="Thống kê website">
-  <div class="stats-card">
-    <div class="stats-live"><span class="live-dot"></span><span>LIVE</span></div>
-
-    <div class="stat-item">
-      <div class="stat-chart" aria-hidden="true">
-        <svg viewBox="0 0 96 48" role="presentation"><polyline points="6,34 28,15 42,27 64,8 72,16 90,4" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </div>
-      <div class="stat-number" id="total-visits">0</div>
-      <div class="stat-label">TỔNG TRUY CẬP</div>
-    </div>
-
-    <div class="stats-divider" aria-hidden="true"></div>
-
-    <div class="stat-item">
-      <div class="stat-chart" aria-hidden="true">
-        <svg viewBox="0 0 96 48" role="presentation"><polyline points="6,34 28,15 42,27 64,8 72,16 90,4" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </div>
-      <div class="stat-number" id="today-visits">+0</div>
-      <div class="stat-label">HÔM NAY</div>
-    </div>
-  </div>
-
-  <div class="stats-plus" aria-hidden="true">+</div>
-
-  <a class="youtube-follow-card" href="https://youtube.com/@nghiatv_04" target="_blank" rel="noopener" aria-label="Theo dõi kênh YouTube Nghĩalq TV">
-    <div class="youtube-follow-icon">
-      <img src="assets/icons/youtube.png" alt="YouTube">
-    </div>
-    <div class="youtube-follow-info">
-      <strong>Theo Dõi Kênh YouTube</strong>
-      <span>Cập nhật video hướng dẫn mới nhất</span>
-    </div>
-    <span class="youtube-subscribe">
-      <span class="youtube-play">▶</span>
-      <span>Subscribe Ngay</span>
-    </span>
-  </a>
 </section>
+<section class="site-section">
+<h2 class="section-title">MOD SKIN & DANH MỤC</h2>
+<div id="mods" class="mod-box"></div>
+</section>
+<section class="site-section">
+<h2 class="section-title">FILE TẢI XUỐNG</h2>
+<div id="files"></div>
+</section>
+<section class="site-section">
+<h2 class="section-title">GET KEY</h2>
+<div id="keys"></div>
+</section>
+<footer class="footer">✦ NGHĨALQ TV ✦</footer>
+</main>
 
-<!-- Khu vực files cũ được giữ để tương thích dữ liệu, nhưng không hiển thị ở giao diện -->
-<div id="files" class="legacy-files" aria-hidden="true"></div>
+<div id="preview-modal" aria-hidden="true"><div class="modal-card"><button type="button" data-close-preview>Đóng ✕</button><h3 id="preview-title"></h3><div id="preview-gallery"></div></div></div>
+<div id="image-lightbox" aria-hidden="true"><button type="button" data-close-lightbox>Đóng ✕</button><img alt="Ảnh xem trước"></div>
+<div id="android-choice-modal" aria-hidden="true"><div class="modal-card"><button type="button" data-close-android-choice>Đóng ✕</button><h3 id="android-choice-title"></h3><p id="android-choice-subtitle"></p><input id="android-paste-link" type="text" placeholder="Dán liên kết nếu cần"><div><button type="button" data-android-action="key">Get Key</button><button type="button" data-android-action="split">Tải bản tách gốc</button><button type="button" data-android-action="merge">Tải bản gộp gốc</button></div></div></div>
+<div id="map-warning-modal" aria-hidden="true"><div class="modal-card"><button type="button" data-close-map-warning>Đóng ✕</button><p>Vui lòng đọc kỹ hướng dẫn trước khi tải.</p></div></div>
 
-<!-- ===== PREVIEW GALLERY ===== -->
-<div id="preview-modal" class="preview-modal" aria-hidden="true">
-  <div class="preview-panel">
-    <div class="preview-head">
-      <div>
-        <span class="preview-kicker">APP PREVIEW</span>
-        <h3 id="preview-title">Preview</h3>
-      </div>
-      <button type="button" class="modal-close" data-close-preview aria-label="Đóng">×</button>
-    </div>
-    <div id="preview-gallery" class="preview-gallery"></div>
-  </div>
-</div>
-
-<div id="image-lightbox" class="image-lightbox" aria-hidden="true">
-  <button type="button" class="lightbox-close" data-close-lightbox aria-label="Đóng">×</button>
-  <img src="" alt="Preview">
-</div>
-
-
-<!-- ===== ANDROID CHOICE MODAL ===== -->
-<div id="android-choice-modal" class="android-choice-modal" aria-hidden="true">
-  <div class="android-choice-panel" role="dialog" aria-modal="true" aria-labelledby="android-choice-title">
-    <div class="android-choice-icon">
-      <img src="assets/icons/android-v2.png" alt="Android">
-    </div>
-
-    <h3 id="android-choice-title">Tải App Android</h3>
-    <p id="android-choice-subtitle">
-      Vui lòng chọn phiên bản muốn sử dụng
-    </p>
-
-    <div class="android-choice-actions">
-      <button type="button" class="android-choice-option primary" data-android-action="tach">
-        <span class="android-option-icon">▣</span>
-        <span>Tải MOD TÁCH GỐC</span>
-      </button>
-
-      <button type="button" class="android-choice-option secondary" data-android-action="gop">
-        <span class="android-option-icon">▣</span>
-        <span>Tải MOD GỘP GỐC</span>
-      </button>
-
-      <button type="button" class="android-choice-option key" data-android-action="key">
-        <span class="android-option-icon">⚿</span>
-        <span>Get Key Free</span>
-      </button>
-    </div>
-    <button type="button" class="android-choice-cancel" data-close-android-choice>
-      × &nbsp; Huỷ bỏ
-    </button>
-  </div>
-</div>
-
-<!-- ===== MAP WARNING MODAL ===== -->
-<div id="map-warning-modal" class="map-warning-modal" aria-hidden="true">
-  <div class="map-warning-panel">
-    <div class="map-warning-head">
-      <div>
-        <span class="map-warning-icon">⚠️</span>
-        <h3>Lưu ý khi dùng Map</h3>
-      </div>
-      <button type="button" class="map-warning-close" data-close-map-warning aria-label="Đóng">×</button>
-    </div>
-    <div class="map-warning-body">
-      <div class="map-warning-item">Chỉ Bật Các Chức Năng Hack Map, Cam Xa, modskin</div>
-      <div class="map-warning-item">-K Nên Dùng Aim, Auto Bắn Đồ (Dễ Ban Year Nếu Ăn Tố Đồn).</div>
-      <div class="map-warning-item">Chơi kín, k phang bụi, hạn chế bị tố là oke</div>
-    </div>
-  </div>
-</div>
-
-<script src="main.js?v=typewriter-20261014"></script>
-<footer class="footer">
-  © 2026 Nghĩalq TV • All Rights Reserved  
-  <br>
-  Design by <b>Nghĩalq TV</b>
-</footer>
-
-
-
+<script src="tiktok_ads/config.js"></script>
+<script src="tiktok_ads/tiktok-gate.js"></script>
+<script src="main.js"></script>
+<script>
+(function(){
+ const overlay=document.getElementById('website-directory-overlay');
+ function enterHome(){
+   if(!overlay) return;
+   overlay.hidden=true;
+   overlay.style.display='none';
+   document.body.style.overflow='';
+   document.documentElement.style.overflow='';
+   window.scrollTo({top:0,behavior:'smooth'});
+ }
+ document.getElementById('directory-close')?.addEventListener('click',enterHome);
+ document.getElementById('directory-home')?.addEventListener('click',enterHome);
+ overlay?.addEventListener('click',e=>{if(e.target===overlay) enterHome();});
+ document.addEventListener('keydown',e=>{if(e.key==='Escape' && overlay && !overlay.hidden) enterHome();});
+})();
+</script>
 </body>
 </html>
