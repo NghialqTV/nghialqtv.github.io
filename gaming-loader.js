@@ -44,39 +44,33 @@
     close();
   }
   function speak(fromGesture = false) {
-    // Use a licensed Adam voice recording when supplied; otherwise use local male Vietnamese TTS.
-    if (!adamAudio.dataset.unavailable) {
-      const current = ++attempt;
-      start.hidden = true;
-      caption.textContent = 'Đang phát lời chào...';
-      adamAudio.onended = () => { if (current === attempt) finishGreeting(); };
-      adamAudio.onerror = () => { adamAudio.dataset.unavailable = '1'; if (current === attempt) speak(fromGesture); };
-      adamAudio.play().catch(() => { adamAudio.dataset.unavailable = '1'; if (current === attempt) speak(fromGesture); });
-      return;
-    }
     if (done) return;
-    const id = ++attempt;
-    clearTimeout(speechTimer);
+    const current = ++attempt;
     start.hidden = true;
-    caption.textContent = 'Đang phát lời chào...';
-    if (!synth || typeof SpeechSynthesisUtterance === 'undefined') {
-      if (fromGesture) finishGreeting(); else fallback();
-      return;
-    }
-    try {
-      synth.cancel();
-      utterance = new SpeechSynthesisUtterance('Anh em cần gì thì liên hệ qua mục Mua Key nhé. Chúc anh em ngày mới vui vẻ. Lên nhạc!');
-      utterance.lang = 'vi-VN';
-      utterance.rate = .96;
-      utterance.pitch = 0.8;
-      const voices = synth.getVoices();
-      utterance.voice = voices.find(v => /^vi[-_]/i.test(v.lang) && /adam|male|nam|masculine/i.test(v.name)) || voices.find(v => /^vi(?:[-_]|$)/i.test(v.lang)) || null;
-      utterance.onend = () => { if (id === attempt) finishGreeting(); };
-      utterance.onerror = () => { if (id === attempt) fallback(); };
-      synth.speak(utterance);
-      // Speech engines may silently block automatic synthesis; allow manual recovery.
-      speechTimer = setTimeout(() => { if (id === attempt) fallback(); }, fromGesture ? 15000 : 4500);
-    } catch (_) { fallback(); }
+    caption.textContent = 'Đang phát lời chào Adam...';
+    adamAudio.onended = () => { if (current === attempt) finishGreeting(); };
+    adamAudio.onerror = () => {
+      if (current !== attempt) return;
+      start.hidden = false;
+      start.disabled = true;
+      start.textContent = 'THIẾU FILE GIỌNG ADAM';
+      caption.textContent = 'Không tìm thấy assets/audio/adam-loi-chao.mp3. Hãy tải file MP3 lên GitHub.';
+    };
+    adamAudio.play().catch((err) => {
+      if (current !== attempt) return;
+      // A browser autoplay restriction is NOT a reason to switch to Google TTS.
+      if (err && err.name === 'NotAllowedError') {
+        start.hidden = false;
+        start.disabled = false;
+        start.textContent = '▶ CHẠM ĐỂ PHÁT GIỌNG ADAM';
+        caption.textContent = 'Chạm để bật âm thanh';
+      } else {
+        start.hidden = false;
+        start.disabled = true;
+        start.textContent = 'KHÔNG PHÁT ĐƯỢC MP3';
+        caption.textContent = 'Kiểm tra file assets/audio/adam-loi-chao.mp3';
+      }
+    });
   }
   start.addEventListener('click', () => speak(true));
   skip.addEventListener('click', () => { ++attempt; try { synth?.cancel(); adamAudio.pause(); } catch (_) {} close(); });
