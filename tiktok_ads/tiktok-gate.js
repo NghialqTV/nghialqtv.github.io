@@ -4,6 +4,8 @@
     ? window.TIKTOK_AD_LINKS.filter(u => /^https?:\/\//i.test(String(u)))
     : [];
   const WAIT_MS = 1800;
+  // Ads are allowed only for a navigation click made on the homepage.
+  const IS_HOME = /(?:^\/|\/index\.html)$/i.test(window.location.pathname);
   let queue = [];
   let busy = false;
 
@@ -23,7 +25,7 @@
   function go(destination){
     if(!destination || busy) return false;
 
-    if(!ADS.length){
+    if(!IS_HOME || !ADS.length){
       window.location.assign(destination);
       return false;
     }
@@ -53,7 +55,7 @@
    */
   document.addEventListener('click', function(e){
     const el = e.target.closest('a[href]:not([data-no-ad]),button[data-tiktok-destination]');
-    if(!el) return;
+    if(!el || !IS_HOME) return;
 
     const dest =
       el.getAttribute('data-tiktok-destination') ||
