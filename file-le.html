@@ -318,12 +318,27 @@
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { transition: none !important; }
     }
+
+    /* NGHIALQ TV — minimalist neon download cards */
+    :root { --lime:#a77aff; --muted:#aab3ca; }
+    body {background:radial-gradient(ellipse at 85% -10%,#211343 0%,transparent 42%),#090d19;}
+    .file-grid {gap:13px;}
+    .file-card {border:1px solid #584587;border-radius:20px;background:linear-gradient(145deg,#151b2d,#0e1322);box-shadow:0 10px 28px #0004;}
+    .file-card:hover {border-color:#a77aff;box-shadow:0 0 24px #7748ff30;}
+    .card-body {padding:20px 15px;display:flex;flex-direction:column;justify-content:space-between;min-height:155px;}
+    .file-title {min-height:0;font-size:clamp(15px,2.1vw,20px);margin:0 0 20px;line-height:1.3;}
+    .card-footer {align-items:center;flex-wrap:wrap;gap:10px;}
+    .file-desc {max-width:100%;padding:8px 10px;border:1px solid #4b456b;border-radius:30px;background:#191d31;color:#e2ddff;font-size:10px;}
+    .download-btn {min-width:82px;min-height:40px;border:1px solid #ae8cff;border-radius:12px;background:linear-gradient(110deg,#3d5bf5,#923cf3);color:#fff;box-shadow:0 0 14px #784bfa50;font-size:12px;}
+    .download-btn:hover {background:linear-gradient(110deg,#624dff,#b447fa);color:#fff;}
+    .back-link {border-color:#6851a4;color:#d7c6ff;}
+    @media(max-width:390px){.file-grid{gap:10px}.card-body{padding:15px 11px;min-height:155px}.file-title{font-size:15px}.file-desc{font-size:9px;padding:7px}.download-btn{min-width:68px;min-height:37px;font-size:11px}}
   </style>
 
   <!-- Giữ nguyên cổng quảng cáo tải xuống hiện tại -->
   <script src="tiktok_ads/config.js"></script>
   <script src="tiktok_ads/tiktok-gate.js"></script>
-<link rel="stylesheet" href="ui-upgrade.css?v=20261103">
+<link rel="stylesheet" href="gaming-loader.css">
 </head>
 
 <body>
@@ -496,10 +511,6 @@
         const number = String(originalIndex + 1).padStart(3, "0");
 
         card.innerHTML = `
-          <div class="cover">
-            <img class="cover-image" alt="" loading="lazy">
-            <span class="free-badge">MIỄN PHÍ</span>
-          </div>
           <div class="card-body">
             <h2 class="file-title"></h2>
             <div class="card-footer">
@@ -511,22 +522,8 @@
           </div>
         `;
 
-        const coverImage = card.querySelector(".cover-image");
-        const fallbackCover = makeCover(item, originalIndex);
-
-        if (isCustomCover(item.image)) {
-          coverImage.src = item.image;
-          coverImage.onerror = () => {
-            coverImage.onerror = null;
-            coverImage.src = fallbackCover;
-          };
-        } else {
-          coverImage.src = fallbackCover;
-        }
-
-        coverImage.alt = `Ảnh bìa ${item.name || "mod skin"}`;
         card.querySelector(".file-title").textContent = item.name || "File Mod";
-        card.querySelector(".file-desc").textContent = item.desc || "File mod skin";
+        card.querySelector(".file-desc").textContent = /android|ios|iphone|ipad/i.test(item.desc || "") ? item.desc : "Android | iOS";
 
         const button = card.querySelector(".download-btn");
         if (unavailable) {
@@ -569,5 +566,6 @@
         count.textContent = "0/0";
       });
   </script>
+<script src="gaming-loader.js"></script>
 </body>
 </html>

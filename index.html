@@ -534,47 +534,9 @@
     }
 }
 </style>
-<link rel="stylesheet" href="ui-upgrade.css?v=20261103">
+<link rel="stylesheet" href="gaming-loader.css">
 </head>
 <body>
-
-<div id="website-directory-overlay" role="dialog" aria-modal="true" aria-labelledby="directory-title">
-<section class="directory-panel">
-<button class="directory-close" id="directory-close" type="button" aria-label="Đóng panel">×</button>
-<header class="directory-heading">
-<span class="directory-eyebrow">⚡ WELCOME TO NGHĨALQ TV ⚡</span>
-<h2 class="brand-title" id="directory-title">NGHĨALQ TV</h2>
-<p class="brand-subtitle">Kho tài nguyên · Mod Skin · Mod Pack</p>
-</header>
-<div class="directory-grid">
-<div class="directory-card directory-card-main">
-<div class="directory-card-head"><span class="directory-icon">🏠</span><h3>TRANG CHÍNH</h3></div>
-<p>Tổng hợp các bản Map và Mod Skin dành cho Android / iOS, kèm hướng dẫn và mục lấy Key.</p>
-<div class="directory-tags"><span>MAP ANDROID</span><span>MAP IOS</span><span>MOD SKIN</span><span>GET KEY</span></div>
-<button class="directory-home-button" id="directory-home" type="button">VÀO TRANG CHÍNH</button>
-</div>
-<a class="directory-card" href="file-le.html"><div class="directory-card-head"><span class="directory-icon">📁</span><h3>FILE LẺ</h3></div><p>Các file Mod Skin riêng lẻ, lựa chọn trang phục theo từng vị tướng.</p><div class="directory-tags"><span>MOD SKIN LẺ</span><span>MOD SKIN HOK</span></div></a>
-<a class="directory-card" href="resources.html"><div class="directory-card-head"><span class="directory-icon">🧰</span><h3>TÀI NGUYÊN</h3></div><p>Các gói hỗ trợ và tùy chỉnh tài nguyên trong game.</p><div class="directory-tags"><span>RESOURCES</span><span>CAM XA</span><span>EXTRA GAME</span><span>FPS</span></div></a>
-<a class="directory-card" href="modpacks.html"><div class="directory-card-head"><span class="directory-icon">📦</span><h3>MOD PACK</h3></div><p>Tổng hợp các gói Mod Pack chứa nhiều Skin trong cùng một bản Pack.</p><div class="directory-tags"><span>NHIỀU SKIN</span><span>ANDROID</span><span>IOS</span></div></a>
-</div>
-<p class="directory-footer">Khám phá các danh mục trên website<br><strong>✦ NGHĨALQ TV ✦</strong></p>
-</section>
-</div>
-
-
-<!-- ===== PROFESSIONAL PAGE LOADER ===== -->
-<div id="page-loader" aria-label="Đang tải trang">
-  <div class="loader-card">
-    <div class="loader-logo-wrap">
-      <img src="assets/icons/logo.png" alt="Nghĩalq TV" class="loader-logo">
-      <span class="loader-ring"></span>
-    </div>
-    <div class="loader-brand">Nghĩalq TV</div>
-    <div class="loader-status">Đang tải dữ liệu...</div>
-    <div class="loader-progress"><span></span></div>
-  </div>
-</div>
-
 
 <!-- nội dung web -->
 
@@ -779,22 +741,7 @@
 </style>
 
 
-<script>
-(function(){
- const overlay=document.getElementById('website-directory-overlay');
- function enterHome(){
-   if(!overlay) return;
-   overlay.hidden=true;
-   overlay.style.display='none';
-   document.body.style.overflow='';
-   document.documentElement.style.overflow='';
-   window.scrollTo({top:0,behavior:'smooth'});
- }
- document.getElementById('directory-close')?.addEventListener('click',enterHome);
- document.getElementById('directory-home')?.addEventListener('click',enterHome);
- overlay?.addEventListener('click',e=>{if(e.target===overlay) enterHome();});
- document.addEventListener('keydown',e=>{if(e.key==='Escape' && overlay && !overlay.hidden) enterHome();});
-})();
-</script>
+
+<script src="gaming-loader.js"></script>
 </body>
 </html>
