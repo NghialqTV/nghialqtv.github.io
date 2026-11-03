@@ -1,0 +1,43 @@
+/* NGHIALQ TV V9: refined logo, pack cards and key artwork */
+:root{--v9-blue:#4bc7ff;--v9-violet:#9c56ff;--v9-pink:#ff4caa}
+#gaming-load{background:radial-gradient(circle at 50% 36%,#20265b 0%,#0d1230 42%,#050813 83%)}
+#gaming-load::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.3;background:repeating-linear-gradient(0deg,transparent 0 45px,#83a6ff14 46px 47px),repeating-linear-gradient(90deg,transparent 0 45px,#83a6ff14 46px 47px);mask-image:linear-gradient(transparent,#000 55%,transparent)}
+#gaming-load .gaming-load-core{position:relative;z-index:1;width:min(360px,88vw)}
+#gaming-load .gaming-load-mark{width:154px;height:154px;margin-bottom:28px;border:0;background:transparent;filter:drop-shadow(0 0 16px #4f8cff70);animation:gaming-float 2.8s ease-in-out infinite}
+#gaming-load .gaming-load-mark::before{inset:-12px;border:3px solid transparent;border-top-color:#47dcff;border-right-color:#a35bff;border-bottom-color:#ff5ab6;border-radius:50%;animation:gaming-spin 3s linear infinite;box-shadow:0 0 24px #7861ff65}
+#gaming-load .gaming-load-mark::after{content:"";position:absolute;inset:-20px;border:1px dashed #7a90ff65;border-radius:50%;animation:gaming-spin 11s linear infinite reverse}
+#gaming-load .gaming-load-mark img{border:4px solid #e1edff;box-shadow:0 0 0 5px #575fff4d,0 0 35px #4baeff95;object-fit:cover}
+#gaming-load .gaming-load-title{font-size:clamp(24px,6vw,33px);letter-spacing:1.5px;text-shadow:0 0 22px #7f8bff88}
+#gaming-load .gaming-load-caption{color:#c6d5ff;font-size:14px}
+#gaming-load .gaming-load-track{height:5px;margin:26px auto 0;max-width:230px;background:#25315b}
+#gaming-load .gaming-load-track span{background:linear-gradient(90deg,#34d5ff,#785cff,#ff55b5)}
+/* Main channel logo halo */
+.site-logo{border-radius:50%!important;border:3px solid #e5f2ff!important;box-shadow:0 0 0 5px #6e73ff45,0 0 22px #48b9ff85,0 0 45px #9554ff4d!important;animation:v9LogoBreath 3.4s ease-in-out infinite}
+@keyframes v9LogoBreath{50%{box-shadow:0 0 0 7px #7c66ff65,0 0 32px #59d9ffb0,0 0 55px #ad5cff7a}}
+/* key artwork and tile: don't replace link or click behavior */
+img[src$="mua-key.png"],img[src$="key.png"]{border-radius:17px;filter:drop-shadow(0 0 9px #ffba4d75)}
+a:has(img[src$="mua-key.png"]),button:has(img[src$="mua-key.png"]),a:has(img[src$="key.png"]),button:has(img[src$="key.png"]){border-color:#ffcb6680!important;box-shadow:inset 0 0 16px #ffb54c1b,0 0 15px #f8b34435!important}
+/* mod pack visual redesign */
+body.v9-packs{background:radial-gradient(ellipse at 50% 0%,#1a2457 0%,#0b1027 38%,#070b19 85%);background-attachment:fixed}
+.v9-packs .page{max-width:980px}
+.v9-packs .back{background:#111d3c;border-color:#668dff70;box-shadow:0 0 15px #5e75ff33;transition:transform .2s,box-shadow .2s}
+.v9-packs .back:hover{transform:translateX(-3px);box-shadow:0 0 25px #617dff77}
+.v9-packs .hero{padding:20px 0 30px}
+.v9-packs .hero h1{font-weight:900;letter-spacing:.5px;text-shadow:0 0 22px #6885ff70}
+.v9-packs .pack-logo{padding:7px;width:52px;height:52px;border-radius:16px;background:linear-gradient(135deg,#ff3c9e,#7657ff);box-shadow:0 0 23px #ed4cff60}
+.v9-packs .hero-hot{box-shadow:0 0 16px #ff338a6b;animation:v9Hot 2.3s ease-in-out infinite}
+@keyframes v9Hot{50%{box-shadow:0 0 28px #ff338a9c}}
+.v9-packs .packs{gap:22px}
+.v9-packs .modpack-card{position:relative;isolation:isolate;padding:15px;gap:16px;border:1px solid #6379d988;border-radius:26px;background:linear-gradient(145deg,#182651,#121932 55%,#171331);box-shadow:0 14px 38px #0008,0 0 24px #5664ff20;transition:transform .25s,box-shadow .25s,border-color .25s}
+.v9-packs .modpack-card::before{content:"";position:absolute;inset:0;pointer-events:none;border-radius:inherit;background:linear-gradient(125deg,#64d9ff20,transparent 36%,transparent 70%,#a65cff20);z-index:-1}
+.v9-packs .modpack-card:hover{transform:translateY(-4px);border-color:#aa82ff;box-shadow:0 20px 45px #000a,0 0 30px #745dff4d}
+.v9-packs .modpack-thumb-wrap{border-radius:19px;border:1px solid #79b6ff88;box-shadow:0 0 20px #467dff29;aspect-ratio:16/8.5}
+.v9-packs .modpack-thumb{transition:transform .45s}
+.v9-packs .modpack-card:hover .modpack-thumb{transform:scale(1.035)}
+.v9-packs .modpack-name{font-weight:850;color:#fff}
+.v9-packs .modpack-download{background:linear-gradient(125deg,#fa4d9c,#b449ef);border:1px solid #ffa0d4;box-shadow:0 0 19px #f44a9b55;transition:transform .2s,filter .2s,box-shadow .2s}
+.v9-packs .modpack-download:hover{filter:brightness(1.12);transform:translateY(-2px);box-shadow:0 0 30px #f44a9b9a}
+.v9-packs .pack-platform{background:#182950;border-color:#5271ae}
+.v9-packs .modpack-download-count{border-color:#5279cb!important;background:#182b54!important}
+@media(max-width:480px){.v9-packs .modpack-card{padding:12px;border-radius:23px}.v9-packs .hero{padding:18px 0 24px}.v9-packs .modpack-info{align-items:flex-end}.v9-packs .modpack-download{min-width:100px;width:100px}}
+@media(prefers-reduced-motion:reduce){.site-logo,.v9-packs .hero-hot{animation:none!important}.v9-packs .modpack-card,.v9-packs .modpack-thumb{transition:none!important}}

@@ -8,3 +8,8 @@
 #gaming-load .gaming-start-btn[hidden]{display:none!important}
 #gaming-load .gaming-start-btn:not([hidden]){animation:gaming-pulse 1.7s ease-in-out infinite}
 @keyframes gaming-pulse{50%{box-shadow:0 0 38px #8458ffbb;transform:translateY(-2px)}}
+
+/* V8: official channel logo on startup */
+#gaming-load .gaming-load-mark{width:132px;height:132px;border-radius:50%;overflow:visible;background:#10142c}
+#gaming-load .gaming-load-mark:before{border-radius:50%}
+#gaming-load .gaming-load-mark img{display:block;width:100%;height:100%;object-fit:cover;border-radius:50%;border:3px solid #a18aff;box-shadow:0 0 26px #8358ff80}
