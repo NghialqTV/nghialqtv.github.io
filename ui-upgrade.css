@@ -1,0 +1,41 @@
+/* NGHIALQ TV • Premium UI 2026 — visual-only overrides */
+:root{--ui-cyan:#63e5ff;--ui-violet:#9878ff;--ui-lime:#c8ff48}
+#website-directory-overlay{background:rgba(2,5,16,.86);backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px)}
+.directory-panel{border:1px solid rgba(116,203,255,.42);border-radius:28px;background:radial-gradient(ellipse at 48% -12%,rgba(48,126,232,.4),transparent 56%),radial-gradient(ellipse at 110% 65%,rgba(96,62,190,.18),transparent 55%),linear-gradient(150deg,#131e36,#090e1e 72%);box-shadow:0 0 0 1px rgba(255,255,255,.045) inset,0 0 45px rgba(41,130,255,.24),0 30px 85px rgba(0,0,0,.75);scrollbar-width:thin;scrollbar-color:#486b98 transparent}
+.directory-panel::before{border-color:rgba(157,216,255,.16);pointer-events:none}
+.directory-heading .brand-title{background:linear-gradient(110deg,#fff7c6 8%,#fff 44%,#84dfff 82%);-webkit-background-clip:text;background-clip:text;color:transparent;text-shadow:none;filter:drop-shadow(0 5px 24px rgba(90,170,255,.25))}
+.directory-eyebrow{border:1px solid rgba(108,209,255,.4)!important;background:rgba(54,120,200,.15)!important;box-shadow:0 0 24px rgba(62,170,255,.12) inset;letter-spacing:.17em}
+.directory-card{position:relative;isolation:isolate;overflow:hidden;border:1px solid rgba(141,177,224,.23);border-radius:23px;background:linear-gradient(135deg,rgba(49,72,110,.57),rgba(12,20,42,.76));box-shadow:inset 0 1px rgba(255,255,255,.09),0 14px 32px rgba(0,0,0,.16);transition:transform .3s cubic-bezier(.2,.8,.2,1),border-color .3s,box-shadow .3s}
+.directory-card::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(115deg,transparent 28%,rgba(255,255,255,.07) 48%,transparent 66%);transform:translateX(-150%);transition:transform .65s ease;z-index:-1}
+.directory-card:hover::after{transform:translateX(150%)}
+.directory-card:hover{transform:translateY(-5px);border-color:rgba(116,225,255,.7);box-shadow:0 16px 40px rgba(18,117,237,.17),inset 0 1px rgba(255,255,255,.14)}
+.directory-card-main{border-color:rgba(245,197,98,.55);background:radial-gradient(circle at 85% 0%,rgba(241,175,67,.13),transparent 50%),linear-gradient(135deg,rgba(58,71,95,.84),rgba(22,30,51,.94))}
+.directory-icon{box-shadow:0 0 20px rgba(92,176,255,.14);transition:transform .3s ease}
+.directory-card:hover .directory-icon{transform:scale(1.1) rotate(-5deg)}
+.directory-tags span{border-radius:9px!important;background:rgba(5,14,35,.62)!important;border:1px solid rgba(121,167,219,.22)!important}
+.directory-home-button{position:relative;overflow:hidden;border-radius:16px;background:linear-gradient(105deg,#f6c15c,#ffe9a3 46%,#d99b35);box-shadow:0 7px 25px rgba(231,161,54,.22),inset 0 1px rgba(255,255,255,.65);transition:transform .25s,filter .25s,box-shadow .25s}
+.directory-home-button:hover{transform:translateY(-3px);filter:brightness(1.07);box-shadow:0 12px 34px rgba(231,161,54,.38)}
+.directory-close{transition:transform .3s,background .3s,border-color .3s}
+.directory-close:hover{transform:rotate(90deg);background:rgba(109,194,255,.2);border-color:var(--ui-cyan)}
+.directory-grid>.directory-card{animation:uiRise .65s both}.directory-grid>.directory-card:nth-child(2){animation-delay:.09s}.directory-grid>.directory-card:nth-child(3){animation-delay:.17s}.directory-grid>.directory-card:nth-child(4){animation-delay:.25s}
+@keyframes uiRise{from{opacity:0;transform:translateY(18px) scale(.985)}to{opacity:1;transform:translateY(0) scale(1)}}
+body:has(.file-grid){background:radial-gradient(ellipse at 10% -5%,rgba(49,57,137,.3),transparent 45%),radial-gradient(ellipse at 95% 45%,rgba(22,94,109,.14),transparent 48%),#070a13}
+.page-header{background:linear-gradient(130deg,rgba(18,25,48,.97),rgba(8,11,22,.95));border-bottom:1px solid rgba(130,157,255,.18)}
+.page-header h1{background:linear-gradient(95deg,#fff,#c4d2ff 65%,#93edff);background-clip:text;-webkit-background-clip:text;color:transparent}
+.file-grid{gap:18px}
+.file-card{position:relative;isolation:isolate;border:1px solid rgba(122,150,203,.25);background:linear-gradient(160deg,#19213a,#0e1324 75%);box-shadow:0 12px 35px rgba(0,0,0,.25),inset 0 1px rgba(255,255,255,.07);transition:transform .32s cubic-bezier(.2,.8,.2,1),box-shadow .32s,border-color .32s;animation:uiRise .55s both}
+.file-card:nth-child(2n){animation-delay:.07s}.file-card:nth-child(3n){animation-delay:.14s}
+.file-card:hover{transform:translateY(-7px);border-color:rgba(173,255,74,.75);box-shadow:0 22px 45px rgba(0,0,0,.38),0 0 22px rgba(170,255,56,.08)}
+.cover-image{transition:transform .65s cubic-bezier(.2,.8,.2,1),filter .4s}
+.file-card:hover .cover-image{transform:scale(1.075);filter:saturate(1.18)}
+.cover::after{background:linear-gradient(180deg,transparent 40%,rgba(5,8,22,.56))}
+.free-badge{border-radius:12px;background:linear-gradient(120deg,#d6ff56,#a9fa27);box-shadow:0 4px 20px rgba(183,255,42,.23);animation:badgeGlow 3s ease-in-out infinite}
+@keyframes badgeGlow{50%{box-shadow:0 4px 27px rgba(183,255,42,.55)}}
+.file-title{letter-spacing:-.025em}
+.file-desc{background:rgba(7,13,29,.78);border-color:rgba(150,175,220,.24)}
+.download-btn{border-color:#c4ff4c;background:rgba(183,255,39,.045);box-shadow:inset 0 0 15px rgba(187,255,43,.04);transition:transform .22s,background .22s,box-shadow .22s,color .22s}
+.download-btn:hover{transform:translateY(-2px);box-shadow:0 5px 24px rgba(183,255,43,.25)}
+.download-arrow{display:inline-block;animation:arrowBob 1.7s ease-in-out infinite}
+@keyframes arrowBob{50%{transform:translateY(4px)}}
+@media(max-width:600px){.directory-panel{border-radius:24px}.file-grid{gap:12px}.file-card{border-radius:19px}.card-body{padding:13px 12px 15px}.file-title{font-size:clamp(13px,3.65vw,17px);line-height:1.3}.free-badge{top:8px;right:8px}}
+@media(prefers-reduced-motion:reduce){.directory-card,.file-card,.free-badge,.download-arrow,.cover-image,.directory-grid>.directory-card{animation:none!important;transition:none!important}}
