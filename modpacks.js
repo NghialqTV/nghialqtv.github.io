@@ -2,6 +2,15 @@ const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({
   '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#039;'
 }[c]));
 
+// Dán URL ảnh https:// vào data/modpacks.json > image.
+// Cũng tiếp tục nhận ảnh assets/modpacks/... hiện có.
+function packImageUrl(raw) {
+  const value = String(raw || '').trim();
+  if (/^https?:\/\//i.test(value)) return value;
+  if (/^(?:\.\/)?assets\/[\w\-./% ]+$/i.test(value) && !value.includes('..')) return value;
+  return '';
+}
+
 function platformBadge(label, icon, cls){
   return `<span class="pack-platform ${cls}">
     <img src="${icon}" alt="${label}">
@@ -47,7 +56,7 @@ function renderPacks(packs){
     return `
       <article class="modpack-card">
         <div class="modpack-thumb-wrap">
-          <img class="modpack-thumb" src="${esc(p.image)}" alt="${esc(p.name)}" loading="lazy"
+          <img class="modpack-thumb" src="${esc(packImageUrl(p.image))}" alt="${esc(p.name)}" loading="lazy"
             onerror="this.closest('.modpack-thumb-wrap').classList.add('image-error')">
           <div class="thumb-fallback">MOD PACK<br><b>${esc(p.skins || '')}</b></div>
         </div>

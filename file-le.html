@@ -343,6 +343,57 @@
     .file-desc{max-width:100%;white-space:normal}
     .download-btn{align-self:flex-start;min-width:98px;justify-content:center}
     @media(min-width:650px){.card-footer{flex-direction:row;align-items:center!important}.file-title{min-height:2.6em!important}}
+    /* Hiển thị ảnh bìa dán bằng URL; giữ thẻ đồng đều trên điện thoại */
+    .file-card{display:flex;flex-direction:column;height:100%;min-height:0}
+    .file-card .cover{flex:0 0 auto;aspect-ratio:2/1}
+    .file-card .card-body{flex:1;min-height:190px!important;height:auto!important}
+    @media(max-width:390px){.file-card .card-body{min-height:180px!important}}
+
+    /* Bộ lọc và tùy chọn tải riêng Android / iOS cho từng file */
+    .platform-filters{width:min(100%,1050px);margin:14px auto 0;padding:0 18px;display:flex;gap:9px;flex-wrap:wrap}
+    .platform-filter{font:inherit;font-size:12px;font-weight:850;color:#c9c7db;background:#141a2c;border:1px solid #434062;border-radius:999px;padding:9px 17px;cursor:pointer;transition:all .16s}
+    .platform-filter:hover,.platform-filter.active{background:linear-gradient(110deg,#3c54ee,#8040d3);border-color:#a88cff;color:white}
+    .platform-chips{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:-4px 0 4px}
+    .platform-chip{display:inline-flex;align-items:center;gap:4px;padding:5px 9px;border-radius:8px;border:1px solid #545076;background:#1d2237;color:#e4ddff;font-size:10px;font-weight:800;line-height:1.2}
+    .platform-chip.android{border-color:#56764a;background:#1d2c1f;color:#d1ffbe}
+    .platform-chip.ios{border-color:#6a5c86;background:#242039;color:#e3d4ff}
+    button.platform-chip{font:inherit;font-size:10px;font-weight:800;cursor:pointer;transition:transform .15s,box-shadow .15s}
+    button.platform-chip:hover{transform:translateY(-1px)}
+    .platform-chip.active{border-color:#bfa7ff;box-shadow:0 0 0 2px #8051ed80;color:#fff}
+    .cover-os-tag{position:absolute;bottom:10px;right:10px;z-index:2;border:1px solid #ffffff75;background:#10152ad9;color:white;border-radius:8px;padding:5px 9px;font-size:10px;font-weight:900;letter-spacing:.3px}
+    .file-card .platform-chips{margin-bottom:8px}
+    .platform-actions{display:flex;flex-wrap:wrap;align-items:stretch;gap:8px;width:100%}
+    .platform-actions .download-btn{flex:1 1 auto;min-width:0!important;padding:0 10px;min-height:40px}
+    .card-footer{width:100%;align-items:flex-start!important}
+    .file-card .card-body{min-height:215px!important;gap:10px}
+    .file-desc:empty{display:none}
+    [hidden]{display:none!important}
+    @media(max-width:390px){.platform-filters{padding:0 12px}.platform-filter{padding:8px 13px}.platform-actions{gap:6px}.platform-actions .download-btn{font-size:10px;min-height:37px;padding-inline:6px}.file-card .card-body{min-height:235px!important}}
+
+    /* Layout một ảnh chung + chi tiết với hai nút tải như mẫu */
+    .file-card .cover{aspect-ratio:2/1}
+    .file-card .card-body{min-height:175px!important}
+    .file-card .card-footer{flex-direction:row;align-items:center!important;justify-content:space-between}
+    .file-card .platform-chips{margin-top:auto}
+    .file-card .platform-chip{pointer-events:none;cursor:default}
+    .detail-btn{border:0;border-radius:24px;background:#164277;color:#b9dfff;min-height:39px;padding:0 14px;font:inherit;font-size:12px;font-weight:800;cursor:pointer;white-space:nowrap}
+    .detail-btn:hover{background:#1e5ea8;color:#fff}
+    .detail-layer{position:fixed;inset:0;z-index:9999;padding:24px 14px;display:flex;align-items:center;justify-content:center;background:rgba(3,6,14,.79);backdrop-filter:blur(8px);overflow-y:auto}
+    .detail-dialog{position:relative;width:min(100%,570px);max-height:calc(100dvh - 44px);overflow-y:auto;border-radius:25px;border:1px solid #353345;background:#15151b;box-shadow:0 20px 80px #000b}
+    .detail-image-wrap{position:relative;aspect-ratio:2/1;overflow:hidden;background:#161b28}
+    .detail-image{width:100%;height:100%;object-fit:cover;display:block}
+    .detail-close{position:absolute;z-index:2;right:14px;top:14px;width:44px;height:44px;border:0;border-radius:50%;background:#17191de8;color:#fff;font:inherit;font-size:25px;cursor:pointer}
+    .detail-content{padding:26px 26px 29px}
+    .detail-category{display:block;margin-bottom:12px;color:#a9a3b9;font-size:12px;text-transform:uppercase;letter-spacing:2px}
+    .detail-title{font-size:clamp(23px,5vw,30px);line-height:1.2;margin:0 0 24px;overflow-wrap:anywhere}
+    .detail-description{color:#bab9c2;line-height:1.6;min-height:1.6em;margin:0 0 23px}
+    .detail-downloads{display:grid;gap:12px}
+    .detail-download-btn{width:100%;min-height:57px;border:0;border-radius:14px;background:#1683ef;color:#fff;font:inherit;font-weight:800;font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:12px}
+    .detail-download-btn:hover{background:#0f70d0}
+    .detail-download-btn:disabled{cursor:not-allowed;opacity:.45}
+    .detail-note{font-size:12px;color:#999ba8;margin:22px 0 0}
+    body.modal-open{overflow:hidden}
+    @media(max-width:450px){.file-card .card-footer{gap:6px}.file-card .card-body{min-height:160px!important}.file-card .file-desc{font-size:9px}.detail-layer{padding:12px}.detail-dialog{max-height:calc(100dvh - 24px)}.detail-content{padding:20px 18px 23px}.detail-download-btn{min-height:54px}}
   </style>
 
   <!-- Giữ nguyên cổng quảng cáo tải xuống hiện tại -->
@@ -370,23 +421,134 @@
     </label>
   </section>
 
+  <div class="platform-filters" role="group" aria-label="Lọc file theo nền tảng">
+    <button type="button" class="platform-filter active" data-platform-filter="all" aria-pressed="true">Tất cả</button>
+    <button type="button" class="platform-filter" data-platform-filter="android" aria-pressed="false">Android</button>
+    <button type="button" class="platform-filter" data-platform-filter="ios" aria-pressed="false">iOS</button>
+  </div>
+
   <main class="file-grid" id="list" aria-live="polite"></main>
 
   <a class="back-link" href="resources.html">← Quay lại Tài Nguyên</a>
 
+  <div class="detail-layer" id="detail-layer" hidden>
+    <section class="detail-dialog" role="dialog" aria-modal="true" aria-labelledby="detail-title">
+      <div class="detail-image-wrap">
+        <img class="detail-image" id="detail-image" alt="Ảnh bìa file">
+        <button class="detail-close" id="detail-close" type="button" aria-label="Đóng">×</button>
+      </div>
+      <div class="detail-content">
+        <span class="detail-category">NGHĨALQ TV · FILE MOD SKIN</span>
+        <h2 class="detail-title" id="detail-title"></h2>
+        <p class="detail-description" id="detail-description"></p>
+        <div class="detail-downloads" id="detail-downloads"></div>
+        <p class="detail-note">ⓘ Mở trang tải bên ngoài. Làm theo hướng dẫn trên trang để tải file.</p>
+      </div>
+    </section>
+  </div>
+
   <script>
     /*
       Dữ liệu vẫn đọc từ data/file-le.json.
-      Không dùng category/tab phân loại.
-      Ảnh bìa thật: có thể đặt trong assets/covers/, assets/banners/
-      hoặc assets/icons/ và điền đường dẫn vào trường "image" trong JSON.
-      Nếu chưa có ảnh thật, dùng ảnh SVG dự phòng được tạo tự động.
+      Có lựa chọn Android/iOS cho từng file và bộ lọc nền tảng.
+      Một ảnh chung (image) cho cả Android / iOS và hai link tải riêng.
+      Trường link chung dùng dự phòng cho file cũ.
+      Link lỗi sẽ tự chuyển sang ảnh SVG dự phòng.
     */
     let data = [];
 
     const list = document.getElementById("list");
     const searchInput = document.getElementById("search");
     const count = document.getElementById("count");
+    const platformFilters = Array.from(document.querySelectorAll('[data-platform-filter]'));
+    let selectedPlatform = 'all';
+    const layer = document.getElementById('detail-layer');
+    const detailImage = document.getElementById('detail-image');
+    const detailTitle = document.getElementById('detail-title');
+    const detailDesc = document.getElementById('detail-description');
+    const detailDownloads = document.getElementById('detail-downloads');
+    const closeBtn = document.getElementById('detail-close');
+    let lastFocusedElement = null;
+    function closeDetail() {
+      layer.hidden = true;
+      document.body.classList.remove('modal-open');
+      if (lastFocusedElement) lastFocusedElement.focus();
+    }
+    closeBtn.addEventListener('click', closeDetail);
+    layer.addEventListener('click', e => { if (e.target === layer) closeDetail(); });
+    document.addEventListener('keydown', e => {
+      if (layer.hidden) return;
+      if (e.key === 'Escape') closeDetail();
+      if (e.key === 'Tab') {
+        const focusable = Array.from(layer.querySelectorAll('button:not(:disabled)'));
+        if (!focusable.length) return;
+        const first = focusable[0], last = focusable[focusable.length - 1];
+        if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+        else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+      }
+    });
+    function openDetail(item) {
+      lastFocusedElement = document.activeElement;
+      const image = getCoverLink(item);
+      const fallback = makeCover(item);
+      detailImage.onerror = () => { if (detailImage.src !== fallback) detailImage.src = fallback; };
+      detailImage.src = image || fallback;
+      detailImage.alt = 'Ảnh bìa chung ' + (item.name || 'File Mod');
+      detailTitle.textContent = item.name || 'File Mod';
+      detailDesc.textContent = item.desc || 'File mod tải miễn phí cho nền tảng tương ứng.';
+      detailDownloads.replaceChildren();
+      const platforms = getPlatforms(item);
+      (platforms.length ? platforms : ['']).forEach(platform => {
+        const link = getDownloadLink(item, platform);
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.className = 'detail-download-btn';
+        button.textContent = platform === 'android' ? '↓  Tải cho Android  →' : platform === 'ios' ? '↓  Tải cho iOS  →' : '↓  Tải file  →';
+        if (!link || link === '#') { button.disabled = true; button.title='Chưa có link tải'; }
+        button.addEventListener('click', () => downloadFile(link));
+        detailDownloads.append(button);
+      });
+      layer.hidden = false;
+      document.body.classList.add('modal-open');
+      closeBtn.focus();
+    }
+
+    // Platforms are explicit per file. Older data with no field stays compatible.
+    function getPlatforms(item) {
+      // Link tải riêng trong data/file-le.json tự bật nút Android/iOS tương ứng.
+      const result = Array.isArray(item.platforms)
+        ? item.platforms.filter(v => v === 'android' || v === 'ios')
+        : [];
+      if (String(item.linkAndroid || '').trim() && !result.includes('android')) result.push('android');
+      if (String(item.linkIos || '').trim() && !result.includes('ios')) result.push('ios');
+      if (result.length) return ['android', 'ios'].filter(v => result.includes(v));
+      if (Array.isArray(item.platforms)) return [];
+      const desc = String(item.desc || '').toLowerCase();
+      return ['android', 'ios'].filter(v => new RegExp('\\b' + v + '\\b').test(desc));
+    }
+    function getCoverLink(item) {
+      // Ưu tiên một ảnh chung. Dữ liệu cũ có imageAndroid/imageIos vẫn xem được.
+      const candidate = item.image || item.imageAndroid || item.imageIos || '';
+      return isCustomCover(candidate) ? candidate.trim() : '';
+    }
+    function getDownloadLink(item, platform) {
+      const specific = platform === 'android' ? item.linkAndroid : platform === 'ios' ? item.linkIos : '';
+      return String(specific || item.link || '').trim();
+    }
+    function downloadFile(url) {
+      if (!url || url === '#') { alert('File này chưa có link tải!'); return; }
+      if (typeof tiktokAdGate === 'function') tiktokAdGate(url);
+      else window.open(url, '_blank', 'noopener');
+    }
+    platformFilters.forEach(btn => btn.addEventListener('click', () => {
+      selectedPlatform = btn.dataset.platformFilter;
+      platformFilters.forEach(other => {
+        const active = other === btn;
+        other.classList.toggle('active', active);
+        other.setAttribute('aria-pressed', String(active));
+      });
+      renderList();
+    }));
 
     function escapeSvg(value) {
       return String(value || "")
@@ -476,21 +638,12 @@
       return "data:image/svg+xml;charset=UTF-8," + encodeURIComponent(svg);
     }
 
-    // Chấp nhận ảnh bìa từ các thư mục ảnh hiện có.
-    // Đường dẫn trong data/file-le.json phải khớp chính xác với tên file trên GitHub.
+    // Hỗ trợ dán URL ảnh trực tiếp; vẫn nhận đường dẫn assets/ cũ.
     function isCustomCover(path) {
-      if (typeof path !== "string" || path.trim() === "") {
-        return false;
-      }
-
-      const normalizedPath = path.trim().replace(/^\.\//, "");
-      const allowedFolders = [
-        "assets/covers/",
-        "assets/banners/",
-        "assets/icons/"
-      ];
-
-      return allowedFolders.some((folder) => normalizedPath.startsWith(folder));
+      if (typeof path !== 'string' || !path.trim()) return false;
+      const value = path.trim();
+      if (/^https?:\/\//i.test(value)) return true;
+      return /^(?:\.\/)?assets\/[^<>"\x27`\\?#]+$/iu.test(value) && !value.includes('..');
     }
 
     function renderList() {
@@ -500,7 +653,8 @@
         .filter(({ item, originalIndex }) => {
           const searchable = `${item.name || ""} ${item.desc || ""} ${item.link || ""} ${originalIndex + 1}`
             .toLocaleLowerCase("vi");
-          return searchable.includes(query);
+          return searchable.includes(query) &&
+            (selectedPlatform === 'all' || getPlatforms(item).includes(selectedPlatform));
         });
 
       list.replaceChildren();
@@ -517,42 +671,49 @@
       filtered.forEach(({ item, originalIndex }) => {
         const card = document.createElement("article");
         card.className = "file-card";
-        const unavailable = !item.link || item.link === "#";
+        const platforms = getPlatforms(item);
         const number = String(originalIndex + 1).padStart(3, "0");
 
         card.innerHTML = `
+          <div class="cover">
+            <img class="cover-image" alt="" loading="lazy">
+            <span class="free-badge">MIỄN PHÍ</span>
+          </div>
           <div class="card-body">
             <h2 class="file-title"></h2>
+            <div class="platform-chips" aria-label="Nền tảng hỗ trợ"></div>
             <div class="card-footer">
               <span class="file-desc"></span>
-              <a class="download-btn" href="#">
-                TẢI <span class="download-arrow" aria-hidden="true">↓</span>
-              </a>
+              <button class="detail-btn" type="button">Chi tiết ❯</button>
             </div>
           </div>
         `;
 
-        card.querySelector(".file-title").textContent = item.name || "File Mod";
-        card.querySelector(".file-desc").textContent = /android|ios|iphone|ipad/i.test(item.desc || "") ? item.desc : "Android | iOS";
-
-        const button = card.querySelector(".download-btn");
-        if (unavailable) {
-          button.setAttribute("aria-disabled", "true");
-        }
-
-        button.addEventListener("click", (event) => {
-          event.preventDefault();
-          if (unavailable) {
-            alert("File này chưa có link tải!");
-            return;
-          }
-
-          if (typeof tiktokAdGate === "function") {
-            tiktokAdGate(item.link);
-          } else {
-            window.open(item.link, "_blank", "noopener");
-          }
+        const cover = card.querySelector('.cover-image');
+        const fallback = makeCover(item, originalIndex);
+        const image = getCoverLink(item);
+        cover.addEventListener('error', () => { if (cover.src !== fallback) cover.src = fallback; });
+        cover.alt = 'Ảnh bìa chung ' + (item.name || 'File Mod');
+        cover.src = image || fallback;
+        card.querySelector('.file-title').textContent = item.name || 'File Mod';
+        const chips = card.querySelector('.platform-chips');
+        platforms.forEach(platform => {
+          const chip = document.createElement('span');
+          chip.className = 'platform-chip ' + platform;
+          chip.textContent = platform === 'android' ? 'Android' : 'iOS';
+          chips.append(chip);
         });
+        if (!platforms.length) chips.hidden = true;
+        const detailBtn = card.querySelector('.detail-btn');
+        detailBtn.addEventListener('click', () => openDetail(item));
+        cover.parentElement.addEventListener('click', () => openDetail(item));
+        cover.parentElement.style.cursor = 'pointer';
+        // Do not incorrectly label unclassified files as Android/iOS.
+        const description = String(item.desc || '');
+        const descOnlyPlatform = /^(?:android|ios|iphone|ipad)(?:\s*[-/|,&+]\s*(?:android|ios|iphone|ipad))*$/i.test(description.trim());
+        const desc = card.querySelector('.file-desc');
+        desc.textContent = descOnlyPlatform ? '' : description;
+        if (!desc.textContent) desc.hidden = true;
 
         list.appendChild(card);
       });
@@ -560,7 +721,7 @@
 
     searchInput.addEventListener("input", renderList);
 
-    fetch("data/file-le.json", { cache: "no-cache" })
+    fetch("data/file-le.json?v=" + Date.now(), { cache: "no-store" })
       .then((response) => {
         if (!response.ok) throw new Error("HTTP " + response.status);
         return response.json();

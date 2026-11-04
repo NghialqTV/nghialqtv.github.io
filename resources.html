@@ -16,15 +16,14 @@
   <p>File đã được cập nhật mới nhất</p>
 </header>
 
-<!-- LIST RESOURCES -->
-<!-- FILE LẺ -->
-<div id="resources">
-
-  <div class="resource-item" onclick="tiktokAdGate('file-le.html')">
-    📁 File Lẻ
-  </div>
-
+<!-- Shortcut File Lẻ luôn hiển thị, không bị danh sách JSON ghi đè -->
+<div class="resource-shortcuts">
+  <a class="resource-file-link" href="file-le.html" data-tiktok-gate>
+    <span aria-hidden="true">📁</span> <span>File Lẻ</span> <span class="resource-file-arrow" aria-hidden="true">›</span>
+  </a>
 </div>
+<!-- Danh sách Tài nguyên: hỗ trợ dán URL ảnh qua data/resources.json -->
+<div id="resources"></div>
 <!-- NÚT QUAY LẠI -->
 <div style="text-align:center;margin:24px">
   <a href="index.html" class="back-btn">← Quay lại</a>

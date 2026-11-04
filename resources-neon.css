@@ -21,3 +21,10 @@ body.dark {background:radial-gradient(ellipse at 80% 0%,#241244,transparent 45%)
 @media(max-width:390px){#resources .resource-download{width:48px;height:48px}}
 
 .section-logo{display:inline-grid;place-items:center;width:42px;height:42px;margin-right:8px;vertical-align:middle;border:1px solid #9a75ff;border-radius:14px;background:linear-gradient(135deg,#3a5afa,#922cf1);box-shadow:0 0 20px #8147ff66;color:#fff;font-size:25px;text-shadow:0 0 10px #fff8}
+
+/* Link File Lẻ riêng: không bị renderResources() ghi đè */
+.resource-shortcuts{width:min(94%,850px);margin:0 auto 13px}
+.resource-file-link{display:flex;align-items:center;gap:12px;min-height:75px;padding:17px 20px;border:1px solid #7656aa;border-radius:20px;background:linear-gradient(105deg,#242044,#151b32);box-shadow:0 8px 22px #0004;text-decoration:none;color:#eee8ff;font-weight:850;font-size:19px}
+.resource-file-link:hover{border-color:#be92ff;background:linear-gradient(105deg,#322657,#171e38)}
+.resource-file-arrow{margin-left:auto;font-size:32px;color:#b59aff}
+#resources .icon{background:#1a1c33;object-fit:cover}
