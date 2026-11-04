@@ -3,114 +3,213 @@
     "name": "Bot Auto Mod Skin",
     "desc": "Mod Pack - Mod Lẻ Free",
     "link": "https://t.me/ModSkinNghiaTVBot",
-    "image": "assets/icons/bot-tele.png"
+    "image": "assets/icons/bot-tele.png",
+    "linkAndroid": "",
+    "linkIos": "",
+    "platforms": []
   },
   {
     "name": "Nakroth Thứ Nguyên Vệ Thần",
     "desc": "Android - IOS",
     "link": "https://linkx.me/sYlLM1J",
-    "image": "assets/covers/Nakroth Vệ thần.png"
+    "image": "assets/covers/Nakroth Vệ thần.png",
+    "linkAndroid": "",
+    "linkIos": "",
+    "platforms": [
+      "android",
+      "ios"
+    ]
   },
   {
     "name": "Nakroth Bạch Diện Chiến Thương",
     "desc": "Nút Bấm - Thông Báo Hạ",
     "link": "https://linkx.me/ycZGUQ",
-    "image": "assets/covers/nakroth bạch diện.png"
+    "image": "assets/covers/nakroth bạch diện.png",
+    "linkAndroid": "",
+    "linkIos": "",
+    "platforms": []
   },
   {
     "name": "Billow Okarun",
     "desc": "Nút Bấm - Thông Báo Hạ",
     "link": "https://linkx.me/peS6ebj",
-    "image": "assets/covers/billow Okarun.png"
+    "image": "assets/covers/billow Okarun.png",
+    "linkAndroid": "",
+    "linkIos": "",
+    "platforms": []
   },
   {
     "name": "Hayate Thứ Nguyên Vệ Thần",
     "desc": "Nút Bấm - Thông Báo Hạ",
     "link": "https://linkx.me/PIWHZ5Jz",
-    "image": "assets/covers/hayate TNVT.png"
+    "image": "assets/covers/hayate TNVT.png",
+    "linkAndroid": "",
+    "linkIos": "",
+    "platforms": []
   },
   {
     "name": "Zephys Phi Long Thần Tướng",
     "desc": "Android - IOS",
     "link": "https://linkx.me/ikx7gFF",
-    "image": "assets/covers/tachi.png"
+    "image": "assets/covers/tachi.png",
+    "linkAndroid": "",
+    "linkIos": "",
+    "platforms": [
+      "android",
+      "ios"
+    ]
   },
   {
     "name": "Marja Đông Hải Long Vương",
     "desc": "Android - IOS",
     "link": "https://linkx.me/hmJO",
-    "image": "assets/covers/marja.png"
+    "image": "assets/covers/marja.png",
+    "linkAndroid": "",
+    "linkIos": "",
+    "platforms": [
+      "android",
+      "ios"
+    ]
   },
   {
     "name": "Billow Ảnh Vụ Lang Hồn",
     "desc": "Android",
     "link": "https://linkx.me/vuuH45",
-    "image": "assets/covers/billow Lang hồn.png"
+    "image": "assets/covers/billow Lang hồn.png",
+    "linkAndroid": "",
+    "linkIos": "",
+    "platforms": [
+      "android"
+    ]
   },
   {
     "name": "Billow Trục Hoa",
     "desc": "Android",
     "link": "https://linkx.me/oY96",
-    "image": "assets/covers/billow tjrục hoa.png"
+    "image": "assets/covers/billow tjrục hoa.png",
+    "linkAndroid": "",
+    "linkIos": "",
+    "platforms": [
+      "android"
+    ]
   },
   {
     "name": "Allain Benimaru",
     "desc": "Android",
     "link": "https://linkx.me/mZvYOh8q",
-    "image": "assets/covers/allain.png"
+    "image": "assets/covers/allain.png",
+    "linkAndroid": "",
+    "linkIos": "",
+    "platforms": [
+      "android"
+    ]
   },
   {
     "name": "Tamyn Vô Sông",
     "desc": "Android - IOS",
     "link": "https://linkx.me/F6Y86Z5k",
-    "image": "assets/covers/tamyn vô sông.png"
+    "image": "assets/covers/tamyn vô sông.png",
+    "linkAndroid": "",
+    "linkIos": "",
+    "platforms": [
+      "android",
+      "ios"
+    ]
   },
   {
     "name": "Tamyn Thần Ký",
     "desc": "Android - IOS",
     "link": "https://linkx.me/icTd",
-    "image": "assets/covers/tamyn thầnky.png"
+    "image": "assets/covers/tamyn thầnky.png",
+    "linkAndroid": "",
+    "linkIos": "",
+    "platforms": [
+      "android",
+      "ios"
+    ]
   },
   {
     "name": "Amily Đông Hải Long Vương",
     "desc": "Android - IOS",
     "link": "https://linkx.me/6JzasA6",
-    "image": "assets/covers/amily.png"
+    "image": "assets/covers/amily.png",
+    "linkAndroid": "",
+    "linkIos": "",
+    "platforms": [
+      "android",
+      "ios"
+    ]
   },
   {
     "name": "Allain Vấn Tâm Ma",
     "desc": "Android - IOS",
     "link": "https://linkx.me/pkkLehzQ",
-    "image": "assets/covers/tachi.png"
+    "image": "assets/covers/tachi.png",
+    "linkAndroid": "",
+    "linkIos": "",
+    "platforms": [
+      "android",
+      "ios"
+    ]
   },
   {
     "name": "Tamyn Kỉ Nguyên Hổ Phách",
     "desc": "Android - IOS",
     "link": "https://linkx.me/hUnlzh",
-    "image": "assets/covers/tamynkinguyen.png"
+    "image": "assets/covers/tamynkinguyen.png",
+    "linkAndroid": "",
+    "linkIos": "",
+    "platforms": [
+      "android",
+      "ios"
+    ]
   },
   {
     "name": "Edras Vấn Tâm Kiếm",
     "desc": "Android - IOS",
     "link": "https://linkx.me/HPJLTxQo",
-    "image": "assets/covers/edrasy.png"
+    "image": "assets/covers/edrasy.png",
+    "linkAndroid": "",
+    "linkIos": "",
+    "platforms": [
+      "android",
+      "ios"
+    ]
   },
   {
     "name": "Bolt Baron Veldora Tempest",
     "desc": "Android - IOS",
     "link": "https://linkx.me/QKnsO2A",
-    "image": "assets/covers/barontempest.png"
+    "image": "assets/covers/barontempest.png",
+    "linkAndroid": "",
+    "linkIos": "",
+    "platforms": [
+      "android",
+      "ios"
+    ]
   },
   {
     "name": "Tachi Benimaru",
     "desc": "Android - IOS",
     "link": "https://linkx.me/j0mn",
-    "image": "assets/covers/tachi.png"
+    "image": "assets/covers/tachi.png",
+    "linkAndroid": "",
+    "linkIos": "",
+    "platforms": [
+      "android",
+      "ios"
+    ]
   },
   {
     "name": "Nakroth Thiên Lãng Thuỷ Trần",
     "desc": "Android - IOS",
     "link": "https://linkx.me/0myhIS",
-    "image": "assets/covers/nakroth.png"
+    "image": "assets/covers/nakroth.png",
+    "linkAndroid": "",
+    "linkIos": "",
+    "platforms": [
+      "android",
+      "ios"
+    ]
   }
 ]
