@@ -8,6 +8,7 @@
     "linkIos": "",
     "platforms": []
   },
+  
   {
     "name": "Edras Vấn Tâm Kiếm",
     "desc": "Cở Rồng Phụng Trên Android - IOS",
@@ -15,6 +16,18 @@
     "image": "https://cdn.upanhlaylink.com/i/88vMmEh6.jpg",
     "linkAndroid": "https://linkx.me/6V0p0X",
     "linkIos": "https://linkx.me/Fi0WaQZf",
+    "platforms": [
+      "android",
+      "ios"
+    ]
+  },
+  {
+    "name": "Ngộ Không Nhóc Tì Bá Đạo",
+    "desc": "Có Hộp Android - IOS",
+    "link": "",
+    "image": "https://cdn.upanhlaylink.com/i/1EyUSdJT.png",
+    "linkAndroid": "https://linkx.me/bolx",
+    "linkIos": "https://linkx.me/9qvGpIJ",
     "platforms": [
       "android",
       "ios"
@@ -106,8 +119,8 @@
     "desc": "Android",
     "link": "https://linkx.me/vuuH45",
     "image": "https://cdn.upanhlaylink.com/i/3eFFffkH.png",
-    "linkAndroid": "",
-    "linkIos": "",
+    "linkAndroid": "https://linkx.me/WvXvkl",
+    "linkIos": "https://linkx.me/oFCyeQ",
     "platforms": [
       "android"
     ]
