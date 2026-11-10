@@ -92,14 +92,14 @@
   },
   {
     "name": "Zephys Phi Long Thần Tướng",
-    "desc": "Android - IOS",
+    "desc": "Android",
     "link": "https://linkx.me/ikx7gFF",
     "image": "https://cdn.upanhlaylink.com/i/Egwr294g.jpg",
     "linkAndroid": "https://linkx.me/ikx7gFF",
-    "linkIos": "https://linkx.me/ikx7gFF",
+    "linkIos": "",
     "platforms": [
       "android",
-      "ios"
+      ""
     ]
   },
   {
