@@ -8,7 +8,18 @@
     "linkIos": "",
     "platforms": []
   },
-  
+  {
+    "name": "Tamyn STL ROBOT",
+    "desc": "Nút Bấm - Thông Báo Hạ",
+    "link": "",
+    "image": "https://cdn.upanhlaylink.com/i/h9WFLPEm.png",
+    "linkAndroid": "https://linkx.me/ny8W",
+    "linkIos": "https://linkx.me/gluzD",
+    "platforms": [
+      "android",
+      "ios"
+    ]
+  },
   {
     "name": "Edras Vấn Tâm Kiếm",
     "desc": "Cở Rồng Phụng Trên Android - IOS",
