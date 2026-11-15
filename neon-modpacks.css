@@ -1,0 +1,62 @@
+/* NGHIALQ TV – 2026 Mod Pack neon collection. No modifications to modpack records. */
+:root{--p-ink:#edf3ff;--p-muted:#a3b4d2;--p-line:rgba(134,163,249,.34)}
+body.v9-packs{font-family:system-ui,-apple-system,'Segoe UI',sans-serif!important;color:var(--p-ink)!important;min-height:100vh;background:radial-gradient(ellipse 800px 530px at 50% -140px,#293c78 0%,transparent 79%),radial-gradient(ellipse 550px 550px at 15% 45%,#3a1a5950,transparent 75%),radial-gradient(ellipse 700px 700px at 93% 84%,#15396046,transparent 70%),#070b1b!important;overflow-x:hidden}
+body.v9-packs::before{content:"";position:fixed;inset:0;pointer-events:none;background-image:linear-gradient(#8aa2ed18 1px,transparent 1px),linear-gradient(90deg,#8aa2ed18 1px,transparent 1px);background-size:48px 48px;mask-image:linear-gradient(#000,transparent 90%)}
+body.v9-packs .page{position:relative;isolation:isolate;max-width:1100px!important;padding:25px 22px 70px!important;margin:auto!important}
+.v9-packs .back{width:44px!important;height:44px!important;min-width:44px!important;font-size:29px!important;border:1px solid #7c9ced77!important;border-radius:14px!important;background:#172446cd!important;box-shadow:0 7px 25px #0005!important;line-height:1}
+.pack-nav{position:relative;display:flex;justify-content:space-between;align-items:center;gap:10px;max-width:1010px;margin:0 auto 22px}
+.pack-nav-label{display:inline-flex;align-items:center;gap:8px;color:#a7bce7;font-size:11px;font-weight:900;letter-spacing:1.3px}
+.pack-nav-label img{width:24px;height:24px;border-radius:8px;object-fit:contain}
+.pack-nav-dot{width:7px;height:7px;border-radius:50%;background:#65e1be;box-shadow:0 0 11px #44e7c4}
+.v9-packs .hero{position:relative;isolation:isolate;margin:0 auto 26px;padding:45px 25px 39px!important;border-radius:29px;border:1px solid #8499f363;background:radial-gradient(ellipse at 50% 0%,#5665d64d,transparent 65%),linear-gradient(145deg,#19234a,#101832 60%,#1c1739);box-shadow:0 15px 48px #0006,inset 0 1px #ffffff1b;overflow:hidden}
+.v9-packs .hero:before{content:"";position:absolute;pointer-events:none;z-index:-1;width:330px;height:330px;border-radius:50%;border:1px solid #a3a5ff2f;right:-130px;top:-180px;box-shadow:0 0 0 55px #8890ff0a,0 0 0 110px #bd89ff08}
+.v9-packs .hero:after{content:"";position:absolute;inset:auto 0 0;height:3px;background:linear-gradient(90deg,transparent,#58daf6 20%,#ad70f9 55%,#fc7cce 85%,transparent)}
+.pack-hero-eyebrow{display:inline-flex;align-items:center;gap:7px;color:#bbdbff;font-size:11px;font-weight:850;letter-spacing:2px;text-transform:uppercase;margin-bottom:17px}
+.pack-hero-eyebrow svg{width:15px;height:15px;color:#9d8bff}
+.v9-packs .hero-title{gap:13px!important}
+.v9-packs .hero .pack-logo{width:65px!important;height:65px!important;border:1px solid #fca3e2!important;border-radius:19px!important;background:linear-gradient(135deg,#fb388d,#864bf0)!important;padding:11px!important;box-shadow:0 0 32px #d74cff66!important}
+.v9-packs .hero h1{font-size:clamp(35px,5.3vw,58px)!important;letter-spacing:-1.5px!important;color:#fff;text-shadow:0 0 25px #8d8fff80!important}
+.v9-packs .hero-hot{padding:7px 13px!important;font-size:12px!important;border:1px solid #ff9ece95;letter-spacing:.4px}
+.v9-packs .hero p{font-size:clamp(13px,2.2vw,16px)!important;line-height:1.5;color:#b9c8e4!important;margin:10px auto 2px!important}
+.pack-hero-rule{margin:20px auto 0;width:64px;height:3px;border-radius:99px;background:linear-gradient(90deg,#7ec9ff,#bd83ff)}
+.pack-section-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:27px 2px 15px}
+.pack-section-head h2{margin:0;color:#f7f8ff;font-size:19px;letter-spacing:-.3px}
+.pack-section-head p{margin:4px 0 0;font-size:12px;color:#91a6ca}
+.pack-results{font-size:12px;font-weight:800;border:1px solid #6885c659;border-radius:99px;padding:7px 11px;color:#bad5fa;background:#1d2c4a}
+.pack-toolbar{display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap;margin-bottom:18px}
+.pack-search{min-width:0;flex:1 1 240px;position:relative}
+.pack-search svg{position:absolute;left:15px;top:50%;transform:translateY(-50%);width:19px;height:19px;color:#91a8d5}
+.pack-search input{box-sizing:border-box;width:100%;height:48px;padding:0 14px 0 45px;outline:none;border:1px solid #7894dd69;border-radius:14px;background:#14213eea;color:#f0f5ff;font-size:14px;transition:border-color .2s,box-shadow .2s}
+.pack-search input::placeholder{color:#8a9dbe}
+.pack-search input:focus{border-color:#8bd8ff;box-shadow:0 0 0 3px #6ed8ff1d}
+.pack-sort{width:auto;min-width:185px;height:48px;padding:0 13px;border:1px solid #7894dd69;border-radius:14px;background:#14213e;color:#e0e9fd;font-size:13px;cursor:pointer}
+.v9-packs .packs{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:20px!important;align-items:stretch!important}
+.v9-packs .modpack-card{position:relative;min-width:0;padding:13px!important;gap:13px!important;border-radius:22px!important;background:linear-gradient(145deg,#19274b,#111a33 58%,#251b40)!important;border:1px solid #7f92dc74!important;box-shadow:0 13px 35px #0007,inset 0 1px #ffffff12!important;transition:transform .3s cubic-bezier(.2,.8,.2,1),box-shadow .3s,border-color .3s!important}
+.v9-packs .modpack-card:first-child{border-color:#d48bf399!important;box-shadow:0 15px 38px #0006,0 0 23px #ad5aff23!important}
+.v9-packs .modpack-card:hover{transform:translateY(-5px)!important;border-color:#aca0ff!important;box-shadow:0 20px 46px #0009,0 0 27px #8d6dff3b!important}
+.v9-packs .modpack-thumb-wrap{position:relative;isolation:isolate;aspect-ratio:16/9!important;border:1px solid #8fb8fa62!important;border-radius:15px!important;background:#101c32!important;box-shadow:0 9px 20px #0004!important;overflow:hidden}
+.v9-packs .modpack-thumb{transition:transform .6s ease!important;object-fit:cover!important}
+.v9-packs .modpack-card:hover .modpack-thumb{transform:scale(1.05)}
+.v9-packs .modpack-thumb-wrap::after{content:"";position:absolute;inset:52% 0 0;background:linear-gradient(transparent,#040d1d85);pointer-events:none}
+.pack-image-tag{position:absolute;z-index:3;bottom:11px;left:11px;padding:7px 9px;font-size:10px;letter-spacing:1px;font-weight:850;color:#e3e7ff;background:#081529b8;border:1px solid #a6beff4f;border-radius:8px;backdrop-filter:blur(5px)}
+.pack-index{position:absolute;z-index:4;top:11px;left:11px;width:31px;height:31px;display:grid;place-items:center;border:1px solid #c1c7ff77;border-radius:9px;color:#fff;background:#101831c8;font-size:12px;font-weight:900}
+.v9-packs .modpack-info{padding:0 4px 4px;gap:12px!important;display:flex!important;flex:1;align-items:stretch!important;flex-direction:column!important}
+.v9-packs .modpack-content{display:flex;flex-direction:column;min-width:0;flex:1}
+.v9-packs .modpack-name{font-size:clamp(18px,2vw,23px)!important;line-height:1.24!important;margin:1px 0 7px!important;color:#fff!important;letter-spacing:-.5px!important}
+.v9-packs .modpack-desc{font-size:13px!important;line-height:1.5!important;margin:0 0 9px!important;color:#aebfdc!important;min-height:38px}
+.v9-packs .modpack-meta{margin:2px 0 11px!important}
+.v9-packs .modpack-download-count{font-size:12px!important;font-weight:750!important;color:#a8bcdb!important;padding:7px 10px!important;border:1px solid #6b89d14c!important;background:#10234288!important;border-radius:10px!important}
+.v9-packs .modpack-platforms{display:flex!important;gap:7px!important;margin:0!important}
+.v9-packs .pack-platform{border-radius:9px!important;padding:7px 10px!important;background:#1d2c50!important;border:1px solid #6d89cb66!important;font-size:11px!important}
+.v9-packs .pack-platform.android{color:#87f2b5!important}.v9-packs .pack-platform.ios{color:#c5d6ff!important}
+.pack-card-footer{display:flex;align-items:center;justify-content:space-between;gap:9px;padding-top:12px;border-top:1px solid #8eacfa25}
+.pack-card-footer .modpack-platforms{flex:1;min-width:0}
+.v9-packs .modpack-download{flex:0 0 auto;min-width:126px!important;width:auto!important;height:45px!important;min-height:45px!important;padding:0 15px!important;gap:8px;border-radius:12px!important;background:linear-gradient(120deg,#f43c9b,#a95af3)!important;border:1px solid #ffc1f19a!important;box-shadow:0 7px 19px #f04abb4a!important;font-size:13px!important;white-space:nowrap!important}
+.v9-packs .modpack-download svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.v9-packs .modpack-download:hover{box-shadow:0 10px 26px #f04abb7a!important}
+.pack-empty{text-align:center;padding:40px 18px;color:#b1c2e2;border:1px dashed #6f85b859;border-radius:18px;background:#15223a8a;grid-column:1/-1}
+.pack-bottom-note{text-align:center;color:#7f94b8;font-size:11px;padding-top:28px}
+@media(max-width:790px){.v9-packs .packs{grid-template-columns:1fr!important;max-width:650px;margin:auto}.pack-section-head,.pack-toolbar{max-width:650px;margin-left:auto;margin-right:auto}}
+@media(max-width:520px){body.v9-packs .page{padding:14px 12px 46px!important}.pack-nav{margin-bottom:14px}.v9-packs .hero{padding:32px 13px 27px!important;border-radius:24px!important;margin-bottom:18px}.v9-packs .hero-title{gap:9px!important}.v9-packs .hero .pack-logo{width:50px!important;height:50px!important;border-radius:15px!important;padding:7px!important}.v9-packs .hero h1{font-size:34px!important;letter-spacing:-1.6px!important}.v9-packs .hero-hot{font-size:10px!important;padding:7px 8px!important}.v9-packs .hero p{font-size:12px!important;margin:7px auto!important}.pack-hero-eyebrow{font-size:10px!important;margin-bottom:12px}.pack-section-head{margin:22px 1px 13px}.pack-section-head h2{font-size:17px}.pack-toolbar{gap:8px;margin-bottom:13px}.pack-search{flex-basis:170px}.pack-search input{height:44px}.pack-sort{height:44px;min-width:130px;font-size:11px}.v9-packs .packs{gap:16px!important}.v9-packs .modpack-card{border-radius:20px!important;padding:11px!important;gap:12px!important}.v9-packs .modpack-thumb-wrap{border-radius:12px!important}.v9-packs .modpack-name{font-size:19px!important}.v9-packs .modpack-desc{font-size:13px!important;min-height:0}.v9-packs .modpack-download{min-width:120px!important;height:44px!important;min-height:44px!important;padding:0 12px!important}.v9-packs .pack-platform{padding:7px 8px!important}.v9-packs .pack-platform img{width:13px!important;height:13px!important}}
+@media(max-width:370px){.pack-toolbar{flex-direction:column;align-items:stretch}.pack-sort,.pack-search{width:100%;flex:auto}.pack-card-footer{flex-direction:column;align-items:stretch}.pack-card-footer .modpack-download{width:100%!important}}
+@media(prefers-reduced-motion:reduce){.v9-packs .modpack-card,.v9-packs .modpack-thumb,.v9-packs .hero-hot{transition:none!important;animation:none!important}.v9-packs .modpack-card:hover{transform:none!important}}
