@@ -106,7 +106,7 @@ function render(url, boxId){
               <div class="app-actions">
                 ${downloadControl}
                 <a class="app-action app-action-key" data-tiktok-gate href="${escapeHtml(i.getKeyLink || (platform === "android" ? "https://nghialqtv.github.io/SubUnlock/?id=keyandroidv2" : "https://nghialqtv.github.io/SubUnlock/?id=keymenuios"))}" rel="noopener">
-                  <span class="app-key-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="5"/><path d="m11.6 11.6 8.2 8.2M16 16l2-2m0 4 2-2"/></svg></span><span>Get Key</span>
+                  <span class="app-key-icon" aria-hidden="true"><img src="assets/icons/key-premium.svg" alt=""></span><span>Get Key</span>
                 </a>
               </div>
             </div>
@@ -115,7 +115,7 @@ function render(url, boxId){
         return `
         <article class="card app-card ${boxId === "keys" ? `key-card key-card-${escapeHtml(String(i.platform || "ios").toLowerCase())}` : ""}" data-key-link="${boxId === "keys" ? escapeHtml(i.link || "") : ""}" style="--card-index:${index}">
           <div class="card-main">
-            <img class="icon ${boxId === "keys" ? "key-icon" : ""}" src="${boxId === "keys" ? "assets/icons/key-neon.svg" : escapeHtml(i.icon || "assets/icons/app.png")}" alt="">
+            <img class="icon ${boxId === "keys" ? "key-icon" : ""}" src="${boxId === "keys" ? "assets/icons/key-premium.svg" : escapeHtml(i.icon || "assets/icons/app.png")}" alt="">
             <div class="info">
               <b class="app-name">${escapeHtml(i.name)}</b>
               <div class="update-line">• ${escapeHtml(i.version || "")}</div>

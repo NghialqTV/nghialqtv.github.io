@@ -1,0 +1,39 @@
+/* Refresh icon Get Key ở trang chủ; tách riêng để dễ cập nhật và không đổi layout cũ. */
+#apps .app-card-redesigned .app-actions .app-action-key{
+  background:linear-gradient(125deg,#162b54,#253972) !important;
+  border:1px solid rgba(134,171,247,.38) !important;
+  color:#e9edff !important;
+  box-shadow:0 6px 16px rgba(14,34,85,.19),inset 0 1px rgba(255,255,255,.12) !important;
+  transition:filter .2s ease,box-shadow .2s ease !important;
+}
+#apps .app-card-redesigned .app-actions .app-action-key:hover{
+  filter:brightness(1.12) !important;
+  box-shadow:0 9px 23px rgba(53,86,173,.33) !important;
+}
+#apps .app-card-redesigned .app-actions .app-key-icon,
+#apps .app-card-redesigned .app-actions .app-key-icon img{
+  display:inline-flex !important;
+  flex:0 0 23px !important;
+  width:23px !important;
+  min-width:23px !important;
+  max-width:23px !important;
+  height:23px !important;
+  min-height:23px !important;
+  max-height:23px !important;
+  align-items:center !important;
+  justify-content:center !important;
+  object-fit:contain !important;
+  border-radius:6px !important;
+  padding:0 !important;
+  margin:0 !important;
+  filter:drop-shadow(0 0 5px rgba(245,205,115,.28));
+}
+#android-choice-modal .android-choice-option.key .android-option-icon img{width:31px !important;height:31px !important;object-fit:contain;border-radius:8px}
+@media(max-width:430px){
+  #apps .app-card-redesigned .app-actions .app-key-icon,
+  #apps .app-card-redesigned .app-actions .app-key-icon img{
+    width:20px !important;min-width:20px !important;max-width:20px !important;
+    height:20px !important;min-height:20px !important;max-height:20px !important;
+    flex-basis:20px !important;
+  }
+}
