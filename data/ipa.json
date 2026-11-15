@@ -1,0 +1,38 @@
+[
+  {
+    "name": "IPA Mod Skin",
+    "desc": "Mod Skin dành cho Liên Quân trên iOS. Mở liên kết để xem bản phát hành.",
+    "version": "03/10",
+    "tag": "NO KEY",
+    "platform": "iOS",
+    "icon": "assets/icons/ipalq.png",
+    "image": "assets/banners/ipa-mod-skin.png",
+    "link": "https://nghialqtv.github.io/SubUnlock/?id=ipaios",
+    "getKeyLink": "",
+    "preview": []
+  },
+  {
+    "name": "AoV Map",
+    "desc": "Bản đồ iOS · Sử dụng đường dẫn Get Key riêng cho AoV Map.",
+    "version": "",
+    "tag": "GET KEY RIÊNG",
+    "platform": "iOS",
+    "icon": "assets/icons/ipalq.png",
+    "image": "assets/banners/hack-map-ios.png",
+    "link": "https://linkx.me/7U7wr",
+    "getKeyLink": "https://linkx.me/FN340",
+    "preview": []
+  },
+  {
+    "name": "AoV ESP",
+    "desc": "AoV ESP trên iOS · Liên kết tải và Get Key được quản lý độc lập.",
+    "version": "",
+    "tag": "GET KEY RIÊNG",
+    "platform": "iOS",
+    "icon": "assets/icons/ipalq.png",
+    "image": "",
+    "link": "https://linkx.me/KCXrj",
+    "getKeyLink": "https://linkx.me/x59iBJ",
+    "preview": []
+  }
+]
