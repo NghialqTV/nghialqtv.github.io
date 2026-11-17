@@ -4,10 +4,13 @@
   <meta charset="UTF-8">
   <title>Tài Nguyên | NghĩaLQ TV</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Tải tài nguyên Liên Quân, mod skin và tiện ích từ NghĩaLQ TV.">
+  <meta name="theme-color" content="#090d19">
+  <link rel="preconnect" href="https://cdn.upanhlaylink.com" crossorigin>
 
-  <link rel="stylesheet" href="style.css">
-<link rel="stylesheet" href="resources-neon.css">
-<link rel="stylesheet" href="gaming-loader.css">
+  <link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/resources-neon.css">
+<link rel="stylesheet" href="/gaming-loader.css">
 </head>
 <body class="dark">
 
@@ -18,20 +21,21 @@
 
 <!-- Shortcut File Lẻ luôn hiển thị, không bị danh sách JSON ghi đè -->
 <div class="resource-shortcuts">
-  <a class="resource-file-link" href="file-le.html" data-tiktok-gate>
+  <a class="resource-file-link" href="/file-le.html" data-tiktok-gate>
     <span aria-hidden="true">📁</span> <span>File Lẻ</span> <span class="resource-file-arrow" aria-hidden="true">›</span>
   </a>
 </div>
 <!-- Danh sách Tài nguyên: hỗ trợ dán URL ảnh qua data/resources.json -->
-<div id="resources"></div>
+<div id="resources" aria-live="polite" aria-label="Danh sách tài nguyên"></div>
+<p id="resources-status" role="status" aria-live="polite"></p>
 <!-- NÚT QUAY LẠI -->
 <div style="text-align:center;margin:24px">
-  <a href="index.html" class="back-btn">← Quay lại</a>
+  <a href="/index.html" class="back-btn">← Quay lại</a>
 </div>
 
-<script src="tiktok_ads/config.js"></script>
-<script src="tiktok_ads/tiktok-gate.js"></script>
-<script src="resources.js"></script>
+<script src="/tiktok_ads/config.js"></script>
+<script src="/tiktok_ads/tiktok-gate.js"></script>
+<script src="/resources.js"></script>
 
 </body>
 </html>

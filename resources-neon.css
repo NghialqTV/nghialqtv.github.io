@@ -1,30 +1,273 @@
-body.dark {background:radial-gradient(ellipse at 80% 0%,#241244,transparent 45%),#090d19;color:#f5f2ff;min-height:100vh;font-family:Inter,Arial,sans-serif}
-.top {background:transparent!important;border:0!important;text-align:center;padding:35px 12px 25px!important}
-.top h1{font-size:clamp(28px,6vw,44px);letter-spacing:1px;margin:0 0 14px}
-.top p{color:#b7b5ce;font-size:15px}
-#resources{width:min(94%,850px);margin:0 auto;display:grid;gap:13px}
-#resources .resource-neon-card{box-sizing:border-box;display:flex;align-items:center;gap:15px;width:100%;min-height:100px;padding:15px 17px;border:1px solid #5e468f;border-radius:22px;background:linear-gradient(115deg,#171d30,#0e1425);box-shadow:0 8px 22px #0004;transition:transform .2s,border-color .2s}
-#resources .resource-neon-card:hover{transform:translateY(-2px);border-color:#b17dff}
-#resources .icon{width:64px;height:64px;object-fit:cover;border-radius:15px;flex-shrink:0}
-#resources .info{flex:1;min-width:0;color:#b8b9d0;font-size:13px;line-height:1.6}
-#resources .info b{display:block;color:#f7f5ff;font-size:clamp(15px,3.5vw,20px);line-height:1.3}
-#resources .resource-download{display:grid;place-items:center;flex-shrink:0;width:53px;height:53px;border:1px solid #b79bff;border-radius:15px;background:linear-gradient(135deg,#3c62ff,#923df2);box-shadow:0 0 19px #7547f955;color:white;font-size:30px;font-weight:800;text-decoration:none}
-.back-btn{display:inline-block!important;padding:14px 27px!important;border:1px solid #9b76ff!important;border-radius:30px!important;background:linear-gradient(120deg,#293baf,#7d32d5)!important;color:white!important;box-shadow:0 0 20px #7143ff55;text-decoration:none;font-weight:700}
-@media(max-width:390px){#resources .resource-neon-card{gap:11px;padding:12px;min-height:88px}#resources .icon{width:54px;height:54px}#resources .resource-download{width:45px;height:45px}}
+/* Resources page - large banner cards */
+body.dark {
+  min-height: 100vh;
+  margin: 0;
+  color: #f5f2ff;
+  font-family: Inter, system-ui, Arial, sans-serif;
+  background:
+    radial-gradient(ellipse at 82% 0%, rgba(89, 42, 151, .28), transparent 43%),
+    radial-gradient(ellipse at 0% 35%, rgba(36, 64, 142, .16), transparent 38%),
+    #090d19;
+}
 
-/* Compact premium download buttons, no resource thumbnails */
-#resources .resource-neon-card{min-height:84px;background:linear-gradient(110deg,#171b2e 0%,#101529 100%);border-color:#554278;box-shadow:inset 0 1px #ffffff0a,0 12px 30px #0004}
-#resources .resource-download{position:relative;width:56px;height:56px;border-radius:17px;background:linear-gradient(145deg,#824aff,#435cff);box-shadow:inset 0 1px 1px #ffffff88,0 0 0 3px #7b4cff18,0 8px 24px #6842ff66;transition:transform .2s,box-shadow .2s}
-#resources .resource-download svg{width:27px;height:27px;filter:drop-shadow(0 2px 3px #0005)}
-#resources .resource-download:hover{transform:translateY(-3px);box-shadow:0 0 26px #885aff99}
-#resources .resource-download:active{transform:scale(.94)}
-@media(max-width:390px){#resources .resource-download{width:48px;height:48px}}
+.top {
+  background: transparent !important;
+  border: 0 !important;
+  text-align: center;
+  padding: 35px 12px 20px !important;
+}
+.top h1 {
+  margin: 0 0 12px;
+  font-size: clamp(28px, 6vw, 44px);
+  letter-spacing: 1px;
+  font-weight: 850;
+}
+.top p {
+  margin: 0;
+  color: #b7b5ce;
+  font-size: 15px;
+}
+.section-logo {
+  display: inline-grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  margin-right: 8px;
+  vertical-align: middle;
+  border: 1px solid #9a75ff;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #3a5afa, #922cf1);
+  box-shadow: 0 0 20px #8147ff66;
+  color: #fff;
+  font-size: 25px;
+  text-shadow: 0 0 10px #fff8;
+}
 
-.section-logo{display:inline-grid;place-items:center;width:42px;height:42px;margin-right:8px;vertical-align:middle;border:1px solid #9a75ff;border-radius:14px;background:linear-gradient(135deg,#3a5afa,#922cf1);box-shadow:0 0 20px #8147ff66;color:#fff;font-size:25px;text-shadow:0 0 10px #fff8}
+.resource-shortcuts,
+#resources {
+  width: min(94%, 900px);
+  margin-right: auto;
+  margin-left: auto;
+  box-sizing: border-box;
+}
+.resource-shortcuts { margin-bottom: 22px; }
+.resource-file-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 76px;
+  padding: 17px 20px;
+  box-sizing: border-box;
+  border: 1px solid #7656aa;
+  border-radius: 20px;
+  background: linear-gradient(105deg, #242044, #151b32);
+  box-shadow: 0 8px 22px #0004;
+  color: #eee8ff;
+  font-size: 19px;
+  font-weight: 850;
+  text-decoration: none;
+}
+.resource-file-link:hover {
+  border-color: #be92ff;
+  background: linear-gradient(105deg, #322657, #171e38);
+}
+.resource-file-arrow {
+  margin-left: auto;
+  color: #b59aff;
+  font-size: 32px;
+}
 
-/* Link File Lẻ riêng: không bị renderResources() ghi đè */
-.resource-shortcuts{width:min(94%,850px);margin:0 auto 13px}
-.resource-file-link{display:flex;align-items:center;gap:12px;min-height:75px;padding:17px 20px;border:1px solid #7656aa;border-radius:20px;background:linear-gradient(105deg,#242044,#151b32);box-shadow:0 8px 22px #0004;text-decoration:none;color:#eee8ff;font-weight:850;font-size:19px}
-.resource-file-link:hover{border-color:#be92ff;background:linear-gradient(105deg,#322657,#171e38)}
-.resource-file-arrow{margin-left:auto;font-size:32px;color:#b59aff}
-#resources .icon{background:#1a1c33;object-fit:cover}
+#resources {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 24px;
+}
+#resources .resource-neon-card {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  align-items: stretch;
+  gap: 0;
+  width: 100%;
+  min-width: 0;
+  padding: 12px;
+  box-sizing: border-box;
+  overflow: hidden;
+  border: 1px solid #7160a7;
+  border-radius: 27px;
+  background: linear-gradient(145deg, #17223b 0%, #11182b 58%, #19132e 100%);
+  box-shadow: 0 12px 32px #0005, inset 0 1px #ffffff12;
+  opacity: 1;
+  transform: none;
+  animation: resourceCardIn .42s ease both;
+  transition: border-color .2s ease, box-shadow .2s ease, transform .2s ease;
+}
+#resources .resource-neon-card:hover {
+  border-color: #b38bff;
+  box-shadow: 0 15px 36px #0006, 0 0 24px #8054ff25;
+  transform: translateY(-2px);
+}
+#resources .resource-neon-card:nth-child(2) { animation-delay: .04s; }
+#resources .resource-neon-card:nth-child(3) { animation-delay: .08s; }
+#resources .resource-neon-card:nth-child(4) { animation-delay: .12s; }
+
+.resource-image-wrap {
+  position: relative;
+  width: 100%;
+  min-height: 0;
+  overflow: hidden;
+  border: 1px solid #9b7aff88;
+  border-radius: 19px;
+  background:
+    radial-gradient(circle at 50% 40%, #49317d 0, transparent 48%),
+    linear-gradient(135deg, #111c38, #24123e);
+}
+#resources .resource-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  min-height: 0;
+  border: 0;
+  border-radius: 0;
+  object-fit: contain;
+  object-position: center;
+  background: transparent;
+  box-shadow: none;
+}
+.resource-image-number {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  display: grid;
+  place-items: center;
+  min-width: 38px;
+  height: 38px;
+  padding: 0 8px;
+  border: 1px solid #ffffff55;
+  border-radius: 12px;
+  background: #11182bcc;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 850;
+  backdrop-filter: blur(8px);
+}
+.resource-image-wrap.image-unavailable {
+  min-height: 180px;
+}
+.resource-image-wrap.image-unavailable::after {
+  content: 'NGHĨALQ TV';
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  color: #d9caff;
+  font-size: clamp(20px, 5vw, 34px);
+  font-weight: 900;
+  letter-spacing: 2px;
+}
+
+.resource-info {
+  min-width: 0;
+  padding: 17px 8px 12px;
+  color: #c1c3dc;
+  text-align: left;
+}
+.resource-title {
+  margin: 0;
+  color: #faf8ff;
+  font-size: clamp(20px, 4.5vw, 29px);
+  line-height: 1.25;
+  font-weight: 850;
+  overflow-wrap: anywhere;
+}
+.resource-version {
+  margin: 8px 0 0;
+  color: #aaaec9;
+  font-size: clamp(14px, 3.2vw, 18px);
+  line-height: 1.5;
+}
+#resources .resource-download {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  min-height: 54px;
+  height: auto;
+  margin: 0;
+  padding: 13px 18px;
+  box-sizing: border-box;
+  overflow: hidden;
+  border: 1px solid #bba3ff;
+  border-radius: 16px;
+  background: linear-gradient(115deg, #3d62f5 0%, #713be7 55%, #983cf2 100%);
+  box-shadow: inset 0 1px 1px #ffffff77, 0 7px 20px #7044ff55;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 900;
+  letter-spacing: .7px;
+  text-align: center;
+  text-decoration: none;
+  transition: transform .18s ease, box-shadow .18s ease, filter .18s ease;
+}
+#resources .resource-download svg {
+  display: block;
+  width: 23px;
+  height: 23px;
+  flex: 0 0 23px;
+}
+#resources .resource-download:hover {
+  filter: brightness(1.12);
+  box-shadow: 0 0 26px #885aff99;
+  transform: translateY(-2px);
+}
+#resources .resource-download:active { transform: scale(.985); }
+#resources .resource-download[aria-disabled="true"] {
+  opacity: .6;
+  cursor: not-allowed;
+}
+
+#resources-status {
+  width: min(94%, 900px);
+  margin: 12px auto 0;
+  color: #999bb8;
+  font-size: 12px;
+  text-align: center;
+}
+.resource-empty {
+  padding: 25px 16px;
+  border: 1px solid #514274;
+  border-radius: 18px;
+  color: #c5bbdf;
+  text-align: center;
+}
+.back-btn {
+  display: inline-block !important;
+  padding: 14px 27px !important;
+  border: 1px solid #9b76ff !important;
+  border-radius: 30px !important;
+  background: linear-gradient(120deg, #293baf, #7d32d5) !important;
+  color: white !important;
+  box-shadow: 0 0 20px #7143ff55;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+@keyframes resourceCardIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@media (max-width: 520px) {
+  .top { padding-top: 27px !important; }
+  .resource-shortcuts,
+  #resources { width: calc(100% - 24px); }
+  #resources { gap: 18px; }
+  #resources .resource-neon-card { padding: 9px; border-radius: 22px; }
+  .resource-image-wrap { border-radius: 15px; }
+  .resource-info { padding: 14px 5px 11px; }
+  #resources .resource-download { min-height: 50px; border-radius: 14px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  #resources .resource-neon-card,
+  #resources .resource-download { animation: none !important; transition: none !important; }
+}
