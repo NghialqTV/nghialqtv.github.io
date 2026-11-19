@@ -28,11 +28,11 @@
   },
   {
     "name": "Edras Vấn Tâm Kiếm",
-    "desc": "UPDATE 17.11",
+    "desc": "UPDATE 20.11",
     "link": "",
     "image": "https://cdn.upanhlaylink.com/i/88vMmEh6.jpg",
-    "linkAndroid": "https://nghialqtv.github.io/SubUnlock/index.html?id=android-edras-van-tam-kiem",
-    "linkIos": "https://nghialqtv.github.io/SubUnlock/index.html?id=ios-edras-van-tam-kiem",
+    "linkAndroid": "https://nghialqtv.github.io/SubUnlock/index.html?id=android-edras-full-new-20-11",
+    "linkIos": "https://nghialqtv.github.io/SubUnlock/index.html?id=ios-edras-vtk-full-20-11",
     "platforms": ["android", "ios"]
   },
   {
@@ -146,10 +146,10 @@
   {
     "name": "Tamyn Thần Ký",
     "desc": "ĐANG BẢO TRÌ",
-    "link": "https://linkx.me/icTd",
+    "link": "",
     "image": "https://cdn.upanhlaylink.com/i/5t0uZ7KS.png",
-    "linkAndroid": "",
-    "linkIos": "",
+    "linkAndroid": "https://nghialqtv.github.io/SubUnlock/index.html?id=android-tamyn-than-ki",
+    "linkIos": "https://nghialqtv.github.io/SubUnlock/index.html?id=ios-tamyn-than-ky",
     "platforms": ["android", "ios"]
   },
   {
@@ -189,21 +189,12 @@
     "platforms": ["android", "ios"]
   },
   {
-    "name": "Tachi Benimaru",
-    "desc": "ĐANG BẢO TRÌ",
-    "link": "https://linkx.me/j0mn",
+    "name": "Florentino Benimaru",
+    "desc": "Update 17.11",
+    "link": "",
     "image": "https://cdn.upanhlaylink.com/i/0IWE3Qrx.png",
-    "linkAndroid": "",
-    "linkIos": "",
-    "platforms": ["android", "ios"]
-  },
-  {
-    "name": "Nakroth Thiên Lãng Thuỷ Trần",
-    "desc": "ĐANG BẢO TRÌ",
-    "link": "https://linkx.me/0myhIS",
-    "image": "https://cdn.upanhlaylink.com/i/4Y0qWXo2.png",
-    "linkAndroid": "",
-    "linkIos": "",
+    "linkAndroid": "https://nghialqtv.github.io/SubUnlock/index.html?id=android-mod-skin-flo-benmarufull",
+    "linkIos": "https://nghialqtv.github.io/SubUnlock/index.html?id=ios-flo-benmaru",
     "platforms": ["android", "ios"]
   }
 ]
