@@ -1,750 +1,98 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nghĩalq TV</title>
-<link rel="stylesheet" href="style.css?v=fixed-buttons-20261014">
-<link rel="preload" as="image" href="assets/icons/logo.png">
-
-<style id="key-icon-rotate-effect">
-.key-icon-rotate {
-  animation: keyIconRotate 2.2s ease-in-out infinite;
-  transform-origin: center center;
-  display: inline-block;
-}
-@keyframes keyIconRotate {
-  0%, 20%   { transform: rotate(0deg); }
-  45%       { transform: rotate(18deg); }
-  70%       { transform: rotate(-18deg); }
-  100%      { transform: rotate(0deg); }
-}
-</style>
-
-
-<script src="tiktok_ads/config.js"></script>
-<script src="tiktok_ads/tiktok-gate.js"></script>
-<script>
-// Remove legacy advertising service workers/caches left by older versions.
-(function(){
-  if (!('serviceWorker' in navigator)) return;
-  navigator.serviceWorker.getRegistrations().then(function(regs){
-    regs.forEach(function(reg){ reg.unregister(); });
-  }).catch(function(){});
-  if (window.caches && caches.keys) {
-    caches.keys().then(function(keys){ keys.forEach(function(k){ caches.delete(k); }); }).catch(function(){});
-  }
-})();
-</script>
-
-<style>
-/* =================================
-   NGHIALQ TV - PANEL V3
-================================= */
-
-#website-directory-overlay,
-#website-directory-overlay * {
-    box-sizing: border-box;
-}
-
-#website-directory-overlay {
-    position: fixed;
-    inset: 0;
-    z-index: 999999;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    width: 100%;
-    height: 100%;
-    height: 100dvh;
-
-    padding: 12px;
-
-    background: rgba(3, 7, 20, .92);
-
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-
-    animation: panelFade .4s ease;
-}
-
-#website-directory-overlay[hidden] {
-    display: none !important;
-}
-
-/* PANEL */
-
-.directory-panel {
-    position: relative;
-
-    width: 100%;
-    max-width: 680px;
-
-    max-height: 94vh;
-    max-height: 94dvh;
-
-    overflow-y: auto;
-    overscroll-behavior: contain;
-
-    padding: 28px 22px 22px;
-
-    border: 1px solid #65baffaa;
-    border-radius: 23px;
-
-    background:
-        radial-gradient(
-            ellipse at top,
-            #294c7b,
-            transparent 65%
-        ),
-        linear-gradient(
-            145deg,
-            #172846,
-            #0b1329 65%,
-            #080d1e
-        );
-
-    color: white;
-
-    box-shadow:
-        0 0 20px #269dff66,
-        0 0 55px #176bff35,
-        0 20px 70px #000b;
-
-    animation: panelEnter .5s ease;
-}
-
-.directory-panel::before {
-    content: "";
-
-    position: absolute;
-    inset: 7px;
-
-    border: 1px solid #91cfff40;
-    border-radius: 17px;
-
-    pointer-events: none;
-}
-
-/* CLOSE */
-
-.directory-close {
-    position: absolute;
-    top: 13px;
-    right: 13px;
-    z-index: 10;
-
-    width: 40px;
-    height: 40px;
-
-    display: grid;
-    place-items: center;
-
-    border: 1px solid #ffffff70;
-    border-radius: 50%;
-
-    background: #ffffff12;
-    color: white;
-
-    font-size: 27px;
-    cursor: pointer;
-
-    transition: .3s;
-}
-
-.directory-close:hover {
-    transform: rotate(90deg);
-    background: #e33b4d;
-    box-shadow: 0 0 18px #ff465d;
-}
-
-/* HEADER */
-
-.directory-heading {
-    position: relative;
-    text-align: center;
-    padding: 8px 38px 22px;
-}
-
-.directory-eyebrow {
-    display: inline-block;
-
-    padding: 7px 15px;
-
-    border: 1px solid #71bfff88;
-    border-radius: 30px;
-
-    background: #168bff1c;
-    color: #b4e3ff;
-
-    font-size: 11px;
-    font-weight: 900;
-    letter-spacing: 2px;
-}
-
-/* TITLE */
-
-.brand-title {
-    margin: 18px 0 10px;
-
-    font-size: clamp(32px, 7vw, 49px);
-    font-weight: 1000;
-    letter-spacing: 2px;
-
-    background: linear-gradient(
-        110deg,
-        #ffffff,
-        #7ccfff 25%,
-        #fff0b0 48%,
-        #ffffff 65%,
-        #65baff 85%,
-        #ffffff
-    );
-
-    background-size: 250% auto;
-
-    color: transparent;
-    -webkit-background-clip: text;
-    background-clip: text;
-
-    filter: drop-shadow(0 0 10px #299dff99);
-
-    animation:
-        titleShine 5s linear infinite,
-        titleGlow 2.5s ease-in-out infinite alternate;
-}
-
-.brand-subtitle {
-    margin: 0;
-    color: #c2d3eb;
-    font-size: 13px;
-}
-
-@keyframes titleShine {
-    to {
-        background-position: 250% center;
-    }
-}
-
-@keyframes titleGlow {
-    from {
-        filter: drop-shadow(0 0 5px #299dff66);
-    }
-    to {
-        filter: drop-shadow(0 0 18px #45baffcc);
-    }
-}
-
-/* GRID */
-
-.directory-grid {
-    position: relative;
-
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-
-    gap: 11px;
-}
-
-/* CARD */
-
-.directory-card {
-    display: block;
-    min-width: 0;
-
-    padding: 15px 13px;
-
-    border: 1px solid #8abfff48;
-    border-radius: 16px;
-
-    background: linear-gradient(
-        145deg,
-        #ffffff12,
-        #ffffff05
-    );
-
-    color: white;
-    text-decoration: none;
-
-    transition: .3s ease;
-}
-
-.directory-card:hover {
-    transform: translateY(-4px);
-
-    border-color: #75caff;
-
-    background: #2379b933;
-
-    box-shadow: 0 0 20px #258eff35;
-}
-
-.directory-card-head {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-
-    margin-bottom: 10px;
-}
-
-.directory-icon {
-    display: grid;
-    place-items: center;
-
-    flex: 0 0 40px;
-
-    width: 40px;
-    height: 40px;
-
-    border-radius: 12px;
-
-    border: 1px solid #7ac5ff66;
-    background: #258eff25;
-
-    font-size: 21px;
-}
-
-.directory-card h3 {
-    margin: 0;
-    font-size: 15px;
-    font-weight: 900;
-}
-
-.directory-card p {
-    margin: 0;
-
-    color: #c7d2e8;
-
-    font-size: 12px;
-    line-height: 1.65;
-}
-
-/* TAGS */
-
-.directory-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 5px;
-
-    margin-top: 11px;
-}
-
-.directory-tags span {
-    padding: 5px 7px;
-
-    border: 1px solid #8abfff40;
-    border-radius: 7px;
-
-    background: #0a1730;
-
-    color: #d8eaff;
-
-    font-size: 9px;
-    font-weight: 800;
-}
-
-/* MAIN CARD */
-
-.directory-card-main {
-    grid-column: 1 / -1;
-
-    border-color: #e4bd6d88;
-
-    background: linear-gradient(
-        120deg,
-        #d99a2b25,
-        #ffffff08
-    );
-}
-
-.directory-card-main .directory-icon {
-    border-color: #ffcf7770;
-    background: #d89c2b22;
-}
-
-/* MAIN BUTTON */
-
-.directory-home-button {
-    width: 100%;
-
-    margin-top: 13px;
-    padding: 12px;
-
-    border: 1px solid #e9c879;
-    border-radius: 11px;
-
-    background: linear-gradient(
-        110deg,
-        #d99a2b,
-        #ffe4a1,
-        #b97a20
-    );
-
-    color: #18243b;
-
-    font-size: 14px;
-    font-weight: 900;
-    letter-spacing: .7px;
-
-    cursor: pointer;
-
-    box-shadow: 0 0 15px #e7b74c35;
-
-    transition: .25s;
-}
-
-.directory-home-button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 0 23px #e7b74c80;
-}
-
-/* FOOTER */
-
-.directory-footer {
-    position: relative;
-
-    margin: 19px 0 0;
-
-    text-align: center;
-
-    color: #9eacc8;
-
-    font-size: 11px;
-    line-height: 1.7;
-}
-
-.directory-footer strong {
-    color: #e8c77d;
-    letter-spacing: 1px;
-}
-
-/* ANIMATIONS */
-
-@keyframes panelFade {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-@keyframes panelEnter {
-    from {
-        opacity: 0;
-        transform: translateY(20px) scale(.97);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-    }
-}
-
-/* MOBILE */
-
-@media (max-width: 600px) {
-    #website-directory-overlay {
-        padding: 9px;
-    }
-
-    .directory-panel {
-        width: 100%;
-        max-width: none;
-
-        max-height: 94vh;
-        max-height: 94dvh;
-
-        padding: 23px 13px 18px;
-        border-radius: 19px;
-    }
-
-    .directory-heading {
-        padding: 8px 30px 19px;
-    }
-
-    .brand-title {
-        font-size: clamp(30px, 8.5vw, 40px);
-        letter-spacing: 1.5px;
-    }
-
-    .brand-subtitle {
-        font-size: 12px;
-    }
-
-    .directory-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 9px;
-    }
-
-    .directory-card {
-        padding: 12px 9px;
-    }
-
-    .directory-card-head {
-        gap: 7px;
-    }
-
-    .directory-icon {
-        flex-basis: 34px;
-        width: 34px;
-        height: 34px;
-        font-size: 17px;
-    }
-
-    .directory-card h3 {
-        font-size: 13px;
-    }
-
-    .directory-card p {
-        font-size: 11px;
-    }
-
-    .directory-tags {
-        gap: 4px;
-    }
-
-    .directory-tags span {
-        font-size: 9px;
-        padding: 4px 5px;
-    }
-
-    .directory-close {
-        width: 35px;
-        height: 35px;
-    }
-}
-
-@media (max-width: 350px) {
-    .directory-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .directory-card-main {
-        grid-column: auto;
-    }
-}
-
-/* ACCESSIBILITY */
-
-@media (prefers-reduced-motion: reduce) {
-    #website-directory-overlay,
-    .directory-panel,
-    .directory-card,
-    .brand-title {
-        animation: none !important;
-        transition: none !important;
-    }
-}
-</style>
-<link rel="stylesheet" href="gaming-loader.css">
-<link rel="stylesheet" href="gaming-v9.css?v=9">
-<link rel="stylesheet" href="key-refresh.css?v=20261115"><link rel="stylesheet" href="snowfall.css?v=20261115-restore2">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#050505">
+  <meta name="color-scheme" content="dark">
+  <meta name="description" content="GET KEY AOV • Hoàn thành bốn nhiệm vụ để mở khóa liên kết.">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <title>GET KEY AOV • NghĩaLQ TV</title>
+  <link rel="stylesheet" href="style.css?v=20261121-v3">
 </head>
 <body>
+  <svg xmlns="http://www.w3.org/2000/svg" class="svg-sprite" aria-hidden="true" focusable="false">
+    <symbol id="icon-shield" viewBox="0 0 24 24"><path d="M12 2 20 5v6.4c0 5.3-3.3 8.3-8 10.6-4.7-2.3-8-5.3-8-10.6V5z"/><path d="M12 2v20"/></symbol>
+    <symbol id="icon-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 6v6l4 2"/></symbol>
+    <symbol id="icon-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32 1.41 1.41M2 12h2m16 0h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></symbol>
+    <symbol id="icon-moon" viewBox="0 0 24 24"><path d="M20.9 13.2A9 9 0 0 1 10.8 3.1 9 9 0 1 0 20.9 13.2Z"/></symbol>
+    <symbol id="icon-megaphone" viewBox="0 0 24 24"><path d="m3 10 16-6v16L3 14z"/><path d="M3 10v4m4 1 2 5h3l-2-4M19 9a4 4 0 0 1 0 6"/></symbol>
+    <symbol id="icon-external" viewBox="0 0 24 24"><path d="M13 5h6v6m0-6-9 9"/><path d="M19 13v6H5V5h6"/></symbol>
+    <symbol id="icon-youtube" viewBox="0 0 24 24"><rect x="2.3" y="5.5" width="19.4" height="13" rx="4" fill="currentColor" stroke="none"/><path d="m10 9 5.5 3-5.5 3z" fill="#db202a" stroke="none"/></symbol>
+    <symbol id="icon-tiktok" viewBox="0 0 24 24"><path d="M14 3v11.3a4.8 4.8 0 1 1-4.8-4.8M14 4c1.2 2.5 3 4 6 4" stroke-width="3.2" fill="none"/></symbol>
+    <symbol id="icon-telegram" viewBox="0 0 24 24"><path d="m21.5 3.4-4 17.2c-.1.5-.4.6-.8.4l-5.8-4.1-2.9 2.7c-.3.3-.6.4-.8.4l.5-5.6 10.2-9.2c.5-.4-.1-.6-.6-.3L4.7 12.7l-5-1.6c-.5-.2-.5-.6.2-.8L20 2.8c1-.4 1.7.2 1.5.6z" fill="currentColor" stroke="none" transform="translate(1.2 1) scale(.94)"/></symbol>
+    <symbol id="icon-discord" viewBox="0 0 24 24"><path d="M6 6.5C8 5 10 5 12 5s4 .3 6 1.5c1.3 2.1 2 5.5 2.1 9-2 1.7-3.3 2.3-4.8 2.7l-.9-1.4M6 6.5c-1.3 2.1-2 5.5-2.1 9 2 1.7 3.3 2.3 4.8 2.7l.9-1.4M9 18h6M9 11.5h.1M15 11.5h.1"/></symbol>
+    <symbol id="icon-facebook" viewBox="0 0 24 24"><path d="M16 3h-2.6A4.4 4.4 0 0 0 9 7.4V21m-4-10h11M16 7h-3" stroke-width="3"/></symbol>
+    <symbol id="icon-instagram" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.4" cy="6.6" r=".7" fill="currentColor" stroke="none"/></symbol>
+    <symbol id="icon-zalo" viewBox="0 0 24 24"><path d="M6 5h12L6 19h12M4 5v14M20 5v14"/></symbol>
+    <symbol id="icon-custom" viewBox="0 0 24 24"><path d="M10 6H5v13h14v-5M14 4h6v6m0-6-9 9"/></symbol>
+    <symbol id="icon-chevron-right" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"/></symbol>
+    <symbol id="icon-lock" viewBox="0 0 24 24"><rect x="5" y="10" width="14" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></symbol>
+    <symbol id="icon-unlock" viewBox="0 0 24 24"><rect x="5" y="10" width="14" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 7.5-2"/></symbol>
+    <symbol id="icon-check-circle" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m7.5 12 3 3 6-6"/></symbol>
+    <symbol id="icon-hourglass" viewBox="0 0 24 24"><path d="M6 3h12M6 21h12M8 3v4l4 5-4 5v4m8-18v4l-4 5 4 5v4"/></symbol>
+    <symbol id="icon-arrow-right" viewBox="0 0 24 24"><path d="M4 12h16m-6-6 6 6-6 6"/></symbol>
+    <symbol id="icon-play-circle" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m10 8 6 4-6 4z"/></symbol>
+  </svg>
+  <div class="ambient ambient-one" aria-hidden="true"></div>
+  <div class="ambient ambient-two" aria-hidden="true"></div>
 
-<!-- nội dung web -->
-
-<header class="top">
-  <div class="site-clock" aria-label="Giờ hiện tại">
-    <span class="site-clock-label">GIỜ VIỆT NAM</span>
-    <time id="live-clock" datetime="">--:--:--</time>
-    <span id="live-date"></span>
-  </div>
-  <img src="assets/icons/logo.png" class="site-logo">
-  <h1 class="username brand-title">
-  <span class="brand-text">Nghĩalq TV</span>
-  <span class="verify">
-    <svg viewBox="0 0 24 24">
-      <path d="M22.5 12c0 5.8-4.7 10.5-10.5 10.5S1.5 17.8 1.5 12 6.2 1.5 12 1.5 22.5 6.2 22.5 12z"
-            fill="#1DA1F2"/>
-      <path d="M10.3 15.4l-2.7-2.7 1.4-1.4 1.3 1.3 4-4 1.4 1.4z"
-            fill="#fff"/>
-    </svg>
-  </span>
-</h1>
-<div class="site-intro" aria-label="Giới thiệu Nghĩalq TV">
-  <span class="site-intro-title intro-animated" id="intro-animated">Welcome To My Website!</span>
-</div>
-<div class="socials">
-  <a data-tiktok-gate class="social tele" href="https://t.me/nghialqTV" target="_blank">
-    <img src="assets/icons/telegram.png">
-  </a>
-
-  <a data-tiktok-gate class="social yt" href="https://youtube.com/@cybermodpro?si=P8XXUTMsxFwHRDTD" target="_blank">
-    <img src="assets/icons/youtube.png">
-  </a>
-</div>
-<!-- 🔧 MOD SKIN BOX -->
-<div class="mod-box">
-  <h3 class="mod-skin-title"><span>MOD SKIN</span></h3>
-  <div class="mod-options" id="mods"></div>
-</div>
-</header>
-<button id="darkToggle" class="dark-toggle">🌙</button>
-<!-- TẢI GAME -->
-<h2 class="section-title"><span>GAME MOD</span></h2>
-<div id="apps"></div>
-
-<!-- Phân tách khu vực App và thống kê truy cập -->
-<div class="app-stats-separator" role="separator" aria-label="Kết thúc danh sách ứng dụng">
-  <span class="app-stats-separator-line"></span>
-  <span class="app-stats-separator-mark" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-  <span class="app-stats-separator-line"></span>
-</div>
-
-<!-- ===== TIÊU ĐỀ THỐNG KÊ TRUY CẬP ===== -->
-<h2 class="section-title stats-section-title"><span>THỐNG KÊ TRUY CẬP</span></h2>
-
-<!-- ===== THỐNG KÊ WEBSITE + YOUTUBE ===== -->
-<section class="site-stats-section" aria-label="Thống kê website">
-  <div class="stats-card">
-    <div class="stats-live"><span class="live-dot"></span><span>LIVE</span></div>
-
-    <div class="stat-item">
-      <div class="stat-chart" aria-hidden="true">
-        <svg viewBox="0 0 96 48" role="presentation"><polyline points="6,34 28,15 42,27 64,8 72,16 90,4" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  <main class="page" id="mainContent">
+    <header class="topbar topbar-getkey">
+      <div class="portal-mark getkey-brand" aria-label="GET KEY AOV">
+        <span class="mark-game-logo"><img src="assets/logo-game-android.png" alt="Logo Liên Quân" width="58" height="58"></span>
+        <span class="mark-text"><strong>GET KEY AOV</strong><small>NGHĨALQ TV</small></span>
       </div>
-      <div class="stat-number" id="total-visits">0</div>
-      <div class="stat-label">TỔNG TRUY CẬP</div>
-    </div>
-
-    <div class="stats-divider" aria-hidden="true"></div>
-
-    <div class="stat-item">
-      <div class="stat-chart" aria-hidden="true">
-        <svg viewBox="0 0 96 48" role="presentation"><polyline points="6,34 28,15 42,27 64,8 72,16 90,4" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <div class="top-actions">
+        <button class="theme-btn" id="themeToggle" type="button" aria-label="Chuyển giao diện" title="Chuyển giao diện">
+          <svg class="icon-svg" aria-hidden="true"><use href="#icon-sun"></use></svg>
+        </button>
       </div>
-      <div class="stat-number" id="today-visits">+0</div>
-      <div class="stat-label">HÔM NAY</div>
-    </div>
-  </div>
+    </header>
 
-  <div class="stats-plus" aria-hidden="true">+</div>
-
-  <a class="youtube-follow-card" href="https://youtube.com/@nghiatv_04" target="_blank" rel="noopener" aria-label="Theo dõi kênh YouTube Nghĩalq TV">
-    <div class="youtube-follow-icon">
-      <img src="assets/icons/youtube.png" alt="YouTube">
-    </div>
-    <div class="youtube-follow-info">
-      <strong>Theo Dõi Kênh YouTube</strong>
-      <span>✦ Cập nhật video hướng dẫn mới nhất</span>
-    </div>
-    <span class="youtube-subscribe">
-      <span class="youtube-play">▶</span>
-      <span>Subscribe Ngay</span>
-    </span>
-  </a>
-</section>
-
-<!-- Khu vực files cũ được giữ để tương thích dữ liệu, nhưng không hiển thị ở giao diện -->
-<div id="files" class="legacy-files" aria-hidden="true"></div>
-
-<!-- ===== PREVIEW GALLERY ===== -->
-<div id="preview-modal" class="preview-modal" aria-hidden="true">
-  <div class="preview-panel">
-    <div class="preview-head">
-      <div>
-        <span class="preview-kicker">APP PREVIEW</span>
-        <h3 id="preview-title">Preview</h3>
+    <section class="progress-section" aria-label="Tiến độ nhiệm vụ">
+      <div class="progress-heading">
+        <span>NHIỆM VỤ</span>
+        <strong id="percent">0 / 4</strong>
       </div>
-      <button type="button" class="modal-close" data-close-preview aria-label="Đóng">×</button>
-    </div>
-    <div id="preview-gallery" class="preview-gallery"></div>
-  </div>
-</div>
+      <div class="progress-track" id="progressTrack" role="progressbar" aria-label="Tiến độ hoàn thành" aria-valuemin="0" aria-valuemax="4" aria-valuenow="0">
+        <div id="progress"></div>
+      </div>
+      <span id="progressLabel" class="visually-hidden">Hoàn thành các bước theo thứ tự</span>
+      <span id="stepRange" class="visually-hidden">BƯỚC 01—04</span>
+      <span id="stepsPill" class="visually-hidden">4 BƯỚC</span>
+    </section>
 
-<div id="image-lightbox" class="image-lightbox" aria-hidden="true">
-  <button type="button" class="lightbox-close" data-close-lightbox aria-label="Đóng">×</button>
-  <img src="" alt="Preview">
-</div>
+    <section class="tasks-section" aria-label="Danh sách nhiệm vụ">
+      <div class="tasks-panel">
+        <div class="tasks-list" id="tasksList" aria-label="Danh sách nhiệm vụ"></div>
+      </div>
+    </section>
 
+    <section class="unlock-section" aria-labelledby="unlockTitle">
+      <h2 id="unlockTitle">MỞ KHÓA LINK</h2>
+      <div id="unlockBox" class="unlock-box">
+        <p class="success" hidden><svg class="icon-svg" aria-hidden="true"><use href="#icon-check-circle"></use></svg> Đã hoàn thành tất cả nhiệm vụ</p>
+        <button class="open-btn" id="openBtn" type="button" disabled>
+          <svg class="icon-svg" aria-hidden="true"><use href="#icon-lock"></use></svg>
+          <span id="unlockBtnLabel">Mở Khóa Link Chính</span>
+        </button>
+      </div>
+    </section>
 
-<!-- ===== ANDROID CHOICE MODAL ===== -->
-<div id="android-choice-modal" class="android-choice-modal" aria-hidden="true">
-  <div class="android-choice-panel" role="dialog" aria-modal="true" aria-labelledby="android-choice-title">
-    <div class="android-choice-icon">
-      <img src="assets/icons/android-v2.png" alt="Android">
-    </div>
-
-    <h3 id="android-choice-title">Tải App Android</h3>
-    <p id="android-choice-subtitle">
-      Vui lòng chọn phiên bản muốn sử dụng
-    </p>
-
-    <div class="android-choice-actions">
-      <button type="button" class="android-choice-option primary" data-android-action="tach">
-        <span class="android-option-icon">▣</span>
-        <span>Tải MOD TÁCH GỐC</span>
-      </button>
-
-      <button type="button" class="android-choice-option secondary" data-android-action="gop">
-        <span class="android-option-icon">▣</span>
-        <span>Tải MOD GỘP GỐC</span>
-      </button>
-
-      <button type="button" class="android-choice-option key" data-android-action="key">
-        <span class="android-option-icon"><img src="assets/icons/key-premium.svg" alt="" width="26" height="26"></span>
-        <span>Get Key Free</span>
-      </button>
-    </div>
-    <button type="button" class="android-choice-cancel" data-close-android-choice>
-      × &nbsp; Huỷ bỏ
+    <button class="guide" id="guideBtn" type="button">
+      <svg class="icon-svg" aria-hidden="true"><use href="#icon-play-circle"></use></svg>
+      Hướng dẫn link chính
+      <svg class="icon-svg guide-ext" aria-hidden="true"><use href="#icon-external"></use></svg>
     </button>
-  </div>
-</div>
+    <p id="appToast" class="notice" role="status" aria-live="polite" hidden></p>
+    <footer><span>© NGHĨALQ TV</span><span class="footer-separator" aria-hidden="true">•</span><span>AOV UNLOCK</span></footer>
+  </main>
 
-<!-- ===== MAP WARNING MODAL ===== -->
-<div id="map-warning-modal" class="map-warning-modal" aria-hidden="true">
-  <div class="map-warning-panel">
-    <div class="map-warning-head">
-      <div>
-        <span class="map-warning-icon">⚠️</span>
-        <h3>Lưu ý khi dùng Map</h3>
-      </div>
-      <button type="button" class="map-warning-close" data-close-map-warning aria-label="Đóng">×</button>
-    </div>
-    <div class="map-warning-body">
-      <div class="map-warning-item">Chỉ Bật Các Chức Năng Hack Map, Cam Xa, modskin</div>
-      <div class="map-warning-item">-K Nên Dùng Aim, Auto Bắn Đồ (Dễ Ban Year Nếu Ăn Tố Đồn).</div>
-      <div class="map-warning-item">Chơi kín, k phang bụi, hạn chế bị tố là oke</div>
-    </div>
-  </div>
-</div>
-
-<script src="main.js?v=typewriter-20261014"></script>
-<footer class="footer">
-  © 2026 Nghĩalq TV • All Rights Reserved  
-  <br>
-  Design by <b>Nghĩalq TV</b>
-</footer>
-
-
-
-<!-- ===== ADMIN EVENT PROMO POPUP ===== -->
-<style id="admin-promo-styles">
-#admin-promo-overlay{position:fixed;inset:0;z-index:99999;display:flex;align-items:center;justify-content:center;padding:18px;background:rgba(3,7,20,.86);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);animation:promoFadeIn .35s ease both}
-#admin-promo-overlay[hidden]{display:none}
-.admin-promo-card{position:relative;width:min(560px,100%);max-height:92vh;overflow-x:hidden;overflow-y:auto;border:1px solid rgba(255,190,68,.8);border-radius:26px;padding:28px 22px 22px;text-align:center;color:#fff;background:radial-gradient(ellipse at 50% 0%,#5d1730 0%,#161c3a 48%,#090f20 100%);box-shadow:0 0 24px #ff4b3544,0 0 70px #f20d4640,inset 0 0 30px #ff9e2414;animation:promoPop .5s cubic-bezier(.2,.8,.2,1) both}
-.admin-promo-card:before{content:"";position:absolute;inset:8px;border:1px solid #ffb84c70;border-radius:19px;pointer-events:none}
-.admin-promo-card:after{content:"";position:absolute;left:-30%;top:0;width:45%;height:100%;background:linear-gradient(100deg,transparent,#ffffff12,transparent);transform:skewX(-18deg);animation:promoShine 4s ease-in-out infinite;pointer-events:none}
-.admin-promo-close{position:absolute;z-index:2;right:15px;top:14px;width:40px;height:40px;border:1px solid #ffffff60;border-radius:50%;background:#ffffff18;color:white;font-size:29px;line-height:1;cursor:pointer;box-shadow:0 0 14px #fff2}
-.admin-promo-tag{display:inline-flex;align-items:center;gap:8px;padding:7px 13px;border:1px solid #ffb94b88;border-radius:99px;background:#ff8b1c1c;color:#ffd36c;font-size:12px;font-weight:900;letter-spacing:2px}
-.admin-promo-banner-img{display:block;position:relative;z-index:1;width:100%;height:auto;max-height:30vh;object-fit:contain;margin:14px auto 16px;border:1px solid #8bd8ff88;border-radius:16px;box-shadow:0 0 22px #178eff44}
-.admin-promo-mega{font-size:48px;line-height:1.25;margin:17px 0 8px;filter:drop-shadow(0 0 14px #ff5c28aa);animation:promoPulse 2s ease-in-out infinite}
-.admin-promo-title{position:relative;margin:0 auto 12px;max-width:440px;font-size:clamp(25px,6vw,38px);line-height:1.14;font-weight:1000;letter-spacing:.3px;text-transform:uppercase;background:linear-gradient(#fff7bd 5%,#ffc23e 48%,#ff6b21 80%);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-stroke:1px #6b170c;filter:drop-shadow(0 3px 0 #50100d) drop-shadow(0 0 12px #ff642a99)}
-.admin-promo-copy{max-width:420px;margin:0 auto 19px;color:#e6eaf7;font-size:15px;line-height:1.65}
-.admin-promo-copy strong{color:#fff2a6}
-.admin-promo-actions{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin:0 auto 15px;max-width:430px}
-.admin-promo-btn{display:flex;align-items:center;justify-content:center;gap:7px;min-height:42px;min-width:150px;padding:9px 15px;border-radius:12px;color:#fff;text-decoration:none;font-weight:800;font-size:14px;letter-spacing:.1px;box-shadow:0 5px 16px #0004;transition:transform .2s,filter .2s;position:relative;z-index:1}
-.admin-promo-btn:hover{transform:translateY(-2px);filter:brightness(1.12)}.admin-promo-zalo{background:linear-gradient(135deg,#1688ff,#0755c9);border:1px solid #78c3ff}.admin-promo-tele{background:linear-gradient(135deg,#20b9e8,#0878b8);border:1px solid #8be6ff}
-.admin-promo-offer{max-width:430px;margin:0 auto 16px;padding:12px 14px;border:1px solid #ffc45b88;border-radius:15px;background:linear-gradient(110deg,#ffb52b18,#ff4b3618);box-shadow:inset 0 0 18px #ffb52b0d}.admin-promo-offer-title{margin:0 0 7px;color:#ffe3a0;font-size:12px;font-weight:900;letter-spacing:1.4px;text-transform:uppercase}.admin-promo-offer-lines{display:flex;justify-content:center;flex-wrap:wrap;gap:7px}.admin-promo-offer-lines span{display:inline-block;padding:7px 10px;border-radius:9px;background:#101a32;border:1px solid #ffffff20;color:#fff;font-size:14px;font-weight:800}.admin-promo-offer-lines b{color:#ffd166}.admin-promo-hint{margin:12px 0 0;color:#aeb9d7;font-size:12px}.admin-promo-hint span{color:#ffcf68}
-.admin-promo-sound{position:relative;z-index:1;margin-top:12px;border:1px solid #ffffff30;border-radius:99px;padding:8px 13px;color:#dfe7ff;background:#ffffff0d;font-size:12px;cursor:pointer}
-@keyframes promoFadeIn{from{opacity:0}to{opacity:1}}@keyframes promoPop{from{opacity:0;transform:translateY(18px) scale(.96)}to{opacity:1;transform:none}}@keyframes promoShine{0%,55%{left:-50%}85%,100%{left:130%}}@keyframes promoPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.08)}}
-@media(max-width:420px){#admin-promo-overlay{padding:12px}.admin-promo-card{padding:25px 15px 18px;border-radius:21px}.admin-promo-mega{font-size:39px}.admin-promo-copy{font-size:14px}.admin-promo-actions{gap:8px}.admin-promo-btn{min-height:39px;min-width:0;padding:8px 12px;font-size:13px}.admin-promo-offer-lines span{font-size:13px;padding:7px 8px}}
-@media(prefers-reduced-motion:reduce){#admin-promo-overlay,.admin-promo-card,.admin-promo-mega,.admin-promo-card:after{animation:none!important;transition:none!important}}
-</style>
-
-
-
-<script src="gaming-loader.js"></script>
-<script src="snowfall.js?v=20261115-restore2"></script>
+  <script src="data.js?v=20261121-admin-fix"></script>
+  <script src="data/tiktok_ads.js?v=20261121-v3"></script>
+  <script src="tiktok_ads/tiktok-gate.js?v=20261121-v3"></script>
+  <script src="data-loader.js?v=shards-v3"></script>
 </body>
 </html>
